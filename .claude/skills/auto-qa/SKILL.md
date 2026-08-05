@@ -22,8 +22,29 @@ later rooms are usually failing for the same reason the first one did.
 run → first finding → triage → fix → replay to verify → commit → resume
 ```
 
-Resume from where it stopped by passing the room index the report gives you;
-do not restart from zero.
+### Two run modes, and when a tier is actually done
+
+- **Full sweep** — `./tools/autoqa.sh <mode>` from room 0. This is the only run
+  that can *pass* a tier.
+- **Resume** — `AUTOQA_START_ROOM=<n> ./tools/autoqa.sh <mode>`, picking up at
+  the room that failed. Use this after every fix so rooms that already passed at
+  this setting are not walked again.
+
+The protocol:
+
+1. Start a full sweep.
+2. On a finding: triage, fix, verify by replay, commit.
+3. Resume at the failing room. Keep fixing and resuming until a resumed run
+   reaches the end of the room list.
+4. **Reaching the end on a resumed run does not pass the tier.** Start a fresh
+   full sweep from room 0.
+5. If that sweep finds something, go back to step 2.
+6. The tier is done only when **one uninterrupted full sweep clears every room
+   with zero findings**.
+
+Fixes interact — one can perturb a room that passed earlier in the same tier —
+which is exactly why the clean run has to be a single pass over everything, not
+a stitched-together set of partial ones.
 
 ## 1. Run the sweep
 
@@ -32,6 +53,11 @@ do not restart from zero.
 ./tools/autoqa.sh rooms       # room entry only, fastest
 ./tools/autoqa.sh interact    # + User Event 1 on every instance
 ```
+
+`BARKLEY_AUTOQA_FRAMES` sets monkey time per room (600 frames ≈ 20s at 30fps).
+Wall clock is that times ~127 rooms, so 20s ≈ 45min, 90s ≈ 3.2h, 300s ≈ 10.6h.
+`AUTOQA_SEED`/`AUTOQA_MSEED` pin a sweep's seed pair; leave unset for a fresh
+random stream per run, which is what "another seed" means.
 
 It halts on the first `FATAL`, `CAUGHT` or `UNEXPLAINED` entry.
 `AUTOQA_CONTINUE=1` overrides that — only use it when deliberately surveying
