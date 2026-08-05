@@ -32,21 +32,60 @@ CONTINUE="${AUTOQA_CONTINUE:-0}"
 # entry in a previous report, so the same inputs are regenerated.
 #   ./tools/autoqa.sh replay <mode> <room> <inst> <gameseed> <monkeyseed>
 if [ "$MODE" = "replay" ]; then
-  RMODE="$2"; RROOM="$3"; RINST="$4"; RSEED="$5"; RMSEED="$6"
+  RMODE="$2"; RROOM="$3"; RINST="$4"; RSEED="$5"; RMSEED="$6"; RPASS="${7:-}"
   mkdir -p tools/autoqa-logs
-  echo "replay: mode=$RMODE room=$RROOM inst=$RINST seed=$RSEED mseed=$RMSEED"
+  RLOG=tools/autoqa-logs/replay.out
+  echo "replay: mode=$RMODE room=$RROOM inst=$RINST seed=$RSEED mseed=$RMSEED pass=${RPASS:-<none>}"
   BARKLEY_AUTOQA="$RMODE" BARKLEY_AUTOQA_ROOM="$RROOM" BARKLEY_AUTOQA_INST="$RINST" \
   BARKLEY_AUTOQA_SEED="$RSEED" BARKLEY_AUTOQA_MSEED="$RMSEED" \
   BARKLEY_AUTOQA_FRAMES="${BARKLEY_AUTOQA_FRAMES:-600}" \
-  npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac \
-      > tools/autoqa-logs/replay.out 2>&1
-  echo "--- inputs ---"; grep "AUTOQA INPUT" tools/autoqa-logs/replay.out | tail -40
+  npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac > "$RLOG" 2>&1 &
+  rpid=$!
+  # Wedge detection: a hang produces no error at all, so watch the heartbeat.
+  quiet=0; last=-1
+  for _ in $(seq 1 900); do
+    sleep 1
+    kill -0 "$rpid" 2>/dev/null || break
+    grep -q "AUTOQA DONE" "$RLOG" 2>/dev/null && break
+    sz=$(wc -c <"$RLOG" 2>/dev/null || echo 0)
+    if [ "$sz" = "$last" ]; then quiet=$((quiet+1)); [ "$quiet" -ge 30 ] && break
+    else quiet=0; last=$sz; fi
+  done
+  pkill -f "Runner" 2>/dev/null; kill "$rpid" 2>/dev/null; wait "$rpid" 2>/dev/null
+
+  echo "--- inputs ---"; grep "AUTOQA INPUT" "$RLOG" | tail -40
   echo "--- outcome ---"
-  if grep -qE "AUTOQA FATAL|AUTOQA CAUGHT" tools/autoqa-logs/replay.out; then
-    grep -E "AUTOQA FATAL|AUTOQA CAUGHT" tools/autoqa-logs/replay.out | head -6
+  # 1. did the sweep actually run? a launch that never starts proves nothing
+  if ! grep -q "AUTOQA BEGIN" "$RLOG"; then
+    echo "REPLAY INVALID: runner never started the sweep -- result means nothing, re-run"
+    exit 2
+  fi
+  # 2. progress first: getting past the failing position clears THAT finding,
+  #    even if the run later trips over a different one further along.
+  far=$(grep -o "AUTOQA STEP room=[0-9]*" "$RLOG" | sed 's/.*room=//' | sort -n | tail -1)
+  echo "furthest room reached: ${far:-none}"
+  cleared=0
+  if [ -n "$RPASS" ]; then
+    if grep -q "AUTOQA DONE" "$RLOG"; then cleared=1
+    elif [ -n "$far" ] && [ "$far" -gt "$RPASS" ]; then cleared=1; fi
+  fi
+
+  err=$(grep -E "AUTOQA FATAL|AUTOQA CAUGHT" "$RLOG" | head -6)
+  if [ -n "$RPASS" ] && [ "$cleared" = "0" ]; then
+    [ -n "$err" ] && echo "$err"
+    echo "REPLAY: bug still reproduces at room $RPASS"; exit 1
+  fi
+  if [ -n "$err" ]; then
+    echo "$err"
+    if [ "$cleared" = "1" ]; then
+      echo "REPLAY: original finding CLEARED (progressed past room $RPASS)"
+      echo "        but a DIFFERENT error appeared further on -- triage it as a new finding"
+      exit 3
+    fi
     echo "REPLAY: bug still reproduces"; exit 1
   fi
-  echo "REPLAY: clean -- no error at this position"; exit 0
+  if [ "$cleared" = "1" ]; then echo "REPLAY: clean -- progressed past room $RPASS"; exit 0; fi
+  echo "REPLAY: no error raised (pass a room index as arg 7 to also prove it got past a hang)"; exit 0
 fi
 OUT="tools/autoqa-report.txt"
 LOGDIR="tools/autoqa-logs"
@@ -98,6 +137,9 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
     break
   fi
 
+  seeds=$(grep -o "AUTOQA SEEDS game=[0-9]* monkey=[0-9]*" "$LOG" | head -1)
+  gseed=$(sed -n 's/.*game=\([0-9]*\).*/\1/p' <<<"$seeds")
+  mseed=$(sed -n 's/.*monkey=\([0-9]*\).*/\1/p' <<<"$seeds")
   # the harness persists fatal detail here, because stdout is lost when the
   # process dies mid-flush
   savedir=$(grep -o "AUTOQA SAVEDIR .*" "$LOG" | head -1 | sed 's/AUTOQA SAVEDIR //' | tr -d '\r')
@@ -117,9 +159,6 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
     break
   fi
 
-  seeds=$(grep -o "AUTOQA SEEDS game=[0-9]* monkey=[0-9]*" "$LOG" | head -1)
-  gseed=$(sed -n 's/.*game=\([0-9]*\).*/\1/p' <<<"$seeds")
-  mseed=$(sed -n 's/.*monkey=\([0-9]*\).*/\1/p' <<<"$seeds")
   step=$(grep "AUTOQA STEP" "$LOG" | tail -1)
   fatal=$(grep -E "AUTOQA FATAL" "$LOG" | head -4)
   err=$(grep -A4 -E "ERROR in action|not set before reading" "$LOG" | head -12)
@@ -129,7 +168,7 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
       echo "FATAL  (launch $launch)"
       echo "  last step: ${step:-<no step logged>}"
       sed 's/^/  /' "$crashfile"
-      echo "  replay:    ./tools/autoqa.sh replay $MODE $room $inst $gseed $mseed"
+      echo "  replay:    ./tools/autoqa.sh replay $MODE $room $inst $gseed $mseed $(sed -n 's/.*room=\([0-9]*\).*/\1/p' <<<"$step")"
     } | tee -a "$OUT"
     rm -f "$crashfile"
     [ "$CONTINUE" = "0" ] && { echo "stopping at first finding (AUTOQA_CONTINUE=1 to keep going)" | tee -a "$OUT"; break; }
@@ -137,7 +176,7 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
     { echo "=============================================================="
       echo "FATAL  (launch $launch)"
       echo "  last step: ${step:-<no step logged>}"
-      echo "  replay:    ./tools/autoqa.sh replay $MODE $room $inst $gseed $mseed"
+      echo "  replay:    ./tools/autoqa.sh replay $MODE $room $inst $gseed $mseed $(sed -n 's/.*room=\([0-9]*\).*/\1/p' <<<"$step")"
       echo "  inputs:    $(grep -c 'AUTOQA INPUT' "$LOG") logged, tail in $LOG"
       [ -n "$fatal" ] && echo "$fatal" | sed 's/^[^A]*AUTOQA/  AUTOQA/'
       [ -n "$err" ]   && echo "$err"   | sed 's/^/  /'
@@ -152,7 +191,7 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
       echo "  last step: ${step:-<no step logged>}"
       echo "  The run ended without reporting an error. Do not treat this as"
       echo "  clean -- investigate before advancing past this position."
-      echo "  replay:    ./tools/autoqa.sh replay $MODE $room $inst $gseed $mseed"
+      echo "  replay:    ./tools/autoqa.sh replay $MODE $room $inst $gseed $mseed $(sed -n 's/.*room=\([0-9]*\).*/\1/p' <<<"$step")"
     } | tee -a "$OUT"
     [ "$CONTINUE" = "0" ] && break
   fi

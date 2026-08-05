@@ -2,6 +2,13 @@ if (!started) exit;
 timer     += 1;
 roomtimer += 1;
 
+// Heartbeat: without it a wedged game and a quiet one look identical to the
+// driver, and it kills the run either way. If these stop, the game is stuck.
+if ((timer mod 60) = 0) {
+	show_debug_message("AUTOQA ALIVE f=" + string(timer) + " room=" + string(ri)
+		+ " phase=" + string(phase) + " rt=" + string(roomtimer));
+}
+
 // Keep the party standing so a battle actually plays out instead of ending in a
 // wipe two turns in. Enemies are left alone -- the point is to reach the win,
 // lose and level-up paths, not to make combat unlosable in a way that skips them.
