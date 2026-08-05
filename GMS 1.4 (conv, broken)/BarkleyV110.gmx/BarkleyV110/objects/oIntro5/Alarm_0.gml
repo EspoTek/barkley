@@ -2,7 +2,11 @@ with (oWall0) solid=0;
 oSoldier1.t=1;
 oSoldier2.t=1;
 oSoldier3.t=1;
-oSoldier4.t=1;
+// Port: oIntro5 exists only in RomNeoYork1, which places oSoldier0/1/2/3/5/6 --
+// there is no oSoldier4 to face, so this line always raised under GameMaker 2024
+// and took the whole Neo York scene with it. Byte-identical in the GM6 original;
+// that build ignored missing-instance errors and continued with the next line.
+with (oSoldier4) t=1;
 oSoldier5.t=1;
 oSoldier6.t=1;
 oCaptain0.t=1;
