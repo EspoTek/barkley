@@ -1,6 +1,6 @@
 function sCredits() {
 	jjj="~-_" + string_upper(argument[0]) + "_-~#";
-	for (l=1; string(argument[l])!="0"; l+=1) {
+	for (l=1; l < argument_count && string(argument[l])!="0"; l+=1) { // GM6 zero-filled argument slots
 	jjj+=argument[l]+"#";
 	}
 	if (cou<18) jjj+="####";

@@ -14,7 +14,7 @@ if (room=RomCredits || room=RomChaos) exit;
 //Start
 if (sKey(global.key_start,1)) {
  if (global.skipper!=0) {
-  keyboard_clear(global.key_start);
+  key_eat(global.key_start);
   if (global.skip=0.5) { global.skip=0; event_user(0); }
   else global.skip=0.5;
  } else {
@@ -69,8 +69,7 @@ if (global.freeze=1 || global.cinema=1) exit;
 with (global.camera) {
 moverl="";
 moveud="";
-if (keyboard_check(global.key_action) && instance_exists(oDialog)=0) { 
-keyboard_clear(global.key_action);
+if (instance_exists(oDialog)=0 && sKey(global.key_action,1)) { 
 global.did_action=1;
 global.dialog=0;
 with (oItem) {

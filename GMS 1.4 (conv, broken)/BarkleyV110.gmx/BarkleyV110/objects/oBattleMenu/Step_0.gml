@@ -54,7 +54,7 @@ if (state="names") {
   global.descriptor="";
   sact=0; pos0=0; h=0; //reset position just in acase
   if (asel=2) { sP(1); pretarget="Enemy"; state="target"; action="Attack"; pos1=0; } //attack
-  if (asel=1) { sP(1); h=0; state="skills"; dene=0; keyboard_clear(global.key_left); } //skills
+  if (asel=1) { sP(1); h=0; state="skills"; dene=0; key_eat(global.key_left); } //skills
   if (asel=0) { //defense
    sP(1); 
    h=0; state="wait"; global.turn.alarm[5]=10; global.turn.defending=1; //global.descriptor=global.turn.option[0];
@@ -70,7 +70,7 @@ if (state="names") {
    if (item[0]="") {
     state="pause"; global.descriptor="You have no useable items!"; alarm[5]=30; sP(-1);
    } else {
-    sP(1); h=0; state="items"; dname=1; dene=0; ditem=1; keyboard_clear(global.key_right);
+    sP(1); h=0; state="items"; dname=1; dene=0; ditem=1; key_eat(global.key_right);
    }
   }
   if (asel=4) { //run

@@ -1,3 +1,6 @@
+// Display scaling (port): render at native 320x240, composite ourselves (see Post Draw)
+global.integer_scale = 0; // 0 = fill window (aspect kept), 1 = integer scale + black border
+application_surface_draw_enable(false);
 //Make paths
 for (j=0; j<10; j+=1) global.path[j]=path_add();
 //Battle

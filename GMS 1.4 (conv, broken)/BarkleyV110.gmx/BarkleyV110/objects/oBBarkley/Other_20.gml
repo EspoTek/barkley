@@ -89,7 +89,7 @@ if (y>oy) { //When landing
  air=0;
  } else { //fouled
  y=oy;
- keyboard_clear(global.key_up);
+ key_eat(global.key_up);
  jstage=0;
  sprite_index=sBBarkleyStand;
  image_speed=0.25;

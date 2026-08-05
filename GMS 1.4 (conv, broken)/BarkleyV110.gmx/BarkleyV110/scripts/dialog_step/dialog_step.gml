@@ -17,8 +17,7 @@ function dialog_step() {
 	}
 	}
 	}
-	if (keyboard_check(global.key_action)) {
-	 keyboard_clear(global.key_action);
+	if (sKey(global.key_action,1)) {
 	 if (mdone=0) {
 	 while (mdone=0) dialog_step();
 	 mdone=0;

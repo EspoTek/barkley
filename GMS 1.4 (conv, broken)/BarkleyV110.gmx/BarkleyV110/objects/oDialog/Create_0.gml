@@ -1,4 +1,4 @@
-keyboard_clear(global.key_action);
+key_eat(global.key_action);
 chat=0;
 cho=0;
 grace=0;
