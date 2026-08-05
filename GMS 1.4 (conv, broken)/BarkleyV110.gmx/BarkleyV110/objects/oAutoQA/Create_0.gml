@@ -168,9 +168,14 @@ rm[122]=RomDeath1;
 rm[123]=RomChup0;
 rm[124]=RomChup1;
 rm[125]=RomChup2;
-rm[126]=RomTrans;
-rm[127]=RomInter;
-nrooms=128;
+// RomTrans is deliberately absent. Nothing navigates to it but oDebugger's F3
+// key -- true of the GM6 original too -- so it is a developer test room, not a
+// place a player can stand. It also has no oBarkley, which oController's Step_1
+// dereferences in any room missing from its line-12 denylist; that denylist
+// covers every room the game can actually reach, so warping here only
+// manufactures a crash no player can hit. Excluded like RomInit/RomStarter/RomTest.
+rm[126]=RomInter;
+nrooms=127;
 rooms = rm;
 phase     = 0;      // 0 = need init, 1 = warping, 2 = settling, 3 = interacting
 timer     = 0;

@@ -51,5 +51,16 @@ sFollow("add", oFollower2);   // Cyber Dwarf
 sFollow("add", oFollower3);   // Hoopz
 sFollow("add", oFollower9);   // civilian escort
 
+// RomInter is not a place you walk into -- sBattleStart builds it, copying the
+// encounter's ene[] list into global.bene[] and then transitioning. Warping in
+// cold leaves global.bene unset, and oBCamera's User Event 0 reads it on the
+// first line of enemy creation. Seed one real encounter in the game's own
+// "<object>,<level>,<x>,<y>" format (taken from sGroup's catacomb table) so the
+// battle room builds a genuine battle rather than an empty one.
+global.bene[0] = "oBSlamspectre,10,48,96";
+global.bene[1] = "";
+if (!variable_global_exists("batface")) global.batface = 0;  // set by sBattleStart
+if (!variable_global_exists("batset"))  global.batset  = 0;  // 0 = neither side gets a first strike
+
 started = true;
 phase   = 1;

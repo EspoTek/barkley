@@ -92,19 +92,27 @@ LOGDIR="tools/autoqa-logs"
 mkdir -p "$LOGDIR"
 : > "$OUT"
 
-room=0
+# AUTOQA_START_ROOM resumes a tier where it stopped instead of re-walking rooms
+# that already passed at this setting. After fixing a finding, restart with the
+# room index the report gave you rather than from zero.
+room="${AUTOQA_START_ROOM:-0}"
 inst=0
 launch=0
 
 
-echo "autoqa: mode=$MODE" | tee -a "$OUT"
+echo "autoqa: mode=$MODE start_room=$room frames=${BARKLEY_AUTOQA_FRAMES:-600}" | tee -a "$OUT"
 
 while [ "$launch" -lt "$MAXLAUNCH" ]; do
   launch=$((launch+1))
 
+  # AUTOQA_SEED/AUTOQA_MSEED pin a whole sweep to a chosen seed pair so a run can
+  # be repeated exactly, or so several sweeps can be given deliberately different
+  # input streams. Left unset, oAutoQA seeds itself from the clock per launch.
   BARKLEY_AUTOQA="$MODE" \
   BARKLEY_AUTOQA_ROOM="$room" \
   BARKLEY_AUTOQA_INST="$inst" \
+  BARKLEY_AUTOQA_SEED="${AUTOQA_SEED:-}" \
+  BARKLEY_AUTOQA_MSEED="${AUTOQA_MSEED:-}" \
   BARKLEY_AUTOQA_FRAMES="${BARKLEY_AUTOQA_FRAMES:-600}" \
   npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac \
       >"$LOGDIR/run$launch.out" 2>&1 &
