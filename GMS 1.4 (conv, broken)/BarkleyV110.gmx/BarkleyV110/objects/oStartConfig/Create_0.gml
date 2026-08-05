@@ -16,7 +16,7 @@ srp=sStartConfig;
 if (img<5) {
 instance_create(x,y+48,oStartConfig);
 }
-if (img=0) { s1="x1      x2      x3"; s0="SCALING"; xs=x+32; spc=31; global.tt[img]=3; }
+if (img=0) { s1="Fit Window    Integer"; s0="SCALING"; xs=x+12; spc=62; global.tt[img]=2; }
 if (img=1) { s1="Windowed      Full Screen"; s0="SCREEN"; xs=x+9; spc=69; global.tt[img]=2; }
 if (img=2) { s1="1      2      3      4      5"; s0="BRIGHTNESS"; xs=x+18; spc=24; global.tt[img]=5; }
 if (img=3) { s1="Slow        Normal      Fast"; s0="TEXT SPEED"; xs=x+10; spc=49; global.tt[img]=3; }

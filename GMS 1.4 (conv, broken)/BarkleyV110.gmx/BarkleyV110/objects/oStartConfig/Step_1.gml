@@ -16,9 +16,7 @@ if (sKey(global.key_action,1) || sKey(vk_enter,1)) { sP(1);
 if (global.edit=4) {
 if (global.sat[4]=0) { key_init(); sConfig(0); }
 if (global.sat[4]=1) { 
-if (global.sat[1]=0) sett=global.sat[0]+1;
-else sett=2;
-room_set_view(RomTest,0,1,0,0,320,240,0,0,320*sett,240*sett,0,0,0,0,-1);
+room_set_view(RomTest,0,1,0,0,320,240,0,0,320,240,0,0,0,0,-1);
 with (key_makestuff) { event_user(1); } sConfig(1); sFileData(0); global.croom=RomTest; global.cvx=144; global.cvy=64; room_goto(RomTest); 
 }
 if (global.sat[4]=2) { with (key_makestuff) { event_user(1); } sConfig(1); sound_stop_all(); game_restart(); }

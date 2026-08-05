@@ -542,6 +542,7 @@
     {"id":{"name":"oExploder2","path":"objects/oExploder2/oExploder2.yy",},},
     {"id":{"name":"oFader","path":"objects/oFader/oFader.yy",},},
     {"id":{"name":"oFerry","path":"objects/oFerry/oFerry.yy",},},
+    {"id":{"name":"oDisplay","path":"objects/oDisplay/oDisplay.yy",},},
     {"id":{"name":"oFlame0","path":"objects/oFlame0/oFlame0.yy",},},
     {"id":{"name":"oFlame1","path":"objects/oFlame1/oFlame1.yy",},},
     {"id":{"name":"oFlashback","path":"objects/oFlashback/oFlashback.yy",},},

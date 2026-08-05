@@ -4,7 +4,7 @@ function sConfig(argument0) {
 	if (arg=1) tfl=file_text_open_write("config0.txt");
 	else if (arg=2) tfl=file_text_open_read("config.txt");
 	//
-	if (arg=0) global.sat[0]=1;
+	if (arg=0) global.sat[0]=0; // 0=fit window, 1=integer scaling (was window scale 1x/2x/3x)
 	else if (arg=1) { file_text_write_real(tfl,global.sat[0]); file_text_writeln(tfl); }
 	else { global.sat[0]=file_text_read_real(tfl); file_text_readln(tfl); }
 	if (arg=0) global.sat[1]=0;

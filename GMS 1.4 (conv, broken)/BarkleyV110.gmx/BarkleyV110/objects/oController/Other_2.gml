@@ -30,24 +30,20 @@ key_joyinit();
 key_load();
 if (file_exists("config.txt")=0) sConfig(0);
 else sConfig(2);
-if (global.sat[1]=0) sett=global.sat[0]+1;
-else sett=1; //was 2, 640 by 480
 event_user(5); //rooms
-//Screen stuff
-global.displayc=0; //sets resolution
+//Screen stuff — modernized: resizable window, native fullscreen,
+//presentation handled by the persistent oDisplay object (fit/integer modes).
+global.displayc=0;
 global.displayx=display_get_width();
 global.displayy=display_get_height();
-display_reset(0, false);
+if (!instance_exists(oDisplay)) instance_create(0,0,oDisplay);
 if (global.sat[1]=0) {
 window_set_fullscreen(0);
-window_set_position((global.displayy/2)-((320*sett)/2),(global.displayy/2)-((240*sett)/2));
-} else { //640,480
+var wsc = max(1, min(floor((global.displayx*0.8)/320), floor((global.displayy*0.8)/240)));
+window_set_size(320*wsc, 240*wsc);
+window_center();
+} else {
 window_set_fullscreen(1);
-if (false) { // display_test_all removed: no monitor mode switching in the port
-// display_set_size removed
-window_set_position(0,0);
-if (global.displayx!=320) { global.displayc=1; }
-}
 }
 //
 sViewInit();
