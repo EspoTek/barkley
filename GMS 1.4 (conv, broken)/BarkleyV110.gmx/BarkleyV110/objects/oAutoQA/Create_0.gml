@@ -209,6 +209,8 @@ tresume    = 0;      // 1 = rebuilding tlist after returning, so keep the cursor
 texstate   = 0;      // tstate when an excursion began; 0 = ejected on arrival
 texc       = 0;      // excursions taken in this room, to bound re-entry attempts
 texcri     = -1;     // room index texc belongs to
+qteheld    = -1;     // key held for the current quick-time event, -1 = none
+qtetimer   = 0;      // frame that key went down
 // Release whatever is held. Called on room change and at sweep end so a key
 // cannot leak into the next room and jam its input.
 qa_release = function() {

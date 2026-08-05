@@ -16,6 +16,34 @@ if (instance_exists(oBattler)) {
 	with (oBattler) { if (enemy = 0) _vp = _rvp; }
 }
 
+// Quick-time events. oQuicker gives ~20 frames to press one specific key; a wrong
+// key or a timeout fails and docks global.die. Random mashing lands the right key
+// only by luck (one in seven per switch), so drive it deliberately -- but pass
+// only most of the time, because the fail branch matters just as much: cine_0270
+// through cine_0273 fork on global.passed, and the die decrement leads to the
+// game-over path. Left to chance, whichever branch the RNG missed goes untested.
+if (instance_exists(oQuicker)) {
+	if (oQuicker.time > 0) {
+		if (qteheld < 0) {
+			qa_release();
+			var _qmap = [global.key_right, global.key_up, global.key_left,
+			             global.key_down, global.key_action, global.key_cancel];
+			var _pass = ((qa_next() mod 10) < 7);
+			var _pick = _pass ? _qmap[oQuicker.key] : _qmap[qa_next() mod 6];
+			keyboard_key_press(_pick);
+			qteheld  = _pick;
+			qtetimer = timer;
+			show_debug_message("AUTOQA QTE want=" + string(oQuicker.key)
+				+ " pressed=" + string(_pick) + " aiming=" + (_pass ? "pass" : "fail"));
+		} else if (timer > qtetimer + 2) {
+			keyboard_key_release(qteheld);
+			qteheld = -1;
+		}
+		exit;
+	}
+}
+if (qteheld >= 0) { keyboard_key_release(qteheld); qteheld = -1; }
+
 if (ri >= nrooms) {
 	show_debug_message("AUTOQA DONE caught=" + string(crashes));
 	game_end();
