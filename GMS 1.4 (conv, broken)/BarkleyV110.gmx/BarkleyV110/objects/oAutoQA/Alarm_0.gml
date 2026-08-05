@@ -6,9 +6,11 @@ sFileData(0);   // new-game init: seeds every global and warps to the start room
 // game's own sBattleLevel/sBattleSkill so stats and skill lists stay internally
 // consistent -- writing the stat arrays directly would invent states no real
 // playthrough can reach, and then every battle crash is a suspect finding.
+// All five characters, not just the current roster: qa_state reshuffles the
+// battle party on every room entry, so anyone can turn up in a fight and needs
+// stats that a real playthrough could have produced.
 try {
-	for (var pidx = 0; global.party[pidx] != -1; pidx += 1) {
-		var c    = global.party[pidx];
+	for (var c = 0; c <= 4; c += 1) {
 		var want = 1 + irandom(59);
 		while (global.char_res1[c] < want) {
 			global.char_res1[c] += 1;
@@ -44,25 +46,12 @@ if (!variable_global_exists("diemessage")) global.diemessage = "";     // set on
 // instances -- and cutscenes address their speaker by object index (oCinema's
 // `com.face`), which raises "Unable to find instance for object index" the
 // moment a queued line belongs to a party member. In real play the follower is
-// on screen because the story added it. Recruit all five the game ever adds, so
-// the union of reachable follower states is present; oBarkley's Create calls
-// sFollow("update") on every room entry, which materialises them.
-sFollow("add", oFollower0);   // Balthios / Ultimate Hellbane
-sFollow("add", oFollower1);   // Vinceborg
-sFollow("add", oFollower2);   // Cyber Dwarf
-sFollow("add", oFollower3);   // Hoopz
-sFollow("add", oFollower9);   // civilian escort
-
-// RomInter is not a place you walk into -- sBattleStart builds it, copying the
-// encounter's ene[] list into global.bene[] and then transitioning. Warping in
-// cold leaves global.bene unset, and oBCamera's User Event 0 reads it on the
-// first line of enemy creation. Seed one real encounter in the game's own
-// "<object>,<level>,<x>,<y>" format (taken from sGroup's catacomb table) so the
-// battle room builds a genuine battle rather than an empty one.
-global.bene[0] = "oBSlamspectre,10,48,96";
-global.bene[1] = "";
-if (!variable_global_exists("batface")) global.batface = 0;  // set by sBattleStart
-if (!variable_global_exists("batset"))  global.batset  = 0;  // 0 = neither side gets a first strike
+// on screen because the story added it. qa_state recruits all five the game ever
+// adds, so the union of reachable follower states is present; oBarkley's Create
+// calls sFollow("update") on every room entry, which materialises them. It also
+// seeds global.bene, because RomInter is not somewhere you walk into -- it is
+// built by sBattleStart from the encounter's ene[] list.
+qa_state();
 
 started = true;
 phase   = 1;

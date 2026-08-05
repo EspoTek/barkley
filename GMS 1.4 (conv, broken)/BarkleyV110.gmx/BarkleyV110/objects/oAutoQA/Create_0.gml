@@ -211,6 +211,45 @@ tresume    = 0;      // 1 = rebuilding tlist after returning, so keep the cursor
 qa_release = function() {
 	if (held >= 0) { keyboard_key_release(held); held = -1; }
 };
+// Re-assert the state the sweep depends on. Seeding it once at startup is not
+// enough: touching a save pump goes to RomLoad, and fuzzing there can start a
+// new game or load a slot, both of which run sFileData and reset global.following
+// and friends. After that every cutscene addressing a party member raises
+// "Unable to find instance for object index", which looks exactly like a game
+// bug and is not one. Called on every room entry, so drift cannot outlive a room.
+// Rebuilds the follower list rather than appending, or repeated calls would grow it.
+qa_state = function() {
+	global.following[0] = -1;
+	sFollow("add", oFollower0);   // Balthios / Ultimate Hellbane
+	sFollow("add", oFollower1);   // Vinceborg
+	sFollow("add", oFollower2);   // Cyber Dwarf
+	sFollow("add", oFollower3);   // Hoopz
+	sFollow("add", oFollower9);   // civilian escort
+	// Reshuffle the battle party. sFileData(0) leaves Barkley alone in it, so every
+	// fight would be a solo Barkley and the multi-character battle code would never
+	// run -- turn order, Cyberdwarf's cover, Hoopz's evade, Vince's recharge, the
+	// per-character skill branches in oBattleMenu. Draw without replacement from
+	// the five, 1-4 of them, because sBattleImport only has placement branches for
+	// party sizes 1 to 4 and a fifth member would simply never be created.
+	// Drawn from qa_next, so a replay reproduces the same roster.
+	global.party[0] = -1;
+	var _pool = [0, 1, 2, 3, 4];   // 0 Barkley, 1 Balthios, 2 Vince, 3 Cyberdwarf, 4 Hoopz
+	var _left = 5;
+	var _want = 1 + (qa_next() mod 4);
+	var _p;
+	for (_p = 0; _p < _want; _p += 1) {
+		var _k = qa_next() mod _left;
+		sParty("add", _pool[_k]);
+		_pool[_k] = _pool[_left - 1];
+		_left -= 1;
+	}
+	global.bene[0] = "oBSlamspectre,10,48,96";
+	global.bene[1] = "";
+	if (!variable_global_exists("romname"))    global.romname    = "QA";
+	if (!variable_global_exists("diemessage")) global.diemessage = "";
+	if (!variable_global_exists("batface"))    global.batface    = 0;
+	if (!variable_global_exists("batset"))     global.batset     = 0;
+};
 // Anything that escapes a try/catch -- typically an error raised later, in some
 // other object's Step, after we perturbed it -- would otherwise pop the runner's
 // modal error dialog and block the whole sweep until a human clicks it. Log it

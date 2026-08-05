@@ -26,6 +26,9 @@ if (phase = 1) {                                   // warp into the target room
 	show_debug_message("AUTOQA STEP room=" + string(ri) + " name=" + room_get_name(rooms[ri]) + " phase=enter");
 	if (variable_global_exists("cinema")) global.cinema = 0;
 	if (variable_global_exists("freeze")) global.freeze = 0;
+	// Before the warp, so the incoming room's oBarkley Create sees the right
+	// global.following and materialises the party via sFollow("update").
+	qa_state();
 	try {
 		room_goto(rooms[ri]);
 	} catch (_ex) {
