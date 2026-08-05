@@ -4,6 +4,9 @@
 // Measured here: random_get_seed() was 0 on a fresh launch before this call;
 // with it, three launches seeded 164549007 / 514373227 / 962908337.
 randomise();
+// QA harness: inert unless BARKLEY_AUTOQA is set in the environment, so the
+// shipped game never creates it. See objects/oAutoQA.
+if (environment_get_variable("BARKLEY_AUTOQA") != "") instance_create(0,0,oAutoQA);
 // Port: build the original bitmap fonts before anything can draw text.
 sFontInit();
 // Display scaling (port): render at native 320x240, composite ourselves (see Post Draw)
