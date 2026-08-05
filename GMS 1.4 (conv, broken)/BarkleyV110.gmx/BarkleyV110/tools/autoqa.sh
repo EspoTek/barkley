@@ -24,6 +24,9 @@ cd "$(dirname "$0")/.."
 
 MODE="${1:-rooms}"
 MAXLAUNCH="${2:-400}"
+# Stop at the first finding so it gets fixed before the sweep moves on.
+# AUTOQA_CONTINUE=1 restores the old skip-and-keep-going behaviour.
+CONTINUE="${AUTOQA_CONTINUE:-0}"
 
 # Replay: re-run one exact launch. Seeds and cursor come from a FATAL/CAUGHT
 # entry in a previous report, so the same inputs are regenerated.
@@ -95,8 +98,19 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
     break
   fi
 
+  # the harness persists fatal detail here, because stdout is lost when the
+  # process dies mid-flush
+  savedir=$(grep -o "AUTOQA SAVEDIR .*" "$LOG" | head -1 | sed 's/AUTOQA SAVEDIR //' | tr -d '\r')
+  crashfile=""
+  [ -n "$savedir" ] && [ -f "${savedir}autoqa-crash.txt" ] && crashfile="${savedir}autoqa-crash.txt"
+
   # errors caught in-engine: the sweep survived these and kept going
   grep "AUTOQA CAUGHT" "$LOG" | sed "s|^[^A]*AUTOQA CAUGHT |CAUGHT [replay: ./tools/autoqa.sh replay $MODE $room $inst $gseed $mseed] |" >> "$OUT"
+
+  if [ "$CONTINUE" = "0" ] && grep -q "AUTOQA CAUGHT" "$LOG"; then
+    echo "stopping at first finding (AUTOQA_CONTINUE=1 to keep going)" | tee -a "$OUT"
+    break
+  fi
 
   if grep -q "AUTOQA DONE" "$LOG"; then
     echo "sweep complete after $launch launch(es)" | tee -a "$OUT"
@@ -110,7 +124,16 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
   fatal=$(grep -E "AUTOQA FATAL" "$LOG" | head -4)
   err=$(grep -A4 -E "ERROR in action|not set before reading" "$LOG" | head -12)
 
-  if [ -n "$fatal" ] || [ -n "$err" ]; then
+  if [ -n "$crashfile" ]; then
+    { echo "=============================================================="
+      echo "FATAL  (launch $launch)"
+      echo "  last step: ${step:-<no step logged>}"
+      sed 's/^/  /' "$crashfile"
+      echo "  replay:    ./tools/autoqa.sh replay $MODE $room $inst $gseed $mseed"
+    } | tee -a "$OUT"
+    rm -f "$crashfile"
+    [ "$CONTINUE" = "0" ] && { echo "stopping at first finding (AUTOQA_CONTINUE=1 to keep going)" | tee -a "$OUT"; break; }
+  elif [ -n "$fatal" ] || [ -n "$err" ]; then
     { echo "=============================================================="
       echo "FATAL  (launch $launch)"
       echo "  last step: ${step:-<no step logged>}"
@@ -124,7 +147,14 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
     echo "launch $launch: runner never started the sweep, retrying same position" | tee -a "$OUT"
     continue
   else
-    echo "launch $launch: no error found; sweep stalled at ${step:-<none>}" | tee -a "$OUT"
+    { echo "=============================================================="
+      echo "UNEXPLAINED  (launch $launch)"
+      echo "  last step: ${step:-<no step logged>}"
+      echo "  The run ended without reporting an error. Do not treat this as"
+      echo "  clean -- investigate before advancing past this position."
+      echo "  replay:    ./tools/autoqa.sh replay $MODE $room $inst $gseed $mseed"
+    } | tee -a "$OUT"
+    [ "$CONTINUE" = "0" ] && break
   fi
 
   # resume one step past wherever we stopped

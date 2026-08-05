@@ -181,11 +181,24 @@ started   = false;
 // modal error dialog and block the whole sweep until a human clicks it. Log it
 // and end the process so the driver can relaunch unattended.
 exception_unhandled_handler(function(_ex) {
-	show_debug_message("AUTOQA FATAL " + string(_ex.message));
-	show_debug_message("AUTOQA FATAL_AT " + string(_ex.script) + " line " + string(_ex.line));
+	var _msg = "AUTOQA FATAL " + string(_ex.message)
+		+ " :: at " + string(_ex.script) + " line " + string(_ex.line);
+	show_debug_message(_msg);
+	// stdout is lost when game_end() tears the process down mid-flush, which
+	// previously swallowed the error entirely and made every crash look like a
+	// stall. A file write is synchronous, so persist the detail there too.
+	var _f = file_text_open_write("autoqa-crash.txt");
+	file_text_write_string(_f, _msg);                                    file_text_writeln(_f);
+	file_text_write_string(_f, "room=" + string(ri)
+		+ " name=" + room_get_name(rooms[ri]) + " inst=" + string(ii));  file_text_writeln(_f);
+	file_text_write_string(_f, "mode=" + string(mode)
+		+ " gameseed=" + string(gameseed)
+		+ " monkeyseed=" + string(monkeyseed));                          file_text_writeln(_f);
+	file_text_close(_f);
 	game_end();
 });
 crashes = 0;
+show_debug_message("AUTOQA SAVEDIR " + string(game_save_id));
 show_debug_message("AUTOQA SEEDS game=" + string(gameseed) + " monkey=" + string(monkeyseed));
 show_debug_message("AUTOQA BEGIN mode=" + string(mode) + " room=" + string(ri) + " inst=" + string(ii) + " nrooms=" + string(nrooms));
 alarm[0] = 2;

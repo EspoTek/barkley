@@ -11,6 +11,20 @@ Drives `tools/autoqa.sh` and works each finding through to a committed fix.
 Working dir for everything below:
 `GMS 1.4 (conv, broken)/BarkleyV110.gmx/BarkleyV110`
 
+## The loop
+
+**One bug at a time. The sweep stops at the first finding — fix it, verify it,
+commit it, then resume.** Never let the sweep run on past a crash to collect
+more: repeatedly hitting the same fault produces noise, not coverage, and the
+later rooms are usually failing for the same reason the first one did.
+
+```
+run → first finding → triage → fix → replay to verify → commit → resume
+```
+
+Resume from where it stopped by passing the room index the report gives you;
+do not restart from zero.
+
 ## 1. Run the sweep
 
 ```sh
@@ -19,11 +33,23 @@ Working dir for everything below:
 ./tools/autoqa.sh interact    # + User Event 1 on every instance
 ```
 
-Long-running (a full monkey sweep is ~45min). Launch it with `run_in_background`
-and a `Monitor` that waits for `fatal   (killed run):` in the output — do not poll.
+It halts on the first `FATAL`, `CAUGHT` or `UNEXPLAINED` entry.
+`AUTOQA_CONTINUE=1` overrides that — only use it when deliberately surveying
+scale, never as the default.
+
+Long-running. Launch it with `run_in_background` and a `Monitor` that waits for
+`stopping at first finding|sweep complete|aborting` — do not poll.
 
 Results: `tools/autoqa-report.txt`, per-launch logs in `tools/autoqa-logs/`.
 Both are gitignored; never commit them.
+
+### UNEXPLAINED means stop, not skip
+
+If a launch ends without reporting an error, that is **not** a clean room. The
+runner can die with its stdout unflushed, which is why the harness also persists
+crash detail to `autoqa-crash.txt` in `game_save_id`. An `UNEXPLAINED` entry
+means the capture failed — investigate it before advancing. Treating these as
+clean once caused the sweep to silently walk past a crash in almost every room.
 
 Report entries look like:
 
