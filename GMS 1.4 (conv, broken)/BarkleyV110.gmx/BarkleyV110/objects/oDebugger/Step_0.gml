@@ -1,7 +1,11 @@
 //if (sKey(vk_f6,1)) room_goto(RomBarMove);
 if (sKey(vk_f7,1)) instance_create(0,0,oBHiratio);
-if (sKey(vk_f8,1)) room_goto(RomCyberMove);
-if (sKey(vk_f9,1)) room_goto(RomBalMove);
+//RomCyberMove/RomBalMove never existed as rooms -- like RomBarMove above they
+//appear in the GM6 source only at these call sites. GM6 read them as 0 and
+//warped to room 0; here they are a fatal unset-variable read. Disabled to match
+//the author's own handling of the F6 case.
+//if (sKey(vk_f8,1)) room_goto(RomCyberMove);
+//if (sKey(vk_f9,1)) room_goto(RomBalMove);
 if (sKey(vk_f2,1)) { global.batset=1; room_restart(); }
 if (sKey(vk_f3,1)) { sound_stop_all(); room_goto(RomTrans); }
 if (sKey(vk_f4,1)) {

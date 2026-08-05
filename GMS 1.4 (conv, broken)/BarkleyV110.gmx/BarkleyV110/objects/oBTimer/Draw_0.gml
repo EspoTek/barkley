@@ -20,17 +20,22 @@ if (zy>=zmax) { zy=zmax; zdir=0; }
 draw_sprite(sBTimer1,0,x,y);
 draw_sprite(sBBall0,0,x+5+zy,y+9);
 }
-if (clock=1) {
-x=__view_get( e__VW.XView, 0 )+5;
-y=__view_get( e__VW.YView, 0 )+20;
-draw_sprite(sBClock,0,x,y);
-if (hhh<=0) { violate=1; exit; }
-else violate=0;
-hhh-=1;
-bbb=floor(hhh/30);
-xxx=floor((hhh mod 30)/3);
-draw_sprite(sBClock,bbb+1,x,y);
-draw_sprite(sBClock,11,x+9,y);
-draw_sprite(sBClock,xxx+1,x+18,y);
-}
+// Cut shot-clock feature, kept for reference. `clock` is set to 0 in Create and
+// never raised, and sBClock was never a sprite resource -- it appears in the GM6
+// source only as these four code references, so even there it read as 0 and drew
+// whatever sprite happened to be index 0. Left commented out rather than deleted:
+// live it would be a fatal "sBClock not set before reading it".
+//if (clock=1) {
+//x=__view_get( e__VW.XView, 0 )+5;
+//y=__view_get( e__VW.YView, 0 )+20;
+//draw_sprite(sBClock,0,x,y);
+//if (hhh<=0) { violate=1; exit; }
+//else violate=0;
+//hhh-=1;
+//bbb=floor(hhh/30);
+//xxx=floor((hhh mod 30)/3);
+//draw_sprite(sBClock,bbb+1,x,y);
+//draw_sprite(sBClock,11,x+9,y);
+//draw_sprite(sBClock,xxx+1,x+18,y);
+//}
 
