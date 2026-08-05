@@ -1,3 +1,4 @@
+var tttmp;
 if (view_current!=0) exit;
 px=0; py=0; sx=0; sy=0;
 if (hilight=1) draw_sprite(sArrower,0,x,fy);

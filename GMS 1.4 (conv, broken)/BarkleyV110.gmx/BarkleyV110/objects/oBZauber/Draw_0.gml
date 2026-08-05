@@ -1,3 +1,4 @@
+var tttmp;
 if (view_current!=0) exit;
 if (type="fire") {
 image_angle+=30;

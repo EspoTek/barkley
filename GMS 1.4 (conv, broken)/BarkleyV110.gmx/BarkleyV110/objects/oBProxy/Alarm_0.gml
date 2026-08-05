@@ -1,3 +1,4 @@
+var tttmp;
 instance_destroy();
 global.txmp=target;
 with (master) { target=global.txmp; sDamage(doing); }

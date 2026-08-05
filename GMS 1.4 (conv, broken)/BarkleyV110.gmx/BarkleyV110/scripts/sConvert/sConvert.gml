@@ -1,6 +1,7 @@
 function sConvert(argument0, argument1) {
 	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0;
 	//Name of temp file, name of legit file
+	var red, wri, ggg;
 	red=file_text_open_read(argument0);
 	wri=file_text_open_write(argument1);
 	while (file_text_eof(red)=0) {

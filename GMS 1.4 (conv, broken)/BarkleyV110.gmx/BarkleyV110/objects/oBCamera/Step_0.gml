@@ -1,3 +1,4 @@
+var tttmp;
 sEnemyAI();
 //Run from battle
 if (rover>0) {

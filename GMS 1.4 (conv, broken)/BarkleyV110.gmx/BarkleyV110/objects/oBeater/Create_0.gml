@@ -1,3 +1,4 @@
+var tttmp;
 r=20;
 { tttmp=instance_create(x+r,y,oWave); tttmp.direction=0; }
 { tttmp=instance_create(x-r,y,oWave); tttmp.direction=180; }

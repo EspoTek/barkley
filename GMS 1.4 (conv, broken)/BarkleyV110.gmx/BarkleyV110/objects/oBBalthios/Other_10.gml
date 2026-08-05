@@ -1,3 +1,4 @@
+var tttmp;
 //Ice Zauber
 global.b_obj=global.b_middle;
 if (stage=0) {

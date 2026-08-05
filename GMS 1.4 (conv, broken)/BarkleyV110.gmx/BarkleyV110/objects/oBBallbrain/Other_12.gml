@@ -1,3 +1,4 @@
+var tttmp;
 //Contaminated Gatorade - img=5
 if (exec!=-1) { 
 if (bottle=0) { event_user(1); exit; }

@@ -1,3 +1,4 @@
+var tttmp;
 room_speed=30;
 __view_set( e__VW.YView, 0, 5-(global.shake/2)+random(global.shake) );
 __view_set( e__VW.XView, 0, 5-(global.shake/2)+random(global.shake) );

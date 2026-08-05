@@ -1,3 +1,4 @@
+var tttmp;
 //Smoke Breath
 global.descriptor="Smoke Breath";
 global.b_obj=global.b_middle;

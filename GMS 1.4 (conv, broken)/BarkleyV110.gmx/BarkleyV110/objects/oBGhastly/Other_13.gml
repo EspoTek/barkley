@@ -1,3 +1,4 @@
+var tttmp;
 global.descriptor="Head Bash";
 if (exec!=-1) { fff=0; exec=-1; stage=0; doing=3; exit; }
 global.b_obj=global.b_middle;
