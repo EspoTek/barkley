@@ -233,6 +233,12 @@ exception_unhandled_handler(function(_ex) {
 	game_end();
 });
 crashes = 0;
+// Clear any crash file left by an earlier launch. The driver treats the mere
+// existence of this file as "this run died", so a stale one -- left behind when
+// a previous driver was killed before it could clean up -- gets reported as a
+// fresh FATAL against a run that was actually fine. Deleting it here means any
+// file the driver finds afterwards can only have come from this launch.
+if (file_exists("autoqa-crash.txt")) file_delete("autoqa-crash.txt");
 show_debug_message("AUTOQA SAVEDIR " + string(game_save_id));
 show_debug_message("AUTOQA SEEDS game=" + string(gameseed) + " monkey=" + string(monkeyseed));
 show_debug_message("AUTOQA BEGIN mode=" + string(mode) + " room=" + string(ri) + " inst=" + string(ii) + " nrooms=" + string(nrooms));

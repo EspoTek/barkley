@@ -24,6 +24,11 @@ cd "$(dirname "$0")/.."
 
 MODE="${1:-rooms}"
 MAXLAUNCH="${2:-400}"
+# Seconds a single launch may run. Wedges are caught by the quiet-output check
+# below, so this is only a backstop -- it needs to exceed how long a full sweep
+# takes, or it truncates the run and the truncation gets misread as a crash.
+# rooms mode is minutes; touch mode is hours.
+LAUNCH_CAP="${AUTOQA_LAUNCH_CAP:-36000}"
 # Stop at the first finding so it gets fixed before the sweep moves on.
 # AUTOQA_CONTINUE=1 restores the old skip-and-keep-going behaviour.
 CONTINUE="${AUTOQA_CONTINUE:-0}"
@@ -43,7 +48,7 @@ if [ "$MODE" = "replay" ]; then
   rpid=$!
   # Wedge detection: a hang produces no error at all, so watch the heartbeat.
   quiet=0; last=-1
-  for _ in $(seq 1 900); do
+  for _ in $(seq 1 "$LAUNCH_CAP"); do
     sleep 1
     kill -0 "$rpid" 2>/dev/null || break
     grep -q "AUTOQA DONE" "$RLOG" 2>/dev/null && break
@@ -123,7 +128,7 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
   LOG="$LOGDIR/run$launch.out"
   quiet=0
   last_size=-1
-  for _ in $(seq 1 900); do
+  for _ in $(seq 1 "$LAUNCH_CAP"); do
     sleep 1
     kill -0 "$pid" 2>/dev/null || break
     grep -q "AUTOQA DONE" "$LOG" 2>/dev/null && break
