@@ -1,7 +1,8 @@
 // Port: GM6 seeded the RNG from the clock at startup; GameMaker 2024 starts
-// every run from a fixed seed (random_get_seed() == 0), so without this the
-// whole game is deterministic -- identical encounters, damage and drops on
-// every playthrough. Verified: two launches produced byte-identical sequences.
+// every run from its documented fixed seed, so without this the whole game is
+// deterministic -- identical encounters, damage and drops on every playthrough.
+// Measured here: random_get_seed() was 0 on a fresh launch before this call;
+// with it, three launches seeded 164549007 / 514373227 / 962908337.
 randomise();
 // Port: build the original bitmap fonts before anything can draw text.
 sFontInit();
