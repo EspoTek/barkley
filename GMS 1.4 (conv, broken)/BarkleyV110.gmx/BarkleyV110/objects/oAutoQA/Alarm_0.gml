@@ -38,5 +38,18 @@ nkeys = array_length(keys);
 if (!variable_global_exists("romname"))    global.romname    = "QA";   // set by sFileData(4)
 if (!variable_global_exists("diemessage")) global.diemessage = "";     // set on death
 
+// sFileData(0) clears global.following, so a warped-in room has no follower
+// instances -- and cutscenes address their speaker by object index (oCinema's
+// `com.face`), which raises "Unable to find instance for object index" the
+// moment a queued line belongs to a party member. In real play the follower is
+// on screen because the story added it. Recruit all five the game ever adds, so
+// the union of reachable follower states is present; oBarkley's Create calls
+// sFollow("update") on every room entry, which materialises them.
+sFollow("add", oFollower0);   // Balthios / Ultimate Hellbane
+sFollow("add", oFollower1);   // Vinceborg
+sFollow("add", oFollower2);   // Cyber Dwarf
+sFollow("add", oFollower3);   // Hoopz
+sFollow("add", oFollower9);   // civilian escort
+
 started = true;
 phase   = 1;
