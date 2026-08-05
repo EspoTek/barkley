@@ -92,9 +92,17 @@ if (phase = 5) {                                   // walk up to every oItem and
 		// invalidates every stored instance id. Keep the cursor so we carry on
 		// past the target that took us away instead of looping on it forever.
 		if (tresume = 1) tresume = 0; else { ti = 0; trep = 0; }
+		if (texcri != ri) { texc = 0; texcri = ri; }   // fresh room, fresh excursion budget
 		show_debug_message("AUTOQA TOUCH room=" + room_get_name(rooms[ri])
 			+ " targets=" + string(array_length(tlist)) + " skipped=" + string(tskipped)
 			+ " from=" + string(ti));
+	}
+	// Nothing left to touch here. Checked before the room test below, or a room
+	// that ejects us on entry never reaches it and the cursor runs away forever.
+	if (ti >= array_length(tlist) && room = rooms[ri]) {
+		if (mode = "monkey") { phase = 4; exit; }
+		ri += 1; ii = 0; phase = 1;
+		exit;
 	}
 	// An interaction moved us: a battle, an exit, the save menu. That is coverage,
 	// not a failure -- fuzz it so it actually progresses, then come back and carry
@@ -105,12 +113,29 @@ if (phase = 5) {                                   // walk up to every oItem and
 		var _limit = 300;
 		if (room = RomInter || room = RomTrans) _limit = 2700;
 		tout += 1;
-		if (tout = 1) show_debug_message("AUTOQA TOUCH excursion -> " + room_get_name(room));
+		if (tout = 1) {
+			show_debug_message("AUTOQA TOUCH excursion -> " + room_get_name(room));
+			texstate = tstate;   // 0 = we were ejected on arrival, not by a touch
+		}
 		if (tout > _limit) {
 			show_debug_message("AUTOQA TOUCH returning from " + room_get_name(room)
 				+ " after " + string(tout) + "f");
 			qa_release();
-			tout = 0; ti += 1; trep = 0; tbuilt = 0; tresume = 1;
+			tout = 0; trep = 0; tbuilt = 0; tresume = 1;
+			// Only skip a target if a target is what moved us. Being ejected on
+			// arrival is not the current target's fault, and advancing for it walked
+			// the cursor past every target in the room without touching any of them.
+			if (texstate != 0) ti += 1;
+			texc += 1;
+			// Some rooms bounce us straight back out -- RomSpaldingRoad3 ejects to
+			// RomSpaldingRoad2 the moment it loads. Retrying forever burns the whole
+			// run there: the cursor reached 6252 on a 20-target list and nothing was
+			// ever interacted with. Give up after a few attempts and move on.
+			if (texc > 3) {
+				show_debug_message("AUTOQA TOUCH giving up on " + room_get_name(rooms[ri])
+					+ " after " + string(texc) + " excursions -- it ejects us on entry");
+				ri += 1; ii = 0; ti = 0; tresume = 0; texc = 0;
+			}
 			roomtimer = 0; phase = 1;
 			exit;
 		}

@@ -206,6 +206,9 @@ treps      = 3;      // repeats per interactable: the same approach lands in a
 tburst     = 45;     // frames of true-random input after each interaction, ~1.5s
 tout       = 0;      // frames spent outside the target room on an excursion
 tresume    = 0;      // 1 = rebuilding tlist after returning, so keep the cursor
+texstate   = 0;      // tstate when an excursion began; 0 = ejected on arrival
+texc       = 0;      // excursions taken in this room, to bound re-entry attempts
+texcri     = -1;     // room index texc belongs to
 // Release whatever is held. Called on room change and at sweep end so a key
 // cannot leak into the next room and jam its input.
 qa_release = function() {
