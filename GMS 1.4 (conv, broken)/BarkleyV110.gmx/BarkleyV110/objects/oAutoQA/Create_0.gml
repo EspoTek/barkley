@@ -211,6 +211,49 @@ tresume    = 0;      // 1 = rebuilding tlist after returning, so keep the cursor
 qa_release = function() {
 	if (held >= 0) { keyboard_key_release(held); held = -1; }
 };
+// Every item the game defines, harvested from refItem. Used to randomise the
+// inventory so item-handling code -- stacking, the menu list, use effects,
+// selling, equipping -- is exercised instead of sitting behind an empty bag.
+qa_itemnames = [
+	"Ivory's Bromide", "Battlers Tome 1", "Battlers Tome 2", "Battlers Tome 3",
+	"Shrekmono Piccie", "Gun's Sticker", "Dimension Whistle", "Genie Lamp",
+	"Golden Potato", "Gatorade Gum", "Mysterious Potion", "Ecto Cooler?",
+	"Protein Paste", "Ecto Cooler", "BBall Juice", "BBall Shard",
+	"BBall Tear", "Steroids", "Chicken Dew", "Chicken Fry",
+	"Tobacco", "Insulin", "Chup", "Fstone Mvitamin",
+	"Alcohol", "Soccerball", "Volleyball", "B-ball",
+	"Spiked B-ball", "Mystic B-ball", "Hell B-ball", "H/S B-ball",
+	"Plain Zauber", "Fire Zauber", "Ice Zauber", "Thunder Zauber",
+	"Time Zauber", "Hell Zauber", "Bloody Zauber", "Snail Zauber",
+	"Rusty Muscle", "Dwarf Wisdom", "Dwarf Pride", "Dwarf Warhammer",
+	"Dwarfbane", "Dwarfstear", "Dwarf Muscle", "ZX Zaubertech1",
+	"ZX ZaubertechZ", "Mithril'braster", "Battlestech Gun", "ZX ModelX571X",
+	"A4431063XZZ 305", "Egyptian Gun", "F.I.N.A.L. G.U.N.", "Tshirt",
+	"Rags", "Jersey", "Referee Uniform", "Mithril Jersey",
+	"Shrekmono", "Robe", "Jacket", "Trenchcoat",
+	"Zaubermancer Garb", "Falcon Jodhpurs", "Cyber-Tunic", "Tek-Skeleton",
+	"Tupperware Armor", "Bapes", "Nikes", "Pumps",
+	"Glasses", "Sunglasses", "Sweatband", "Goggles",
+	"Mithril Sweatband", "Backwards Cap", "Ace Bandage", "Athletic Supporter",
+	"Facemask", "Wrist Brace", "Ultimate Wristband", "Cyber-Gauntlet",
+	"Maureen's Ring", "Femur", "Poem", "Turkey Feather",
+	"Red Keycard", "Blue Keycard", "Green Keycard", "Prototype B-ball",
+	"Pipe", "Triangle Rock", "Screwdriver", "Orb Sceptre",
+	"Immaculate Rod", "Sugar Counter", "Desk Key", "Poleshaft"
+];
+// Hand out a random spread, through the game's own sItem so the inventory arrays,
+// stacking and ordering stay exactly as the game maintains them. Writing
+// global.item_id directly would invent layouts no playthrough produces, and then
+// every inventory crash would be a suspect finding rather than a real one.
+qa_items = function() {
+	var _n = array_length(qa_itemnames);
+	var _want = 15 + (qa_next() mod 26);   // 15-40 picks; itemmax is 100 slots
+	var _i;
+	for (_i = 0; _i < _want; _i += 1) {
+		sItem(qa_itemnames[qa_next() mod _n], 1 + (qa_next() mod 9));
+	}
+	global.gold = 500 + (qa_next() mod 20000);   // enough to exercise shops
+};
 // Re-assert the state the sweep depends on. Seeding it once at startup is not
 // enough: touching a save pump goes to RomLoad, and fuzzing there can start a
 // new game or load a slot, both of which run sFileData and reset global.following
@@ -256,6 +299,10 @@ qa_state = function() {
 		_pool[_k] = _pool[_left - 1];
 		_left -= 1;
 	}
+	// A load or new game empties the inventory the same way it clears followers.
+	// Only refill when it is actually empty, or re-adding every room would pile up
+	// quantities no playthrough could reach.
+	if (global.item_id[0] == "") qa_items();
 	global.bene[0] = "oBSlamspectre,10,48,96";
 	global.bene[1] = "";
 	if (!variable_global_exists("romname"))    global.romname    = "QA";

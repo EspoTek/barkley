@@ -51,6 +51,7 @@ if (!variable_global_exists("diemessage")) global.diemessage = "";     // set on
 // calls sFollow("update") on every room entry, which materialises them. It also
 // seeds global.bene, because RomInter is not somewhere you walk into -- it is
 // built by sBattleStart from the encounter's ene[] list.
+qa_items();   // randomise the bag before the first room, so item code is live from the start
 qa_state();
 
 started = true;
