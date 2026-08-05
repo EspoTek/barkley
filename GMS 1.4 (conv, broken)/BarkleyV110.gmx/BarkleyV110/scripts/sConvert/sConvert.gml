@@ -5,7 +5,10 @@ function sConvert(argument0, argument1) {
 	wri=file_text_open_write(argument1);
 	while (file_text_eof(red)=0) {
 	ggg=file_text_read_string(red);
-	ggg=string_replace_all(ggg,",",".");
+	//GM6's file_write_real used the OS locale decimal separator, so a European
+	//locale wrote "3,5" and this pass repaired it. GameMaker 2024 always writes
+	//".", so the replacement can no longer fix anything -- it can only corrupt a
+	//saved string that legitimately contains a comma. Dropped.
 	file_text_write_string(wri,ggg);
 	file_text_readln(red);
 	file_text_writeln(wri);
