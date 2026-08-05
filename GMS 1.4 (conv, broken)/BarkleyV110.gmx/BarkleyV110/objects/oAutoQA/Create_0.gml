@@ -219,12 +219,26 @@ qa_release = function() {
 // bug and is not one. Called on every room entry, so drift cannot outlive a room.
 // Rebuilds the follower list rather than appending, or repeated calls would grow it.
 qa_state = function() {
+	// Followers, redrawn per room. Seeding all five permanently was wrong twice
+	// over. oFollower9 is Mark, the escort from one quest, and oController's start
+	// handler branches on him existing: while he is around, START runs his dialogue
+	// instead of opening the pause menu, so a permanent Mark silently blocked every
+	// menu, item, equipment and status screen from ever being reached. Five at once
+	// is also a state no playthrough produces -- the real party tops out at three.
+	// So: 1-3 real followers per room, and Mark occasionally, so his path still runs
+	// while the menu stays reachable most of the time.
 	global.following[0] = -1;
-	sFollow("add", oFollower0);   // Balthios / Ultimate Hellbane
-	sFollow("add", oFollower1);   // Vinceborg
-	sFollow("add", oFollower2);   // Cyber Dwarf
-	sFollow("add", oFollower3);   // Hoopz
-	sFollow("add", oFollower9);   // civilian escort
+	var _fpool = [oFollower0, oFollower1, oFollower2, oFollower3];
+	var _fleft = 4;
+	var _fwant = 1 + (qa_next() mod 3);
+	var _f;
+	for (_f = 0; _f < _fwant; _f += 1) {
+		var _fk = qa_next() mod _fleft;
+		sFollow("add", _fpool[_fk]);
+		_fpool[_fk] = _fpool[_fleft - 1];
+		_fleft -= 1;
+	}
+	if ((qa_next() mod 8) = 0) sFollow("add", oFollower9);   // Mark, the escort
 	// Reshuffle the battle party. sFileData(0) leaves Barkley alone in it, so every
 	// fight would be a solo Barkley and the multi-character battle code would never
 	// run -- turn order, Cyberdwarf's cover, Hoopz's evade, Vince's recharge, the
