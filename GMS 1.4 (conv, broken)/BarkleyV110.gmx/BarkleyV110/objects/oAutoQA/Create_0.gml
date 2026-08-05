@@ -200,9 +200,10 @@ ti         = 0;      // index into tlist
 tstate     = 0;      // 0 place, 1 wait for oTalker, 2 release, 3 let it play, 4 fuzz
 ttimer     = 0;
 trep       = 0;      // which repeat of the current target we are on
-treps      = 3;      // repeats per interactable: the same approach lands in a
-                     // different state each time (dialog page, shop, post-cutscene),
-                     // and the fuzz burst explores from wherever it ended up
+treps      = 4;      // rounds per interactable -- one per approach direction, so
+                     // these are four distinct attempts rather than four repeats.
+                     // Each also lands in a different state (dialog page, shop,
+                     // post-cutscene) and the fuzz explores from wherever it ended
 tburst     = 45;     // frames of true-random input after each interaction, ~1.5s
 tout       = 0;      // frames spent outside the target room on an excursion
 tresume    = 0;      // 1 = rebuilding tlist after returning, so keep the cursor
@@ -211,6 +212,14 @@ texc       = 0;      // excursions taken in this room, to bound re-entry attempt
 texcri     = -1;     // room index texc belongs to
 qteheld    = -1;     // key held for the current quick-time event, -1 = none
 qtetimer   = 0;      // frame that key went down
+qaplot     = 0;      // story position for this launch, applied every room
+qavictorian= 0;      // alternate-name / language mode for this launch
+qatext     = 0;      // dialog speed for this launch
+qaweap     = [];     // equipment rolled once per launch, re-applied per room
+qaarm      = [];
+qaacc      = [];
+inbattle   = 0;      // 1 while oBCamera exists, so a battle is decided once
+bsustain   = 1;      // 1 = keep the party standing this fight, 0 = let them lose
 // Release whatever is held. Called on room change and at sweep end so a key
 // cannot leak into the next room and jam its input.
 qa_release = function() {
@@ -263,6 +272,42 @@ qa_itemnames = [
 	"Pipe", "Triangle Rock", "Screwdriver", "Orb Sceptre",
 	"Immaculate Rod", "Sugar Counter", "Desk Key", "Poleshaft"
 ];
+// Pick an item of the same class as the one already equipped. Same class means
+// the same slot and the same character can hold it, so this stays inside states a
+// playthrough can produce -- a Zauber is only ever swapped for another Zauber.
+qa_pickclass = function(_cur) {
+	if (_cur == "") return _cur;
+	refItem(_cur);
+	var _want = global.tClass;
+	var _match = [];
+	var _i;
+	for (_i = 0; _i < array_length(qa_itemnames); _i += 1) {
+		refItem(qa_itemnames[_i]);
+		if (global.tClass == _want) array_push(_match, qa_itemnames[_i]);
+	}
+	if (array_length(_match) == 0) return _cur;
+	return _match[qa_next() mod array_length(_match)];
+};
+// Roll the world state once per launch. Chosen here and merely re-applied by
+// qa_state, so a load or new game cannot quietly reset it mid-sweep, and so the
+// story position stays put for a whole run rather than shifting between rooms.
+qa_world = function() {
+	// The single biggest blind spot: sFileData(0) leaves global.plot at 0, so every
+	// sweep so far ran at the very start of the story and everything gated on later
+	// progress was unreachable. That is why the oIntro5 and oIntro25 crashes had to
+	// be found by static analysis -- no room warp could ever fire those scenes.
+	qaplot      = qa_next() mod 11;          // plot is a 0-10 progression
+	qavictorian = ((qa_next() mod 4) = 0);   // the alternate-name/language mode
+	qatext      = qa_next() mod 3;           // dialog speed, read by dialog_step
+	var _c;
+	for (_c = 0; _c <= 4; _c += 1) {
+		qaweap[_c] = qa_pickclass(global.char_eweapon[_c]);
+		qaarm[_c]  = qa_pickclass(global.char_earmour[_c]);
+		qaacc[_c]  = qa_pickclass(global.char_eaccess[_c]);
+	}
+	show_debug_message("AUTOQA WORLD plot=" + string(qaplot)
+		+ " victorian=" + string(qavictorian) + " textspeed=" + string(qatext));
+};
 // Hand out a random spread, through the game's own sItem so the inventory arrays,
 // stacking and ordering stay exactly as the game maintains them. Writing
 // global.item_id directly would invent layouts no playthrough produces, and then
@@ -321,6 +366,18 @@ qa_state = function() {
 		_pool[_k] = _pool[_left - 1];
 		_left -= 1;
 	}
+	// Re-apply the world roll rather than re-rolling it, so a load or new game
+	// cannot reset the story position and the run stays at one point in the plot.
+	global.plot      = qaplot;
+	global.victorian = qavictorian;
+	global.sat[3]    = qatext;
+	var _c;
+	for (_c = 0; _c <= 4; _c += 1) {
+		global.char_eweapon[_c] = qaweap[_c];
+		global.char_earmour[_c] = qaarm[_c];
+		global.char_eaccess[_c] = qaacc[_c];
+	}
+	sEquipped();   // recompute the derived stats the way the game does on equip
 	// A load or new game empties the inventory the same way it clears followers.
 	// Only refill when it is actually empty, or re-adding every room would pile up
 	// quantities no playthrough could reach.

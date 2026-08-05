@@ -12,8 +12,22 @@ if ((timer mod 60) = 0) {
 // Keep the party standing so a battle actually plays out instead of ending in a
 // wipe two turns in. Enemies are left alone -- the point is to reach the win,
 // lose and level-up paths, not to make combat unlosable in a way that skips them.
-if (instance_exists(oBattler)) {
-	with (oBattler) { if (enemy = 0) _vp = _rvp; }
+// Decide once per battle whether to prop the party up. Healing them every step
+// made them unkillable, so oBCamera's gover path -- "You have been slain in
+// battle", RomGameover, global.die, diemessage and the whole continue/reload
+// flow -- could never run. Sustain most fights so they last long enough to
+// exercise turn order, skills and items; let the rest be lost on purpose.
+if (instance_exists(oBCamera)) {
+	if (inbattle = 0) {
+		inbattle  = 1;
+		bsustain  = ((qa_next() mod 5) != 0);   // 4 in 5 survivable, 1 in 5 a wipe
+		show_debug_message("AUTOQA BATTLE start sustain=" + string(bsustain));
+	}
+	if (bsustain && instance_exists(oBattler)) {
+		with (oBattler) { if (enemy = 0) _vp = _rvp; }
+	}
+} else {
+	inbattle = 0;
 }
 
 // Quick-time events. oQuicker gives ~20 frames to press one specific key; a wrong
@@ -200,10 +214,18 @@ if (phase = 5) {                                   // walk up to every oItem and
 		qa_clearui();                              // nothing left open to hide behind
 		var _cx = (_t.bbox_left + _t.bbox_right)  / 2;
 		var _cy = (_t.bbox_top  + _t.bbox_bottom) / 2;
-		// Invert oTalker's own offset so the probe lands on the target's centre.
-		oBarkley.x    = _cx - 12;
-		oBarkley.y    = _cy - 40;
-		oBarkley.t    = 2;
+		// Approach from a different side each rep. Every rep used to come from
+		// directly above facing down, which made them exact repeats -- and anything
+		// that can only be used from one particular side, or whose mask does not
+		// reach above it, was simply never reachable. oTalker sits at
+		// (master.x+12, master.y+24) plus 16 in the facing direction, so invert that
+		// per facing to land the probe on the target's centre.
+		var _t4 = trep mod 4;                      // 0 up, 1 right, 2 down, 3 left
+		if (_t4 = 0)      { oBarkley.x = _cx - 12; oBarkley.y = _cy - 8;  }
+		else if (_t4 = 1) { oBarkley.x = _cx - 28; oBarkley.y = _cy - 24; }
+		else if (_t4 = 2) { oBarkley.x = _cx - 12; oBarkley.y = _cy - 40; }
+		else              { oBarkley.x = _cx + 4;  oBarkley.y = _cy - 24; }
+		oBarkley.t    = _t4;
 		oBarkley.move = "";
 		show_debug_message("AUTOQA STEP room=" + string(ri) + " name=" + room_get_name(rooms[ri])
 			+ " inst=" + string(ti) + " obj=" + object_get_name(_t.object_index)
