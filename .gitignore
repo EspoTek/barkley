@@ -1,0 +1,10 @@
+# GameMaker 2024 importer staging tree. Produced when the GMS 1.4 .gmx project
+# was converted to the .yyp project; a frozen pre-port snapshot of every
+# resource (~112M, mostly duplicated sound/sprite data) plus the conversion
+# report. Nothing on the build path references it.
+mvc/
+
+# GameMaker build cache (also self-ignored by .gmcache/.gitignore)
+.gmcache/
+
+.DS_Store
