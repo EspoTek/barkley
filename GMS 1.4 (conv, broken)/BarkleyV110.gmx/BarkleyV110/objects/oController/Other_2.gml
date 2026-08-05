@@ -18,6 +18,11 @@ for (j=0; j<10; j+=1) global.path[j]=path_add();
 global.lastmusic=-1;
 global.lastload=-9; //Signifys what file to load when die in battle and continue
 global.doload=0; //port: RomLoad's oLoader reads this; GM6 read the unset value as 0
+//port: sPos("load") loops on global.c__, which only sPos("save") ever assigns.
+//A scene that restores positions before anything saved them -- oIntro16/17/20/42
+//all call load in an alarm -- therefore read it unset.  GM6 treated that as 0, so
+//the loop ran zero times and the restore was a no-op; GameMaker 2024 raises.
+global.c__=0;
 global.b_music=mBattle; //Battle music
 global.b_back=0; //Battle background
 global.b_resume=-1; //For resuming music
