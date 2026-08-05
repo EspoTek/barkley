@@ -9,7 +9,11 @@ function sItemSyn(argument0) {
 	if (global.tZaubacity!=0) sent=sent + ", Brain +" + string(global.tZaubacity);
 	if (global.tFoot!=0) sent=sent + ", Speed +" + string(global.tFoot);
 	if (global.tVp!=0) sent=sent + ", VP +" + string(global.tVp);
-	if (global.tZp!=0) sent=sent + ", BP +" + string(global.tBp);
+	//gm6 bug: this line tested tZp but printed tBp, which is never assigned.
+	//Harmless under GM6 (uninitialised read == 0, so it printed "BP +0"); a
+	//fatal "not set before reading it" here. Currently unreachable only because
+	//no item sets tZp nonzero -- adding one would have crashed the item menu.
+	if (global.tZp!=0) sent=sent + ", BP +" + string(global.tZp);
 	sent=string_delete(sent,1,2);
 	return(sent);
 
