@@ -1,4 +1,5 @@
 function key_ress(argument0, argument1) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0;
 	cv=0;
 	repeat (4) {
 	 if (argument0=ar[cv] || argument1=ar[cv]) { 

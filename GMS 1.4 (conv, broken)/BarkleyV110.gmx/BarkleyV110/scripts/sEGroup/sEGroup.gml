@@ -1,4 +1,5 @@
 function sEGroup(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Changes level, sprites, etc.
 	if (argument0="catacomb") {
 	sprt=sECatacomb;

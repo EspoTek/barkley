@@ -1,4 +1,5 @@
 function sIntFastest(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Get fastest, arg0 is enemy or not
 	global.b_c=0;
 	with (oBattler) {

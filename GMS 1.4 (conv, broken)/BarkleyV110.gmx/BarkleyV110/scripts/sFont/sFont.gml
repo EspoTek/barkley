@@ -1,4 +1,5 @@
 function sFont(argument0, argument1, argument2, argument3) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0; if (argument2==undefined) argument2=0; if (argument3==undefined) argument3=0;
 	//Syntax : Name, Color, Halign, Valign
 	//-1 will not change, 0 is default, over is value
 	if (argument0=0) draw_set_font(Courier8);

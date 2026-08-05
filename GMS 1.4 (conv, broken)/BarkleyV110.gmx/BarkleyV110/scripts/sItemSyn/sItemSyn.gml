@@ -1,4 +1,5 @@
 function sItemSyn(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Syn: Arg0=Item to return string synposis of.
 	if (string(argument0)!="0") refItem(argument0);
 	var sent;

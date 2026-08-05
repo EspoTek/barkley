@@ -1,4 +1,5 @@
 function sFileData(argument0, argument1) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0;
 	//if argument0 is 0=init, 1=save, 2=load, 3=delete, 4=goto room, 5=back
 	if (argument0=4) { //goes save
 	global.romname=oController.name;

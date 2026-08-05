@@ -1,4 +1,5 @@
 function sDialog(argument0, argument1, argument2, argument3, argument4, argument5) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0; if (argument2==undefined) argument2=0; if (argument3==undefined) argument3=0; if (argument4==undefined) argument4=0; if (argument5==undefined) argument5=0;
 	if (argument0="set") {
 	global.dia_border=argument1;
 	if (string(argument2)!="0") global.dia_pos=argument2;

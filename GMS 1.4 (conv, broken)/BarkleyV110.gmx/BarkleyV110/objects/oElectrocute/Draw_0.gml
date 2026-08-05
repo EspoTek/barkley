@@ -12,7 +12,7 @@ yy=y-10+random(20);
 rdis=20+random(10);
 split=6+floor(random(6));
 port=rdis/split;
-draw_set_color(make_color(200,200,220+random(35)));
+draw_set_color(make_color_rgb(200,200,220+random(35)));
 for (h=0; h<split; h+=1) {
 dir2=random(360)-(80)+random(160);
 draw_line(xx,yy,xx+lengthdir_x(port,dir2),yy+lengthdir_y(port,dir2));

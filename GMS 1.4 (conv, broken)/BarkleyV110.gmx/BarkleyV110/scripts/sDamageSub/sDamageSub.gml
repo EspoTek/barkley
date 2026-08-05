@@ -1,4 +1,5 @@
 function sDamageSub(argument0, argument1) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0;
 	//Arg0 is who, arg1 is shake -- Balthios counter is here
 	global.b_att=_me;
 	hitting=sCover(argument0);

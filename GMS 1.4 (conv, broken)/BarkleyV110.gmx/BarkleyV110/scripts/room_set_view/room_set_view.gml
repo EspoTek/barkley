@@ -16,6 +16,7 @@
 /// @param vspeed The maximum vertical speed the view can move at.
 /// @param obj The object or instance to follow. -1 to disable object following.
 function room_set_view(argument0, argument1, argument2, argument3, argument4, argument5, argument6, argument7, argument8, argument9, argument10, argument11, argument12, argument13, argument14, argument15) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0; if (argument2==undefined) argument2=0; if (argument3==undefined) argument3=0; if (argument4==undefined) argument4=0; if (argument5==undefined) argument5=0; if (argument6==undefined) argument6=0; if (argument7==undefined) argument7=0; if (argument8==undefined) argument8=0; if (argument9==undefined) argument9=0; if (argument10==undefined) argument10=0; if (argument11==undefined) argument11=0; if (argument12==undefined) argument12=0; if (argument13==undefined) argument13=0; if (argument14==undefined) argument14=0; if (argument15==undefined) argument15=0;
 
 	var __ind = argument0;
 	var __vind = argument1;

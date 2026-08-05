@@ -2,6 +2,7 @@
 /// @param {Number} obj The index of the object to check
 /// @return {Number} depth of the object
 function object_get_depth(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 
 	var objID = argument0;
 	var ret = 0;

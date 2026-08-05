@@ -1,4 +1,5 @@
 function sItem(argument0, argument1) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0;
 	//Arg0 = Gives, takes, items and gold
 	//Arg1 = 0 is check, 1 is give, 2 is take
 	//Arg2 = Value

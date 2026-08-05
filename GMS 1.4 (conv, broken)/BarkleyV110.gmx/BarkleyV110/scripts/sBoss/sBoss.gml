@@ -1,4 +1,5 @@
 function sBoss(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	for (w=0; w<10; w+=1) ene[w]="";
 	//Catacomb
 	if (argument0="oBDreadref") { global.b_music=mBattle; ene[0]="oBDreadref,10,48,96"; global.b_back=0; }

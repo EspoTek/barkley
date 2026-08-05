@@ -1,4 +1,5 @@
 function refItem(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Arg0 is tem name, spits back details UPDATED
 	global.tClass="";
 	global.tName=argument0;

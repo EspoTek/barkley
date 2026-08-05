@@ -1,4 +1,5 @@
 function sGroup(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	var jz;
 	jz=argument0
 	for (m=0; m<10; m+=1) ene[m]="";

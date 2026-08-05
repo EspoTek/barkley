@@ -1,4 +1,4 @@
-if (variable_local_exists("_rbp")=0) {
+if (variable_instance_exists(id, "_rbp")=0) {
 _rvp=9;
 _rbp=9;
 _rpower=9;

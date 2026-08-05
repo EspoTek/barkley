@@ -1,4 +1,5 @@
 function sTreasure(argument0, argument1) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0;
 	//Must have a dialog or unset dialog
 	if (argument1=1) { image_index=global.treasure[argument0]; image_speed=0; exit; }
 	if (global.treasure[argument0]=1) exit;

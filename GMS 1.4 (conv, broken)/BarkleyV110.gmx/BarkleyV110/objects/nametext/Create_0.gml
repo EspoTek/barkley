@@ -1,4 +1,4 @@
-file_open_write("victorian.txt"); file_close();
+var __f = file_text_open_write("victorian.txt"); file_text_close(__f);
 draw_set_font(CreditsText);
 cre="";
 cou=0;

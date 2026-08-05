@@ -1,4 +1,5 @@
 function __background_set_element(argument0, argument1, argument2, argument3, argument4, argument5, argument6, argument7, argument8, argument9, argument10, argument11, argument12, argument13, argument14) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0; if (argument2==undefined) argument2=0; if (argument3==undefined) argument3=0; if (argument4==undefined) argument4=0; if (argument5==undefined) argument5=0; if (argument6==undefined) argument6=0; if (argument7==undefined) argument7=0; if (argument8==undefined) argument8=0; if (argument9==undefined) argument9=0; if (argument10==undefined) argument10=0; if (argument11==undefined) argument11=0; if (argument12==undefined) argument12=0; if (argument13==undefined) argument13=0; if (argument14==undefined) argument14=0;
 	// NOTE: this script will only work properly if you're using the standard depth range (-16000 to 16000)
 	var __bind = argument0;
 	var __vis = argument1;

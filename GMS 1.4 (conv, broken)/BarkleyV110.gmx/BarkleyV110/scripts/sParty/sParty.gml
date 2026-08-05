@@ -1,4 +1,5 @@
 function sParty(argument0, argument1) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0;
 	var fff,ggg,ii,jj;
 	if (argument0="add") {
 	 for (fff=0; global.party[fff]!=-1; fff+=1) fff=fff;

@@ -1,4 +1,5 @@
 function sEnemyTarget(argument0, argument1) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0;
 	//Get default
 	//randomnew as argument
 	if (argument0="random") {
@@ -29,7 +30,7 @@ function sEnemyTarget(argument0, argument1) {
 	 }
 	}
 	//If no target
-	if (variable_local_exists("target")=1) return(target);
+	if (variable_instance_exists(id, "target")=1) return(target);
 	else { with (oBattler) if (enemy=argument1) return(id); }
 
 

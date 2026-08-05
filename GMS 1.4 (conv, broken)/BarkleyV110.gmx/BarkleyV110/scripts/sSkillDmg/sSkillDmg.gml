@@ -1,4 +1,5 @@
 function sSkillDmg(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Barkley - 30 brain - 75, 200, 200 (300) - NOW 
 	if (argument0="doubleteam") { sMoveSet(0,floor(_brain*.66),0.25,0,"enemy",125); } //6 of these
 	else if (argument0="showboatjam") { sMoveSet(1,_brain*4,0.2,0,"enemy",999,1); } //stat bonus

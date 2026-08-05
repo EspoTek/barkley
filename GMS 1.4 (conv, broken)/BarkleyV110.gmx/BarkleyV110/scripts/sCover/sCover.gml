@@ -1,4 +1,5 @@
 function sCover(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	if (instance_exists(oBCyberdwarf)=0) return(argument0);
 	if (global.b_scover=1) return(argument0);
 	if (argument0.enemy=1) return(argument0);

@@ -1,4 +1,5 @@
 function sOvar(argument0, argument1) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0;
 	//Object var schemes. So I don't need records.
 	//DOES FOR ENTIRE OBJECT INDEXES.
 	//Arg0 = index, searches for creates if none

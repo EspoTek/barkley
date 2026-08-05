@@ -1,4 +1,5 @@
 function sFollow(argument0, argument1) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0;
 	//Arg0=Command, Arg1=rest
 	var i,ii,jj,mm;
 	if (argument0="add") { /////////////////////////////////////add

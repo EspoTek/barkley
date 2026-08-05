@@ -1,4 +1,5 @@
 function sBarkDmg(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Barkley
 	if (argument0="pass") { //del is 0-40 (45 max)
 	 sMoveSet(12,floor(_power+((_power/40)*del)),0.25,1,"enemy",50); //x1 to x2

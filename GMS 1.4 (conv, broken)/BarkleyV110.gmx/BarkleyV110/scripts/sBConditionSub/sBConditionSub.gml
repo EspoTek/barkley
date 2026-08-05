@@ -1,4 +1,5 @@
 function sBConditionSub(argument0, argument1, argument2) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0; if (argument2==undefined) argument2=0;
 	//*Inflict *glaucoma *player
 	//get amount decreased and add that when uninflicted
 	//use this script for inflicting guard down ie. guard down player

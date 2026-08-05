@@ -1,4 +1,5 @@
 function sViewFollow(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	var ax,ay
 	if (argument0=0) { ax=x; ay=y; }
 	else { ax=argument0.x; ay=argument0.y; }

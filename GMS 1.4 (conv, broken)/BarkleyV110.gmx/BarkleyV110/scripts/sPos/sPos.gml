@@ -1,4 +1,5 @@
 function sPos(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Saves and loads positions
 	var i, pos;
 	if (argument0="save") {

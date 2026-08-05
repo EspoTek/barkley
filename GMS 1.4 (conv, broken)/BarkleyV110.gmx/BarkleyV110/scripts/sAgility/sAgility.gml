@@ -1,4 +1,5 @@
 function sAgility(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Returns list of next 8 people
 	with (oBCamera) {
 	 if (argument0="init") {

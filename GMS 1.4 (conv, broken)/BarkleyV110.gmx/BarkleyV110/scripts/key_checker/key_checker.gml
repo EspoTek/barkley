@@ -1,4 +1,5 @@
 function key_checker(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	{
 	//Physically checks key.
 	ii=0;

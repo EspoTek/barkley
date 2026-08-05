@@ -1,4 +1,5 @@
 function sDelimit(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Cool,Dude,Equal
 	how=argument0;
 	c=0;

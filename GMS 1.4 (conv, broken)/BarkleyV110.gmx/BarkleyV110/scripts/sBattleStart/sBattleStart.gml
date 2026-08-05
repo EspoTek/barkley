@@ -1,4 +1,5 @@
 function sBattleStart(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Transfer enemies, arg0 is batface to delete who if 0 planned encounter
 	for (k=0; ene[k]!=""; k+=1) {
 	global.bene[k]=ene[k];

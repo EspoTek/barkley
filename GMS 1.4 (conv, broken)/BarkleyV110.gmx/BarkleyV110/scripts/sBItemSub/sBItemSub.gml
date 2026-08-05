@@ -1,4 +1,5 @@
 function sBItemSub(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Arg0 is delimited item effect, must call itemuse before
 	value=real(string_digits(argument0));
 	effect=string_letters(argument0);

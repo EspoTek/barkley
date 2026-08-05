@@ -1,4 +1,5 @@
 function sCinema3(argument0, argument1, argument2, argument3, argument4, argument5, argument6, argument7, argument8) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0; if (argument2==undefined) argument2=0; if (argument3==undefined) argument3=0; if (argument4==undefined) argument4=0; if (argument5==undefined) argument5=0; if (argument6==undefined) argument6=0; if (argument7==undefined) argument7=0; if (argument8==undefined) argument8=0;
 	//Call from object to do on?
 	//arg0 object Arg1 is command, rest is parameters
 	with (oCinema3) {

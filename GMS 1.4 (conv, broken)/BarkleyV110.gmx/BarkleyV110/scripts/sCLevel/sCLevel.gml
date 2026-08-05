@@ -1,4 +1,5 @@
 function sCLevel(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Competitive level (to barkley). Supply id of player
 	global.char_xp[argument0]=global.char_xp[0];
 	while (true) {

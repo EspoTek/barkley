@@ -1,5 +1,5 @@
 //safe check
-if (variable_local_exists("indialog")=0) {
+if (variable_instance_exists(id, "indialog")=0) {
 if (global.devplay=1) {
 show_message("happen");
 //show_message('on '+object_get_name(object_index));

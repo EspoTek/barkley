@@ -1,4 +1,5 @@
 function sAlBhed(argument0, argument1) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0;
 	var msg;
 	msg=argument0;
 	if (global.victorian=1) {

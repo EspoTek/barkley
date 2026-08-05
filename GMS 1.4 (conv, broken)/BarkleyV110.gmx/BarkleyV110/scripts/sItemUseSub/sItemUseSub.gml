@@ -1,4 +1,5 @@
 function sItemUseSub(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Id of player, value, effect, duration
 	//add percent
 	//cures condition global.char_res2[]

@@ -40,8 +40,8 @@ window_set_fullscreen(0);
 window_set_position((global.displayy/2)-((320*sett)/2),(global.displayy/2)-((240*sett)/2));
 } else { //640,480
 window_set_fullscreen(1);
-if (display_test_all(320,240,-1,-1)) {
-display_set_size(320,240);
+if (false) { // display_test_all removed: no monitor mode switching in the port
+// display_set_size removed
 window_set_position(0,0);
 if (global.displayx!=320) { global.displayc=1; }
 }

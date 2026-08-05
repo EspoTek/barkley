@@ -1,4 +1,4 @@
-if (variable_local_exists("pos")=0) room_restart();
+if (variable_instance_exists(id, "pos")=0) room_restart();
 if (fade=1) image_alpha=min(1,image_alpha+0.05);
 if (image_alpha!=1) exit;
 if (sKey(vk_up,1)) { sP(); pos=max(0,pos-1); }

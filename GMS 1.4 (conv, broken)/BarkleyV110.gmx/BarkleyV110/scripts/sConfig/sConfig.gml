@@ -1,4 +1,5 @@
 function sConfig(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	arg=argument0; //0init-1save-2load
 	if (arg=1) tfl=file_text_open_write("config0.txt");
 	else if (arg=2) tfl=file_text_open_read("config.txt");

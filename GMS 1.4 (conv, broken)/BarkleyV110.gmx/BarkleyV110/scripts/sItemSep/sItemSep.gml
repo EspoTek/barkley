@@ -1,4 +1,5 @@
 function sItemSep(argument0) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Seperate by armour, weapon, access
 	//BBall , Zauber , Muscle
 	//Threads , Coats

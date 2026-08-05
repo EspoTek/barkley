@@ -1,1 +1,1 @@
-if (enemy=1 && variable_local_exists("level")) refEnemy(orgname,level);
+if (enemy=1 && variable_instance_exists(id, "level")) refEnemy(orgname,level);

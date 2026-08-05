@@ -1,3 +1,6 @@
+/* gm6 port: the V110 source never seeds the beat schedule */
+sp[0]=-1;
+sl[0]=0;
 sound_play(mTOGS);
 alp=0;
 alp2=0;

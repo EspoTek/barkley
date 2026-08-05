@@ -1,4 +1,5 @@
 function sFormat(argument0, argument1, argument2) {
+	/*gm6argdefaults*/ if (argument0==undefined) argument0=0; if (argument1==undefined) argument1=0; if (argument2==undefined) argument2=0;
 	//Arg0=Num, Arg1=Digit amount
 	var nnn,p,jjj;
 	jjj=string(argument0);
