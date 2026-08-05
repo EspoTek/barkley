@@ -214,6 +214,23 @@ texcri     = -1;     // room index texc belongs to
 qa_release = function() {
 	if (held >= 0) { keyboard_key_release(held); held = -1; }
 };
+// Tear down any UI still on screen before moving to the next target. An
+// interaction can leave a shop or menu open -- Hundley's oBonesMenu did exactly
+// that -- and everything afterwards then happens behind it: the touches still
+// fire but no oItem can see oTalker, so every remaining target in the room burns
+// its full watchdog and interacts with nothing. Closing it by input is tried
+// first in tstate 3; this is the backstop for when that does not take.
+qa_clearui = function() {
+	keyboard_key_release(global.key_action);
+	keyboard_key_release(global.key_cancel);
+	with (oDialog)    instance_destroy();
+	with (oBonesMenu) instance_destroy();
+	with (oStartmenu) instance_destroy();
+	if (variable_global_exists("dialog"))     global.dialog     = 0;
+	if (variable_global_exists("movefreeze")) global.movefreeze = 0;
+	if (variable_global_exists("freeze"))     global.freeze     = 0;
+	if (variable_global_exists("cinema"))     global.cinema     = 0;
+};
 // Every item the game defines, harvested from refItem. Used to randomise the
 // inventory so item-handling code -- stacking, the menu list, use effects,
 // selling, equipping -- is exercised instead of sitting behind an empty bag.

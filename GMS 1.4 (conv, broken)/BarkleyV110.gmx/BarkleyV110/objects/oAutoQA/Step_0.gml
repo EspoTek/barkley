@@ -163,13 +163,13 @@ if (phase = 5) {                                   // walk up to every oItem and
 	ttimer += 1;
 	if (ttimer > 240) {                            // watchdog: 8s per target
 		show_debug_message("AUTOQA TOUCH watchdog obj=" + object_get_name(_t.object_index));
-		keyboard_key_release(global.key_action);
-		if (variable_global_exists("movefreeze")) global.movefreeze = 0;
+		qa_clearui();
 		ti += 1; tstate = 0; ttimer = 0;
 		exit;
 	}
 
 	if (tstate = 0) {                              // stand in front of it, facing down
+		qa_clearui();                              // nothing left open to hide behind
 		var _cx = (_t.bbox_left + _t.bbox_right)  / 2;
 		var _cy = (_t.bbox_top  + _t.bbox_bottom) / 2;
 		// Invert oTalker's own offset so the probe lands on the target's centre.
@@ -207,6 +207,11 @@ if (phase = 5) {                                   // walk up to every oItem and
 		}
 		if ((ttimer mod 10) = 0) keyboard_key_press(global.key_action);
 		if ((ttimer mod 10) = 2) keyboard_key_release(global.key_action);
+		// Menus and shops close on cancel, not action. Tapping action alone kept
+		// Hundley's shop open indefinitely, and every later target in that room was
+		// blocked behind it -- 18 watchdog timeouts in a row, interacting with nothing.
+		if ((ttimer mod 10) = 5) keyboard_key_press(global.key_cancel);
+		if ((ttimer mod 10) = 7) keyboard_key_release(global.key_cancel);
 		exit;
 	}
 	if (tstate = 4) {                              // then fuzz whatever state that left us in
