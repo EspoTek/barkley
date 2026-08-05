@@ -26,6 +26,15 @@ if (phase = 1) {                                   // warp into the target room
 	show_debug_message("AUTOQA STEP room=" + string(ri) + " name=" + room_get_name(rooms[ri]) + " phase=enter");
 	if (variable_global_exists("cinema")) global.cinema = 0;
 	if (variable_global_exists("freeze")) global.freeze = 0;
+	// Clear pending-transition state before warping. An exit sets global.posser to
+	// itself and the game's very next room is the paired one holding the other half
+	// of that door, where oController's Room Start reads global.posser.x to place
+	// Barkley. The sweep warps somewhere else instead, so posser is left pointing at
+	// an object with no instance here and Room Start raises -- and oController's
+	// Step_1 bails out early on a set posser, which would freeze input as well.
+	// global.roz is the same kind of leftover: it drives a fadeout on room start.
+	if (variable_global_exists("posser")) global.posser = -1;
+	if (variable_global_exists("roz"))    global.roz    = -1;
 	// Before the warp, so the incoming room's oBarkley Create sees the right
 	// global.following and materialises the party via sFollow("update").
 	qa_state();

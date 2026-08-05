@@ -38,6 +38,11 @@ CONTINUE="${AUTOQA_CONTINUE:-0}"
 #   ./tools/autoqa.sh replay <mode> <room> <inst> <gameseed> <monkeyseed>
 if [ "$MODE" = "replay" ]; then
   RMODE="$2"; RROOM="$3"; RINST="$4"; RSEED="$5"; RMSEED="$6"; RPASS="${7:-}"
+  # Arg 8: a distinctive fragment of the ORIGINAL error, e.g. "sPos line 21".
+  # Without it the only evidence a fix worked is getting past the failing room,
+  # so a run that dies at the same room for a completely different reason is
+  # reported as "still reproduces" -- which is how a genuine fix gets thrown away.
+  RSIG="${8:-}"
   mkdir -p tools/autoqa-logs
   RLOG=tools/autoqa-logs/replay.out
   echo "replay: mode=$RMODE room=$RROOM inst=$RINST seed=$RSEED mseed=$RMSEED pass=${RPASS:-<none>}"
@@ -76,6 +81,17 @@ if [ "$MODE" = "replay" ]; then
   fi
 
   err=$(grep -E "AUTOQA FATAL|AUTOQA CAUGHT" "$RLOG" | head -6)
+  # A signature match is stronger evidence than room progress: if the original
+  # error is gone, that finding is fixed even if the run stopped in the same room.
+  if [ -n "$RSIG" ] && ! grep -qF "$RSIG" "$RLOG"; then
+    echo "REPLAY: original finding CLEARED -- \"$RSIG\" no longer appears"
+    if [ -n "$err" ]; then
+      echo "$err"
+      echo "        a DIFFERENT error is present -- triage it as a new finding"
+      exit 3
+    fi
+    exit 0
+  fi
   if [ -n "$RPASS" ] && [ "$cleared" = "0" ]; then
     [ -n "$err" ] && echo "$err"
     echo "REPLAY: bug still reproduces at room $RPASS"; exit 1
