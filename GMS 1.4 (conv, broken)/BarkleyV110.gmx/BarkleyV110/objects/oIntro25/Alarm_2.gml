@@ -4,7 +4,12 @@ oWall.solid=0;
 sOvar(object_index,3);
 oSoldier0.t=3;
 oSoldier1.t=3;
-oSoldier2.t=3;
+// Port: this alarm only runs in RomSubwayCar2, which places oSoldier0 and
+// oSoldier1 but no oSoldier2 -- so this line always referenced an object with
+// no instances and always raised under GameMaker 2024, killing the third
+// subway-car scene outright. Byte-identical in the GM6 original, whose build
+// ignored the error and ran on. `with` is a no-op when absent.
+with (oSoldier2) t=3;
 sCinema(oBarkley,"wait",1);
 sCinema(oBarkley,"move","right",5);
 sCinema(oBarkley,"move","right",5);
