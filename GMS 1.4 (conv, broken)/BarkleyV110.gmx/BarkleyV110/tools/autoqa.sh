@@ -8,6 +8,14 @@
 #
 #   ./tools/autoqa.sh rooms      # warp through every room, let each settle
 #   ./tools/autoqa.sh interact   # ...and fire User Event 1 on every instance
+#   ./tools/autoqa.sh monkey     # ...and mash the bound keys at random per room
+#
+# The party is randomised (level 1-60, stats and skills applied through the
+# game's own level-up path) and kept standing in battle, so combat actually
+# plays out instead of ending in a wipe.
+#
+# BARKLEY_AUTOQA_FRAMES tunes how long monkey mode spends per room (default 600
+# frames, ~20s at 30fps).
 #
 # Results land in tools/autoqa-report.txt.
 
@@ -34,6 +42,7 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
   BARKLEY_AUTOQA="$MODE" \
   BARKLEY_AUTOQA_ROOM="$room" \
   BARKLEY_AUTOQA_INST="$inst" \
+  BARKLEY_AUTOQA_FRAMES="${BARKLEY_AUTOQA_FRAMES:-600}" \
   npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac \
       >"$LOGDIR/run$launch.out" 2>&1 &
   pid=$!
@@ -65,20 +74,29 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
     break
   fi
 
+  # errors caught in-engine: the sweep survived these and kept going
+  grep "AUTOQA CAUGHT" "$LOG" | sed 's/^[^A]*AUTOQA CAUGHT /CAUGHT /' >> "$OUT"
+
   if grep -q "AUTOQA DONE" "$LOG"; then
     echo "sweep complete after $launch launch(es)" | tee -a "$OUT"
     break
   fi
 
   step=$(grep "AUTOQA STEP" "$LOG" | tail -1)
+  fatal=$(grep -E "AUTOQA FATAL" "$LOG" | head -4)
   err=$(grep -A4 -E "ERROR in action|not set before reading" "$LOG" | head -12)
 
-  if [ -n "$err" ]; then
+  if [ -n "$fatal" ] || [ -n "$err" ]; then
     { echo "=============================================================="
-      echo "CRASH  (launch $launch)"
-      echo "  at: ${step:-<no step logged>}"
-      echo "$err" | sed 's/^/  /'
+      echo "FATAL  (launch $launch)"
+      echo "  last step: ${step:-<no step logged>}"
+      [ -n "$fatal" ] && echo "$fatal" | sed 's/^[^A]*AUTOQA/  AUTOQA/'
+      [ -n "$err" ]   && echo "$err"   | sed 's/^/  /'
     } | tee -a "$OUT"
+  elif ! grep -q "AUTOQA BEGIN" "$LOG"; then
+    # runner never got as far as our object -- a flaky launch, not a finding.
+    echo "launch $launch: runner never started the sweep, retrying same position" | tee -a "$OUT"
+    continue
   else
     echo "launch $launch: no error found; sweep stalled at ${step:-<none>}" | tee -a "$OUT"
   fi
@@ -96,4 +114,5 @@ done
 
 echo
 echo "report: $OUT"
-grep -c "^CRASH" "$OUT" | xargs echo "crashes recorded:"
+echo "caught (survivable): $(grep -c '^CAUGHT' "$OUT")"
+echo "fatal   (killed run): $(grep -c '^FATAL' "$OUT")"

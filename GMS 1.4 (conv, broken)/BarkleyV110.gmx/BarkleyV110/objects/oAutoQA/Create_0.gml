@@ -2,17 +2,27 @@
 // oController's Game Start only creates this object in that case, so the shipped
 // game never contains a live instance.
 //
-// Walks every room, and in "interact" mode fires User Event 1 (the talk/open
-// event) on every instance it finds. A GML fatal error kills the process, so the
-// harness logs "AUTOQA STEP" before each risky action and the shell driver
-// resumes past the offending step on the next launch.
+// Modes:
+//   rooms     warp through every room, let each settle so Create/Room Start/Draw run
+//   interact  ...and fire User Event 1 (the talk/open event) on every instance
+//   monkey    ...and mash the bound keys at random for a while in each room
+//
+// Most runtime errors are caught in-engine and the sweep carries on; anything
+// that escapes hits the unhandled handler, which logs and ends the process so
+// the shell driver can relaunch and resume past the offending step.
 persistent = true;
 visible = false;
-mode      = environment_get_variable("BARKLEY_AUTOQA");        // "rooms" | "interact"
+mode      = environment_get_variable("BARKLEY_AUTOQA");   // rooms | interact | monkey
 var _r = environment_get_variable("BARKLEY_AUTOQA_ROOM");
 var _i = environment_get_variable("BARKLEY_AUTOQA_INST");
 ri = (_r == "") ? 0 : real(_r);
 ii = (_i == "") ? 0 : real(_i);
+var _f = environment_get_variable("BARKLEY_AUTOQA_FRAMES");
+monkeyframes = (_f == "") ? 600 : real(_f);   // ~20s of mashing per room at 30fps
+held       = -1;                              // key currently held down, -1 = none
+nextswitch = 0;
+nkeys      = 0;
+keys       = [];
 var rm;
 rm[0]=RomIntro0;
 rm[1]=RomIntro1;
@@ -148,5 +158,15 @@ phase     = 0;      // 0 = need init, 1 = warping, 2 = settling, 3 = interacting
 timer     = 0;
 roomtimer = 0;
 started   = false;
+// Anything that escapes a try/catch -- typically an error raised later, in some
+// other object's Step, after we perturbed it -- would otherwise pop the runner's
+// modal error dialog and block the whole sweep until a human clicks it. Log it
+// and end the process so the driver can relaunch unattended.
+exception_unhandled_handler(function(_ex) {
+	show_debug_message("AUTOQA FATAL " + string(_ex.message));
+	show_debug_message("AUTOQA FATAL_AT " + string(_ex.script) + " line " + string(_ex.line));
+	game_end();
+});
+crashes = 0;
 show_debug_message("AUTOQA BEGIN mode=" + string(mode) + " room=" + string(ri) + " inst=" + string(ii) + " nrooms=" + string(nrooms));
 alarm[0] = 2;
