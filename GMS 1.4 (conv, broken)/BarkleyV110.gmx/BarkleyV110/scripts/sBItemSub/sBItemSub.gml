@@ -1,7 +1,12 @@
 function sBItemSub(argument0) {
 	/*gm6argdefaults*/ if (argument0==undefined) argument0=0;
 	//Arg0 is delimited item effect, must call itemuse before
-	value=real(string_digits(argument0));
+	//port: as in sItemUseSub -- a delimited effect part with no digits ("Revive",
+	//"Cure All") leaves string_digits empty, and real("") raises under GameMaker
+	//2024 where GM6 returned 0.  This is the in-battle path, so it took out using
+	//any Cure or Revive item in a fight.
+	var _digits = string_digits(argument0);
+	value=(_digits=="") ? 0 : real(_digits);
 	effect=string_letters(argument0);
 	duration="temp";
 	comm=0; //command id, applied by sBItemComm (was an execute_string'd code string)

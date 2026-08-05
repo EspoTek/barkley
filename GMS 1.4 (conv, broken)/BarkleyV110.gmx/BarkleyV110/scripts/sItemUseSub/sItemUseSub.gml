@@ -9,7 +9,13 @@ function sItemUseSub(argument0) {
 	//Hustle, Zaubered, Diabetes, Glaucoma, Muscled, Time Out
 	//cap values
 	//area is grabbed before
-	value=real(string_digits(argument0));
+	//port: item effects are comma-delimited lists ("Single, Cure Diabetes",
+	//"Single, Revive, VP +%100") and each part comes through here.  A part with no
+	//digits leaves string_digits empty, and GameMaker 2024's real("") raises where
+	//GM6 returned 0 -- so every Cure and Revive item crashed on use.  Same fix in
+	//sBItemSub, which is the in-battle path.
+	var _digits = string_digits(argument0);
+	value=(_digits=="") ? 0 : real(_digits);
 	effect=string_letters(argument0);
 	if (string_count("permanent",string_lower(effect))>0) {
 	duration="permanent";
