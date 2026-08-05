@@ -87,11 +87,34 @@ npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac                   
 - 6 drag-and-drop actions exist (oFlame0/1, oLightbolt, oBZauber, oGokuer, oSuit2) —
   don't regenerate those events from source.
 
-## State / next work
+## State / next work (handoff to QA agent)
 
-Game boots and plays through the intro cleanly on mac; menus/input/music fixed;
-display layer modernized (needs QA of settings menu rows and integer mode).
-Remaining: full-game QA campaign (uninit-variable errors will surface in later
-rooms/battles — fix pattern above), gamepad support (feed `gamepad_*` into the
-key layer or `key_ress`), browser packaging + QA, non-blocking battle transition
-polish, `package` target for a distributable .app.
+DONE and verified on mac: boots through full intro with zero errors; title card
+renders; settings menu shows the new SCALING row (Fit Window / Integer) and
+SCREEN (windowed / native fullscreen); window freely resizable, aspect-preserved
+pillarboxing, retina-crisp nearest-neighbour; music plays natively; menu input
+single-fires. Committed through "Add gamepad/controller support".
+
+NEXT (roughly in order):
+1. **Full-game QA campaign** — play/drive every area and battle. Expect
+   uninitialized-variable runtime errors in unvisited code paths (debug.log,
+   `not set before reading it`); fix by seeding in Create per the pattern above.
+   Compare feel/behavior against the reference exe in the game zip when unsure.
+   Verify: saves/loads (Save*.sav), config persistence across restarts, brightness
+   and text-speed settings, Al Bhed language mode, battles (esp. the 4 enemies
+   with materialized particle objects: oBWhistle/oBMech/oBMutantballer/
+   oBSlamspectre), shops, the RomTest settings-apply flow, Gameover, credits.
+2. **Integer-scaling QA** — toggle SCALING to Integer, verify black borders and
+   whole-number scale at several window sizes and in fullscreen.
+3. **Gamepad QA** — bridge is implemented but UNTESTED with hardware
+   (objects/oDisplay/Step_1.gml). Verify with a real controller, tune stick
+   threshold, consider a second pad ignore/selection policy.
+4. **Browser build** — `run --target operagx` serves locally (GMWebServ);
+   headless Chrome confirmed the WASM runner boots and renders the splash.
+   Needs: interactive input/audio QA (autoplay unlock), a self-hosted bundle
+   (runtime operagx/ module runner + .unx + oggs), or the IDE's classic HTML5
+   export once its module is downloaded. sat[1] fullscreen and window sizing
+   calls should be feature-gated for the browser target.
+5. Polish ideas: non-blocking battle-entry swirl (rt_trans is an instant cut),
+   `package` target for a distributable .app, silence the sound_restore
+   deprecation log spam (harmless no-op calls in oIntro0/oSign1).
