@@ -10,4 +10,5 @@ global.temp+=1;
 }
 }
 //tft+="ene["+string(global.temp)+"]='';";
-// get_string display removed (dev tool)
+//As KeyPress_16: get_string was the original readout, dropped by the importer.
+show_debug_message(tft);
