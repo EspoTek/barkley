@@ -36,6 +36,15 @@ instance_create(0,0,oCinema7);
 //instance_create(0,0,oTester);
 global.camera=oBarkley;
 if (global.cvx!=-1) { //Positions player
+// Port: rooms without an oBarkley -- the save/load menu (RomLoad) -- reach here
+// with global.cvx set, because sFileData(4) stashes Barkley's position just
+// before switching rooms and sFileData(1) writes it into the .sav.  GM6 raised a
+// non-fatal "no instance" error on the two lines below and, with abort-on-error
+// off, skipped the remainder of this event (that is the game_errors.log the
+// original ReadMe mentions) -- which is precisely why global.cvx still holds the
+// position when the save is written.  GM2024 makes that a hard error, so bail out
+// explicitly and leave global.cvx alone.
+if (!instance_exists(oBarkley)) exit;
 oBarkley.x=global.cvx;
 oBarkley.y=global.cvy;
 global.cvx=-1;
