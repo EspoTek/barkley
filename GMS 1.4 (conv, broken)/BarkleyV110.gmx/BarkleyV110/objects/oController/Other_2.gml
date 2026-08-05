@@ -34,7 +34,7 @@ event_user(5); //rooms
 global.displayc=0; //sets resolution
 global.displayx=display_get_width();
 global.displayy=display_get_height();
-display_reset();
+display_reset(0, false);
 if (global.sat[1]=0) {
 window_set_fullscreen(0);
 window_set_position((global.displayy/2)-((320*sett)/2),(global.displayy/2)-((240*sett)/2));

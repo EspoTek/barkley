@@ -30,9 +30,9 @@ fst-=0.01;
 cou+=1;
 if (cou>=fst) {
 cou=0;
-if (image_index=3) image_index=4; image_speed=0;
-else if (image_index=4) image_index=5; image_speed=0;
-else if (image_index=5) image_index=6; image_speed=0;
+if (image_index=3) { image_index=4; image_speed=0; }
+else if (image_index=4) { image_index=5; image_speed=0; }
+else if (image_index=5) { image_index=6; image_speed=0; }
 else { image_index=3; image_speed=0; }
 }
 }

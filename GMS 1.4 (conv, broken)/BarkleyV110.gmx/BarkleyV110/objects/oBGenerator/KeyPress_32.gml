@@ -10,4 +10,4 @@ global.temp+=1;
 }
 }
 //tft+="ene["+string(global.temp)+"]='';";
-(tft);
+// get_string display removed (dev tool)
