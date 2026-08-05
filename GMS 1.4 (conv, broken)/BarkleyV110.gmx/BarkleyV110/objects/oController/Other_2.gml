@@ -17,6 +17,7 @@ for (j=0; j<10; j+=1) global.path[j]=path_add();
 //Battle
 global.lastmusic=-1;
 global.lastload=-9; //Signifys what file to load when die in battle and continue
+global.doload=0; //port: RomLoad's oLoader reads this; GM6 read the unset value as 0
 global.b_music=mBattle; //Battle music
 global.b_back=0; //Battle background
 global.b_resume=-1; //For resuming music
