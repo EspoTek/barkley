@@ -1,3 +1,5 @@
+// Port: build the original bitmap fonts before anything can draw text.
+sFontInit();
 // Display scaling (port): render at native 320x240, composite ourselves (see Post Draw)
 global.integer_scale = 0; // 0 = fill window (aspect kept), 1 = integer scale + black border
 application_surface_draw_enable(false);

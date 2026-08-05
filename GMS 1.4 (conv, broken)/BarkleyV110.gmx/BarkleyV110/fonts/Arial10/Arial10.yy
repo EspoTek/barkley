@@ -1,7 +1,7 @@
 {
   "$GMFont":"",
   "%Name":"Arial10",
-  "AntiAlias":1,
+  "AntiAlias":0,
   "applyKerning":0,
   "ascender":0,
   "ascenderOffset":0,
