@@ -31,8 +31,8 @@ alp=1;
 dalp=1;
 amt=0.2;
 alarm[0]=30;
-sound_replace(mTOG,'Music\_togs.wav',0,1);
-sound_replace(mTOGS,'Music\_togsound.wav',0,1);</string>
+
+</string>
           </argument>
         </arguments>
       </action>

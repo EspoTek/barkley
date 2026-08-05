@@ -1,24 +1,3 @@
-/*  Sets the value of a global attribute.
-
-    bgm_SetGlobalAttr( song,
-                       attribute,
-                       value )
-                 
-    Example:
-    
-    // Set the global output frequency
-    bgm_SetGlobalAttr("freq", 32000);
-
-******************************************************************************/
-
-var ret;
-
-if (is_real(argument1))
-  argument1 = string(argument1);
-
-ret = external_call(global._bgm_SetAttrById, 0, argument0, argument1);
-
-if (!ret && global._bgm_showErrors)
-  show_error(external_call(global._bgm_Error), false);
-  
-return ret;
+// bgm.dll music extension stub — the DLL cannot exist on HTML5/macOS.
+// Only bgm_Init()/bgm_Close() were ever called; music plays via built-in sound_* functions.
+return 0;

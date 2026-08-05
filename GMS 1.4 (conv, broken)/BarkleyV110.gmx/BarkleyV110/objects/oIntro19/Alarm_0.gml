@@ -1,0 +1,16 @@
+oBarkley.x=-90;
+with (oFollower) x=-90;
+sCinema(oBarkley,"code",cine_0229);
+sCinema(oBarkley,"cond",cine_0148);
+sCinema(oBarkley,"code",cine_0230);
+sCinema(oBarkley,"dialog","???:\\Barkley... Barkley, can you hear me? Greetings from beyond the grave.");
+sCinema(oGhostdad,"move","down");
+sCinema(oBarkley,"dialog","???:\\It is I, the Ghost Dad. I have come to haunt you, but also to help you. It is true that I haunted Proto Neo New York, but I did it with good intentions. But this is not why I am here. I wanted to thank you for freeing me from my ghastly chains of bondage, for saving me from the hex that I unwittingly placed upon myself years ago. I am finally free to return to the Ghost Domain thanks to you and I am no longer cursed by this dastardly hex. I want to show my appreciation by giving you a power that very few ghosts attain, let alone mortals. It is the precious Ghost Muscle, a skill that fortifies your body with the incredible power of ghosts. I hope you use it as wisely as I did.");
+sCinema(oBarkley,"dialog","Barkley learned \"Ghost Muscle\"!");
+sBattleSkill(0,"Ghost Muscle");
+sCinema(oBarkley,"wait",1.5);
+sCinema(oBarkley,"dialog","Ghost Dad:\\Farwell, Barkley. May my powers aid you on your journey.");
+sCinema(oBarkley,"tint",make_color_rgb(200,200,200),1);
+sCinema(oBarkley,"wait",1);
+sCinema(oBarkley,"effect","fadein",3);
+global.roz=RomProtoInn;

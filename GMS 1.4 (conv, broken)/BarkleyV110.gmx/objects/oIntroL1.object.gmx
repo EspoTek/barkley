@@ -95,13 +95,13 @@ sCinema(oBarkley,'dialog',"The Diabeastie is finally dead. Wait... It dropped so
 repeat (3) sCinema(oBarkley,'move','up');
 sCinema(oBarkley,'catchup');
 sCinema(oBarkley,'dialog',"It looks like some kind of gizmo.",1);
-sCinema(oBarkley,'code',"oLRod.visible=0;");
+sCinema(oBarkley,'code',cine_0376);
 sCinema(oBarkley,'item','Poleshaft',1);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code','sound_play(mClaps)');
+sCinema(oBarkley,'code',cine_0377);
 sCinema(oBarkley,'wait',3);
 repeat (8) sCinema(oSteambrast,'move','up');
-sCinema(oBarkley,'code',"sDialog('set',1,'top');");
+sCinema(oBarkley,'code',cine_0017);
 sCinema(oBarkley,'dialog',"???:\Greetings, fine chaps. Good showing.",0);
 sCinema(oBarkley,'move','down');
 sCinema(oBarkley,'dialog',"Who the hell are you?",1);
@@ -109,7 +109,7 @@ sCinema(oBarkley,'dialog',"???:\It is I, Octavius Steambrast; traverser of the s
 sCinema(oBarkley,'dialog',"You mean this Poleshaft? Hmm, I don't know. I think I could use this.",1);
 sCinema(oBarkley,'dialog',"Octavius Steambrast:\Very well, I would not expect you to go uncompensated. What say you, that in exchange for the relic, I pledge 20% of profits I make from my Mechanical Bird to the United Negro College Fund?",0);
 sCinema(oBarkley,'dialog',"Give Steambrast the gizmo in exchange for the pledge?",0,"Yeah.","Nah.");
-sCinema(oBarkley,'code',"with (oIntroL1) event_user(2);");</string>
+sCinema(oBarkley,'code',cine_0378);</string>
           </argument>
         </arguments>
       </action>
@@ -146,7 +146,7 @@ sCinema(oDiabeastie,'move','up');
 sCinema(oDiabeastie,'move','right');
 sCinema(oDiabeastie,'move','up');
 sCinema(oBarkley,'dialog',"Diabeastie:\&lt;GLOMP&gt;",0);
-sCinema(oBarkley,'code','oMack.x=-999;');
+sCinema(oBarkley,'code',cine_0379);
 sCinema(oBarkley,'dialog',"Mack:\Noooo! Gahhhhhh!",0);
 sCinema(oFollower0,'dialog',"So the tomes were right... It does exist.",1);
 sCinema(oBarkley,'move','up');
@@ -156,9 +156,9 @@ sCinema(oDiabeastie,'move','right');
 sCinema(oDiabeastie,'move','down');
 sCinema(oBarkley,'dialog',"Diabeastie:\SUGAR SUgAR!",0);
 sCinema(oBarkley,'dialog',"Game on punk!",1);
-sCinema(oBarkley,'code','sPos("save");');
-sCinema(oBarkley,'code',"with (oIntroL1) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;");</string>
+sCinema(oBarkley,'code',cine_0380);
+sCinema(oBarkley,'code',cine_0381);
+sCinema(oBarkley,'code',cine_0006);</string>
           </argument>
         </arguments>
       </action>
@@ -187,7 +187,7 @@ sCinema(oDummy,'pan',4);
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'pan',4);
-sCinema(oBarkley,'code',"global.camera=oBarkley;");</string>
+sCinema(oBarkley,'code',cine_0143);</string>
           </argument>
         </arguments>
       </action>
@@ -230,10 +230,10 @@ sCinema(oBarkley,'dialog',"Octavius Steambrast:\Make no mistake... I will have t
 }
 sCinema(oSteambrast,'move','down');
 sCinema(oBarkley,'dialog',"Octavius Steambrast:\Steam blast commence!",0);
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');oSteambrast.fly=1;sound_play(mRocket);");
+sCinema(oBarkley,'code',cine_0382);
 sCinema(oBarkley,'wait',4);
 sCinema(oBarkley,'dialog',"I've have enough of this island. Let's visit Yelmirb so we can finally get off of this damn rock.",1);
-sCinema(oBarkley,'code','sA("loop",mLiberty);');</string>
+sCinema(oBarkley,'code',cine_0383);</string>
           </argument>
         </arguments>
       </action>

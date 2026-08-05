@@ -1,0 +1,16 @@
+if (view_current!=0) exit;
+x1=xstart;
+y1=ystart;
+whi=make_color_rgb(150+random(105),150+random(105),150+random(105));
+if (instance_exists(oBGhastly)=0) red=make_color_rgb(150+random(105),0,0);
+else red=make_color_rgb(0,150+random(105),0);
+dir=point_direction(x1,y1,x2,y2);
+draw_set_color(merge_color(whi,red,0.5));
+draw_line(x1+lengthdir_x(.5,dir-90),y1+lengthdir_y(.5,dir-90),x2+lengthdir_x(.5,dir-90),y2+lengthdir_y(.5,dir-90));
+draw_line(x1+lengthdir_x(.5,dir+90),y1+lengthdir_y(.5,dir+90),x2+lengthdir_x(.5,dir+90),y2+lengthdir_y(.5,dir+90));
+draw_set_color(whi);
+draw_line(x1+lengthdir_x(1,dir-90),y1+lengthdir_y(1,dir-90),x2+lengthdir_x(1,dir-90),y2+lengthdir_y(1,dir-90));
+draw_line(x1+lengthdir_x(1,dir+90),y1+lengthdir_y(1,dir+90),x2+lengthdir_x(1,dir+90),y2+lengthdir_y(1,dir+90));
+draw_set_color(red);
+draw_line(x1,y1,x2,y2);
+if (master.enemy=0) draw_sprite(sBTarget,0,x2,y2);

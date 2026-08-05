@@ -1,8 +1,3 @@
-/*  Sets whether or not BGM should display errors that occur automatically.
-    By default BGM shows errors. This function may be called before bgm_Init().
-    
-    bgm_SetShowErrors( true (show) or false (hide) )
-
-******************************************************************************/
-
-global._bgm_showErrors = argument0;
+// bgm.dll music extension stub — the DLL cannot exist on HTML5/macOS.
+// Only bgm_Init()/bgm_Close() were ever called; music plays via built-in sound_* functions.
+return 0;

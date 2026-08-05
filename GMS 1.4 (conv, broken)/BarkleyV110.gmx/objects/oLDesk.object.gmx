@@ -54,7 +54,7 @@ sCinema(oBarkley,'dialog',"Looks like a regular desk. It has a drawer, but it's 
 } else {
 sCinema(oBarkley,'dialog',"I found a key in this desk. Doesn't look like anything else useful is here.",1);
 }
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else if (global.selected=1) {
 if (sOvar(object_index,-1)=1) {
 sCinema(oBarkley,'dialog',"I don't need to use the desk again.",1);
@@ -67,12 +67,12 @@ sOvar(object_index,1)
 } else {
 sCinema(oBarkley,'dialog',"The drawer is locked. The lock looks pretty shabby, but I can't force it open. If only I had something to pry it open...",1);
 }
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else if (global.selected=2) {
 sCinema(oBarkley,'dialog',"I'd need a shopping cart if I wanted to haul the desk away. I don't have one so it looks like that's not going to happen.",1);
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else {
-sCinema(oBarkley,'code',"x=x;");
+sCinema(oBarkley,'code',cine_0006);
 }
 }</string>
           </argument>
@@ -104,7 +104,7 @@ exit;
 global.coice=id;
 stage=0;
 sCinema(oBarkley,'dialog',"You see a Desk.",0,"Examine Desk.","Use Desk.","Take Desk.","Leave Desk.");
-sCinema(oBarkley,'code','with (global.coice) event_user(2);');</string>
+sCinema(oBarkley,'code',cine_0399);</string>
           </argument>
         </arguments>
       </action>

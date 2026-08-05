@@ -1,0 +1,1 @@
+oCagedBalla.visible=0;

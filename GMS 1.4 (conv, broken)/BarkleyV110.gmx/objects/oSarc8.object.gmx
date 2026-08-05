@@ -88,8 +88,8 @@ sCinema(oBarkley,'dialog',"He was an amazing baller, Hellbane. He thought a lot 
 sCinema(oHellbane,'dialog',"That's right, but-",1);
 sCinema(oBarkley,'dialog',"???:\BRAINS!");
 sCinema(oBarkley,'dialog',"Look out! He's coming out of his sarcophagus!",1);
-sCinema(oBarkley,'code',"with (oSarc8) { sBattled('save'); sBattleStart(); }");
-sCinema(oBarkley,'code',"x=x;");
+sCinema(oBarkley,'code',cine_0440);
+sCinema(oBarkley,'code',cine_0006);
 } else {
 sCinema(oBarkley,'dialog',"Forgive me, Kobe...",1);
 }</string>

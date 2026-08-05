@@ -1,0 +1,21 @@
+{
+  "$GMPath":"",
+  "%Name":"pBarkley1",
+  "closed":false,
+  "kind":1,
+  "name":"pBarkley1",
+  "parent":{
+    "name":"Paths",
+    "path":"folders/Paths.yy",
+  },
+  "points":[
+    {"speed":100.0,"x":-160.0,"y":0.0,},
+    {"speed":100.0,"x":-144.0,"y":-64.0,},
+    {"speed":100.0,"x":-80.0,"y":-96.0,},
+    {"speed":100.0,"x":-16.0,"y":-64.0,},
+    {"speed":100.0,"x":0.0,"y":0.0,},
+  ],
+  "precision":4,
+  "resourceType":"GMPath",
+  "resourceVersion":"2.0",
+}

@@ -63,8 +63,8 @@ itemf[7]='Ecto Cooler';
 itemf[8]='BBall Shard';
 itemf[9]='';
 sCinema(oBarkley,'dialog',"D-Dawg:\Welcome to Gun's! Gun's! Gun's!, your one-stop shopping emporium for all things gun's related!");
-sCinema(oBarkley,'code',"sShop(oGunshop,'Buy','Sell','Leave');");
-sCinema(oBarkley,'cond',"if (instance_exists(oStartmenu)=0) good=1");
+sCinema(oBarkley,'code',cine_0149);
+sCinema(oBarkley,'cond',cine_0003);
 sCinema(oBarkley,'dialog',"D-Dawg:\You can never have enough Gun's!");</string>
           </argument>
         </arguments>

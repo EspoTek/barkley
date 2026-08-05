@@ -1,0 +1,1 @@
+oBarkley.visible=1;

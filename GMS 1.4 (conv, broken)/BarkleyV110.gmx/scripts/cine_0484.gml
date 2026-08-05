@@ -1,0 +1,1 @@
+sShop(oVending,'Buy','Leave');

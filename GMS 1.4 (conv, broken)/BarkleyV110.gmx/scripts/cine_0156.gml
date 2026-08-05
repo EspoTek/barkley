@@ -1,0 +1,1 @@
+global.firstshen=0;

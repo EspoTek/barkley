@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_single=floor(random(4));
+            <string>image_index=floor(random(4)); image_speed=0;
 image_xscale=1+random(3);
 image_yscale=image_xscale;
 direction=90;

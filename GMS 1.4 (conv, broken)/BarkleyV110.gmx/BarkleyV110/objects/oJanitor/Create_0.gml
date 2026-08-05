@@ -1,0 +1,10 @@
+event_inherited();
+sprt=sJanitor;
+solid=1;
+movement=45;
+hhh=sOvar(object_index,-1);
+if (hhh=777) instance_destroy();
+if ((hhh=1 || hhh=11) && room=RomSpaldingRedC) instance_destroy();
+if ((hhh=10 || hhh=11) && room=RomSpaldingBlueC1) instance_destroy();
+//face=8;
+//name='Larry Bird';

@@ -1,0 +1,126 @@
+if (que=0) {///choices
+que+=1;
+if (global.selected=0) {
+res[0]=" lets me protect her from attacks.";
+sCinema(oBarkley,"dialog","\"And that she lets me protect her from attacks.\"",1);
+sCinema(oFollower0,"dialog","Because they're persecuted down here? That's okay I guess. We'll go with it.",1);
+} else if (global.selected=1) {
+res[0]=" caresses my body, to help relax.";
+sCinema(oBarkley,"dialog","\"And that she caresses my body, to help relax.\"",1);
+sCinema(oFollower0,"dialog","Hmmm... sensual and slightly erotic, without being too overt. That works.",1);
+} else if (global.selected=2) {
+res[0]=", with her hands, massages my back.";
+sCinema(oBarkley,"dialog","\"And that she, with her hands, massages my back.\"",1);
+sCinema(oFollower0,"dialog","I like this. An implication that every moment without her is one in pain, as she is not giving you any massages at all.",1);
+sCinema(oBarkley,"dialog","An implication that every moment the snail is without her he's in pain. Don't get it twisted.",1);
+sCinema(oFollower0,"dialog","Sorry, Charles.",1);
+} else if (global.selected=3) {
+res[0]=" enjoys hunting small prey.";
+right+=1;
+if (oVince.x!=-999) {
+//sCinema(oBarkley,'dialog','I gotta side with Vince on this one, "And that she enjoys hunting small prey."',1);
+sCinema(oBarkley,"dialog","Yeah, \"And that she enjoys hunting small prey.\"",1);
+sCinema(oFollower0,"dialog","You do remember that little talk we had earlier?",1);
+sCinema(oBarkley,"dialog","Just do it.",1);
+} else {
+sCinema(oBarkley,"dialog","\"And that she enjoys hunting small prey.\"",1);
+sCinema(oFollower0,"dialog","Are you sure about that Charles? It's a little...",1);
+sCinema(oBarkley,"dialog","Just go with it.",1);
+}
+}
+sCinema(oFollower0,"dialog","Okay then. Now after those first three stanzas - ABAB, CDCD, and EFEF- I will, as is fitting according to the hallowed traditions of the post-cyberpocalyptic sonnet, I conclude with two couplets, of GG and HH.",1);
+sCinema(oBarkley,"dialog","I really don't give a damn how your poetry works, but go ahead.",1);
+if (oVince.x!=-999) sCinema(oFollower0,"dialog","\"Never before have I met one so fair, Or who...\"",0,"lives so freely, without a care","is so fearless toward any dare","has such beautiful flaxen hair","Vince's Advice: does not mind animal feces much");
+else sCinema(oFollower0,"dialog","\"Never before have I met one so fair, or who...\"",0,"lives so freely, without a care","is so fearless toward any dare","has such beautiful flaxen hair","does not mind animal feces much");
+sCinema(oBarkley,"code",cine_0196);
+} else if (que=1) {
+que+=1;
+if (global.selected=0) {
+res[1]=res[1]+ " lives so freely, without a care.";
+sCinema(oBarkley,"dialog","\"Or who lives so freely, without a care.\"",1);
+sCinema(oFollower0,"dialog","Foxes are somewhat free-spirited I think. Maybe? I really don't know anything about animals. I suppose that's a tolerable line.",1);
+} else if (global.selected=1) {
+res[1]=res[1]+" is so fearless toward any dare.";
+sCinema(oBarkley,"dialog","\"Or who is so fearless toward any dare.\"",1);
+sCinema(oFollower0,"dialog","Really? You think she seems fearless? Oh, who am I kidding? We just need to fill some lines at this point. It'll do.",1);
+} else if (global.selected=2) {
+res[1]=res[1]+" has such beautiful flaxen hair.";
+sCinema(oBarkley,"dialog","\"Or who has such beautiful flaxen hair.\"",1);
+sCinema(oFollower0,"dialog","That's not awful. Her hair doesn't really seem flaxen, and I think in the case of animal people such as her it would be "+"\"fur,\""+" as opposed to hair. I suppose it does rhyme though. We'll use it.",1);
+} else if (global.selected=3) {
+res[1]=res[1]+" does not mind animal feces much.";
+right+=1;
+if (oVince.x!=-999) {
+//sCinema(oBarkley,'dialog','My man Vince has it right. "Or who does not mind animal feces much."',1);
+sCinema(oBarkley,"dialog","Yeah, \"Or who does not mind animal feces much.\"",1);
+sCinema(oFollower0,"dialog","...I think Vince does not understand the fine art of subtlety.",1);
+sCinema(oBarkley,"dialog","It's good enough for me.",1);
+sCinema(oFollower0,"dialog","...Fine.",1);
+} else {
+sCinema(oBarkley,"dialog","\"Or who does not mind animal feces much.\"",1);
+sCinema(oFollower0,"dialog","Barkley... that's...",1);
+sCinema(oBarkley,"dialog","What? It's what she said! I wouldn't make up shit like that.",1);
+sCinema(oFollower0,"dialog","Regardless of whether or not it's what she said, it is disgusting and does not fit with the rhyme scheme of the poem. It is ABAB CDCD EFE-",1);
+sCinema(oBarkley,"dialog","Just trust me, alright?",1);
+sCinema(oFollower0,"dialog","...Fine.",1);
+}
+}
+//new choices
+sCinema(oFollower0,"dialog","Okay, finally. This is the last line.",1);
+if (oVince.x!=-999) sCinema(oFollower0,"dialog","\"More than wonders of the world, I love her...\"",0,"majestic, like flags unfurled","so she should be Duked or Earled","when she danced and twirled","Vince's Advice: and her friends in Cesspool X");
+else sCinema(oFollower0,"dialog","\"More than wonders of the world, I love her...\"",0,"majestic, like flags unfurled","so she should be Duked or Earled","when she danced and twirled","and her friends in Cesspool X");
+sCinema(oBarkley,"code",cine_0197);
+} else if (que=2) { //here
+que+=1;
+if (global.selected=0) {
+res[2]=res[2]+", majestic, like flags unfurled.";
+sCinema(oBarkley,"dialog","\"I love her, majestic, like flags unfurled.\"",1);
+sCinema(oFollower0,"dialog","You know, I'm not even sure what that's supposed to mean. Flags? What does that have to do with the entire rest of the poem?",1);
+sCinema(oBarkley,"dialog","I don't care. I don't want to be doing this. We should've just given her the poem to begin with. I don't write poetry. Do you understand?",1);
+sCinema(oFollower0,"dialog","This is the worst poem I have ever read.",1);
+} else if (global.selected=1) {
+res[2]=res[2]+", so she should be Duked or Earled.";
+sCinema(oBarkley,"dialog","\"I love her, so she should be Duked or Earled.\"",1);
+sCinema(oFollower0,"dialog","...",1);
+sCinema(oBarkley,"dialog","Like, she is royalty. A Duke or an Earl. The snail might think so.",1);
+sCinema(oFollower0,"dialog","This poem is shit. Absolute shit.",1);
+} else if (global.selected=2) {
+res[2]=res[2]+", when she danced and twirled.";
+sCinema(oBarkley,"dialog","\"I love her, when she danced and twirled.\"",1);
+sCinema(oFollower0,"dialog","When did she dance? Do you even know what you're writing? The tense changes halfway through the line. This is embarassing.",1);
+} else if (global.selected=3) {
+res[2]=res[2]+", and her friends in Cesspool X.";
+right+=1;
+if (oVince.x!=-999) {
+//sCinema(oBarkley,'dialog','Vince gots my back on this. "I love her, and her friends in Cesspool X."',1);
+sCinema(oBarkley,"dialog","Yeah, \"I love her, and her friends in Cesspool X.\"",1);
+sCinema(oFollower0,"dialog","That doesn't flow with the previous line at all, but it doesn't look like you're too enthusiastic about thinking up another line.",1);
+sCinema(oBarkley,"dialog","You got that right.",1);
+} else {
+sCinema(oBarkley,"dialog","\"I love her, and her friends in Cesspool X.\"",1);
+sCinema(oFollower0,"dialog","Fine. I honestly don't care at this point.",1);
+}
+}
+if (right>=3) sOvar(oSnail,4);
+else sOvar(oSnail,3);
+//
+sCinema(oFollower0,"dialog","I suppose we're finished. Are you happy with the way the poem is now? We can start over and go through the lines again if you'd like.",1);
+sCinema(oFollower0,"dialog","Redo the poem?",0,"Yeah, go through the poem again.","Nah, it's fine as it is.");
+sCinema(oBarkley,"code",cine_0195);
+} else {
+if (global.selected=0) {
+que=0; right=0; res[0]=""; res[1]=""; res[2]="";
+sCinema(oBalthios,"dialog","Here's the first part:",1);
+sCinema(oFollower0,"dialog","\"I ask that she envelops my fragile heart,\\And with her Magick, mends its cracks;\\I ask that we grow old, never apart,\\And that she...\"");
+sCinema(oFollower0,"dialog","And that is where I am stuck. So tell me what you like here.",1);
+if (oVince.x!=-999) sCinema(oFollower0,"dialog","\"And that she...\"",0,"lets me protect her from attacks","caresses my body, to help relax","with her hands, massages my back","Vince's Advice: enjoys hunting small prey");
+else sCinema(oFollower0,"dialog","\"And that she...\"",0,"lets me protect her from attacks","caresses my body, to help relax","with her hands, massages my back","enjoys hunting small prey");
+sCinema(oBarkley,"code",cine_0195);
+} else {
+sCinema(oBarkley,"code",cine_0198);
+sCinema(oFollower0,"dialog","If that's all, we should deliver this to J. Lindsay now.",1);
+sCinema(oBarkley,"code",cine_0074);
+sCinema(oBarkley,"effect","fadein",3);
+global.roz=RomSewerCesspool;
+}
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"cine_0362",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"cine_0362",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

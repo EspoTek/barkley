@@ -56,19 +56,19 @@ alarm[0]=5;</string>
             <string>global.scheme[0]=2;
 global.skipper=3;
 oBarkley.t=1;
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');");
+sCinema(oBarkley,'code',cine_0074);
 sCinema(oBarkley,'dialog',"Damn Bird thinks he's making a difference. Shit's never gonna be the same around here.",1);
 repeat(4) sCinema(oBarkley,'move',"right");
-sCinema(oBarkley,'code',"oFlashback.show=1");
+sCinema(oBarkley,'code',cine_0231);
 sCinema(oBarkley,'move',"right");
-sCinema(oBarkley,'code',"oFlashback.show=0");
+sCinema(oBarkley,'code',cine_0232);
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'face','up');
 sCinema(oBarkley,'dialog',"That tree ain't ever gonna be green again.",1);
 repeat(6) sCinema(oBarkley,'move',"right");
-sCinema(oBarkley,'code',"oFlashback.show=1");
+sCinema(oBarkley,'code',cine_0231);
 sCinema(oBarkley,'move',"right");
-sCinema(oBarkley,'code',"oFlashback.show=0");
+sCinema(oBarkley,'code',cine_0232);
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'face','down');
 sCinema(oBarkley,'wait',1);
@@ -84,27 +84,27 @@ sCinema(oBarkley,'face','down');
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'dialog',"Shit's never gonna be like it was...",1);
 sCinema(oBarkley,'wait',0.5);
-sCinema(oBarkley,'code',"oFlashback.show=1");
+sCinema(oBarkley,'code',cine_0231);
 sCinema(oBarkley,'wait',0.3);
-sCinema(oBarkley,'code',"oFlashback.show=0");
+sCinema(oBarkley,'code',cine_0232);
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'face','down');
 sCinema(oBarkley,'wait',0.3);
-sCinema(oBarkley,'code',"oFlashback.show=1");
+sCinema(oBarkley,'code',cine_0231);
 sCinema(oBarkley,'wait',0.6);
-sCinema(oBarkley,'code',"oFlashback.show=0");
+sCinema(oBarkley,'code',cine_0232);
 sCinema(oBarkley,'wait',0.9);
-sCinema(oBarkley,'code',"oFlashback.show=1");
+sCinema(oBarkley,'code',cine_0231);
 sCinema(oBarkley,'wait',4.5);
-sCinema(oBarkley,'code',"oFlashback.show=0");
+sCinema(oBarkley,'code',cine_0232);
 sCinema(oBarkley,'wait',0.3);
-sCinema(oBarkley,'code',"oFlashback.show=1");
+sCinema(oBarkley,'code',cine_0231);
 sCinema(oBarkley,'wait',0.3);
-sCinema(oBarkley,'code',"oFlashback.show=0");
+sCinema(oBarkley,'code',cine_0232);
 sCinema(oBarkley,'wait',2);
 if (global.scheme[3]=0) sCinema(oBarkley,'dialog',"I'm starting to see things... I better get some medicine from Chin's shop then get back home and catch some Z's.",1);
 else sCinema(oBarkley,'dialog',"I'm starting to see things... I better get home and catch some Z's.",1);
-sCinema(oBarkley,'code',"global.skipper=0;");</string>
+sCinema(oBarkley,'code',cine_0014);</string>
           </argument>
         </arguments>
       </action>

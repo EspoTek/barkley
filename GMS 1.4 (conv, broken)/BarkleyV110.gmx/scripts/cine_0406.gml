@@ -1,0 +1,1 @@
+oLBookcase.x-=2;

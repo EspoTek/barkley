@@ -1,0 +1,40 @@
+global.nofollow=0;
+sOvar(object_index,2);
+sCinema(oBarkley,"face","right");
+if (global.lover>4) {
+repeat (5) sCinema1(oCyberdwarf,"move","down");
+repeat (5) sCinema1(oCyberdwarf,"move","left");
+sCinema(oIvory,"code",cine_0161);
+repeat (6) sCinema(oIvory,"move","down");
+repeat (5) sCinema(oIvory,"move","left");
+sCinema(oBarkley,"dialog","Cyberdwarf! Ivory! How did it go?",1);
+sCinema(oCyberdwarf,"dialog","Charles... Ivory is \"the one\".",1);
+sCinema(oIvory,"dialog","Cyberdwarf... promise me that you'll come back.",1);
+sCinema(oCyberdwarf,"dialog","I don't know where our journey will take us, Ivory, but know that wherever in the world we are, you will be in my heart.",1);
+sCinema(oIvory,"dialog","C...Cyberdwarf...",1);
+sCinema(oIvory,"move","left");
+sCinema(oIvory,"face","up");
+sCinema(oCyberdwarf,"face","down");
+sCinema(oIvory,"dialog","Before you go... I want you to have this... So you can always remember our time together.",1);
+sCinema(oBarkley,"item","Ivory's Bromide",1);
+sCinema(oCyberdwarf,"dialog","Thank you... Thank you for everything Ivory.",1);
+repeat (3) sCinema(oIvory,"move","right");
+sCinema(oIvory,"face","left");
+sCinema(oCyberdwarf,"face","right");
+sCinema(oBarkley,"wait",1);
+repeat (3) sCinema(oIvory,"move","right",4);
+repeat (12) sCinema(oIvory,"move","up",4);
+} else {
+repeat (6) sCinema(oCyberdwarf,"move","down");
+repeat (4) sCinema(oCyberdwarf,"move","left");
+sCinema(oBarkley,"dialog","Cyberdwarf! How did it go?",1);
+sCinema(oCyberdwarf,"dialog","We're leaving.",1);
+sCinema(oBarkley,"dialog","Are you okay, Cyberdwarf?",1);
+sCinema(oCyberdwarf,"dialog","Let's... let's just go.",1);
+sCinema(oFollower0,"dialog","I think his heart has been broken...",1);
+}
+sCinema(oBarkley,"tint",c_black,1);
+sCinema(oBarkley,"wait",0.5);
+sCinema(oBarkley,"code",cine_0244);
+sCinema(oBarkley,"wait",0.5);
+sCinema(oBarkley,"tint",c_black,0);

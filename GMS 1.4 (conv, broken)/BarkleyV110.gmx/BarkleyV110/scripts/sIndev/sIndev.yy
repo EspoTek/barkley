@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"sIndev",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"sIndev",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

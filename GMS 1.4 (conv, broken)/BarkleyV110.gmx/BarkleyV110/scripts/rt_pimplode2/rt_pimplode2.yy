@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"rt_pimplode2",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"rt_pimplode2",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

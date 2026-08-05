@@ -30,7 +30,7 @@ spc=30;
 instance_create(-999,-999,oHilight);
 for (i=0; i&lt;9; i+=1) {
 sl[i]=instance_create(x+(spc*(i mod 3)),y+(spc*floor(i/3)),oShiftee);
-sl[i].image_single=i;
+sl[i].image_index=i; sl[i].image_speed=0;
 slx[i]=sl[i].x;
 sly[i]=sl[i].y;
 }

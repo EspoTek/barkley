@@ -1,0 +1,12 @@
+global.dialog=1;
+itemf[0]="Spiked B-ball";
+itemf[1]="Time Zauber";
+itemf[2]="Dwarf Warhammer";
+itemf[3]="Ecto Cooler";
+itemf[4]="BBall Shard";
+itemf[5]="Steroids";
+itemf[6]="";
+sCinema(oBarkley,"dialog","Sewer Punk:\\Headed down to Proto Neo New York? You might wanna stock up first. Some people don't. Come back with some real horror stories. Anyway, here it is.");
+sCinema(oBarkley,"code",cine_0025);
+sCinema(oBarkley,"cond",cine_0003);
+sCinema(oBarkley,"dialog","Sewer Punk:\\I'll be here for a few days. After that I've got to go back up and restock. In the meantime, swing by if there's anything you need.");

@@ -55,7 +55,7 @@ spd=0.000000000000001;</string>
             <kind>1</kind>
             <string>global.dialog=1;
 sCinema(oBarkley,'dialog',"Pump:\It should be no surprise to my more-informed viewers that the topic of my discussions would eventually fall to the well-established artform of eroge (known to laymen as "+'"hentai vidcons"'+", though this is a false moniker as the vidcons deal with far more than mere hentai). Much-beloved in the East, these games are sadly, and one might even say expectedly, decried in the West as bastions of perversion and pedophilia for portraying extremely young girls in erotic situations. A person who looks at pictures of fictional little girls isn't necessarily sexually attracted to them. What if (s)he finds them cute? Despite the obvious flaws in the anti-eroge constituency, they continue to claim that eroge are sad, cartoon versions of sex for manchildren that promote rape, pedophilia, and abuse towards women. The logic used seems quite silly, because then people who enjoy killing or raping in games would be classified as murderers/rapists in real life. Come on. It's a fantasy, it's inside your head. Get educated. I recommend Kana: Little Sister, Rape Academy 2, or Crescendo to start with.");
-sCinema(oBarkley,'code','sFileData(4);');
+sCinema(oBarkley,'code',cine_0428);
 </string>
           </argument>
         </arguments>

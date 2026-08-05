@@ -82,7 +82,7 @@ sA('loop',mSpalding);
             <kind>1</kind>
             <string>global.dialog=1;
 sCinema(oBarkley,'dialog','Pump:\There is, perhaps, only one medium of art that matches the excellence of vidcons and that is (obviously) visual kei. Combining absolutely exquisite j-rock and j-pop, sprinkled with hints of vidcon melodies, with the pyrotechnic visual flare that the Japanese are known for, visual kei takes its viewers on a rollercoaster ride of lights, fanfare, and music that even Beethoven could tap his toes to. Would that I were Japanese, (though under careful scrutiny, it appears my geneology tree does in fact show signs of a Japanese presence) I too would participate in this art of the 21st century and even perhaps venture onto the visual kei stage myself. It is no surprise that the impotent minds of Western society cannot fully grasp the total splendor of visual kei and instead choose to squandor their time listening to rap and country "music".');
-sCinema(oBarkley,'code','sFileData(4);');
+sCinema(oBarkley,'code',cine_0428);
 </string>
           </argument>
         </arguments>

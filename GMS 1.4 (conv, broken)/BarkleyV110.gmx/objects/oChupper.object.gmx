@@ -53,8 +53,8 @@ t=2;</string>
 itemf[0]='Chup';
 itemf[1]='';
 sCinema(oBarkley,'dialog',"Dealer:\You look like you need a hit of some chups. I got the cheapest stuff in town.");
-sCinema(oBarkley,'code',"sShop(oChupper,'Buy','Leave');");
-sCinema(oBarkley,'cond',"if (instance_exists(oStartmenu)=0) good=1");
+sCinema(oBarkley,'code',cine_0024);
+sCinema(oBarkley,'cond',cine_0003);
 sCinema(oBarkley,'dialog',"Dealer:\Alright man, take care of yourself.");</string>
           </argument>
         </arguments>

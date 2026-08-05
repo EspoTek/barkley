@@ -58,15 +58,15 @@ sCinema(oJuwanna,'dialog',"Charles, I believe in you. Don't ever forget that.",1
 } else if (sOvar(oSign1,-1)=1) {
 sOvar(oSign1,1.3);
 sCinema(oJuwanna,'dialog',"So you accepted the hunter quest, Barkley? I thought you would. The Ghost Dad's been terrorizing Proto Neo New York for years now. We've been living in its wake and at its mercy for too long and it's time something is done about it. Problem is, we're just not cut out for fighting here, so that's why we hired y-",1);
-sCinema(oBarkley,'code',"sound_stop_all();sound_play(mGlaugh);");
+sCinema(oBarkley,'code',cine_0400);
 sCinema(oBarkley,'wait',2.5);
 sCinema(oBarkley,'jump','start');
 sCinema(oJuwanna,'jump','start');
 sCinema(oBarkley,'jump','end');
 sCinema(oJuwanna,'jump','end');
-sCinema(oBarkley,'code',"sound_stop_all();sound_loop(mRunaway);");
+sCinema(oBarkley,'code',cine_0401);
 sCinema(oBarkley,'wait',.5);
-sCinema(oBarkley,'code',"if (sound_isplaying(mRunaway)=0) sound_loop(mRunaway);");
+sCinema(oBarkley,'code',cine_0402);
 sCinema(oBarkley,'dialog',"Shit, it sounds like he's back.",1);
 sCinema(oJuwanna,'dialog',"That's your cue, Barkley. Oh and be careful out there... for me.",1);
 sCinema(oBarkley,'dialog',"Juwanna, you know my heart belongs to Maureen even in death.",1);

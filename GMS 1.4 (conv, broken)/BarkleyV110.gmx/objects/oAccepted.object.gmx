@@ -35,7 +35,7 @@ x=view_xview[0]+25;
 y=view_yview[0]+210;
 for (i=0; i&lt;12; i+=1) {
 lll=instance_create(x+(i*25),y,oChar);
-lll.image_single=i;
+lll.image_index=i; lll.image_speed=0;
 lll.alarm[0]=10+(i*10)
 lll.alarm[1]=230+(i*10);
 }

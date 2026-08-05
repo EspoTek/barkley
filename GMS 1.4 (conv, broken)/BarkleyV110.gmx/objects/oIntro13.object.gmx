@@ -72,7 +72,7 @@ oBalthios.t=3;
 oBarkley.t=1;
 right=0; res[0]=""; res[1]=""; res[2]="";
 //7 is cyber
-sCinema(oBarkley,'code',"sDialog('set',1,'top');");
+sCinema(oBarkley,'code',cine_0017);
 sCinema(oBarkley,'dialog',"Hurry up, you've been writing that for an hour.",1);
 sCinema(oBalthios,'dialog',"Patience, Barkley, good art takes time. I might as well show you what I have, however. Here you are...",1);
 sCinema(oBalthios,'dialog','"Hark, I call upon thee Muse,\To grant me thus the ability\Of all Great bards, that is, to use\Your gifts in poetry."');
@@ -101,10 +101,10 @@ sCinema(oVince,'move','right');
 sCinema(oBalthios,'dialog',"Here's the first part:",1);
 sCinema(oFollower0,'dialog','"I ask that she envelops my fragile heart,\And with her Magick, mends its cracks;\I ask that we grow old, never apart,\And that she..."');
 sCinema(oFollower0,'dialog','And that is where I am stuck. So tell me what you like here.',1);
-sCinema(oBarkley,'code',"with (oIntro13) display=1;");
+sCinema(oBarkley,'code',cine_0194);
 if (oVince.x!=-999) sCinema(oFollower0,'dialog','"And that she..."',0,'lets me protect her from attacks','caresses my body, to help relax','with her hands, massages my back',"Vince's Advice: enjoys hunting small prey");
 else sCinema(oFollower0,'dialog','"And that she..."',0,'lets me protect her from attacks','caresses my body, to help relax','with her hands, massages my back','enjoys hunting small prey');
-sCinema(oBarkley,'code',"with (oIntro13) event_user(2);");</string>
+sCinema(oBarkley,'code',cine_0195);</string>
           </argument>
         </arguments>
       </action>
@@ -160,7 +160,7 @@ sCinema(oFollower0,'dialog',"Okay then. Now after those first three stanzas - AB
 sCinema(oBarkley,'dialog',"I really don't give a damn how your poetry works, but go ahead.",1);
 if (oVince.x!=-999) sCinema(oFollower0,'dialog','"Never before have I met one so fair, Or who..."',0,'lives so freely, without a care','is so fearless toward any dare','has such beautiful flaxen hair',"Vince's Advice: does not mind animal feces much");
 else sCinema(oFollower0,'dialog','"Never before have I met one so fair, or who..."',0,'lives so freely, without a care','is so fearless toward any dare','has such beautiful flaxen hair','does not mind animal feces much');
-sCinema(oBarkley,'code',"with (oIntro13) { res[1]='Never before have I met one so fair,#Or who'; event_user(2); }");
+sCinema(oBarkley,'code',cine_0196);
 } else if (que=1) {
 que+=1;
 if (global.selected=0) {
@@ -197,7 +197,7 @@ sCinema(oFollower0,'dialog',"...Fine.",1);
 sCinema(oFollower0,'dialog',"Okay, finally. This is the last line.",1);
 if (oVince.x!=-999) sCinema(oFollower0,'dialog','"More than wonders of the world, I love her..."',0,'majestic, like flags unfurled','so she should be Duked or Earled','when she danced and twirled',"Vince's Advice: and her friends in Cesspool X");
 else sCinema(oFollower0,'dialog','"More than wonders of the world, I love her..."',0,'majestic, like flags unfurled','so she should be Duked or Earled','when she danced and twirled','and her friends in Cesspool X');
-sCinema(oBarkley,'code',"with (oIntro13) { res[2]='More than wonders of the world, #I love her'; event_user(2); }");
+sCinema(oBarkley,'code',cine_0197);
 } else if (que=2) { //here
 que+=1;
 if (global.selected=0) {
@@ -234,7 +234,7 @@ else sOvar(oSnail,3);
 //
 sCinema(oFollower0,'dialog',"I suppose we're finished. Are you happy with the way the poem is now? We can start over and go through the lines again if you'd like.",1);
 sCinema(oFollower0,'dialog','Redo the poem?',0,'Yeah, go through the poem again.',"Nah, it's fine as it is.");
-sCinema(oBarkley,'code',"with (oIntro13) event_user(2);");
+sCinema(oBarkley,'code',cine_0195);
 } else {
 if (global.selected=0) {
 que=0; right=0; res[0]=""; res[1]=""; res[2]="";
@@ -243,11 +243,11 @@ sCinema(oFollower0,'dialog','"I ask that she envelops my fragile heart,\And with
 sCinema(oFollower0,'dialog','And that is where I am stuck. So tell me what you like here.',1);
 if (oVince.x!=-999) sCinema(oFollower0,'dialog','"And that she..."',0,'lets me protect her from attacks','caresses my body, to help relax','with her hands, massages my back',"Vince's Advice: enjoys hunting small prey");
 else sCinema(oFollower0,'dialog','"And that she..."',0,'lets me protect her from attacks','caresses my body, to help relax','with her hands, massages my back','enjoys hunting small prey');
-sCinema(oBarkley,'code',"with (oIntro13) event_user(2);");
+sCinema(oBarkley,'code',cine_0195);
 } else {
-sCinema(oBarkley,'code',"with (oIntro13) display=0;");
+sCinema(oBarkley,'code',cine_0198);
 sCinema(oFollower0,'dialog',"If that's all, we should deliver this to J. Lindsay now.",1);
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');");
+sCinema(oBarkley,'code',cine_0074);
 sCinema(oBarkley,'effect','fadein',3);
 global.roz=RomSewerCesspool;
 }

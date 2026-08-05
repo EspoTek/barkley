@@ -52,7 +52,7 @@ daf=0;</string>
           <argument>
             <kind>1</kind>
             <string>alarm[1]=10;
-image_single=1;
+image_index=1; image_speed=0;
 sS(mBProxy);</string>
           </argument>
         </arguments>
@@ -78,7 +78,7 @@ sS(mBProxy);</string>
             <string>instance_destroy();
 global.txmp=target;
 with (master) { target=global.txmp; sDamage(doing); }
-with (target) { (instance_create(x-sprite_xoffset,y-sprite_yoffset,oBExplode)).master=id; sS(mKillbake); }</string>
+with (target) { { tttmp=instance_create(x-sprite_xoffset,y-sprite_yoffset,oBExplode); tttmp.master=id; } sS(mKillbake); }</string>
           </argument>
         </arguments>
       </action>
@@ -100,7 +100,7 @@ with (target) { (instance_create(x-sprite_xoffset,y-sprite_yoffset,oBExplode)).m
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_single=0;</string>
+            <string>image_index=0; image_speed=0;</string>
           </argument>
         </arguments>
       </action>
@@ -149,7 +149,7 @@ if (daf=0) image_angle+=5;</string>
           <argument>
             <kind>1</kind>
             <string>if (view_current!=0) exit;
-draw_sprite_ext(sprite_index,image_single,x,y,image_xscale,image_yscale,image_angle,c_white,1);</string>
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_white,1);</string>
           </argument>
         </arguments>
       </action>

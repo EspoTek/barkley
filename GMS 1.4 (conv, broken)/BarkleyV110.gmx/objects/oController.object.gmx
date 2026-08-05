@@ -138,18 +138,18 @@ if (sKey(global.key_start,1)) {
      oBarkley.move="";
      if (sItem("F.I.N.A.L. G.U.N.")&lt;1 &amp;&amp; global.char_eweapon[4]!="F.I.N.A.L. G.U.N.") {
       sCinema(oBarkley,'dialog',"Mark:\You're bastards. You're all filthy, lying, bastards... I'll make sure you're blacklisted from EVERY Gun'sbraster convention there is!");
-      sCinema(oBarkley,'code','global.selected=1; with(oController) event_user(15);');
-      sCinema(oBarkley,'code','x=x;')
+      sCinema(oBarkley,'code',cine_0027);
+      sCinema(oBarkley,'code',cine_0006)
      } else if (global.char_eweapon[4]="F.I.N.A.L. G.U.N.") {
       sCinema(oBarkley,'dialog',"Mark:\G.U.N.S...");
       sCinema(oFollower0,'dialog',"Hoopz has the F.I.N.A.L. G.U.N. equipped. You should take it off him if you want to give Mark the gun.",1);
-      sCinema(oBarkley,'code','global.selected=1; with(oController) event_user(15);');
-      sCinema(oBarkley,'code','x=x;')
+      sCinema(oBarkley,'code',cine_0027);
+      sCinema(oBarkley,'code',cine_0006)
      } else {
       sCinema(oBarkley,'dialog',"Mark:\G.U.N.S...");
       sCinema(oBarkley,'dialog',"Give Mark the F.I.N.A.L. G.U.N.?",0,"Yeah","Hell Nah");
-      sCinema(oBarkley,'code','with(oController)event_user(15);');
-      sCinema(oBarkley,'code','x=x;')
+      sCinema(oBarkley,'code',cine_0028);
+      sCinema(oBarkley,'code',cine_0006)
      }
      exit;
     }
@@ -258,7 +258,7 @@ sCinema(oBarkley,'dialog',"Mark:\Treasure it. That is the closest you will ever 
 sCinema(oBarkley,'dialog',"Mark:\I shall make my leave now.");
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code','sFollow("delete",oFollower9);sFollow("update");');
+sCinema(oBarkley,'code',cine_0029);
 sCinema(oBarkley,'tint',c_black,0);
 sCinema(oFollower0,'dialog',"Let's never mention this again...",1);
 } else {
@@ -295,7 +295,7 @@ with (oStartmenu) instance_destroy();
 sCinema(oBarkley,'dialog',"I don't think this is going to work.",1);
 sCinema(oFollower0,'dialog',"Give it a toot and let's see what happens.",1);
 sCinema(oBarkley,'dialog',"Toot the Dimension Whistle?",0,"Yeah","Nah");
-sCinema(oBarkley,'code','with (oController) event_user(13);');
+sCinema(oBarkley,'code',cine_0030);
 }</string>
           </argument>
         </arguments>
@@ -326,13 +326,13 @@ sA('stopall');
 sItem("Dimension Whistle",-1);
 sCinema(oBarkley,'catchup');
 sCinema(oBarkley,'dialog',"Alright, here goes...",1);
-sCinema(oBarkley,'code','oBarkley.visible=0;');
-sCinema(oBarkley,'code','fzf=instance_create(oBarkley.x,oBarkley.y,oDummy);fzf.depth=oBarkley.depth;fzf.sprite_index=sVarious0;fzf.image_single=4;global.tamp=fzf;');
-sCinema(oBarkley,'code','sA("play",mToot);');
+sCinema(oBarkley,'code',cine_0031);
+sCinema(oBarkley,'code',cine_0032);
+sCinema(oBarkley,'code',cine_0033);
 sCinema(oFollower0,'wait',15);
 sCinema(oBarkley,'dialog',"Huh?",1);
 sCinema(oFollower0,'dialog',"Charles, look out!",1);
-sCinema(oBarkley,'code',"instance_create(-200,-200,oWinde)");
+sCinema(oBarkley,'code',cine_0034);
 } else {
 sCinema(oBarkley,'dialog',"Maybe some other time.",1);
 }</string>
@@ -369,7 +369,7 @@ kaz.depth=-9999;
 kaz.visible=0;
 kaz.sprite_index=sKazaam;
 sCinema(oBarkley,'dialog',"Let's rub the genie lamp and see what happens...",1);
-sCinema(oBarkley,'code','oController.kaz.visible=1;');
+sCinema(oBarkley,'code',cine_0035);
 sCinema(oBarkley,'dialog',"Kazaam:\Who dare to wake me? Ain't gonna mame this a mystery. Don't wanna do time on your wish. Watch it, boy! You don't want to dis me! Or I'll dish out my misery. Now. Who's that sorry wanna-be that disturbed my Z's? If you wanna be number one, I'm sorry boy, that's been done! But if you got the itches for a sack of riches don't matter how avaricious, I'm the man that can grant your wishes! Hey, don't turn your butt on me! I'm the man of the ages, straight out of the pages. Hang on! I'm contagious, outrageous, spontaneous! You can't contain this. I am KAZAAM!",0);
 sCinema(oFollower2,'dialog',"Holy Clispaeth! It's Kazaam.",1);
 sCinema(oBarkley,'dialog',"Kazaam:\I am... Kazaam!",0);
@@ -377,7 +377,7 @@ sCinema(oFollower0,'dialog',"Wow Barkley, I've heard about this Djinni in my tom
 sCinema(oBarkley,'dialog',"Kazaam:\Make your wish and I'm out of your face, back in my lamp and away from this place.",0);
 sCinema(oBarkley,'dialog',"Ok, I'll wish for...",1);
 sCinema(oBarkley,'dialog',"What do you wish for?",0,"Power.","Wealth.","Knowledge.");
-sCinema(oBarkley,'code','with (oController) event_user(11);');
+sCinema(oBarkley,'code',cine_0036);
 }</string>
           </argument>
         </arguments>
@@ -415,18 +415,18 @@ for (temp=0; temp&lt;5; temp+=1) {
 sEquipped();
 sCinema(oBarkley,'dialog',"I wish for more power.",1);
 sCinema(oBarkley,'dialog',"Kazaam:\So you want more power? Have no worries, this won't take an hour. Slam dunks, pivots, rebounds, and smarts, I'll increase all of these stats off of the charts. Kazaam! And I'm out of this place.",0);
-sCinema(oBarkley,'code','with (oController.kaz) instance_destroy();');
+sCinema(oBarkley,'code',cine_0037);
 sCinema(oBarkley,'dialog',"Gained +5 to VP, BP, Power, Guard, Brain, and Speed for all party members!");
 } else if (global.selected=1) {
 sItem('gold',5000); 
 sCinema(oBarkley,'dialog',"I wish for more wealth.",1);
 sCinema(oBarkley,'dialog',"Kazaam:\You wanna be rich? That ain't a hitch. Go from zero to hero in a flash. What's that you say? All of a sudden, you got $5000 in cash! Kazaam! And I'm out of this place.",0);
-sCinema(oBarkley,'code','with (oController.kaz) instance_destroy();');
+sCinema(oBarkley,'code',cine_0037);
 sCinema(oBarkley,'dialog',"$5000 magically appeared in your wallet!");
 } else if (global.selected=2) {
 sCinema(oBarkley,'dialog',"I want more knowledge.",1);
 sCinema(oBarkley,'dialog',"Kazaam:\Listen up and listen good, cuz I ain't gonna waste breath. If you act like a no-gooder, selfish and unjust, you're gonna end up in a temple of death. Act like a chump and when you perish, the deathtemple is what you'll least cherish. Kazaam! And I'm out of this place.",0);
-sCinema(oBarkley,'code','with (oController.kaz) instance_destroy();');
+sCinema(oBarkley,'code',cine_0037);
 sCinema(oFollower0,'dialog',"Hmmm, I'm not sure what this means Barkley. I've heard of a Deathtemple in hell, but it's only a myth. Supposedly those who have acted without any moral regard in their lives end up there as a punishment. While I personally do not believe such a place exists, these myths remind us to live virtuously.",1);
 sCinema(oBarkley,'dialog',"It's something to think about, I guess.",1);
 }</string>
@@ -451,57 +451,8 @@ sCinema(oBarkley,'dialog',"It's something to think about, I guess.",1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Possibly have global music array so it spans to sMusic
-ddd=current_time;
-if (directory_exists("Music")=1) {
-sound_replace(mSpaceshort,'Music\_spaceshort.wav',0,0); //wav sound
-}
-if (false) { //directory_exists("Music")=1
-sound_replace(mSadness,'Music\_sadness.mp3',3,0);
-sound_replace(mSpace,'Music\_space.mp3',3,0);
-sound_replace(mRunaway,'Music\_runaway.mp3',3,0);
-sound_replace(mFalling,'Music\_falling.mp3',3,0);
-sound_replace(mChurch,'Music\_church.mp3',3,0);
-sound_replace(mCatacomb,'Music\_catacomb.mp3',3,0);
-sound_replace(mSewer,'Music\_sewer.mp3',3,0);
-sound_replace(mSpirit,'Music\_spirit.mp3',3,0);
-sound_replace(mDoctor,'Music\_doctor.mp3',3,0);
-sound_replace(mCyberdwarf,'Music\_cyberdwarf.mp3',3,0);
-sound_replace(mParade,'Music\_parade.mp3',3,0);
-sound_replace(mProto,'Music\_proto.mp3',3,0);
-sound_replace(mQuest,'Music\_quest.mp3',3,0);
-sound_replace(mSpalding,'Music\_spalding.mp3',3,0);
-sound_replace(mGameover,'Music\_gameover.mp3',3,0);
-sound_replace(mToot,'Music\_toot.mp3',3,0);
-sound_replace(mMoe,'Music\_moe.mp3',3,0);
-sound_replace(mBasedow,'Music\_basedow.mp3',3,0);
-sound_replace(mSurf,'Music\_surf.mp3',3,0);
-sound_replace(mEpicbattle,'Music\_epicbattle.mp3',3,0);
-sound_replace(mBattle,'Music\_battle.mp3',3,0);
-sound_replace(mDating,'Music\_dating.mp3',3,0);
-sound_replace(mLiberty,'Music\_liberty.mp3',3,0);
-sound_replace(mOutskirt,'Music\_outskirt.mp3',3,0);
-sound_replace(mSweet,'Music\_sweet.mp3',3,0);
-sound_replace(mJordan,'Music\_jordan.mp3',3,0);
-sound_replace(mVictory,'Music\_victory.mp3',3,0);
-sound_replace(mFinal,'Music\_final.mp3',3,0);
-sound_replace(mChup,'Music\_chup.mp3',3,0);
-sound_replace(mDeath,'Music\_death.mp3',3,0);
-sound_replace(mCuch,'Music\_cuch.mp3',3,0);
-sound_replace(mEternity,'Music\_eternity.mp3',3,0);
-sound_replace(mNecron,'Music\_necron.mp3',3,0);
-}
-if (directory_exists("Voice")=1) {
-sound_replace(mPart0,'Voice\_part0.wav',0,0);
-sound_replace(mPart1,'Voice\_part1.wav',0,0);
-sound_replace(mPart2,'Voice\_part2.wav',0,0);
-sound_replace(mPart3,'Voice\_part3.wav',0,0);
-sound_replace(mBase,'Voice\_base.wav',0,0);
-sound_replace(mNeoshek,'Voice\_neoshek.wav',0,0);
-sound_replace(mWeari,'Voice\_weari.wav',0,0);
-sound_replace(mThatbal,'Voice\_thatbal.wav',0,0);
-}
-//show_message('time:'+string(current_time-ddd));</string>
+            <string>// Music/Voice now live in the sound resources themselves;
+// the GM6 sound_replace streaming block was removed in the port.</string>
           </argument>
         </arguments>
       </action>
@@ -1191,7 +1142,7 @@ event_user(5); //rooms
 global.displayc=0; //sets resolution
 global.displayx=display_get_width();
 global.displayy=display_get_height();
-display_reset();
+display_reset(0, false);
 if (global.sat[1]=0) {
 window_set_fullscreen(0);
 window_set_position((global.displayy/2)-((320*sett)/2),(global.displayy/2)-((240*sett)/2));

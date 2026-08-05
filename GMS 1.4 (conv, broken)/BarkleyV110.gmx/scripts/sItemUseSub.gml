@@ -13,52 +13,52 @@ if (string_count("permanent",string_lower(effect))>0) {
 duration='permanent';
 effect=string_replace(effect,"Permanent",'');
 } else duration='temp';
-comm='';
+comm=0; //command id, applied by sItemUseComm (was an execute_string'd code string)
 if (string_count("%",argument0)>0) percent=1;
 else percent=0;
 if (string_count("revive",string_lower(argument0))>0) {
-comm="global.char_chp[player]=max(global.char_chp[player],1);";
+comm=1;
 } else if (string_count("cure",string_lower(argument0))>0) { //space after efect
 effect=string_replace(effect,"Cure",""); //had string lower
-if (string_count("ailments",string_lower(argument0))>0) comm="x=x;";
-else if (string_count("all",string_lower(argument0))>0) comm="global.char_res2[player]=''";
-else comm="global.char_res2[player]=string_replace(global.char_res2[player],effect+' ','')";
+if (string_count("ailments",string_lower(argument0))>0) comm=2;
+else if (string_count("all",string_lower(argument0))>0) comm=3;
+else comm=4;
 } else {
 effect=string_lower(effect);
 }
 if (duration="permanent") {
-if (effect="vp") { comm='global.char_hp[player]+=value; if (global.char_chp[player]>0) global.char_chp[player]+=value;'; }
-if (effect="bp") { comm='global.char_zp[player]+=value; global.char_czp[player]+=value;'; }
-if (effect="power") { comm='global.char_attack[player]+=value;'; }
-if (effect="guard") { comm='global.char_defense[player]+=value;'; }
-if (effect="speed") { comm='global.char_footwork[player]+=value;'; }
-if (effect="brain") { comm='global.char_zauberacity[player]+=value;'; }
+if (effect="vp") { comm=5; }
+if (effect="bp") { comm=6; }
+if (effect="power") { comm=7; }
+if (effect="guard") { comm=8; }
+if (effect="speed") { comm=9; }
+if (effect="brain") { comm=10; }
 } else { //temporary diration
 if (percent=0) {
-if (effect="vp") { comm='if (global.char_chp[player]>0) global.char_chp[player]+=value;'; }
-if (effect="bp") { comm='global.char_czp[player]+=value;'; }
-if (effect="power") { comm='global.char_cattack[player]+=value;'; }
-if (effect="guard") { comm='global.char_cdefense[player]+=value;'; }
-if (effect="speed") { comm='global.char_cfootwork[player]+=value;'; }
-if (effect="brain") { comm='global.char_czauberacity[player]+=value;'; }
+if (effect="vp") { comm=11; }
+if (effect="bp") { comm=12; }
+if (effect="power") { comm=13; }
+if (effect="guard") { comm=14; }
+if (effect="speed") { comm=15; }
+if (effect="brain") { comm=16; }
 } else { //percent
-if (effect="vp") { comm='if (global.char_chp[player]>0) global.char_chp[player]+=floor((global.char_hp[player]/100)*value);'; }
-if (effect="bp") { comm='global.char_czp[player]+=floor((global.char_zp[player]/100)*value);'; }
-if (effect="power") { comm='global.char_cattack[player]+=floor(global.char_attack[player]/100)*value;'; }
-if (effect="guard") { comm='global.char_cdefense[player]+=floor(global.char_defense[player]/100)*value;'; }
-if (effect="speed") { comm='global.char_cfootwork[player]+=floor(global.char_footwork[player]/100)*value;'; }
-if (effect="brain") { comm='global.char_czauberacity[player]+=floor(global.char_zauberacity[player]/100)*value;'; }
+if (effect="vp") { comm=17; }
+if (effect="bp") { comm=18; }
+if (effect="power") { comm=19; }
+if (effect="guard") { comm=20; }
+if (effect="speed") { comm=21; }
+if (effect="brain") { comm=22; }
 }
 }
 
 //One or all
 if (area='single') {
 player=who;
-execute_string(comm);
+sItemUseComm();
 } else {
 for (playe=0; global.party[playe]!=-1; playe+=1) {
 player=global.party[playe];
-execute_string(comm);
+sItemUseComm();
 }
 }
 

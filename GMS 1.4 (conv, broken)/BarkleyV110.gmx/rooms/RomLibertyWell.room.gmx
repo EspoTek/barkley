@@ -304,7 +304,7 @@
     <instance objName="oSugarfy" x="64" y="224" name="inst_3036A331" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oDiabeastfake" x="96" y="432" name="inst_0654EDC2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oEventL6" x="88" y="304" name="inst_0E371DF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oLRod" x="104" y="432" name="inst_A29A992C" locked="0" code="image_single=1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oLRod" x="104" y="432" name="inst_A29A992C" locked="0" code="image_index=1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oCounter" x="48" y="544" name="inst_2ABE4379" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oParticles" x="16" y="608" name="inst_EC9A4F71" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oWall" x="944" y="480" name="inst_1D3A8594" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

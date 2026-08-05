@@ -1,0 +1,21 @@
+oBarkley.x=-99;
+with (oFollower) x=-99;
+sOvar(object_index,2);
+sCinema(oBarkley,"cond",cine_0148);
+sCinema(oFollower0,"dialog","The time for fun and games is over. We need to get back to business.",1);
+sCinema(oBarkley,"dialog","Yeah, uh... We gotta... Gotta go back...",1);
+sCinema(oBarkley,"wait",.9);
+sCinema(oFollower0,"dialog","Barkley, are you crying?",1);
+sCinema(oBarkley,"wait",.9);
+sCinema(oBarkley,"dialog","No, just got some... Some dirt in my eye...",1);
+sCinema(oBarkley,"wait",.9);
+sCinema(oFollower2,"dialog","The portal is closing. This is the last we'll see of the BBall Dimension for a long time...",1);
+sCinema(oBarkley,"code",cine_0262);
+sCinema(oBarkley,"wait",2.3); //2.5
+sCinema(oBarkley,"code",cine_0263);
+sCinema(oBarkley,"wait",.3);
+sCinema(oBarkley,"effect","fadein",3);
+global.roz=global.scheme[30];
+global.cvx=global.scheme[28];
+global.cvy=global.scheme[29];
+global.scheme[28]=-999;

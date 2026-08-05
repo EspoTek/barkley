@@ -59,7 +59,7 @@ global.temp+=1;
 }
 }
 //tft+="ene["+string(global.temp)+"]='';";
-get_string("Enemy info:",tft);</string>
+// get_string display removed (dev tool)</string>
           </argument>
         </arguments>
       </action>
@@ -109,7 +109,7 @@ with (oBPlacer) {
 global.str+="global.b_px["+string(global.temp)+"]="+string(x)+"; global.b_py["+string(global.temp)+"]="+string(y)+" ";
 global.temp+=1;
 }
-get_string('huh',global.str);</string>
+// get_string display removed (dev tool)</string>
           </argument>
         </arguments>
       </action>

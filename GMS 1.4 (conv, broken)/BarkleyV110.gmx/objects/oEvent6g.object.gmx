@@ -78,7 +78,7 @@ sOvar(oIntro32,4);
 sCinema(oBarkley,'dialog',"There's no need to go back in there.",1);
 sCinema(oBarkley,'move','down');
 sCinema(oBarkley,'move','down');
-sCinema(oBarkley,'code','sOvar(oIntro32,3)');</string>
+sCinema(oBarkley,'code',cine_0121);</string>
           </argument>
         </arguments>
       </action>

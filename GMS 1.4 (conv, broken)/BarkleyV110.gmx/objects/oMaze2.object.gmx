@@ -51,8 +51,8 @@ alarm[0]=1;
           <argument>
             <kind>1</kind>
             <string>instance_destroy();
-with (oMaze0) image_single=cid;
-with (oMaze1) image_single=cid;</string>
+with (oMaze0) { image_index=cid; image_speed=0; }
+with (oMaze1) { image_index=cid; image_speed=0; }</string>
           </argument>
         </arguments>
       </action>

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"rt_fadespin",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"rt_fadespin",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

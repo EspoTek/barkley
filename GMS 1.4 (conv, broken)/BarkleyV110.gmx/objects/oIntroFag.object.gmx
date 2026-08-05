@@ -54,7 +54,7 @@ alarm[0]=1;
 global.gold=0;
 oHundley.spd=3;
 oBarkley.t=2;
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
+sCinema(oBarkley,'cond',cine_0148);
 repeat(7) sCinema(oHundley,'move','up');
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'dialog',"Huh?",1);
@@ -64,8 +64,8 @@ sCinema(oHundley,'dialog',"Installing barkley_trojan.bat...\Virus installation c
 sCinema(oBarkley,'wait',1);
 repeat(9) sCinema(oHundley,'move','down');
 sCinema(oBarkley,'dialog',"What the fuck just happend? Hey, where did all my neo-shekels go?!",1);
-sCinema(oBarkley,'code','sOvar(oHundley,3);global.romname=oController.name;global.cvx=oBarkley.x;global.cvy=oBarkley.y;global.croom=room;sFileData(1,global.activeslot);');
-sCinema(oBarkley,'code','oHundley.x=-999;');</string>
+sCinema(oBarkley,'code',cine_0374);
+sCinema(oBarkley,'code',cine_0375);</string>
           </argument>
         </arguments>
       </action>

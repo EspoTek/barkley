@@ -1,0 +1,11 @@
+sParty("add",1); sParty("add",3); sParty("add",4); 
+sOvar(object_index,2);
+global.nofollow=0;
+repeat (3) sCinema(oBarkley,"move","right");
+sCinema(oBarkley,"wait",.6);
+sCinema(oBarkley,"dialog","Attendant:\\Here is your prize, Mr. Barkley, a mithril jersey. I hope you enjoy it and congratulations on your victory in the Festival Tournament!");
+sCinema(oBarkley,"item","Mithril Jersey",1);
+sCinema(oFollower3,"dialog","Good job dad! I knew you could do it!",1);
+sCinema(oFollower2,"dialog","I didn't expect any less of you, Charles.",1);
+sCinema(oBarkley,"dialog","Thanks guys. I'll put this jersey to good use, but most importantly, I'll never forget the lessons I learned in the arena.",1);
+sCinema(oFollower0,"dialog","I'm... I'm proud of you, Barkley. Good work.",1);

@@ -84,12 +84,12 @@ sOvar(object_index,1);
 sPos('save');
 sCinema(oBarkley,'move','right');
 sCinema(oFollower3,'dialog',"I'm feeling strange again dad.",1);
-sCinema(oBarkley,'code',"global.skipper=22;");
+sCinema(oBarkley,'code',cine_0106);
 sCinema(oBarkley,'dialog',"I... I am too, son. Just stay close. We're gonna be out of here as quick as we can.",1);
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',0.5);
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');oBarkley.visible=0;with (oFollower)visible=0;background_visible[0]=0;background_visible[1]=1;"); 
-sCinema(oBarkley,'code','oCosby.visible=1;oDavis.visible=1;oCagedBalla.visible=1;');
+sCinema(oBarkley,'code',cine_0009); 
+sCinema(oBarkley,'code',cine_0107);
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'tint',c_black,0);
 sCinema(oBarkley,'wait',1);
@@ -130,15 +130,15 @@ sCinema(oCagedBalla,'jump','start');
 sCinema(oCagedBalla,'move','right');
 sCinema(oCagedBalla,'move','right');
 sCinema(oCagedBalla,'jump','end');
-sCinema(oBarkley,'code','global.shake=9');
+sCinema(oBarkley,'code',cine_0018);
 repeat (10) {
-sCinema(oBarkley,'code','instance_create(random(320),random(256),oLightning)');
+sCinema(oBarkley,'code',cine_0108);
 sCinema(oBarkley,'wait',0.1);
 }
-sCinema(oBarkley,'code','instance_create(160,120,oAtombomb)');
+sCinema(oBarkley,'code',cine_0109);
 sCinema(oBarkley,'wait',2);
 sCinema(oBarkley,'tint',c_white,1);
-sCinema(oBarkley,'code','oCagedBalla.visible=0;');
+sCinema(oBarkley,'code',cine_0110);
 sCinema(oBarkley,'wait',2);
 sCinema(oBarkley,'tint',c_gray,0);
 sCinema(oBarkley,'wait',1);
@@ -149,9 +149,9 @@ sCinema(oCosby,'move','down');
 sCinema(oBarkley,'dialog',"Doctor Cosby:\It's... it's too late for that...He's gone, Davis.");
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',0.5);
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');oBarkley.visible=1;with (oFollower)visible=1;background_visible[0]=1;background_visible[1]=0;"); 
-sCinema(oBarkley,'code','global.shake=0');
-sCinema(oBarkley,'code','oCosby.visible=0;oDavis.visible=0;oCagedBalla.visible=0;');
+sCinema(oBarkley,'code',cine_0111); 
+sCinema(oBarkley,'code',cine_0112);
+sCinema(oBarkley,'code',cine_0113);
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'tint',c_black,0);
 sCinema(oBarkley,'wait',0.5);
@@ -167,7 +167,7 @@ sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'face','down');
 sCinema(oBarkley,'wait',2);
 sCinema(oBarkley,'dialog',"It's probably just superstition, we should move on.",1);
-sCinema(oBarkley,'code','global.skipper=0;');</string>
+sCinema(oBarkley,'code',cine_0014);</string>
           </argument>
         </arguments>
       </action>

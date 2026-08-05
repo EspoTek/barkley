@@ -1,0 +1,17 @@
+f0=85-25;
+f1=120-25;
+bbg=room_speed;
+room_speed=30;
+xpos=__view_get( e__VW.XView, 0 );
+ypos=__view_get( e__VW.YView, 0 );
+sel=0;
+sel2=0;
+fgf=0;
+wager=20;
+//if (global.scheme[2]>49) wager=0;
+//else wager=5;
+bbb=0;
+total1=99;
+total2=99;
+//global.gold=250;
+//global.scheme[2]=0;

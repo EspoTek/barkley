@@ -1,0 +1,1 @@
+oBallground.visible=0;

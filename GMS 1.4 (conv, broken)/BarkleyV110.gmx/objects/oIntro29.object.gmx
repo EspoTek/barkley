@@ -72,9 +72,9 @@ sCinema(oCyberdwarf,'dialog',"Hmph. I'm not so vain and foolish as to believe yo
 sCinema(oBarkley,'move','right');
 repeat (5) sCinema(oBarkley,'move','up');
 sCinema(oCyberdwarf,'dialog',"Now all I need to do is hit this switch.",1);
-sCinema(oCyberdwarf,'code','global.shake=10;sound_play(mGate);');
+sCinema(oCyberdwarf,'code',cine_0296);
 sCinema(oBarkley,'wait',1);
-sCinema(oCyberdwarf,'code','global.shake=0;global.skipper=0;');
+sCinema(oCyberdwarf,'code',cine_0297);
 sCinema(oBarkley,'effect','fadein',3);
 global.roz=RomCuchHoop0;
 global.playersprite=sHoopz0;

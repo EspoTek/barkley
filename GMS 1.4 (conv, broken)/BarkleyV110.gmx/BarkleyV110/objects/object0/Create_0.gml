@@ -1,0 +1,15 @@
+spd=0;
+ll=0;
+hp=0;
+ss=sprite_index;
+ww=sprite_width;
+hh=sprite_height;
+mmm=1;
+//x=160-(sprite_width/2);
+fade=0;
+acc=0;
+huh=0;
+x-=6;
+alarm[1]=220;
+sA("stopall");
+sound_play(mWindC);

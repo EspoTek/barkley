@@ -77,7 +77,7 @@ oBarkley.move='';
 global.temp2=1; 
 sCinema(oBarkley,'dialog',"I don't think we're supposed to go back here.",1);
 sCinema(oBarkley,'move','down');
-sCinema(oBarkley,'code','global.temp2=0;');</string>
+sCinema(oBarkley,'code',cine_0070);</string>
           </argument>
         </arguments>
       </action>

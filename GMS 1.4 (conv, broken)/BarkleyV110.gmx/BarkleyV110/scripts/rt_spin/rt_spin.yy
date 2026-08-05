@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"rt_spin",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"rt_spin",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_single=11+floor(random(2));
+            <string>image_index=11+floor(random(2)); image_speed=0;
 speed=10;
 it=-(4+random(4));
 twist=0;
@@ -110,7 +110,7 @@ if (daf=1) { with (master) sDamage(doing); }
           <argument>
             <kind>1</kind>
             <string>if (view_current!=0) exit;
-draw_sprite_ext(sprite_index,image_single,x,y,image_xscale,image_yscale,image_angle,c_white,1);</string>
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_white,1);</string>
           </argument>
         </arguments>
       </action>

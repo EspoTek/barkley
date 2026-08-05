@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>image_xscale=0;
 image_yscale=0;
-image_single=0;
+image_index=0; image_speed=0;
 kill=0;
 cou=0;
 x=view_xview[0]+160; y=view_yview[0]+120;</string>

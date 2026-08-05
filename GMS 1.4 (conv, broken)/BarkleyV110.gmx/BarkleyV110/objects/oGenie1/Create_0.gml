@@ -1,0 +1,6 @@
+event_inherited();
+sprt=sGenie1;
+t=1;
+allwalk=1;
+walk=1;
+spd=0.000000000000001;

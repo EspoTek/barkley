@@ -47,8 +47,11 @@ exit;
 }
 if (argument0="update") { ////////////////////////////////////////update
  sEquipped();
- vvv="for(m=0;"+arr+"[m]!='';m+=1)item[m]="+arr+"[m];";
- execute_string(vvv);
+ //arr names the item-array source; was execute_string of a generated copy loop
+ if (arr="global.item_id") { for(m=0; global.item_id[m]!=''; m+=1) item[m]=global.item_id[m]; }
+ else if (arr="itemf") { for(m=0; itemf[m]!=''; m+=1) item[m]=itemf[m]; }
+ else if (arr="global.temp.itemf") { srcinst=global.temp; for(m=0; srcinst.itemf[m]!=''; m+=1) item[m]=srcinst.itemf[m]; }
+ else { srcinst=real(string_digits(arr)); for(m=0; srcinst.itemf[m]!=''; m+=1) item[m]=srcinst.itemf[m]; } //"(<id>).itemf"
  item[m]='';
  itemdsc[0]='';
  itempts[0]='';

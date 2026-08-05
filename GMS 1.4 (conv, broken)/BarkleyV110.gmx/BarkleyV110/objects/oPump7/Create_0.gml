@@ -1,0 +1,10 @@
+event_inherited();
+sprt=sPump;
+t=2;
+allwalk=1;
+walk=1;
+spd=0.000000000000001;
+alarm[0]=2;
+//face=8;
+//name='Larry Bird';
+if (global.cinema=1) global.cinema=0;

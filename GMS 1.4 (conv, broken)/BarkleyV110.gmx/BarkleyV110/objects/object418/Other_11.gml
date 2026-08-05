@@ -1,0 +1,9 @@
+global.dialog=1;
+sCinema(oBarkley,"dialog","",1);
+sCinema(oFollower0,"dialog","",1);
+sCinema(oBarkley,"dialog","",1);
+sCinema(oFollower0,"dialog","",1);
+sCinema(oBarkley,"dialog","",1);
+sCinema(oFollower0,"dialog","",1);
+sCinema(oBarkley,"dialog","",1);
+sCinema(oFollower0,"dialog","",1);

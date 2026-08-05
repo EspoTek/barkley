@@ -1,0 +1,10 @@
+global.dialog=1;
+sOvar(object_index,1);
+repeat (16) sCinema(oBarkley,"move","up");
+sCinema(oBarkley,"wait",2);
+sCinema(oFollower2,"dialog","This... this is it, Barkley. This is what's left of the old Spalding building.",1);
+sCinema(oBarkley,"dialog","Dear Clispaeth... it's terrible.",1);
+sCinema(oFollower2,"dialog","After the Purge, all hell broke loose. Any place that was even remotely identified with basketball was ransacked and looted. It's amazing that the place is even standing.",1);
+sCinema(oBarkley,"wait",2);
+sCinema(oBarkley,"dialog","Do you think there's really something in there that can counter the Ultimate B-Ball?",1);
+sCinema(oFollower2,"dialog","We'll just have to see for ourselves, Barkley. I can only hope...",1);

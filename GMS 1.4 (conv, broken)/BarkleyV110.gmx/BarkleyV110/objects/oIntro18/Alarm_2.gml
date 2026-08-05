@@ -1,0 +1,26 @@
+//64,96
+sItem(global.char_eweapon[4],1);
+sItem(global.char_earmour[4],1);
+sItem(global.char_eaccess[4],1);
+global.char_eweapon[4]="Nothing";
+global.char_earmour[4]="Nothing";
+global.char_eaccess[4]="Nothing";
+sParty("del",4);
+sFollow("delete",oFollower3);
+sFollow("update");
+global.skipper=0;
+sOvar(oJuwanna,2);
+oBarkley.x=64;
+oBarkley.t=3;
+sCinema(oBarkley,"code",cine_0221);
+sCinema(oBarkley,"cond",cine_0148);
+sCinema(oBarkley,"dialog","Juwanna, there has to be something I can do. I can't let Hoopz...",1);
+sCinema(oJuwanna,"dialog","I... I can only think of one thing, Charles.",1);
+sCinema(oBarkley,"dialog","Tell me, Juwanna, tell me! I'll do anything!",1);
+sCinema(oJuwanna,"dialog","I... I don't want you to get your hopes up because it's a long shot. A real long shot.",1);
+sCinema(oBarkley,"dialog","Anything, Juwanna, anything.",1);
+sCinema(oJuwanna,"dialog","...okay. South of town, there's an old man who lives by himself. I don't know much about him but I know he knows more about diabetes than any other person on the planet. I don't know if he will help you or not, Charles. He's a real recluse and doesn't like strangers, especially ones who want something from him.",1);
+sCinema(oBarkley,"dialog","Juwanna... thank you. Thank you from the bottom of my heart. I'll save Hoopz if it means I have to sacrifice myself.",1);
+sCinema(oJuwanna,"dialog","Charles...",1);
+sCinema(oBarkley,"dialog","I have to go now but... thank you.",1);
+sCinema(oJuwanna,"dialog","Good luck, Charles...",1);

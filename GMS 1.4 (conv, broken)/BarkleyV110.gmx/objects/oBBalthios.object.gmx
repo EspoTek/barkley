@@ -1040,7 +1040,7 @@ coh=0; image_index+=1;
 //if (image_index=1) sS(mBLaunchZ);
 if (image_index=3) {
 sS(mBFrost);
-repeat (6) (instance_create(x-40,y-10,oBIce2)).target=target;
+repeat (6) { tttmp=instance_create(x-40,y-10,oBIce2); tttmp.target=target; }
 fll+=1;
 if (fll&gt;1) {
 fol.pct+=0.2;
@@ -1052,7 +1052,7 @@ target.col_use=make_color_rgb(blu,blu,255); target.col_duration=500; target.col_
 }
 if (image_index=4) {
 if (fll&gt;5) stage=3.1;
-else image_index=0;
+else { image_index=0; image_speed=0; }
 cov=0;
 }
 } else if (stage=3.1) {

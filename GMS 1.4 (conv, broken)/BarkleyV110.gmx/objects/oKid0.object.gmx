@@ -60,8 +60,8 @@ sCinema(oBarkley,'dialog',"I'm uh, I'm sorry kid.",1);
 sCinema(oBarkley,'dialog',"Give the kid a neo-shekel?",0,"Yes","No");
 sCinema1(oBarkley,'dialog',"Get something to eat, kid.",1);
 sCinema2(oBarkley,'dialog',"It's called survival of the fittest. If you can't slam with the best, then jam with the rest.",1);
-sCinema(oBarkley,'code',"if (global.selected=0 &amp;&amp; sItem('goldcheck',1)) { oCinema1.enable=1; sItem('gold',-1); global.scheme[8]=2; } else oCinema2.enable=1;");
-sCinema(oBarkley,'cond',"if (oCinema1.enable=0 &amp;&amp; oCinema2.enable=0) good=1");
+sCinema(oBarkley,'code',cine_0403);
+sCinema(oBarkley,'cond',cine_0404);
 } else {
 sCinema(oBarkley,'dialog',"I got nothing for you, kid.",1);
 }</string>

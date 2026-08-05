@@ -72,8 +72,8 @@ global.skipper=0;
 sOvar(oJuwanna,2);
 oBarkley.x=64;
 oBarkley.t=3;
-sCinema(oBarkley,'code','global.nofollow=0;with (oFollower) { x=64; y=96+16; t=3; }oBarkley.y=96+16;');
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
+sCinema(oBarkley,'code',cine_0221);
+sCinema(oBarkley,'cond',cine_0148);
 sCinema(oBarkley,'dialog',"Juwanna, there has to be something I can do. I can't let Hoopz...",1);
 sCinema(oJuwanna,'dialog',"I... I can only think of one thing, Charles.",1);
 sCinema(oBarkley,'dialog',"Tell me, Juwanna, tell me! I'll do anything!",1);
@@ -109,17 +109,17 @@ sCinema(oJuwanna,'dialog',"Good luck, Charles...",1);</string>
 sOvar(oEvent0c,1);
 sOvar(oEvent1c,1);
 oBarkley.t=0;
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
-sCinema(oBarkley,'code','global.nofollow=0;');
+sCinema(oBarkley,'cond',cine_0148);
+sCinema(oBarkley,'code',cine_0222);
 repeat(5) sCinema(oBarkley,'move','up');
 repeat(8) sCinema(oBarkley,'move','left');
 sCinema(oBarkley,'dialog',"He's... gone, Juwanna Mann. The Ghost Dad is gone.",1);
 sCinema(oJuwanna,'dialog',"And so is the fog, Barkley.",1);
 sCinema(oBarkley,'wait',1.5);
 sCinema(oJuwanna,'move','right');
-sCinema(oBarkley,'code',"sA('stopall');sA('loop',mSadness);");
+sCinema(oBarkley,'code',cine_0223);
 sCinema(oBarkley,'wait',.5);
-sCinema(oBarkley,'code',"if (sA('check',mSadness)=0) sA('loop',mSadness);");
+sCinema(oBarkley,'code',cine_0224);
 sCinema(oJuwanna,'dialog',"Charles, I want to thank you for-",1);
 sCinema(oBarkley,'move','right');
 sCinema(oBarkley,'dialog',"Juwanna, you know my heart still belongs to Maureen.",1);
@@ -136,7 +136,7 @@ sCinema(oBarkley,'dialog',"I'm sorry, Juwanna. Goodbye.",1);
 //was 8 below
 repeat(7) sCinema(oBarkley,'move','right',4);
 repeat(4) sCinema(oBarkley,'move','down',4);
-sCinema(oBarkley,'code',"oBarkley.x=-999;global.nofollow=1;with (oFollower) x=-999;");
+sCinema(oBarkley,'code',cine_0225);
 sCinema(oBarkley,'wait',1);
 sCinema(oJuwanna,'dialog',"...goodbye Charles.",1);
 sCinema(oBarkley,'effect','fadein',3);
@@ -164,9 +164,9 @@ global.roz=RomProtoStreet;</string>
             <kind>1</kind>
             <string>sOvar(oIntro18,1);
 oBarkley.t=0;
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
-sCinema(oBarkley,'code','global.nofollow=0;');
-//sCinema(oBarkley,'code',"sound_stop_all();sound_loop(mProto);");
+sCinema(oBarkley,'cond',cine_0148);
+sCinema(oBarkley,'code',cine_0222);
+//sCinema(oBarkley,'code',cine_0226);
 repeat(5) sCinema(oBarkley,'move','up');
 repeat(6) sCinema(oBarkley,'move','left');
 sCinema(oBarkley,'wait',1);
@@ -176,12 +176,12 @@ sCinema(oBarkley,'dialog',"Wh-who?",1);
 sCinema(oBarkley,'dialog',"???:\The... Ghost Dad.");
 sCinema(oBarkley,'dialog',"Just tell me what the hell is going on here!",1);
 sCinema(oBarkley,'dialog',"???:\K-keep it down! He's still here! Can't you hear him?");
-sCinema(oBarkley,'code',"sound_play(mGlaugh);");
+sCinema(oBarkley,'code',cine_0227);
 sCinema(oBarkley,'wait',1.5);
 sCinema(oBarkley,'dialog',"???:\Shit...");
 sCinema(oBarkley,'wait',4);
 sCinema(oBarkley,'dialog',"???:\I think... I think he's gone now. That was close. Charles, I haven't seen you in a long time.");
-sCinema(oBarkley,'code',"sA('stopall');sA('loop',mProto);");
+sCinema(oBarkley,'code',cine_0211);
 sCinema(oBarkley,'dialog',"What? I've never seen you in my life.",1);
 sCinema(oBarkley,'dialog',"???:\You don't recognize my sensual curves and delicate frame, Charles Barkley? I was once the talk of the WNBA. Oh, but I suppose that the loose b-ball energies have ravaged my body and time has ravaged your memory.");
 sCinema(oBarkley,'dialog',"Ju... Juwanna? Juwanna Mann? It can't be you. You were one of the first killed in the Purge! What happened to you?",1);
@@ -201,7 +201,7 @@ sCinema(oJuwanna,'dialog',"Thank you Charles... I mean it. Thank you.",1);
 sCinema(oBarkley,'move','right');
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'dialog',"Don't think I'm doing it out of the kindness of my heart, Juwanna.",1);
-sCinema(oBarkley,'code','global.skipper=0');</string>
+sCinema(oBarkley,'code',cine_0228);</string>
           </argument>
         </arguments>
       </action>

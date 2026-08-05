@@ -52,10 +52,10 @@ cou=0;</string>
           <argument>
             <kind>1</kind>
             <string>sA('stopall');
-sCinema(oCyberdwarf,'code','sde=instance_create(view_xview[0],view_yview[0],oDummy);sde.sprite_index=sNecrondie;sde.depth=-99999;');
+sCinema(oCyberdwarf,'code',cine_0310);
 sCinema(oCyberdwarf,'tint',c_black,1);
 sCinema(oCyberdwarf,'wait',8);
-sCinema(oCyberdwarf,'code','with (sde) instance_destroy();sA("loop",mParade);');
+sCinema(oCyberdwarf,'code',cine_0311);
 sCinema(oCyberdwarf,'tint',c_black,0);
 oHoopz.x=144-4;
 oHoopz.y=96;
@@ -103,7 +103,7 @@ global.nofollow=1;
 global.skipper=24;
 with (oFollower) x=-999;
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code',"sDialog('set',1,'top');");
+sCinema(oBarkley,'code',cine_0017);
 sCinema(oBalthios,'dialog',"This... this is it, Barkley.",1);
 sCinema(oBarkley,'dialog',"Hmm?",1);
 sCinema(oBalthios,'dialog',"This is gonna be the final battle. There's no turning back from here.",1);
@@ -130,7 +130,7 @@ sCinema(oCyberdwarf,'move','right');
 repeat (5) sCinema(oCyberdwarf,'move','up');
 sCinema(oBarkley,'wait',1);
 sCinema(oCyberdwarf,'dialog',"Prepare for entry into Necron 5...",1);
-sCinema(oBarkley,'code',"global.skipper=0;global.nofollow=0;");
+sCinema(oBarkley,'code',cine_0312);
 sCinema(oBarkley,'effect','fadein',3);
 global.roz=RomNecronEnter;</string>
           </argument>

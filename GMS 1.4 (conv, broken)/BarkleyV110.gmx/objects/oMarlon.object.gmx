@@ -58,7 +58,7 @@ sItem('gold',-30);
 sCinema(oBarkley,'tint',c_black,0.5);
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'tint',c_black,1);
-sCinema(oBarkley,'code','sFullheal()');
+sCinema(oBarkley,'code',cine_0392);
 sCinema(oBarkley,'wait',2);
 sCinema(oBarkley,'tint',c_white,0);
 sCinema(oBarkley,'dialog',"All VP, BP, and conditions restored!");
@@ -69,10 +69,10 @@ sCinema(oBarkley,'dialog',"Damnit... Don't got enough Neo-Shekles to pay...",1);
 sCinema(oBarkley,'tint',c_black,0.5);
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'tint',c_black,1);
-sCinema(oBarkley,'code','sFullheal()');
+sCinema(oBarkley,'code',cine_0392);
 sCinema(oBarkley,'wait',1);
 if (sOvar(oIntro19,-1)=-1) {
-sCinema(oBarkley,'code',"sOvar(oIntro19,1);",1);
+sCinema(oBarkley,'code',cine_0422,1);
 sCinema(oBarkley,'effect','fadein',3);
 global.roz=RomProtoDream;
 } else {
@@ -109,12 +109,12 @@ sCinema(oBarkley,'dialog',"Marlon:\Well, come back whenever you want.");
 if (sOvar(oSign1,-1)!=2) {
 sCinema(oBarkley,'dialog',"Marlon:\This isn't a hotel or anything but you can stay as long as you pay.");
 sCinema(oBarkley,'dialog',"Stay at inn? You have $"+string(global.gold)+".",0,"Pay $30 to stay.","No dice.");
-sCinema(oBarkley,'code',"with (oMarlon) event_user(2);");
+sCinema(oBarkley,'code',cine_0423);
 turn=0;
 } else {
 sCinema(oBarkley,'dialog',"Marlon:\There's a room in the back if you want it. I guess we owe you for getting rid of the Ghost Dad.");
 sCinema(oBarkley,'dialog',"Rest?",0,"Yeah.","Nah.");
-sCinema(oBarkley,'code',"with (oMarlon) event_user(2);");
+sCinema(oBarkley,'code',cine_0423);
 turn=1;
 }</string>
           </argument>

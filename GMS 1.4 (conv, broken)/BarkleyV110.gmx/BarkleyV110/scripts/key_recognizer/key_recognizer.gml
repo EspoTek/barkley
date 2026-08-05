@@ -1,0 +1,67 @@
+function key_recognizer(argument0) {
+	//Checks whether the key is valid or not.
+	tt=argument0;
+	if (tt=13) return("Enter");
+	if (tt=16) return("Shift");
+	if (tt=17) return("Control");
+	if (tt=18) return("ALT");
+	if (tt=32) return("Space");
+	if (tt=37) return("Left Arrow");
+	if (tt=38) return("Up Arrow");
+	if (tt=39) return("Right Arrow");
+	if (tt=40) return("Down Arrow");
+	if (tt=48) return("0");
+	if (tt=49) return("1");
+	if (tt=50) return("2");
+	if (tt=51) return("3");
+	if (tt=52) return("4");
+	if (tt=53) return("5");
+	if (tt=54) return("6");
+	if (tt=55) return("7");
+	if (tt=56) return("8");
+	if (tt=57) return("9");
+	if (tt=65) return("A");
+	if (tt=66) return("B");
+	if (tt=67) return("C");
+	if (tt=68) return("D");
+	if (tt=69) return("E");
+	if (tt=70) return("F");
+	if (tt=71) return("G");
+	if (tt=72) return("H");
+	if (tt=73) return("I");
+	if (tt=74) return("J");
+	if (tt=75) return("K");
+	if (tt=76) return("L");
+	if (tt=77) return("M");
+	if (tt=78) return("N");
+	if (tt=79) return("O");
+	if (tt=80) return("P");
+	if (tt=81) return("Q");
+	if (tt=82) return("R");
+	if (tt=83) return("S");
+	if (tt=84) return("T");
+	if (tt=85) return("U");
+	if (tt=86) return("V");
+	if (tt=87) return("W");
+	if (tt=88) return("X");
+	if (tt=89) return("Y");
+	if (tt=90) return("Z");
+	if (tt=96) return("Numpad 0");
+	if (tt=97) return("Numpad 1");
+	if (tt=98) return("Numpad 2");
+	if (tt=99) return("Numpad 3");
+	if (tt=100) return("Numpad 4");
+	if (tt=101) return("Numpad 5");
+	if (tt=102) return("Numpad 6");
+	if (tt=103) return("Numpad 7");
+	if (tt=104) return("Numpad 8");
+	if (tt=105) return("Numpad 9");
+	if (tt=106) return("Numpad *");
+	if (tt=107) return("Numpad +");
+	if (tt=109) return("Numpad -");
+	if (tt=111) return("Numpad /");
+	if (tt=110) return("Numpad .");
+	else return("N/A");
+
+
+}

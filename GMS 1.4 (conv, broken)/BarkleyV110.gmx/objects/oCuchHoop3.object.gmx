@@ -84,7 +84,7 @@ sParty('add',4);</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_single=(flick*5)+progress;
+            <string>image_index=(flick*5)+progress; image_speed=0;
 //cou-=1;
 if (cou&lt;0) { flick=!flick; cou=30; }</string>
           </argument>

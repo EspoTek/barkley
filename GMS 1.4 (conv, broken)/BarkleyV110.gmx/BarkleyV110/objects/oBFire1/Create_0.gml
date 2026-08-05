@@ -1,0 +1,9 @@
+depth=-y;
+direction = 90-5+random(10);
+spd=3;
+speed = (2+random(1))*spd;
+friction = 0.010*spd;
+size = 2+10;
+dark = 100;
+x+=-5+random(10);
+intensity=0;

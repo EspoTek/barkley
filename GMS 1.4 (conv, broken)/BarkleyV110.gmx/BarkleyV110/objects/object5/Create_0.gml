@@ -1,0 +1,10 @@
+sound_play(mTOGS);
+alp=0;
+alp2=0;
+alarm[0]=11.5*30;
+alarm[1]=alarm[0]+15;
+alarm[2]=alarm[1]+20;
+alarm[3]=alarm[2]+20;
+fade=0;
+fade2=0;
+cou=0;

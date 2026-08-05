@@ -1,0 +1,4 @@
+if (!keyboard_check_direct(vk_escape))
+{
+   game_end();
+}

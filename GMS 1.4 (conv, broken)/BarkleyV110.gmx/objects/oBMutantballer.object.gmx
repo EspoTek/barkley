@@ -251,23 +251,7 @@ if (wdone=1) { stage=0; wdone=0; walk=-999; vol=0.5; sound_volume(mMutantballer2
 if (fff=0) { 
 fff=1; rou=13; img=2; 
 //Dust
-tob=object_add();
-object_event_add(tob,ev_create,0,"
-sprite_index=sBWhistle1;
-image_angle=random(360);
-image_single=floor(random(3));
-dir=80+random(20);
-spd=2;
-x+=-10+random(20);
-y+=-10+random(20);
-");
-object_event_add(tob,ev_step,0,"
-x+=lengthdir_x(spd,dir);
-y+=lengthdir_y(spd,dir);
-image_alpha-=0.04+random(0.02);
-if (image_alpha&lt;0) instance_destroy();
-");
-object_event_add(tob,ev_draw,0,"if (view_current!=0) exit; sD();");
+tob=oBMutantballerP0;
 //End dust
 }
 fff+=2; //.5
@@ -292,7 +276,7 @@ if (wdone=1) { fff=1; stage=3; wdone=0; walk=slav; sDamage(doing); sound_stop(mM
 } else if (stage=3) {
 if (wdone=1) stage=5;
 } else if (stage=5) {
-with (tob) {instance_destroy();} object_delete(tob);
+with (tob) {instance_destroy();} with (tob) instance_destroy();
 x=slav.x-footx; y=slav.y-footy;
 wdone=0;
 wspd=8;

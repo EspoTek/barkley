@@ -78,7 +78,7 @@ sOvar(object_index,1);
 sCinema(oBarkley,'dialog',"Shit, the fog is so thick that I can barely see anything in front of me. We'd better go back.",1);
 sCinema(oBarkley,'move','up');
 sCinema(oBarkley,'move','up');
-sCinema(oBarkley,'code','sOvar(oEvent0c,0)');</string>
+sCinema(oBarkley,'code',cine_0068);</string>
           </argument>
         </arguments>
       </action>

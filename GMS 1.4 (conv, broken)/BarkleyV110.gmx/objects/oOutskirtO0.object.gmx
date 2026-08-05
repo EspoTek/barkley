@@ -102,7 +102,7 @@ sCinema(oBarkley,'move','down');
             <string>global.dialog=1;
 oBarkley.move="";
 sCinema(oBarkley,'dialog','Enter Neo New York?',0,"Yes","No");
-sCinema(oBarkley,'code','with (oOutskirtO0) event_user(2);');</string>
+sCinema(oBarkley,'code',cine_0426);</string>
           </argument>
         </arguments>
       </action>

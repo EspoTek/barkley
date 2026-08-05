@@ -79,7 +79,7 @@ sOvar(object_index,1);
 sCinema(oBarkley,'dialog',"Spalding isn't this way, it's to the left. We need to go there so we can get the prototype b-ball.",1);
 sCinema(oBarkley,'move','up');
 sCinema(oBarkley,'move','up');
-sCinema(oBarkley,'code','sOvar(oEvent00c,0)');</string>
+sCinema(oBarkley,'code',cine_0066);</string>
           </argument>
         </arguments>
       </action>

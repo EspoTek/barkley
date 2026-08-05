@@ -57,21 +57,21 @@ oDiabeastfake.sprt=sCult2;
 with (oWall0) solid=0;
 oLRod.visible=1;
 sPos('load');
-sCinema(oBarkley,'code',"sDialog('set',1,'top');");
+sCinema(oBarkley,'code',cine_0017);
 sCinema(oBarkley,'dialog',"Reginald:\You... Ughhh... You don't understand, none of you...");
 sCinema(oDiabeastfake,'move','down');
 sCinema(oBarkley,'dialog',"Reginald:\Aghh... You will regret this. You will -- orgrhh -- go down in the history books as the man who plagued humanity with diabetes...");
 sCinema(oDiabeastfake,'move','down');
 sCinema(oDiabeastfake,'wait',1);
 repeat (4) sCinema(oDiabeastfake,'move','down',6);
-sCinema(oBarkley,'code','oDiabeastfake.x=-999;');
+sCinema(oBarkley,'code',cine_0128);
 sCinema(oBarkley,'dialog',"Reginald:\Ahhhhhhh!!!");
 sCinema(oDiabeastfake,'wait',1);
 repeat (3) sCinema(oBarkley,'move','down');
-sCinema(oBarkley,'code','oLRod.visible=0;sound_play(mIncan);');
+sCinema(oBarkley,'code',cine_0129);
 sCinema(oBarkley,'item','Immaculate Rod',1);
 sCinema(oBarkley,'dialog',"We got the rod, now let's get the hell out of here.",1);
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');");
+sCinema(oBarkley,'code',cine_0074);
 sCinema(oBarkley,'effect','fadein',3);
 global.roz=RomLibertyMain;</string>
           </argument>
@@ -123,7 +123,7 @@ oBarkley.move='';
 sBoss('oBReginald');
 sOvar(oEventL6,1); //752,288
 repeat (6) sCinema(oBarkley,'move','down');
-sCinema(oBarkley,'code',"sDialog('set',1,'top');");
+sCinema(oBarkley,'code',cine_0017);
 sCinema(oBarkley,'dialog',"The Diabeastie!",1);
 sCinema(oBarkley,'dialog',"Diabeastie?:\...");
 sCinema(oFollower2,'dialog',"It's holding the rod. We're going to have to slay this beast.",1);
@@ -148,10 +148,10 @@ sCinema(oFollower2,'dialog',"You can't make a decision like that. It's not yours
 sCinema(oBarkley,'dialog',"Reginald:\How dare you speak in such tone when you desire Yelmirb's service. Do you think he says some magick words, and mystically takes away the diabetes from your son? No. He absorbs it, so your son does not have to live a crippled life. Yelmirb understands his sacrifices to humanity. Subsequent clones would as well.");
 sCinema(oFollower0,'dialog',"You can't play Clispaeth. No one can. You're deranged.",1);
 sCinema(oBarkley,'dialog',"Reginald:\Very well. I see you are as ignorant as those who lived on this island... No matter! Fear my deadly magicks!");
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');");
-sCinema(oBarkley,'code','sPos("save")');
-sCinema(oBarkley,'code',"with (oEventL6) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;");
+sCinema(oBarkley,'code',cine_0074);
+sCinema(oBarkley,'code',cine_0130);
+sCinema(oBarkley,'code',cine_0131);
+sCinema(oBarkley,'code',cine_0006);
 //sCinema(oBarkley,'effect','fadein',3);
 //global.roz=RomLibertyWell;</string>
           </argument>

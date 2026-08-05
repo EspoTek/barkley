@@ -1,0 +1,9 @@
+x=320/2;
+y=240/2;
+sV();
+image_alpha=0;
+image_xscale=1;
+image_yscale=1;
+fade=0;
+alp=0;
+alarm[0]=200;

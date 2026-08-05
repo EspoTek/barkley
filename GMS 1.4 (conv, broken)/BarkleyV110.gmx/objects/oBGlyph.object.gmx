@@ -60,14 +60,14 @@ speed=0;
 } else {
 image_xscale=1;
 image_yscale=1;
-speed=spd+image_single;
+speed=spd+image_index;
 }
 image_angle+=8+random(4);
 cv+=1;
 if (cv&gt;119) instance_destroy();
 if (x&gt;target.x) {
 instance_destroy();
-if (image_single=0) { //touch
+if (image_index=0) { //touch
 sBCondition('vp',floor(target._rvp/2),target); 
 with (target) {
 mw=floor(random(4));
@@ -77,7 +77,7 @@ if (mw=2) { sBCondition('speed',ceil(_rspeed*.13),id); }
 if (mw=3) { sBCondition('brain',ceil(_rbrain*.13),id); }
 }
 }
-if (image_single=1) { 
+if (image_index=1) { 
 sBCondition('vp',floor((target._rvp)),target); 
 with (target) {
 if (_xguard&lt;0) _xguard=0;
@@ -86,7 +86,7 @@ if (_xguard&lt;0) _xguard=0;
   if (_xbrain&lt;0) _xbrain=0;
 }
 } //knowledge
-if (image_single=2) { sBCondition('vp',floor(target._rvp*.66),target); } //carress
+if (image_index=2) { sBCondition('vp',floor(target._rvp*.66),target); } //carress
 sS(mHeal3);
 }</string>
           </argument>

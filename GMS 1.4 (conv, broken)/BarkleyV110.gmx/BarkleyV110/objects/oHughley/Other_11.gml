@@ -1,0 +1,12 @@
+global.dialog=1;
+wf=floor(random(11));
+if (wf=0) sCinema(oHughley,"dialog","im hundley",1);
+if (wf=1) sCinema(oHughley,"dialog","im hubley",1);
+if (wf=2) sCinema(oHughley,"dialog","im hughley",1);
+if (wf=3) sCinema(oHughley,"dialog","uim hupley",1);
+if (wf=4) sCinema(oHughley,"dialog","ium humpley",1);
+if (wf=5) sCinema(oHughley,"dialog","sometimes i punch and kick homosexuals down the stairwell. its not that i have anything against them, its just that i dont like them.",1);
+if (wf=6) sCinema(oHughley,"dialog","im, huembley",1);
+if (wf=7) sCinema(oHughley,"dialog","im hogely",1);
+if (wf=8) sCinema(oHughley,"dialog","i,m baney",1);
+if (wf=9) sCinema(oHughley,"dialog","i m huopley",1);

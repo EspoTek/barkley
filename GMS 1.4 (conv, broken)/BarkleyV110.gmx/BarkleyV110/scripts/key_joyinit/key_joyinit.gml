@@ -1,0 +1,29 @@
+function key_joyinit() {
+	deltime=8;
+	up=vk_numpad8;
+	down=vk_numpad2;
+	left=vk_numpad4;
+	right=vk_numpad6;
+	ar[0]=right;
+	ar[1]=up;
+	ar[2]=left;
+	ar[3]=down;
+	but[0]=0;
+	but[1]=0;
+	but[2]=0;
+	but[3]=0;
+	//rests
+	but[4]=0;
+	but[5]=0;
+	but[6]=0;
+	but[7]=0;
+	but[8]=0;
+	but[9]=0;
+	but[10]=0;
+	but[11]=0;
+	but[12]=0;
+	but[13]=0;
+
+
+
+}

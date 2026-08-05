@@ -26,10 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>r=20;
-(instance_create(x+r,y,oWave)).direction=0;
-(instance_create(x-r,y,oWave)).direction=180;
-(instance_create(x,y+r,oWave)).direction=270;
-(instance_create(x,y-r,oWave)).direction=90;</string>
+{ tttmp=instance_create(x+r,y,oWave); tttmp.direction=0; }
+{ tttmp=instance_create(x-r,y,oWave); tttmp.direction=180; }
+{ tttmp=instance_create(x,y+r,oWave); tttmp.direction=270; }
+{ tttmp=instance_create(x,y-r,oWave); tttmp.direction=90; }</string>
           </argument>
         </arguments>
       </action>

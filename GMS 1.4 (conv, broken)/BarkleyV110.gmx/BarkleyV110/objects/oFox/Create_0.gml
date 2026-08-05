@@ -1,0 +1,11 @@
+event_inherited();
+sprt=sFox;
+//spd=1.1;
+movement=60;
+que=0;
+q0=0;
+q1=0;
+q2=0;
+if (sOvar(oSnail,-1)>=8) instance_destroy();
+//face=8;
+//name='Larry Bird';

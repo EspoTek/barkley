@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"bgm_GetLen",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"bgm_GetLen",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

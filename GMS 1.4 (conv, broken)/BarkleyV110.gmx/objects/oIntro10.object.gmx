@@ -65,8 +65,8 @@ if (global.plot&gt;8) { exc=oVince; inc=oHoopz; }
 else { exc=oHoopz; inc=oVince; }
 global.nofollow=1;
 with (oFollower) x=-999;
-sCinema(oBarkley,'code',"sDialog('set',1,'top');");
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
+sCinema(oBarkley,'code',cine_0017);
+sCinema(oBarkley,'cond',cine_0148);
 if (sOvar(object_index,-1)=-1) {
 global.b_music=mEpicbattle;
 ene[0]="oBDiekembe,21,48,96";ene[1]="";
@@ -75,7 +75,7 @@ sOvar(object_index,1);
 repeat (2) sCinema1(oBalthios,'move','up');
 repeat (2) sCinema2(oCyberdwarf,'move','up');
 repeat (1) sCinema3(inc,'move','up');
-sCinema(oBarkley,'code',"oCinema1.enable=1;oCinema2.enable=1;oCinema3.enable=1;");
+sCinema(oBarkley,'code',cine_0181);
 repeat (2) sCinema(oBarkley,'move','up');
 sCinema(oBalthios,'dialog',"A-amazing... Dikembe Mutombo's tomb is even more fantastic than I had first expected. Look at this, a reflective pool, two statues of Teresa, patron saint of slams and jams...",1);
 sCinema(oCyberdwarf,'dialog',"They say Dikembe Mutombo was a deeply religious baller.",1);
@@ -86,7 +86,7 @@ sCinema(oHoopz,'dialog',"Dikembe...",1);
 sCinema(oBarkley,'dialog',"Yes Hoopz, Dikembe. You've met him. Heh, he was even at the hospital when you were born. You were definitely too young to remember though.",1);
 sCinema(oHoopz,'dialog',"I don't know dad. Something about this place... it seems familiar. Maybe I do remember him after all.",1);
 } else {
-sCinema(oBarkley,'code',"instance_create(oVince.x+12,oVince.y+16,oElectrocute1);");
+sCinema(oBarkley,'code',cine_0182);
 sCinema(oBarkley,'wait',1);
 sCinema(oVince,'dialog',"D... Dikembe...",1);
 sCinema(oBarkley,'dialog',"Vince, you remember something?",1);
@@ -94,7 +94,7 @@ sCinema(oVince,'dialog',"I... don't know...",1);
 }
 sCinema(oCyberdwarf,'dialog',"Well Barkley, we're here. Pay your respects and we can move on.",1);
 sCinema(oBarkley,'dialog',"I... I just wanted to say, Dikembe, that I... I always envied your talent and abilities and sometimes... sometimes I wished I was you. I just wanted to say... I'm sorry.",1);
-sCinema(oBarkley,'code',"global.shake=5;sound_volume(mEarthr,1);sound_loop(mEarthr);");
+sCinema(oBarkley,'code',cine_0183);
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'dialog',"Huh? What's going on?",1);
 sCinema(oBaller,'move','down',8);
@@ -114,9 +114,9 @@ sCinema(oBaller,'dialog',"LAKA!");
 repeat(12) sCinema(oBaller,'move','left',8);
 sCinema(oBaller,'face','down');
 sCinema(oBalthios,'dialog',"Look out! It's the ghost of Dikembe Mutombo!",1);
-sCinema(oBarkley,'code',"global.shake=0;sound_stop_all();");
-sCinema(oBarkley,'code',"with (oIntro10) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;");
+sCinema(oBarkley,'code',cine_0184);
+sCinema(oBarkley,'code',cine_0185);
+sCinema(oBarkley,'code',cine_0006);
 //sCinema(oBarkley,'effect','fadein',3);
 //global.roz=RomSewerTomb0;
 } else {
@@ -154,7 +154,7 @@ sCinema(oBarkley,'dialog',"Y-yes?",1);
 sCinema(oBaller,'dialog',"You are...",1);
 sCinema(oBarkley,'tint',c_white,1);
 sCinema(oBarkley,'wait',0.25);
-sCinema(oBarkley,'code','with (oBaller) instance_destroy();');
+sCinema(oBarkley,'code',cine_0186);
 sCinema(oBarkley,'wait',0.25);
 sCinema(oBarkley,'tint',c_white,0);
 sCinema(oBarkley,'wait',1);
@@ -165,7 +165,7 @@ sCinema(oCyberdwarf,'dialog',"Yes... let's go.",1);
 repeat (5) sCinema4(oBalthios,'move','down');
 repeat (4) sCinema5(oCyberdwarf,'move','down');
 repeat (4) sCinema6(inc,'move','down');
-sCinema(oBarkley,'code',"oCinema4.enable=1;oCinema5.enable=1;oCinema6.enable=1;");
+sCinema(oBarkley,'code',cine_0187);
 repeat (2) sCinema(oBarkley,'move','down');
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'face','up');

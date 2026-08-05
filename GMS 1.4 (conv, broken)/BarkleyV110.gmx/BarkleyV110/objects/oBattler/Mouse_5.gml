@@ -1,0 +1,17 @@
+if (instance_exists(oDebugger)=0) exit;
+//_bp-=1;
+//hilight=!hilight;
+//col_use=make_color_rgb(random(255),random(255),random(255));
+//col_duration=10+random(20);
+//col_stray=random(.25);
+//sBCondition('inflict','fouled',id);
+//sVerifyStats();
+sBCondition("inflict","diabetes",id);
+sBCondition("inflict","handicapable",id);
+exit;
+if (global.b_debug=1) sBCondition("cure",("stroke"),id);
+exit;
+shake=10;
+_vp-=50;
+sBCondition("inflict","diabetes",id);
+sVerifyStats();

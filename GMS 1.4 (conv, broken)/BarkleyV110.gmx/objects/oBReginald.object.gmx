@@ -265,7 +265,7 @@ if (fff=0) { fff=1; img=3; oou=0; sS(mBChrome); }
 if (fff=25) { 
 img=4; oou=-1;
 sS(mBVortex); 
-ggg=instance_create(x,y-60,oBNeedler); ggg.target=target; ggg.speed=8; ggg.twist=1; ggg.master=id; ggg.sprite_index=sBReginald; ggg.image_single=10; ggg.daf=0;
+ggg=instance_create(x,y-60,oBNeedler); ggg.target=target; ggg.speed=8; ggg.twist=1; ggg.master=id; ggg.sprite_index=sBReginald; ggg.image_index=10; ggg.image_speed=0; ggg.daf=0;
 }
 if (fff&gt;25) {
 if (instance_exists(oBNeedler)=0) { 

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"sBItemComm",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"sBItemComm",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

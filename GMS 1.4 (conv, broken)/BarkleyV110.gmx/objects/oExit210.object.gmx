@@ -79,7 +79,7 @@ if (sOvar(oExit210,-1)&gt;0) exit;
 sOvar(oExit210,1);
 sCinema(oBarkley,'move','down');
 sCinema(oBarkley,'dialog',"We can't go back in there.",1);
-sCinema(oBarkley,'code','sOvar(oExit210,-2);');
+sCinema(oBarkley,'code',cine_0145);
 } else {
 global.posser=object_index;
 if (room=rom0) global.roomer=rom1;

@@ -114,7 +114,7 @@ if (img=11) {
 img=11;
 ggg=sThrow(x+15,y-30,target.x,target.y,8+random(2),30);
 ggg.depth=target.depth-1;
-ggg.image_single=3;
+ggg.image_index=3; ggg.image_speed=0;
 global.b_obj=ggg;
 stage=1; cou=0;
 sound_play(mBallbrain1);
@@ -157,30 +157,13 @@ if (stage=0) {
 if (fff=0) { 
 fff=1;
 breath=1;
-tob=object_add();
-object_event_add(tob,ev_create,0,"
-sprite_index=sBWhistle1;
-image_angle=random(360);
-image_single=floor(random(3));
-image_blend=merge_color(c_fuchsia,make_color_rgb(random(255),random(255),random(255)),0.2);
-dir=340+random(45);
-spd=5;
-x+=-5+random(10);
-y+=-5+random(10);
-");
-object_event_add(tob,ev_step,0,"
-x+=lengthdir_x(spd,dir);
-y+=lengthdir_y(spd,dir);
-image_alpha-=0.04+random(0.02);
-if (image_alpha&lt;0) instance_destroy();
-");
-object_event_add(tob,ev_draw,0,"if (view_current!=0) exit; sD();");
+tob=oBSlamspectreP0;
 sS(mSlamspectre0);
 }
 if (fff&lt;30) { instance_create(x+19,y-4,tob); tob.depth=target.depth-1; }
 else { sBCondition('inflict','diabetes',target); stage=1; breath=0; }
 } else if (stage=1) {
-if (instance_exists(tob)=0) { doing=-1; object_delete(tob);  }
+if (instance_exists(tob)=0) { doing=-1; with (tob) instance_destroy();  }
 }
 if (fff!=0) fff+=1;</string>
           </argument>
@@ -210,28 +193,7 @@ if (exec!=-1) { fff=0; exec=-1; walkdist=7; stage=0; wdoing=2; walk=global.b_mid
 if (stage=0) {
 if (fff=0) { 
 fff=1;
-tob=object_add();
-object_event_add(tob,ev_create,0,"
-sprite_index=sBSlamspectre;
-image_index=12;
-image_speed=0;
-image_xscale=0;
-image_yscale=0;
-dir=0;
-");
-object_event_add(tob,ev_step,0,"
-if (dir=0) {
-image_xscale=min(1,image_xscale+.1);
-image_yscale=image_xscale;
-} else {
-image_xscale=max(0,image_xscale-.1);
-image_yscale=image_xscale;
-}
-x=master.x;
-y=master.y+28;
-depth=master.depth+1;
-");
-object_event_add(tob,ev_draw,0,"if (view_current!=0) exit; sD();");
+tob=oBSlamspectreP1;
 instance_create(x,y,tob); tob.master=id;
 shadow=1;
 sS(mSlamspectre1);
@@ -249,7 +211,7 @@ if (fff=10) { sDamage(doing); sS(mSlamspectre2); }
 if (fff&lt;15) { tob.dir=1; smt=max(0,smt-10); }
 else { stage=20; shadow=0; with (tob) instance_destroy(); }
 } else if (stage=20) {
-if (instance_exists(tob)=0) { doing=-1; object_delete(tob);  }
+if (instance_exists(tob)=0) { doing=-1; with (tob) instance_destroy();  }
 }
 if (fff!=0) fff+=1;</string>
           </argument>
@@ -286,11 +248,11 @@ if (img=6) {
 img=11;
 ggg=sThrow(x+15,y-30,target.x,target.y,4+random(1),30);
 ggg.depth=target.depth-1;
-ggg.image_single=3;
+ggg.image_index=3; ggg.image_speed=0;
 global.b_obj=ggg;
 ggg=sThrow(x+25,y-22,target.x,target.y,9+random(2),30);
 ggg.depth=target.depth-1;
-ggg.image_single=3;
+ggg.image_index=3; ggg.image_speed=0;
 stage=1; cou=0;
 sound_play(mBallbrain1);
 fff=1;
@@ -334,7 +296,7 @@ if (img=6) {
 img=6;
 ggg=sThrow(x+15,y-30,target.x,target.y,8+random(2),30);
 ggg.depth=target.depth-1;
-ggg.image_single=3;
+ggg.image_index=3; ggg.image_speed=0;
 global.b_obj=ggg;
 stage=1; cou=0;
 sound_play(mBallbrain1);

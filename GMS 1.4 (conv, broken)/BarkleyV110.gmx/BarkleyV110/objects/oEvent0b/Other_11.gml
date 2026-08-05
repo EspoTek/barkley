@@ -1,0 +1,10 @@
+if (sOvar(object_index,-1)!=-1) exit;
+global.dialog=1;
+oBarkley.move="";
+sOvar(object_index,1);
+with (oEvent0b) instance_destroy();
+sCinema(oFollower0,"dialog","Barkley, this is the Cyberdwarf's house. There's something I think I should tell you...",1);
+sCinema(oBarkley,"dialog","Huh? What's the problem?",1);
+sCinema(oFollower0,"dialog","The Cyberdwarf... He doesn't look normal, Barkley. Don't stare at him.",1);
+sCinema(oBarkley,"dialog","Huh? Sure, whatever. I won't stare.",1);
+sCinema(oFollower0,"dialog","Okay...",1);

@@ -55,7 +55,7 @@ sCinema(oBarkley,'dialog',"Huh? The door's locked. It has two keyholes, but it l
 } else {
 sCinema(oBarkley,'dialog',"It's locked. Mack told me I will also need the Immaculate Rod if I want to enter.",1);
 }
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else if (global.selected=1) {
 if (sItem("Immaculate Rod")&gt;0 &amp;&amp; sItem("Orb Sceptre")&gt;0) {
 sOvar(object_index,1);
@@ -74,13 +74,13 @@ sCinema(oBarkley,'dialog',"I can't go inside, it's locked.",1);
 } else {
 sCinema(oBarkley,'dialog',"I need the Immaculate Rod if I want to enter.",1);
 }
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 }
 } else if (global.selected=2) {
 sCinema(oBarkley,'dialog',"Without tools I can't dismantle and carry the door with me.",1);
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else {
-sCinema(oBarkley,'code',"x=x;");
+sCinema(oBarkley,'code',cine_0006);
 }
 }</string>
           </argument>
@@ -115,7 +115,7 @@ exit;
 if (sItem("Immaculate Rod")&gt;0 &amp;&amp; sItem("Orb Sceptre")&gt;0) sCinema(oBarkley,'dialog',"You see a Tower Door.",0,"Examine Tower Door.","Use Keys on Tower Door.","Take Tower Door.","Leave Tower Door.");
 else if (sItem("Orb Sceptre")&gt;0) sCinema(oBarkley,'dialog',"You see a Tower Door.",0,"Examine Tower Door.","Use Orb Sceptre on Tower Door.","Take Tower Door.","Leave Tower Door.");
 else sCinema(oBarkley,'dialog',"You see a Tower Door.",0,"Examine Tower Door.","Use Tower Door.","Take Tower Door.","Leave Tower Door.");
-sCinema(oBarkley,'code','with (global.coice) event_user(2);');</string>
+sCinema(oBarkley,'code',cine_0399);</string>
           </argument>
         </arguments>
       </action>

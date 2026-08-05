@@ -78,9 +78,9 @@ sCinema(oBarkley,'dialog',"Choose:",0,"Walk away.","Apologize.");
 sCinema1(oBarkley,'dialog',"I can't change the past. I... I know that. There's not a gatdam day that goes through my head where I don't think about everything being different. You know what? What does livin' in the past do? Not a whole lot. All I have to look forward to is the future, no matter how bleak it is. I'm sorry Wildman. I miss jamming 'till the sun went down. I miss making a huge slam in front of thousands of screaming fans. B-Ball may be banned now... But I'm gonna change that, mark my words. Things are only going to get better from here on in.",1);
 sCinema1(oWildman,'dialog',"...Maybe you have changed. &lt;cough&gt;... Only time will tell...",1);
 sCinema2(oBarkley,'dialog',"You ain't worth my time. I gots better things to do.",1);
-sCinema(oBarkley,'code',"if (global.selected=1) { oCinema1.enable=1; sOvar(oWildman,1); } else { oCinema2.enable=1; sOvar(oWildman,2); }");
-sCinema(oBarkley,'cond',"if (oCinema1.enable=0 &amp;&amp; oCinema2.enable=0) good=1");
-sCinema(oBarkley,'code',"x=x");
+sCinema(oBarkley,'code',cine_0488);
+sCinema(oBarkley,'cond',cine_0404);
+sCinema(oBarkley,'code',cine_0489);
 }</string>
           </argument>
         </arguments>

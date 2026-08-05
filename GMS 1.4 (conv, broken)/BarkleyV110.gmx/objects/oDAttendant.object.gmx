@@ -76,7 +76,7 @@ repeat (2) sCinema(oDGarnett,'move','left');
 repeat (10) sCinema(oDGarnett,'move','up');
 sCinema(oDGarnett,'face','right');
 sCinema(oBarkley,'dialog',"Man, he's really changed.",1);
-sCinema(oBarkley,'code',"sA('loop',mQuest);global.nofollow=1;");
+sCinema(oBarkley,'code',cine_0044);
 sCinema(oBarkley,'dialog',"Attendant:\That sound means it's time for you to enter the arena. Good luck, Mr. Barkley.");
 sCinema(oFollower3,'dialog',"Good luck, dad! I'll be rooting for you!",1);
 sCinema(oFollower0,'dialog',"As will I, Barkley. Do your best out there.",1);
@@ -118,7 +118,7 @@ sCinema(oBarkley,'dialog',"What's the prize?",1);
 sCinema(oBarkley,'dialog',"Attendant:\The prize is a very precious and one-of-a-kind item that many collectors would value highly.");
 sCinema(oBarkley,'dialog',"Wh-what if it's a golden b-ball...",1);
 sCinema(oBarkley,'dialog',"Attendant: Would you like to register, sir?",0,"Nah","Yeah");
-sCinema(oBarkley,'code','with (oDAttendant) event_user(2);');
+sCinema(oBarkley,'code',cine_0045);
 } else {
 sCinema(oBarkley,'dialog',"Attendant:\Hello Mr. Barkley. The arena is currently closed, there are no tournaments going on right now.");
 }</string>

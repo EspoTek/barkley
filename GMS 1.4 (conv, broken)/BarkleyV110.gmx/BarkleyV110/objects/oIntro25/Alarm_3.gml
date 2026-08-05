@@ -1,0 +1,103 @@
+if (room=RomSubwayCar3) {
+global.nofollow=1;
+oCyberdwarf.t=1;
+oBalthios.t=1;
+with (oFollower) x=-999;
+sOvar(object_index,4);
+with (oPlayer) solid=0;
+oCaptain0.t=3;
+oCyberdwarf.x=oCyberdwarf.xstart-4;
+oBalthios.x=oBalthios.xstart-4;
+oBarkley.x=oBalthios.x-16;
+oBarkley.y=oCyberdwarf.y+16;
+sCinema(oBarkley,"wait",3);
+repeat (2) sCinema(oBarkley,"move","right");
+sCinema(oBarkley,"dialog","This is it... end of the line.",1);
+sCinema(oBarkley,"dialog","Sergeant:\\So, you got past all of my men. Doesn't matter.");
+sCinema(oBarkley,"dialog","What, you think you're gonna stop us? You B-Ball Removal Department scum just don't know when to quit.",1);
+sCinema(oBarkley,"dialog","Sergeant:\\Jordan gave me specific instructions not to let you leave this train. Consider this your final stop, Charles Barkley.");
+
+sCinema(oBarkley,"quick","up");
+sCinema1(oSoldier3,"hurt",oRaygun,oDummy,(16*2)+8);
+sCinema1(oBarkley,"wait",0.5);
+sCinema2(oBarkley,"move","up");
+sCinema2(oSoldier3,"hurt",oRaygun,oDummy,(16*2)+8);
+sCinema2(oBarkley,"wait",0.5);
+sCinema2(oBarkley,"move","down");
+sCinema(oBarkley,"code",cine_0269);
+sCinema(oBarkley,"code",cine_0270);
+sCinema(oBarkley,"cond",cine_0102);
+sCinema(oBarkley,"cond",cine_0101);
+
+sCinema(oBarkley,"face","right");
+
+sCinema(oBarkley,"quick","down");
+sCinema3(oSoldier3,"hurt",oRaygun,oDummy,(16*2)+8);
+sCinema3(oBarkley,"wait",0.5);
+sCinema4(oBarkley,"move","down");
+sCinema4(oSoldier3,"hurt",oRaygun,oDummy,(16*2)+8);
+sCinema4(oBarkley,"wait",0.5);
+sCinema4(oBarkley,"move","up");
+sCinema(oBarkley,"code",cine_0271);
+sCinema(oBarkley,"code",cine_0158);
+sCinema(oBarkley,"cond",cine_0104);
+sCinema(oBarkley,"cond",cine_0103);
+
+sCinema(oBarkley,"face","right");
+
+sCinema(oBarkley,"quick","up");
+sCinema5(oSoldier3,"hurt",oRaygun,oDummy,(16*2)+8);
+sCinema5(oBarkley,"wait",0.5);
+sCinema6(oBarkley,"move","up");
+sCinema6(oSoldier3,"hurt",oRaygun,oDummy,(16*2)+8);
+sCinema6(oBarkley,"wait",0.5);
+sCinema6(oBarkley,"move","down");
+sCinema(oBarkley,"code",cine_0272);
+sCinema(oBarkley,"code",cine_0273);
+sCinema(oBarkley,"cond",cine_0274);
+sCinema(oBarkley,"cond",cine_0275);
+
+sCinema(oBarkley,"face","right");
+sCinema(oBarkley,"dialog","Sergeant:\\Clispaeth damnit... Outta ammo.");
+sCinema(oBarkley,"dialog","Taste BBall, chump!",1);
+sCinema(oBarkley,"code",cine_0276);
+sCinema(oBarkley,"wait",2);
+
+sCinema(oBarkley,"dialog","Sergeant:\\Ugh... you think you've won, don't you? You still won't leave this train... <flick>");
+sCinema(oBarkley,"code",cine_0277);
+sCinema(oCaptain0,"effect","swap",sNull);
+sCinema(oBarkley,"wait",2);
+sCinema(oBarkley,"code",cine_0278);
+sCinema(oBarkley,"wait",1.5);
+sCinema(oBalthios,"dialog","T-that's...",1);
+sCinema(oCyberdwarf,"dialog","A bomb...",1);
+sCinema(oBarkley,"dialog","Fucking Jordan. As if the diabetes wasn't enough. I swear to both of you... I swear to-",1);
+sCinema(oCyberdwarf,"dialog","There's no time for that.",1);
+//sCinema(oBarkley,'code',cine_0279);
+sCinema(oBarkley,"wait",1);
+sCinema(oCyberdwarf,"move","down");
+sCinema(oCyberdwarf,"jump","start");
+repeat(5) sCinema(oCyberdwarf,"move","right",6);
+sCinema(oCyberdwarf,"jump","end");
+sCinema(oCyberdwarf,"face","left");
+sCinema(oCyberdwarf,"dialog","Can either of you disable the device? Then we must detach this car from the rest.",1);
+sCinema(oBalthios,"dialog","You mean... disable the coupling?",1);
+sCinema(oCyberdwarf,"dialog","Yes, the coupling.",1);
+sCinema(oBarkley,"dialog","I don't get it.",1);
+sCinema(oBalthios,"dialog","Couplings are what connect each train car to the next, Barkley. But what Cyberdwarf's talking about doing... I don't know about this.",1);
+sCinema(oCyberdwarf,"dialog","Nobody's detached a coupling while moving, but that doesn't mean it's impossible. It's all we can do now, and besides...",1);
+sCinema(oBarkley,"dialog","Hoopz... Ok Cyberdwarf, what do we do?",1);
+sCinema(oCyberdwarf,"dialog","You two just stay back... finally my hardy constitution and dwarven knack for machinery will be put to use.",1);
+sCinema(oCyberdwarf,"move","right");
+sCinema(oCyberdwarf,"move","right");
+sCinema(oCyberdwarf,"move","up");
+sCinema(oCyberdwarf,"face","left");
+sCinema(oCyberdwarf,"dialog","If my intuition serves me, these switches for the couplings should be arranged from left to right. The leftmost switch should detach the front car from the others. Likewise, the rightmost switch should detach this car from the rest. Do you hear that? We need to disable the [rightmost coupling].",1);
+sCinema(oCyberdwarf,"face","up");
+sCinema(oBarkley,"wait",1);
+sCinema(oCyberdwarf,"dialog","Will this switch disable the correct coupling? Should I pull this switch?",1);
+sCinema(oBalthios,"dialog","Barkley, disabling the wrong coupling will spell death for all of us. Is he correct? Is that the [rightmost coupling]?",1);
+sCinema(oBarkley,"dialog","Choose:",0,"Nope, that isn't the coupling.","Yep, that's the right coupling.");
+sCinema(oBarkley,"code",cine_0280);
+sA("stopall");
+}

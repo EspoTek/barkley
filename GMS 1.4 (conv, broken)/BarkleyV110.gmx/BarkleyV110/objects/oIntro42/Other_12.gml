@@ -1,0 +1,41 @@
+if (global.selected=0) {
+global.dieroom=RomNecronCourt;
+global.diemessage="You merged with Shadow Barkley, and decimated the world.";
+sCinema(oBarkley,"dialog","You're right... B-ball needs to start over. The world ruined b-ball, not the other way around.",1);
+sCinema(oHoopz,"dialog","DAD!",1);
+sCinema(oShadowBarkley,"dialog","Come, Barkley. Let us merge and be whole once again.",1);
+sCinema(oBarkley,"dialog","Y-yes...",1);
+sCinema(oCyberdwarf,"dialog","Barkley, what have you done...",1);
+sCinema(oBarkley,"dialog","I'm doing what I've always known I should do.",1);
+repeat (2) sCinema(oBarkley,"move","up");
+sCinema(oBarkley,"tint",c_white,1);
+sCinema(oBarkley,"wait",1);
+sCinema(oBarkley,"code",cine_0347);
+sCinema(oBarkley,"tint",c_white,0);
+sCinema(oShadowBarkley,"dialog","K...Kwahaha...KWAHAHAHA!",1);
+sCinema(oHoopz,"dialog","DAD, NO!!!",1);
+sCinema(oHoopz,"move","left");
+repeat (2) sCinema(oHoopz,"move","up");
+//sCinema(oBarkley,'dialog',"gz animation here");
+sCinema(oBarkley,"code",cine_0277);
+sCinema(oBarkley,"tint",c_red,1);
+sCinema(oBarkley,"wait",.5);
+sCinema(oBarkley,"tint",c_red,0);
+sCinema(oHoopz,"effect","swap",sNull);
+sCinema(oBarkley,"wait",2);
+sCinema(oCyberdwarf,"dialog","HOOPZ!",1);
+sCinema(oShadowBarkley,"dialog","KWAHAHAHA! Chaos Dunk commence, destroy the earth and begin b-ball anew!",1);
+sCinema(oBalthios,"dialog","Charles... You fool...",1);
+sCinema(oBarkley,"effect","fadein",3);
+global.roz=RomGameover;
+} else {
+sOvar(object_index,1);
+sA("stopall");
+sA("loop",mSpace);
+sBoss("oBShadow0");
+sPos("save");
+sCinema(oBarkley,"dialog","No way in hell! You and the Ultimate B-Ball are going down and basketball will be restored the right way!",1);
+sCinema(oShadowBarkley,"dialog","Hmm, so you want a fight? So be it, Barkley. Face me and my deadly b-balls.",1);
+sCinema(oBarkley,"code",cine_0344);
+sCinema(oBarkley,"code",cine_0006);
+}

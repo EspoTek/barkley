@@ -32,7 +32,7 @@ footy=80-46;
 //My vars
 state=0; //Dribbling
 kick=0;
-throw=0;
+throwv=0;
 jump=0;
 walk=-999;
 wspd=3;
@@ -82,7 +82,7 @@ event_user(14);</string>
             <kind>1</kind>
             <string>if (instance_exists(oProjectile)=1) { alarm[0]=2; exit; }
 kick=0;
-throw=0;
+throwv=0;
 img=1;
 x=xstart;
 finish=1;</string>
@@ -166,13 +166,13 @@ alarm[0]=30;</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (exec!=-1) { throw=1; global.descriptor="Zombie Pass"; exit; }
-throw=1;
+            <string>if (exec!=-1) { throwv=1; global.descriptor="Zombie Pass"; exit; }
+throwv=1;
 img=4;
 sS(mBThrow);
 ggg=sThrow(x,y-10,target.x,target.y,10+random(5),40);
 global.b_obj=ggg;
-ggg.image_single=1;
+ggg.image_index=1; ggg.image_speed=0;
 ggg.target=target;
 ggg.depth=target.depth-1;
 alarm[0]=30; //finish turn 60</string>
@@ -203,7 +203,7 @@ img=5;
 sS(mZomballer1);
 ggg=sThrow(x+15,y+10,target.x,target.y,5+random(2),30);
 global.b_obj=ggg;
-ggg.image_single=1;
+ggg.image_index=1; ggg.image_speed=0;
 ggg.target=target;
 ggg.depth=target.depth-1;
 alarm[0]=30; //finish turn</string>
@@ -284,7 +284,7 @@ if (img&lt;=2 &amp;&amp; img!=0) {
 if (cou&gt;0 &amp;&amp; cou&lt;10 &amp;&amp; state=1) img=2;
 else img=1;
 if (kick=1 &amp;&amp; cou&gt;30 &amp;&amp; state=1) { event_user(0); }
-if (throw=1 &amp;&amp; cou&lt;=5 &amp;&amp; state=1) { alarm[1]=10; throw=0; img=3; cou=-10; }
+if (throwv=1 &amp;&amp; cou&lt;=5 &amp;&amp; state=1) { alarm[1]=10; throwv=0; img=3; cou=-10; }
 if (editing=0) { //dribble
 if (cou&lt;=0) state=1;
 else if (cou&gt;=42) state=0;

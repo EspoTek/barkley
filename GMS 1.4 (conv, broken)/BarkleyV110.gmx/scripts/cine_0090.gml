@@ -1,0 +1,1 @@
+oLadderer.active=0;

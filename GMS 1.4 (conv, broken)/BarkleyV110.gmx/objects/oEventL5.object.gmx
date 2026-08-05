@@ -77,8 +77,8 @@ global.dialog=1;
 oBarkley.move='';
 sOvar(oEventL5,1); //752,288
 instance_create(0,0,oDiaflash);
-//sCinema(oBarkley,'cond','if (instance_exists(oDiaflash)=0) good=1;');
-//sCinema(oBarkley,'code','x=x;');</string>
+//sCinema(oBarkley,'cond',cine_0127);
+//sCinema(oBarkley,'code',cine_0006);</string>
           </argument>
         </arguments>
       </action>

@@ -72,7 +72,7 @@
             <string>if (stage=0) {
 if (global.selected=0) {
 sCinema(oBarkley,'dialog',"Just what I needed. This door is locked too.",1);
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else if (global.selected=1) {
 if (sItem('Desk Key')&gt;0) {
 sItem('Desk Key',-1);
@@ -82,12 +82,12 @@ global.roz=RomLibertyMain;
 } else {
 sCinema(oBarkley,'dialog',"I can't open the door, it's locked.",1);
 }
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else if (global.selected=2) {
 sCinema(oBarkley,'dialog',"That ain't gonna happen.",1);
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else {
-sCinema(oBarkley,'code',"x=x;");
+sCinema(oBarkley,'code',cine_0006);
 }
 }</string>
           </argument>
@@ -116,7 +116,7 @@ global.coice=id;
 stage=0;
 if (sItem('Desk Key')&gt;0) sCinema(oBarkley,'dialog',"You see a Secret Door.",0,"Examine Secret Door.","Use Desk Key on Secret Door.","Take Secret Door.","Leave Secret Door.");
 else sCinema(oBarkley,'dialog',"You see a Secret Door.",0,"Examine Secret Door.","Use Secret Door.","Take Secret Door.","Leave Secret Door.");
-sCinema(oBarkley,'code','with (global.coice) event_user(2);');</string>
+sCinema(oBarkley,'code',cine_0399);</string>
           </argument>
         </arguments>
       </action>

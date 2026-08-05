@@ -27,11 +27,10 @@
             <kind>1</kind>
             <string>if (background_index[2]!=-1) {
 ggg=background_get_name(background_index[2]);
-sprite_replace(sBG2,"BG\"+ggg+".gif",1,0,background_get_transparent(background_index[2]),0,1,0,0);
 x=background_x[2];
 y=background_y[2]; 
 visible=background_visible[2]; 
-sprite_index=sBG2;
+sprite_index=sBGLookup(ggg);
 hspeed=background_hspeed[2];
 vspeed=background_vspeed[2];
 }</string>

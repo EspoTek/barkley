@@ -1,0 +1,1 @@
+oCyberdwarf.visible=1;

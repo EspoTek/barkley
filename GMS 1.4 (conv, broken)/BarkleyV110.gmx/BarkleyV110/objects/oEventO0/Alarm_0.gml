@@ -1,0 +1,1 @@
+global.cinema=0;

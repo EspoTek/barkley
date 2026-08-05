@@ -1,0 +1,13 @@
+global.dialog=1;
+if (global.scheme[4]=0) sCinema(oBarkley,"dialog","Bum:\\Please... help me... just one more chicken fry...");
+else if (global.scheme[4]=1) sCinema(oBarkley,"dialog","Bum:\\I understand this... but my fingers don't...");
+else if (global.scheme[4]=2) sCinema(oBarkley,"dialog","Bum:\\Vincenzo... Vincenzo where are you...\\...\\Vincenzo?");
+else if (global.scheme[4]=3) sCinema(oBarkley,"dialog","Bum:\\B...b...\\...\\bo... bob your head...");
+else if (global.scheme[4]=4) sCinema(oBarkley,"dialog","Bum:\\I have pet every animal in... ALL directions...");
+else if (global.scheme[4]=5) sCinema(oBarkley,"dialog","Bum:\\You didn't live in 1950 and nobody did... not the 1950...");
+else if (global.scheme[4]=6) sCinema(oBarkley,"dialog","Bum:\\I... hate the taste of cherries...");
+else if (global.scheme[4]=7) sCinema(oBarkley,"dialog","Bum:\\This... is more than I expected at the outset...");
+else if (global.scheme[4]=8) sCinema(oBarkley,"dialog","Bum:\\Your...\\naked eye...");
+else if (global.scheme[4]=9) sCinema(oBarkley,"dialog","Bum:\\The maelstrom brought me back.");
+else if (global.scheme[4]=10) sCinema(oBarkley,"dialog","Bum:\\It is only natural for... a supple young boy like yourself...");
+global.scheme[4]=floor(random(11));

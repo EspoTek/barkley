@@ -50,10 +50,10 @@ else if (sOvar(oIntro19,-1)=2) { alarm[1]=1; sOvar(oIntro19,3); }</string>
           <argument>
             <kind>1</kind>
             <string>sCinema(oBarkley,'tint',make_color_rgb(100,100,100),1);
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
+sCinema(oBarkley,'cond',cine_0148);
 sCinema(oBarkley,'tint',make_color_rgb(100,100,100),1);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code',"sA('stopall');sA('loop',mProto);");
+sCinema(oBarkley,'code',cine_0211);
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'tint',make_color_rgb(100,100,100),0);
 sCinema(oBarkley,'dialog',"Th-that dream? It felt so real. But it couldn't be. Still, I feel the power of ghosts coursing through my veins. Perhaps the Ghost Dad wasn't such a bad guy after all...",1);</string>
@@ -80,9 +80,9 @@ sCinema(oBarkley,'dialog',"Th-that dream? It felt so real. But it couldn't be. S
             <kind>1</kind>
             <string>oBarkley.x=-90;
 with (oFollower) x=-90;
-sCinema(oBarkley,'code','global.nofollow=0; oGhostdad.t=2;');
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
-sCinema(oBarkley,'code',"sA('stopall');sA('loop',mSpirit);");
+sCinema(oBarkley,'code',cine_0229);
+sCinema(oBarkley,'cond',cine_0148);
+sCinema(oBarkley,'code',cine_0230);
 sCinema(oBarkley,'dialog',"???:\Barkley... Barkley, can you hear me? Greetings from beyond the grave.");
 sCinema(oGhostdad,'move','down');
 sCinema(oBarkley,'dialog',"???:\It is I, the Ghost Dad. I have come to haunt you, but also to help you. It is true that I haunted Proto Neo New York, but I did it with good intentions. But this is not why I am here. I wanted to thank you for freeing me from my ghastly chains of bondage, for saving me from the hex that I unwittingly placed upon myself years ago. I am finally free to return to the Ghost Domain thanks to you and I am no longer cursed by this dastardly hex. I want to show my appreciation by giving you a power that very few ghosts attain, let alone mortals. It is the precious Ghost Muscle, a skill that fortifies your body with the incredible power of ghosts. I hope you use it as wisely as I did.");

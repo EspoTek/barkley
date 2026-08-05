@@ -63,8 +63,8 @@ itemf[8]='Alcohol';
 itemf[9]='Fstone Mvitamin';
 itemf[10]='';
 sCinema(oBarkley,'dialog',"Leif:\I've got what you need, man.");
-sCinema(oBarkley,'code',"sShop(oHair,'Buy','Sell','Leave');");
-sCinema(oBarkley,'cond',"if (instance_exists(oStartmenu)=0) good=1");
+sCinema(oBarkley,'code',cine_0150);
+sCinema(oBarkley,'cond',cine_0003);
 sCinema(oBarkley,'dialog',"Leif:\Alright, now hit the road.");</string>
           </argument>
         </arguments>

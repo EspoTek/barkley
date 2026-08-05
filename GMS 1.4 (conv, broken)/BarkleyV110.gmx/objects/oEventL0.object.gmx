@@ -99,7 +99,7 @@ oBarkley.move='';
 sOvar(oEventL0,1);
 sCinema(oBarkley,'dialog',"There's no way I'm going back until I've got that damn rod.",1);
 sCinema(oBarkley,'move','down');
-sCinema(oBarkley,'code','sOvar(oEventL0,0)');</string>
+sCinema(oBarkley,'code',cine_0124);</string>
           </argument>
         </arguments>
       </action>

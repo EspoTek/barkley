@@ -91,7 +91,7 @@ sCinema(oBarkley,'dialog',"... But! Argh, fine. You're lucky pal. You better hop
 if (global.gold&lt;25) sCinema(oHundley,'dialog',"You're not a high enough roller to play at Hundley's Casino. You need at least 25 neo-shekels.",1);
 else {
 instance_create(0,0,oBonesMenu);
-sCinema(oHundley,'cond','if (instance_exists(oBonesMenu)=0) good=1;');
+sCinema(oHundley,'cond',cine_0151);
 }
 } else {
 sCinema(oHundley,'dialog',"Too scared to lose? I don't blame you, I wouldn't bet against me either if I were you.",1);
@@ -127,11 +127,11 @@ sCinema(oHundley,'dialog',"Why don't you try your luck on one of our games?",1);
 sCinema(oBarkley,'dialog',"I don't see any games--",1);
 sCinema(oHundley,'dialog','Our most popular game is called "Bones". Care to play?',1);
 sCinema(oBarkley,'dialog',"Choose.",0,"I guess so.","No way pal.");
-sCinema(oBarkley,'code',"with (oHundley) event_user(2);");
+sCinema(oBarkley,'code',cine_0152);
 } else if (www=1) {
 sCinema(oHundley,'dialog',"Crawling back to Hundley's Casino again, I see. Want to play again?",1);
 sCinema(oBarkley,'dialog',"Choose.",0,"I guess so.","No way pal.");
-sCinema(oBarkley,'code',"with (oHundley) event_user(2);");
+sCinema(oBarkley,'code',cine_0152);
 } else {
 sCinema(oHundley,'dialog',"...",1);
 sCinema(oBarkley,'dialog',"Don't even look at me, chump.",1);

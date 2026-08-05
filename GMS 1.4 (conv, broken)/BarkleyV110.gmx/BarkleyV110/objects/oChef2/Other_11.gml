@@ -1,0 +1,2 @@
+global.dialog=1;
+sCinema(oChef2,"dialog","for real here are the games you need to play \\all of gz's potato chaos games \\hundley and konix's faceless when it comes out \\diggity's targ games  \\tft's rainbow nightmare \\lazrael's games \\drule's space commander frasier crane if it comes out \\soap and corel's remedy if it comes out \\fred murderstone (its in the works buddies) \\IM ALL ABOUT VIDCON'S \\definitive list of all vidcon's\\ - chef "+"\"the rpg macker\""+" boyardee",1);

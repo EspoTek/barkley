@@ -1,0 +1,25 @@
+global.dialog=1;
+if (sItem("F.I.N.A.L. G.U.N.")) {
+sCinema(oBarkley,"dialog","Square-Enix-Goya Representative:\\Dear Goya... The F.I.N.A.L. G.U.N... I trust you remember your partnership with Square-Enix-Goya, Mr. Barkley.");
+sCinema(oBarkley,"dialog","I'll need to see some shekels before we go any further.",1);
+sCinema(oBarkley,"dialog","Square-Enix-Goya Representative:\\Of course. Take a look for yourself, $2500 is in this suitcase.");
+sCinema(oBarkley,"dialog","Choose:",0,"You got yourself a deal.","No deal. I want $5,000.","No deal");
+sCinema(oBarkley,"code",cine_0472);
+sCinema(oBarkley,"code",cine_0006);
+} else if (sOvar(object_index,-1)=1) {
+sCinema(oBarkley,"dialog","Square-Enix-Goya Representative:\\You do not have the F.I.N.A.L. G.U.N., do you?");
+sCinema(oBarkley,"dialog","I've been sort of busy.",1);
+sCinema(oBarkley,"dialog","Square-Enix-Goya Representative:\\Do not forget that you will be getting a $2500 reward, Mr. Barkley.");
+} else {
+sOvar(object_index,1);
+sCinema(oBarkley,"dialog","Square-Enix-Goya Representative:\\You are... Charles Barkley, correct?");
+sCinema(oBarkley,"dialog","Uhh...",1);
+sCinema(oBarkley,"dialog","Square-Enix-Goya Representative:\\Don't worry, Mr. Barkley. Square-Enix-Goya is not at all concerned with your current legal status. We wish to propose... a business arrangement.");
+sCinema(oBarkley,"dialog","I don't really want to hear it.",1);
+sCinema(oBarkley,"dialog","Square-Enix-Goya Representative:\\It has come to the attention of Square-Enix-Goya that a particular object of interest is within the ruins of the Spalding building, one F.I.N.A.L. G.U.N., a weapon of incredible power and magnitude. We believe that it would be in the best interest of Square-Enix-Goya stockholders and consumers for the company to obtain and replicate this product for mass consumption.");
+sCinema(oBarkley,"dialog","Wait, so you want to sell this thing? Put more gun's out on the streets?",1);
+sCinema(oBarkley,"dialog","Square-Enix-Goya Representative:\\Precisely, and we are willing to pay you $2500 to retrieve it for us.");
+sCinema(oBarkley,"dialog","Your shining suit and fine words have convinced me. I will help Square-Enix-Goya any way I can.",1);
+sCinema(oBarkley,"dialog","Square-Enix-Goya Representative:\\One last thing. If a certain gun'sbraster named Mark approaches you about the F.I.N.A.L. G.U.N., ignore him and remember your obligation to Square-Enix-Goya.");
+sCinema(oBarkley,"dialog","Anything to further Square-Enix-Goya's corporate agenda!",1);
+}

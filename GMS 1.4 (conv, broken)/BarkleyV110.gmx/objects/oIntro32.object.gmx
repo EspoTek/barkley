@@ -83,8 +83,8 @@ oBalthios.t=0;
 oBarkley.y=320;
 oBarkley.visible=0;
 global.camera=oHoopz
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
-sCinema(oBarkley,'code',"sDialog('set',1,'top');");
+sCinema(oBarkley,'cond',cine_0148);
+sCinema(oBarkley,'code',cine_0017);
 sCinema(oHoopz,'dialog',"He said he'd be back soon, I'm going in there!",1);
 sCinema(oCyberdwarf,'dialog',"Hoopz, no! It's too dangerous!",1);
 sCinema(oHoopz,'dialog',"B-but dad!",1);
@@ -93,7 +93,7 @@ sCinema(oBarkley,'dialog',"???:\I'm here, Hoopz.");
 sCinema(oHoopz,'face','up');
 sCinema(oCyberdwarf,'face','up');
 sCinema(oBarkley,'wait',0.5);
-sCinema(oBarkley,'code',"oBarkley.visible=1;");
+sCinema(oBarkley,'code',cine_0264);
 repeat (3) sCinema(oBarkley,'move','down');
 sCinema(oBarkley,'wait',1);
 sCinema(oHoopz,'dialog',"Dad! Are you okay!? What happened?",1);
@@ -129,7 +129,7 @@ sCinema(oHoopz,'dialog',"Is everything gonna be alright, dad?",1);
 sCinema(oBarkley,'dialog',"I hope so Hoopz. I sure hope so.",1);
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code',"global.skipper=0;sOvar(oIntro32,3);oBalthios.x=-999;oCyberdwarf.x=-999;oHoopz.x=-999;global.camera=oBarkley;sFollow('add',oFollower0); sFollow('add',oFollower2); sFollow('add',oFollower3); sFollow('update');global.nofollow=0;");
+sCinema(oBarkley,'code',cine_0303);
 sCinema(oBarkley,'tint',c_black,0);</string>
           </argument>
         </arguments>
@@ -156,7 +156,7 @@ sCinema(oBarkley,'tint',c_black,0);</string>
 sOvar(object_index,1);
 sCinema(oBarkley,'pan',2);
 sCinema(oBarkley,'dialog',"Th-this is it... Cuchulainn's Tomb.",1);
-sCinema(oBarkley,'code','global.camera=oBarkley;');
+sCinema(oBarkley,'code',cine_0143);
 repeat (6) sCinema(oBarkley,'move','up');
 sCinema(oFollower2,'dialog',"Barkley, are you aware of the story of Cuchulainn?",1);
 sCinema(oBarkley,'dialog',"Not really. Should I be?",1);

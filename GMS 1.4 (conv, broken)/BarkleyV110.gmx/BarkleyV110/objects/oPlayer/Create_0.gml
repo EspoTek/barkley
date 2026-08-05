@@ -1,0 +1,29 @@
+event_inherited();
+x=xstart-4; //This is so I start correctly on 16x16 grid
+//x-=4;
+pspd=2.5; //player speed
+ghost=0;
+ambattler=0; //used to see how many battlers for creating grid
+allwalk=0; //if 1 always walking
+walk=0;
+cut=20;
+tt=0;
+t=0;
+ll=0;
+cou=0;
+vou=0; //jump deal
+jm=0; //jump statiser
+jcou=0; //jump gravity
+action=0; //not doing anything
+shadow=1; //if 0 no shadow
+shw=0;
+move=""; //tells where to move
+mask_index=sMask;
+solid=1;
+face=0;
+subber=0; //to specify cinema sprites
+dap=0; //if 1 dont do depth
+//Matters below
+jumping=0;
+jump=0;
+spd=2.5;

@@ -83,7 +83,7 @@ oBalthios.y-=10*16;
 global.plot=8;
 global.nofollow=1;
 with (oFollower) x=-999;
-sCinema(oLarry,'code',"oLarry.sprt=sVarious0;oLarry.subber=2;");
+sCinema(oLarry,'code',cine_0188);
 sCinema(oJordan,'dialog',"You... You son of a bitch, Barkley.",1);
 sCinema(oBarkley,'dialog',"Get the fuck away from him!",1);
 sCinema(oBarkley,'wait',1.5);
@@ -94,7 +94,7 @@ repeat (4) sCinema(oJordan,'move','right',4);
 sCinema(oJordan,'move','up',4);
 repeat (3) sCinema(oJordan,'move','right',4);
 repeat (3) sCinema(oJordan,'move','up',4);
-sCinema(oBarkley,'code','oJordan.x=-999;');
+sCinema(oBarkley,'code',cine_0189);
 sCinema(oVince,'dialog',"Mission: failed. Retreat to B.L.O.O.D.M.O.S.E.S. for reconstruction process and second attempt.",1);
 repeat (5) sCinema(oVince,'move','right');
 sCinema(oBalthios,'dialog',"Vince, wait!",1);
@@ -102,7 +102,7 @@ sCinema(oVince,'dialog',"I am no longer Vince Carter, Balthios... I am Vinceborg
 repeat (2) sCinema(oVince,'move','up');
 repeat (3) sCinema(oVince,'move','right');
 repeat (3) sCinema(oVince,'move','up');
-sCinema(oBarkley,'code','oVince.x=-999;');
+sCinema(oBarkley,'code',cine_0190);
 sCinema(oBarkley,'dialog',"Damnit Vince... Damnit...",1);
 sCinema(oHoopz,'dialog',"Dad!",1);
 sCinema(oBarkley,'dialog',"I'm... I'm here son.",1);
@@ -164,7 +164,7 @@ oBalthios.t=0;
 oBarkley.t=0;
 global.nofollow=1;
 with (oFollower) x=-999;
-sCinema(oLarry,'code',"oLarry.sprt=sVarious0;oLarry.subber=2;");
+sCinema(oLarry,'code',cine_0188);
 repeat (9) sCinema1(oBalthios,'move','up');
 repeat (8) sCinema2(oCyberdwarf,'move','up');
 sCinema2(oCyberdwarf,'move','right');
@@ -172,7 +172,7 @@ sCinema2(oCyberdwarf,'move','up');
 repeat (8) sCinema3(oVince,'move','up');
 sCinema3(oVince,'move','left');
 sCinema3(oVince,'move','up');
-sCinema(oBarkley,'code',"oCinema1.enable=1;oCinema2.enable=1;oCinema3.enable=1;");
+sCinema(oBarkley,'code',cine_0181);
 repeat (9) sCinema(oBarkley,'move','up');
 sCinema(oBarkley,'wait',1.5);
 sCinema(oJordan,'dialog',"Hahaha, I knew you'd come back for him, Barkley. I knew I could count on your sense of family to bring you back. That's just like you, Barkley. Everyone around you is your own little family you can always count on. Well not me, Barkley. I wasn't a part of your little... 'b-ball family'. Heh, I was the black sheep of your god damn Barkley b-ball clique.",1);
@@ -202,15 +202,15 @@ sCinema(oJordan,'dialog',"What the fuck is this? Is this a fucking joke?",1);
 sCinema(oVince,'move','up');
 sCinema(oVince,'move','up');
 sCinema(oVince,'dialog',"My mission was to... it was... to destroy... the one.",1);
-sCinema(oBarkley,'code',"sParty('del',2);");
+sCinema(oBarkley,'code',cine_0191);
 sCinema(oVince,'dialog',"Vinceborg has left the party!");
 sCinema(oCyberdwarf,'dialog',"Vinceborg, no!",1);
 sCinema(oVince,'dialog',"Must destroy... Hoopz Barkley.",1);
 sCinema(oVince,'move','up');
 sCinema(oVince,'face','down');
 sCinema(oBarkley,'dialog',"That's it! Fuck this, you're going down, Jordan!",1);
-sCinema(oBarkley,'code',"with (oIntro11) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;");</string>
+sCinema(oBarkley,'code',cine_0192);
+sCinema(oBarkley,'code',cine_0006);</string>
           </argument>
         </arguments>
       </action>

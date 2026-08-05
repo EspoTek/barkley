@@ -87,7 +87,7 @@ sOvar(oSnail,8);
 oZauber.solid=0;
 //set positions
 sCinema(oBarkley,'tint',c_black,0);
-//sCinema(oBarkley,'code',"sDialog('set',1,'top');");
+//sCinema(oBarkley,'code',cine_0017);
 sCinema(oBarkley,'dialog',"J. Lindsay:\Eric...");
 sCinema(oBarkley,'dialog',"Eric:\J. Lindsay...");
 sCinema(oBarkley,'dialog',"J. Lindsay:\Your... your poetry...");
@@ -96,7 +96,7 @@ sCinema(oBarkley,'dialog',"J. Lindsay:\It was beautiful... I just... I read it a
 sCinema(oBarkley,'dialog',"Eric:\Enough! I have written you a poem and you have expressed your gratitude, but the time for words has now passed. The present is a time for action. I have a room prepared for us at the inn. Shall we?");
 sCinema(oBarkley,'dialog',"J. Lindsay:\Oh Eric...");
 repeat (6) sCinema1(oSnail,'move','up');
-sCinema(oFox,'code','oCinema1.enable=1;');
+sCinema(oFox,'code',cine_0178);
 repeat (6) sCinema(oFox,'move','up');
 sCinema(oBarkley,'dialog',"You've gotta be kidding me.",1);
 sCinema(oBalthios,'dialog',"Hmm?",1);
@@ -106,7 +106,7 @@ sCinema(oBarkley,'dialog',"Goddamn animal people.",1);
 sCinema(oBalthios,'dialog',"Oh, Barkley...",1);
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code','oFox.x=-999;oSnail.x=-999;global.nofollow=0;sFollow("update");oZauber.solid=1;oVince.x=-999;oCyberdwarf.x=-999;oHoopz.x=-999;oBalthios.x=-999;');
+sCinema(oBarkley,'code',cine_0199);
 sCinema(oBarkley,'tint',c_black,0);</string>
           </argument>
         </arguments>

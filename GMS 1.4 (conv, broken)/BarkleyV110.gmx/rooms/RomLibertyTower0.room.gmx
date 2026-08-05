@@ -81,7 +81,7 @@
     <instance objName="oLSugars" x="96" y="832" name="inst_D0E4391C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSteambrast" x="144" y="976" name="inst_F5DD6E80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oDiabeastie" x="112" y="800" name="inst_16CBB128" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oLRod" x="160" y="800" name="inst_ADA10BB5" locked="0" code="image_single=2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oLRod" x="160" y="800" name="inst_ADA10BB5" locked="0" code="image_index=2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oExit276" x="144" y="720" name="inst_D4EE61D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oExit276" x="160" y="720" name="inst_6C4109D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oWall" x="96" y="1008" name="inst_CEF2E968" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

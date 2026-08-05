@@ -50,7 +50,7 @@
             <string>with (oFollower) x=-999;
 oBarkley.x=-999;
 oJuwanna.t=0;
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
+sCinema(oBarkley,'cond',cine_0148);
 sCinema(oBernie,'dialog',"Gretel:\Bernie... why are you doing this? Why are you doing this to me? What about us? What about everything we had planned?");
 sCinema(oBernie,'dialog',"You don't get it, do you?",1);
 sCinema(oBernie,'move','up');
@@ -83,9 +83,9 @@ sCinema(oBernie,'dialog',"Gretel:\Bernie... my Bernie...");
 sCinema(oBarkley,'wait',.5);
 sCinema(oBernie,'tint',c_white,1);
 sCinema(oBarkley,'wait',.5);
-sCinema(oBarkley,'code','sde=instance_create(view_xview[0]+160,view_yview[0]+120,oDummy);sde.sprite_index=sVampcommand;sde.depth=-5002;');
+sCinema(oBarkley,'code',cine_0170);
 sCinema(oBarkley,'wait',2);
-sCinema(oBarkley,'cond','if (sKey(vk_anykey)) good=1;');
+sCinema(oBarkley,'cond',cine_0171);
 sCinema(oBarkley,'effect','fadein',3);
 global.roz=RomDeath0;</string>
           </argument>

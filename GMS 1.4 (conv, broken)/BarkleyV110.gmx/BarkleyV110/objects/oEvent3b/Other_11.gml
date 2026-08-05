@@ -1,0 +1,11 @@
+if (sOvar(object_index,-1)!=-1) exit;
+global.dialog=1;
+oBarkley.move="";
+sOvar(object_index,1);
+with (oEvent3b) instance_destroy();
+sCinema(oBarkley,"code",cine_0115);
+sCinema(oBarkley,"wait",0.5);
+sCinema(oBarkley,"code",cine_0095);
+sCinema(oFollower0,"dialog","BOOM-SHAKA-LAKA!");
+sCinema(oBarkley,"dialog","Wh-what the hell was that?",1);
+sCinema(oFollower0,"dialog","I don't know but... something's definitely alive down here...",1);

@@ -1,0 +1,22 @@
+sprite_index=sBHoopzWalk;
+image_xscale=1;
+mash=0;
+out=0;
+shaft=10;
+barrel=16; //16
+rot=180;
+face=180;
+stage=0;
+cou=0;
+bou=0;
+image_speed=0.25;
+footx=0;
+footy=32;
+fx=x+footx;
+fy=y+footy; //26
+xo=-(40-17);
+yo=10;
+walkdist=150;
+wspd=5;
+walk=-999;
+

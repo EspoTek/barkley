@@ -136,29 +136,12 @@ if (random(1)&lt;.5) {sBCondition('inflict','parkinsons',target);} else {sDamage
 fff=1;
 sound_play(mWhistle3);
 //
-tob=object_add();
-object_event_add(tob,ev_create,0,"
-sprite_index=sBWhistle1;
-image_angle=random(360);
-image_single=floor(random(3));
-image_blend=c_lime;
-dir=90-random(180);
-spd=5;
-x+=-10+random(20);
-y+=-10+random(20);
-");
-object_event_add(tob,ev_step,0,"
-x+=lengthdir_x(spd,dir);
-y+=lengthdir_y(spd,dir);
-image_alpha-=0.02+random(0.02);
-if (image_alpha&lt;0) instance_destroy();
-");
-object_event_add(tob,ev_draw,0,"if (view_current!=0) exit; sD();");
+tob=oBMechP0;
 repeat (40) instance_create(x,y,tob);
 tob.depth=target.depth-1;
 visible=0;
 }
-if (fff&gt;60) { fff=0; doing=-1; object_delete(tob); x=slav.x; y=slav.y; walk=-999; alarm[0]=30; ended=0; finish=1; }
+if (fff&gt;60) { fff=0; doing=-1; with (tob) instance_destroy(); x=slav.x; y=slav.y; walk=-999; alarm[0]=30; ended=0; finish=1; }
 }
 if (fff!=0) fff+=1;</string>
           </argument>
@@ -191,8 +174,8 @@ x=xstart-(8/2)+random(8);
 y=ystart-(8/2)+random(8);
 if (fff&gt;34) { 
 stage=1; cou=0; vet=2;
-target=sEnemyTarget('random',!enemy); ggg=instance_create(x-7,y+20,oBNeedler); ggg.target=target; ggg.sprite_index=sBMech0; ggg.image_single=1; ggg.twist=1; ggg.master=id; ggg.speed=8;
-target2=sEnemyTarget('random',!enemy); ggg=instance_create(x+7,y+20,oBNeedler); ggg.target=target2; ggg.sprite_index=sBMech0; ggg.image_single=1; ggg.twist=1; ggg.master=id; ggg.speed=12;
+target=sEnemyTarget('random',!enemy); ggg=instance_create(x-7,y+20,oBNeedler); ggg.target=target; ggg.sprite_index=sBMech0; ggg.image_index=1; ggg.image_speed=0; ggg.twist=1; ggg.master=id; ggg.speed=8;
+target2=sEnemyTarget('random',!enemy); ggg=instance_create(x+7,y+20,oBNeedler); ggg.target=target2; ggg.sprite_index=sBMech0; ggg.image_index=1; ggg.image_speed=0; ggg.twist=1; ggg.master=id; ggg.speed=12;
 sS(mBoltbust);
 }
 } else if (stage=1 &amp;&amp; instance_number(oBNeedler)=1) {
@@ -231,7 +214,7 @@ x=xstart-(8/2)+random(8);
 y=ystart-(8/2)+random(8);
 if (fff&gt;34) { 
 stage=1; cou=0; vet=1;
-target=sEnemyTarget('random',!enemy); ggg=instance_create(x+7,y-20,oBNeedler); ggg.target=target; ggg.sprite_index=sBMech0; ggg.image_single=0; ggg.twist=1; ggg.master=id;
+target=sEnemyTarget('random',!enemy); ggg=instance_create(x+7,y-20,oBNeedler); ggg.target=target; ggg.sprite_index=sBMech0; ggg.image_index=0; ggg.image_speed=0; ggg.twist=1; ggg.master=id;
 sS(mCogbust);
 }
 } else if (stage=1 &amp;&amp; instance_exists(oBNeedler)=0) {

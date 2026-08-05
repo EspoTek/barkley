@@ -61,8 +61,8 @@ face=7;
 name='Priest';
 sCinema(oLarry,'dialog',"Charles, I uh, I haven't seen you in here since the...",1);
 sCinema(oBarkley,'dialog',"Yeah, Larry. That was a long time ago.",1);
-if (global.victorian=0) sCinema(oBarkley,'code',"oLarry.face=8;oLarry.name='Larry Bird';");
-else sCinema(oBarkley,'code',"oLarry.face=8;oLarry.name='Cleric Bird';");
+if (global.victorian=0) sCinema(oBarkley,'code',cine_0415);
+else sCinema(oBarkley,'code',cine_0416);
 sCinema(oLarry,'dialog',"I don't know what to tell you, Charles. I'm sorry. I know it wasn't your fault.",1);
 sCinema(oBarkley,'dialog',"I don't need your god damned pity, Larry, acting like you give a damn just 'cuz you're a priest now. You don't know shit about what happened and you got no business acting all buddy buddy just 'cuz we used to be friends. Shit's changed, Bird. This ain't the golden age of b-ball anymore. You more than anyone should know this.",1);
 sCinema(oBarkley,'wait',1.4);
@@ -84,7 +84,7 @@ sCinema(oBarkley,'wait',1.8);
 sCinema(oLarry,'dialog',"Don't do anything rash.",1);
 sCinema(oBarkley,'wait',2.8);
 sCinema(oBarkley,'dialog',"Yeah, Larry. Yeah.",1);
-sCinema(oBarkley,'code',"global.skipper=0;");
+sCinema(oBarkley,'code',cine_0014);
 } else {
 sCinema(oLarry,'dialog',"My condolences, Mr. Barkley...",1);
 }</string>

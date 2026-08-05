@@ -1,0 +1,1 @@
+oTerminalSpecs.visible=1;

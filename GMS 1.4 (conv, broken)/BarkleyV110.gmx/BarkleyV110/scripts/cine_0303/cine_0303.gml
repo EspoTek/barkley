@@ -1,0 +1,6 @@
+function cine_0303() {
+	global.skipper=0;sOvar(oIntro32,3);oBalthios.x=-999;oCyberdwarf.x=-999;oHoopz.x=-999;global.camera=oBarkley;sFollow("add",oFollower0); sFollow("add",oFollower2); sFollow("add",oFollower3); sFollow("update");global.nofollow=0;
+
+
+
+}

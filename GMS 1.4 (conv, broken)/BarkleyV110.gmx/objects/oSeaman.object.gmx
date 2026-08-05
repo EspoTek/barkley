@@ -53,7 +53,7 @@ if (sOvar(object_index,-1)=2) { x=208-4; y=80; t=3; }</string>
           <argument>
             <kind>1</kind>
             <string>global.skipper=11;
-oFerry.image_single=1;
+oFerry.image_index=1; oFerry.image_speed=0;
 oWall0.solid=0;
 oWall.solid=0;
 with (oPlayer) solid=0;
@@ -67,13 +67,13 @@ sOvar(oTubman,3);
 sOvar(oIntro25,6);
 sOvar(oFerry,2);
 sParty('add',1); ////////////////here
-sCinema(oSeaman,'code','sA("stopall");sA("loop",mCyberdwarf);');
+sCinema(oSeaman,'code',cine_0441);
 sCinema(oBalthios,'dialog',"Duergar:\G-guh...");
 sCinema(oBalthios,'move','right',2);
 sCinema(oBalthios,'dialog',"Duergar:\Guh.....");
 sCinema(oBalthios,'move','right',2);
 sCinema(oBalthios,'dialog',"Duergar:\GAAAAAAAH!");
-sCinema(oSeaman,'code','sound_play(mDuergar);');
+sCinema(oSeaman,'code',cine_0442);
 sCinema(oBalthios,'effect','swap',sBalthios);
 sCinema(oBarkley,'wait',2);
 sCinema(oBarkley,'dialog',"B-Balthios?!",1);
@@ -87,38 +87,38 @@ sCinema(oCyberdwarf,'dialog',"Why didn't you tell us, Balthios? We could have he
 sCinema(oBalthios,'dialog',"I forgot how near to Columbus Day it was. I am sorry. Besides, what could you have done? The only way to remove the curse is to eradicate all gypsies. But it seems now that the curse has temporarily lifted and that I will not be plagued with the burden of duergars until next Columbus Day.",1);
 repeat (1) sCinema(oSeaman,'move','down');
 sCinema(oBarkley,'dialog',"Captain:\Land ho! Now approaching Liberty Island!"); //208, 112
-sCinema(oSeaman,'code','oFerry.sail=2;sA("stopall");');
+sCinema(oSeaman,'code',cine_0443);
 sCinema(oBarkley,'wait',8);
 sCinema(oBarkley,'dialog',"Captain:\Here we are, anchored at Liberty Island dock.");
-sCinema(oSeaman,'code','sA("loop",mLiberty);');
+sCinema(oSeaman,'code',cine_0383);
 repeat (6) sCinema(oSeaman,'move','down');
 repeat (2) sCinema(oSeaman,'move','right');
-sCinema(oSeaman,'code','oSeaman.visible=0;oWall.solid=0;');
-sCinema(oBarkley,'code','oCinema2.enable=1;');
-sCinema(oBarkley,'code','oCinema1.enable=1;');
+sCinema(oSeaman,'code',cine_0444);
+sCinema(oBarkley,'code',cine_0180);
+sCinema(oBarkley,'code',cine_0178);
 repeat (5) sCinema(oBarkley,'move','down');
 repeat (6) sCinema(oBarkley,'move','right');
-sCinema(oSeaman,'code','oBarkley.visible=0;');
+sCinema(oSeaman,'code',cine_0031);
 repeat (4) sCinema1(oBalthios,'move','down');
 repeat (1) sCinema1(oBalthios,'move','right');
-sCinema1(oSeaman,'code','oBalthios.visible=0;');
+sCinema1(oSeaman,'code',cine_0445);
 repeat (3) sCinema2(oCyberdwarf,'move','down');
 repeat (5) sCinema2(oCyberdwarf,'move','right');
-sCinema2(oSeaman,'code','oCyberdwarf.visible=0;');
-sCinema(oBarkley,'cond','if (oCinema2.enable=0) good=1;');
-sCinema(oBarkley,'cond','if (oCinema1.enable=0) good=1;');
-sCinema(oSeaman,'code','with (oPlayer) { visible=0; x=208+16; y=112; }oSeaman.visible=1;');
+sCinema2(oSeaman,'code',cine_0446);
+sCinema(oBarkley,'cond',cine_0102);
+sCinema(oBarkley,'cond',cine_0101);
+sCinema(oSeaman,'code',cine_0447);
 sCinema(oSeaman,'move','left');
 sCinema(oSeaman,'move','left');
 sCinema(oSeaman,'move','up');
 sCinema(oSeaman,'face','left');
-sCinema(oSeaman,'code','with (oFollower) { visible=1; x=208+16; y=112; } with (oBarkley) { visible=1; x=208+16; y=112; } global.nofollow=0;');
+sCinema(oSeaman,'code',cine_0448);
 repeat (3) sCinema(oBarkley,'move','left');
 sCinema(oBarkley,'move','up');
 sCinema(oBarkley,'face','right');
 sCinema(oBalthios,'dialog',"Captain:\I won't be taking you back. The ship was damaged while the duergar was in the hull rummaging for gemstones. I don't know why you're here but you don't look like one of those cult loonies. Take care of yourself... Charles Barkley.");
 sCinema(oBarkley,'dialog',"You too, old man of the sea... You too.",1);
-sCinema(oSeaman,'code','global.skipper=0;oWall.solid=1;oCyberdwarf.x=-999;oBalthios.x=-999;oFerry.image_single=0; with (oPlayer) solid=1; with (oFollower) solid=0;');</string>
+sCinema(oSeaman,'code',cine_0449);</string>
           </argument>
         </arguments>
       </action>
@@ -177,39 +177,39 @@ sCinema(oBarkley,'dialog',"Captain:\Alright, get on board. We're leaving right n
 sCinema(oSeaman,'move','down');
 sCinema(oSeaman,'move','right');
 sCinema(oSeaman,'move','right');
-sCinema(oSeaman,'code','oSeaman.visible=0; oSeaman.x=352; oSeaman.y=672;'); //352, 672
+sCinema(oSeaman,'code',cine_0450); //352, 672
 sCinema(oBarkley,'move','down');
 sCinema(oBarkley,'move','down');
 sCinema(oBarkley,'move','right');
 sCinema(oBarkley,'move','right');
 sCinema(oBarkley,'catchup');
-sCinema(oBarkley,'code',"sFollow('delete',oFollower9);sFollow('update');");
-sCinema(oSeaman,'code','with (oPlayer) { visible=0; }');
+sCinema(oBarkley,'code',cine_0451);
+sCinema(oSeaman,'code',cine_0452);
 repeat(6) sCinema(oBarkley,'move','right');
-sCinema(oSeaman,'code','with (oPlayer) { visible=0; x=352; y=672; }');
-sCinema(oSeaman,'code','oSeaman.visible=1;global.nofollow=1;');
+sCinema(oSeaman,'code',cine_0453);
+sCinema(oSeaman,'code',cine_0454);
 repeat (7) sCinema(oSeaman,'move','up');
 sCinema(oSeaman,'move','left');
 sCinema(oSeaman,'move','left');
 sCinema(oSeaman,'move','left');
 sCinema(oSeaman,'face','up');
-sCinema(oSeaman,'code','oBarkley.visible=1;');
-sCinema(oBarkley,'code','oCinema2.enable=1;');
-sCinema(oBarkley,'code','oCinema1.enable=1;');
+sCinema(oSeaman,'code',cine_0264);
+sCinema(oBarkley,'code',cine_0180);
+sCinema(oBarkley,'code',cine_0178);
 repeat (5) sCinema(oBarkley,'move','up');
 repeat (6) sCinema(oBarkley,'move','left');
-sCinema1(oSeaman,'code','oBalthios.visible=1;');
+sCinema1(oSeaman,'code',cine_0265);
 repeat (4) sCinema1(oBalthios,'move','up');
 repeat (6) sCinema1(oBalthios,'move','left');
-sCinema2(oSeaman,'code','oCyberdwarf.visible=1;');
+sCinema2(oSeaman,'code',cine_0267);
 repeat (2) sCinema2(oCyberdwarf,'move','up');
 sCinema2(oCyberdwarf,'move','right');
-sCinema(oBarkley,'cond','if (oCinema2.enable=0) good=1;');
-sCinema(oBarkley,'cond','if (oCinema1.enable=0) good=1;');
+sCinema(oBarkley,'cond',cine_0102);
+sCinema(oBarkley,'cond',cine_0101);
 sCinema(oBarkley,'dialog',"Captain:\We be setting sail! Hold onto your pantaloons!");
-sCinema(oSeaman,'code','oFerry.sail=1;sA("stopall");');
+sCinema(oSeaman,'code',cine_0455);
 sCinema(oBarkley,'wait',3);
-sCinema(oSeaman,'code','sA("loop",mSadness)');
+sCinema(oSeaman,'code',cine_0456);
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'tint',c_black,.1);
 sCinema(oBarkley,'wait',.5);
@@ -239,20 +239,20 @@ sCinema(oBalthios,'dialog',"I... I must go!",1);
 sCinema(oCyberdwarf,'face','right');
 repeat (4) sCinema(oBalthios,'move','right',4);
 repeat (4) sCinema(oBalthios,'move','down',4);
-sCinema(oSeaman,'code','oBalthios.visible=0;');
+sCinema(oSeaman,'code',cine_0445);
 sCinema(oBarkley,'dialog',"Balthios!?",1);
 repeat (1) sCinema(oCyberdwarf,'move','up');
 sCinema(oCyberdwarf,'dialog',"What did you say to him, Charles?",1);
 sCinema(oBarkley,'dialog',"I don't know, only that-",1);
-sCinema(oSeaman,'code','sA("stopall");global.shake=3;');
+sCinema(oSeaman,'code',cine_0457);
 sCinema(oBarkley,'wait',1);
-sCinema(oSeaman,'code','sound_play(mDuergar);global.shake=3;');
+sCinema(oSeaman,'code',cine_0458);
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'jump','start');
 sCinema(oCyberdwarf,'jump','start');
 sCinema(oBarkley,'jump','end');
 sCinema(oCyberdwarf,'jump','end');
-sCinema(oSeaman,'code','sA("loop",mRunaway);global.shake=0;oBalthios.sprt=sDuergar;oBalthios.visible=1;');
+sCinema(oSeaman,'code',cine_0459);
 repeat (5) sCinema(oBalthios,'move','up',4);
 repeat (4) sCinema(oBalthios,'move','left',4);
 sCinema(oBalthios,'dialog',"???:\UOOOOUORR!");
@@ -261,9 +261,9 @@ sCinema(oCyberdwarf,'dialog',"It's a duergar and it looks like it wants to fight
 sCinema(oBarkley,'dialog',"We don't have time for this shit!",1);
 sCinema(oCyberdwarf,'dialog',"But it looks like we've got no choice! Here it comes!",1);
 //sCinema(oBalthios,'dialog',"battle here");
-sCinema(oBarkley,'code',"sPos('save');global.timpy=oFerry.y;");
-sCinema(oBarkley,'code',"with (oSeaman) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;");
+sCinema(oBarkley,'code',cine_0460);
+sCinema(oBarkley,'code',cine_0461);
+sCinema(oBarkley,'code',cine_0006);
 //sCinema(oBarkley,'effect','fadein',3);
 //global.roz=RomFerry;
 } else if (global.selected=1) {
@@ -298,7 +298,7 @@ sCinema(oBarkley,'dialog',"Captain:\Passage to Liberty Island. You getting on?")
 sCinema(oBarkley,'dialog',"Is the ferry faster than the Underground Railroad?",1);
 sCinema(oBarkley,'dialog',"Captain:\Depends on the weather. I can get you there in no time if the sea is easy. You coming along?");
 sCinema(oBarkley,'dialog',"Choose:",0,"Board the ferry.","Leave.");
-sCinema(oBarkley,'code','with (oSeaman) event_user(2);');
+sCinema(oBarkley,'code',cine_0462);
 }</string>
           </argument>
         </arguments>

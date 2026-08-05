@@ -1,0 +1,15 @@
+global.dialog=1;
+with (oFollower) x=-999;
+sOvar(object_index,.1);
+oDGarnett.x+=16;
+oDGarnett.y+=48+32;
+repeat (5) sCinema(oBarkley,"move","up");
+sCinema(oBarkley,"wait",.6);
+sCinema(oBarkley,"dialog","This is a lot bigger than I thought it would be...",1);
+sCinema(oBarkley,"dialog","Commentator:\\...enter Charles Barkley, the man singlehandedly responsible for the demise of b-ball! Let's see if his skills off the court are as strong as they are on it. The rules are simple, Barkley: face your foes in order and make your way to the arena champion!");
+sCinema(oBarkley,"dialog","Time to test my mettle on some danger...",1);
+sCinema(oBarkley,"dialog","Commentator:\\Your first challenge, Charles Barkley: an orc from hell!");
+sCinema(oBarkley,"face","down");
+sBoss("oBHellorc");
+sCinema(oBarkley,"code",cine_0243);
+sCinema(oBarkley,"code",cine_0006);

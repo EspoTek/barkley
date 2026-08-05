@@ -77,8 +77,8 @@ global.cserv[6].name="Start";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.control=9) image_single=0;
-else image_single=1;
+            <string>if (global.control=9) { image_index=0; image_speed=0; }
+else { image_index=1; image_speed=0; }
 if (doall!=-1) {
 global.temp=doall;
 global.temp2=0;
@@ -157,7 +157,7 @@ keyboard_lastkey=0;</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sprite_index,image_single,x,y);
+            <string>draw_sprite(sprite_index,image_index,x,y);
 sFont(Courier8,c_white,1);
 if (doall=-1) draw_text(x+75,y+5,'SET KEYS');
 else if (doall&lt;=6) draw_text(x+75,y+5,'Press the key for ' + global.cserv[doall].name);</string>

@@ -54,7 +54,7 @@ else alarm[1]=1;</string>
             <string>oBarkley.x=-99;
 with (oFollower) x=-99;
 sOvar(object_index,2);
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
+sCinema(oBarkley,'cond',cine_0148);
 sCinema(oFollower0,'dialog',"The time for fun and games is over. We need to get back to business.",1);
 sCinema(oBarkley,'dialog',"Yeah, uh... We gotta... Gotta go back...",1);
 sCinema(oBarkley,'wait',.9);
@@ -63,9 +63,9 @@ sCinema(oBarkley,'wait',.9);
 sCinema(oBarkley,'dialog',"No, just got some... Some dirt in my eye...",1);
 sCinema(oBarkley,'wait',.9);
 sCinema(oFollower2,'dialog',"The portal is closing. This is the last we'll see of the BBall Dimension for a long time...",1);
-sCinema(oBarkley,'code','with (oIntro24b) dspc=5;');
+sCinema(oBarkley,'code',cine_0262);
 sCinema(oBarkley,'wait',2.3); //2.5
-sCinema(oBarkley,'code','sA("stopall")');
+sCinema(oBarkley,'code',cine_0263);
 sCinema(oBarkley,'wait',.3);
 sCinema(oBarkley,'effect','fadein',3);
 global.roz=global.scheme[30];
@@ -96,7 +96,7 @@ global.scheme[28]=-999;</string>
             <string>oBarkley.x=-99;
 with (oFollower) x=-99;
 sOvar(object_index,1);
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
+sCinema(oBarkley,'cond',cine_0148);
 sCinema(oFollower3,'dialog',"Whoa! This is just like in my vidcons!",1);
 sCinema(oFollower2,'dialog',"So this is the BBall Dimension portal...",1);
 sCinema(oBarkley,'dialog',"I feel... Different. It feels like I'm going home.",1);
@@ -109,7 +109,7 @@ sCinema(oBarkley,'wait',.9);
 sCinema(oBarkley,'dialog',"... ...dipsy-doo dunkeroo slam-jam-bam, baby!");
 sCinema(oBarkley,'dialog',"That's Dick Vitale! He must have made it to the BBall Dimension, too.",1);
 sCinema(oFollower2,'dialog',"Look's like we're almost there, get ready to brace for the dimensional shift!",1);
-sCinema(oBarkley,'code','with (oIntro24b) dspc=5;');
+sCinema(oBarkley,'code',cine_0262);
 sCinema(oBarkley,'wait',2.5);
 sCinema(oBarkley,'effect','fadein',3);
 global.roz=RomDimensionMain;</string>

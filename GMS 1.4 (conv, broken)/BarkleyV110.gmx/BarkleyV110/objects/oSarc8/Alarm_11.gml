@@ -1,0 +1,10 @@
+global.scheme[17]=2;
+oBarkley.x=272;
+oBarkley.y=80;
+oFollower.x=oBarkley.x;
+oFollower.y=oBarkley.y;
+sCinema(oBarkley,"dialog","K-Kobe... I... I just killed Kobe Bryant...",1);
+sCinema(oHellbane,"dialog","He was already dead, Barkley...",1);
+sCinema(oBarkley,"dialog","I know that but... But that look in his eye. Even in death, he had that baller look, that \"I" +"'m"+" gonna dunk that ball so hard\" look... That was Kobe...",1);
+sCinema(oHellbane,"dialog","I'm... I'm sorry Barkley.",1);
+sCinema(oBarkley,"dialog","No man should have to ever do that... I'm sorry Kobe... I'm sorry.",1);

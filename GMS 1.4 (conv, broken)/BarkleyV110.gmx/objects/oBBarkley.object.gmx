@@ -1079,8 +1079,8 @@ if (image_index=5) {
  gff.image_index=7;
  }
 }
-if (image_single&gt;=6) {
-image_single=6;
+if (image_index&gt;=6) {
+image_index=6; image_speed=0;
 if (instance_exists(oProjectile)=0) { sprite_index=sBBarkleyStand; image_index=0; stage=7; }
 }
 }
@@ -1104,8 +1104,8 @@ if (ddd.image_index=5) {
  gff.image_index=7;
  }
 }
-if (ddd.image_single&gt;=6) {
-ddd.image_single=6;
+if (ddd.image_index&gt;=6) {
+ddd.image_index=6; ddd.image_speed=0;
 if (instance_exists(oProjectile)=0) { ddd.sprite_index=sBBarkleyStand; ddd.image_index=0; stage=7; }
 }
 }

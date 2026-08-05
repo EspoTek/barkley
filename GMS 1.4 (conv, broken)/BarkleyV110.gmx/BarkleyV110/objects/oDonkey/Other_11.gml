@@ -1,0 +1,15 @@
+global.dialog=1;
+itemf[0]="Spiked B-ball";
+itemf[1]="Thunder Zauber";
+itemf[2]="Time Zauber";
+itemf[3]="Dwarf Pride";
+itemf[4]="Dwarf Warhammer";
+itemf[5]="Trenchcoat";
+itemf[6]="Referee Uniform";
+itemf[7]="Sweatband";
+itemf[8]="Ace Bandage";
+itemf[9]="";
+sCinema(oBarkley,"dialog","Clark:\\Weapons, huh? We need them for the norms. I guess you need them for the sewers. Or that tomb off the newcomer's place. Anyway, I've got what you want.");
+sCinema(oBarkley,"code",cine_0064);
+sCinema(oBarkley,"cond",cine_0003);
+sCinema(oBarkley,"dialog","Clark:\\If that's it then scram. I've got nothing else for you.");

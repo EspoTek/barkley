@@ -55,7 +55,7 @@ sCinema(oBarkley,'dialog',"Sha'kwan Dwarfmalice:\Aye, aye. I could tell from the
 global.shake=5;
 instance_create(0,0,oDuergarface);
 sCinema(oBarkley,'wait',0.5);
-sCinema(oBarkley,'cond','if (instance_exists(oDuergarface)=0) good=1');
+sCinema(oBarkley,'cond',cine_0418);
 sCinema(oBarkley,'dialog',"Sha'kwan Dwarfmalice:\You had me going there for a minute, I really thought you were a foe. I suppose since you're not my enemy I can tell you my story...");
 }
 sCinema(oBarkley,'dialog',"Sha'kwan Dwarfmalice:\I used to be the strongest Duergar in all the chup mines. Heh, they called me "+'"The Bastard of Muscles"'+" and that's just what I was. I could lift two Duergars over my head at the same time and punch through both friend and foe. But then I went blind. My muscles atrophied and I could do nothing but knit patriotic quilts to keep myself warm. But now that the genies have outlawed all patriotic quilts I can't even do the one thing I have left. Grysh'tarn (our ghastly Duergar deity) bless this land and people and give me the courage to continue without my patriotic quilts...");</string>
@@ -85,7 +85,7 @@ if (sOvar(oMalice,-1)=-1) {
 sOvar(oMalice,.5);
 sCinema(oBarkley,'dialog',"Sha'kwan Dwarfmalice:\Halt! Friend or foe?",0);
 sCinema(oBarkley,'dialog','Friend or foe?',0,"Friend.","Foe.");
-sCinema(oBarkley,'code','with (oMalice) event_user(2);');
+sCinema(oBarkley,'code',cine_0419);
 } else if (sOvar(oMalice,-1)=.5) {
 sCinema(oBarkley,'dialog',"Sha'kwan "+'"the Bastard of Muscles"'+" Dwarfmalice:\It's... so cold. If only I had a patriotic quilt...",0);
 } else if (sOvar(oMalice,-1)=1) {

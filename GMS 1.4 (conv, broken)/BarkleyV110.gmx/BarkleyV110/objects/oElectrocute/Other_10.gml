@@ -1,0 +1,10 @@
+instance_create(tx-8,ty,oSmoker);
+instance_create(tx-6,ty,oSmoker);
+instance_create(tx-4,ty,oSmoker);
+instance_create(tx-2,ty,oSmoker);
+instance_create(tx,ty,oSmoker);
+instance_create(tx+2,ty,oSmoker);
+instance_create(tx+4,ty,oSmoker);
+instance_create(tx+6,ty,oSmoker);
+instance_create(tx+8,ty,oSmoker);
+instance_destroy();

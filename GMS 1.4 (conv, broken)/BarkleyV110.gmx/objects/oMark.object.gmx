@@ -60,8 +60,8 @@ sCinema(oBarkley,'dialog',"Nope.",1);
 sCinema(oBarkley,'dialog',"Mark:\You leave me no choice. If I can't have the F.I.N.A.L. G.U.N., I will follow it until my very demise.");
 sCinema(oBarkley,'dialog',"What? Get outta my face.",1);
 sCinema(oBarkley,'dialog',"Mark:\G.U.N.S...");
-sCinema(oBarkley,'code','sFollow("add",oFollower9);sFollow("update");with (oMark) instance_destroy();');
-sCinema(oBarkley,'code','x=x;');
+sCinema(oBarkley,'code',cine_0420);
+sCinema(oBarkley,'code',cine_0006);
 } else {
 sOvar(oMark,2);
 sItem('F.I.N.A.L. G.U.N.',-1)
@@ -104,7 +104,7 @@ sCinema(oBarkley,'dialog',"I got that gun you wanted. Now what's in it for me?",
 sCinema(oBarkley,'dialog',"Mark:\Outstanding! It's even more magnificent in person... Right, like I mentioned before, you hand it over, and you shall get a priceless item in return.");
 }
 sCinema(oBarkley,'dialog',"Choose:",0,"Here you go.","Nah, I think I'll hold onto it instead.");
-sCinema(oBarkley,'code',"with (oMark) event_user(2);");
+sCinema(oBarkley,'code',cine_0421);
 } else if (sOvar(object_index,-1)=2) {
 sCinema(oBarkley,'dialog',"Mark:\I cannot be disturbed! I must intensely study this gun. Humanity depends on it...");
 } else if (sOvar(object_index,-1)=-1) {

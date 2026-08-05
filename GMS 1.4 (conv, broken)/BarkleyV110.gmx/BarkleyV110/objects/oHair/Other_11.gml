@@ -1,0 +1,16 @@
+global.dialog=1;
+itemf[0]="Ecto Cooler";
+itemf[1]="BBall Juice";
+itemf[2]="BBall Shard";
+itemf[3]="Chicken Dew";
+itemf[4]="Steroids";
+itemf[5]="Tobacco";
+itemf[6]="Chup";
+itemf[7]="Insulin";
+itemf[8]="Alcohol";
+itemf[9]="Fstone Mvitamin";
+itemf[10]="";
+sCinema(oBarkley,"dialog","Leif:\\I've got what you need, man.");
+sCinema(oBarkley,"code",cine_0150);
+sCinema(oBarkley,"cond",cine_0003);
+sCinema(oBarkley,"dialog","Leif:\\Alright, now hit the road.");

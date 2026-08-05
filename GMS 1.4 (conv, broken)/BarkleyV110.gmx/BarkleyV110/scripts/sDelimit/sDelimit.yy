@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"sDelimit",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"sDelimit",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

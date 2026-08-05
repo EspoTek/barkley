@@ -140,48 +140,16 @@ sDamage(doing);
 fff=1;
 sS(mWhistle3);
 //
-tob=object_add();
-object_event_add(tob,ev_create,0,"
-sprite_index=sBWhistle1;
-image_angle=random(360);
-image_single=floor(random(3));
-dir=random(360);
-spd=5;
-x+=-10+random(20);
-y+=-10+random(20);
-");
-object_event_add(tob,ev_step,0,"
-x+=lengthdir_x(spd,dir);
-y+=lengthdir_y(spd,dir);
-image_alpha-=0.04+random(0.02);
-if (image_alpha&lt;0) instance_destroy();
-");
-object_event_add(tob,ev_draw,0,"if (view_current!=0) exit; sD();");
+tob=oBWhistleP0;
 repeat (20) instance_create(x,y,tob);
 tob.depth=target.depth-1;
 //
-tob2=object_add();
-object_event_add(tob2,ev_create,0,"
-sprite_index=sBWhistle;
-image_single=5+instance_number(object_index);
-image_angle=random(360);
-dir=random(360);
-spd=10;
-x+=-10+random(20);
-y+=-10+random(20);
-");
-object_event_add(tob2,ev_step,0,"
-x+=lengthdir_x(spd,dir);
-y+=lengthdir_y(spd,dir);
-image_alpha-=0.04+random(0.02);
-if (image_alpha&lt;0) instance_destroy();
-");
-object_event_add(tob2,ev_draw,0,"if (view_current!=0) exit; sD();");
+tob2=oBWhistleP1;
 repeat (3) instance_create(x,y,tob2);
 tob2.depth=target.depth-1;
 visible=0;
 }
-if (fff&gt;60) { fff=0; doing=-1; object_delete(tob); object_delete(tob2); x=slav.x; y=slav.y; walk=-999; alarm[0]=30; ended=0; finish=1; }
+if (fff&gt;60) { fff=0; doing=-1; with (tob) instance_destroy(); with (tob2) instance_destroy(); x=slav.x; y=slav.y; walk=-999; alarm[0]=30; ended=0; finish=1; }
 }
 if (fff!=0) fff+=1;</string>
           </argument>
@@ -214,25 +182,7 @@ if (fff&gt;5) { stage=1; fff=0; cou=0; }
 } else if (stage=1) {
 if (fff=0) { 
 sS(mWhistle1); 
-tob=object_add();
-object_event_add(tob,ev_create,0,"
-sprite_index=sBWhistle1;
-image_single=3;
-direction=random(360);
-speed=1;
-dir=45-10+random(20);
-spd=2;
-x+=-10+random(20);
-y+=-10+random(20);
-");
-object_event_add(tob,ev_step,0,"
-direction+=20;
-x+=lengthdir_x(spd,dir);
-y+=lengthdir_y(spd,dir);
-image_alpha-=0.02+random(0.01);
-if (image_alpha&lt;0) instance_destroy();
-");
-object_event_add(tob,ev_draw,0,"if (view_current!=0) exit; sD();");
+tob=oBWhistleP2;
 fff=1; 
 }
 cou+=1;
@@ -242,7 +192,7 @@ if (fff=85) { with (oBattler) { if (enemy=0) {
 if (floor(random(3))=1) sBCondition('inflict','stroke',id);
 else sDamageC(id,"MISS",c_ltgray);
 } } }
-if (fff&gt;90) { stage=1; fff=0; img=1; doing=-1; with (tob) {instance_destroy();} object_delete(tob); }
+if (fff&gt;90) { stage=1; fff=0; img=1; doing=-1; with (tob) {instance_destroy();} with (tob) instance_destroy(); }
 }
 if (fff!=0) fff+=1;</string>
           </argument>
@@ -279,23 +229,13 @@ if (fff&gt;30) { fff=0; stage=1; }
 if (fff=0) { 
 fff=1; 
 sS(mWhistle0); 
-tob=object_add();
-object_event_add(tob,ev_create,0,"str=3*7");
-object_event_add(tob,ev_draw,0,"
-if (view_current!=0) exit;
-repeat (str) {
-draw_set_color(make_color_rgb(0,0,128+random(125)));
-draw_line(x-5+random(10),y-5+random(10),x+100+random(25),y-20+random(40));
-}
-str-=3;
-if (str=0) instance_destroy();
-");
+tob=oBWhistleP3;
 instance_create(x+35,y-10,tob);
 tob.depth=target.depth-1;
 }
 scl=max(1,scl-(scl/6));
 if (fff=5) sDamage(doing);
-if (fff&gt;10) { fff=0; doing=-1; scl=1; object_delete(tob);  }
+if (fff&gt;10) { fff=0; doing=-1; scl=1; with (tob) instance_destroy();  }
 }
 if (fff!=0) fff+=1;</string>
           </argument>

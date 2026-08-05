@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 visible=1;
-image_single=0;
+image_index=0; image_speed=0;
 sou=30;
 hav=0;
 if (sOvar(object_index,-1)!=1) slav=instance_create(x,y,oShiner);
@@ -69,7 +69,7 @@ sPos('save');
 // oBarkley - oFollower0
 sCinema(oBarkley,'catchup');
 sCinema(oBarkley,'item','Red Keycard',1);
-sCinema(oBarkley,'code','global.skipper=21;with (oCard0d) instance_destroy();');
+sCinema(oBarkley,'code',cine_0008);
 sCinema(oFollower0,'dialog',"A red key card; this should work on those terminals we saw earlier.",1);
 sCinema(oBarkley,'dialog',"I guess we need to head back to the start.",1);
 sCinema(oBarkley,'move','down');
@@ -77,8 +77,8 @@ sCinema(oFollower3,'dialog',"Owwwww!",1);
 sCinema(oBarkley,'dialog',"Hoopz! What's wrong?",1);
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',0.5);
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');oBarkley.visible=0;with (oFollower)visible=0;background_visible[0]=0;background_visible[1]=1;"); 
-sCinema(oBarkley,'code','oDavis.visible=1;oDavis.t=1;oCagedBalla.visible=1;');
+sCinema(oBarkley,'code',cine_0009); 
+sCinema(oBarkley,'code',cine_0010);
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'tint',c_black,0);
 sCinema(oBarkley,'face','left');
@@ -87,7 +87,7 @@ repeat (3) sCinema(oDavis,'move','right');
 sCinema(oBarkley,'dialog',"Doctor Davis:\Excellent, excellent.");
 repeat (2) sCinema(oDavis,'move','left');
 sCinema(oBarkley,'dialog',"Doctor Davis:\The prototype performs even better than planned. The test subject's strength, stamina, and speed have all improved remarkably and his skill has increased nearly tenfold.");
-sCinema(oBarkley,'code','oCosby.visible=1;oCosby.x=160-4;oCosby.y=192;');
+sCinema(oBarkley,'code',cine_0011);
 repeat (1) sCinema(oCosby,'move','up');
 repeat (3) sCinema(oCosby,'move','right');
 repeat (3) sCinema(oCosby,'move','up');
@@ -108,8 +108,8 @@ sCinema(oBarkley,'dialog',"Doctor Davis:\He's gone bananas... he's gone absolute
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',0.5);
-sCinema(oBarkley,'code',"oBarkley.visible=1;with (oFollower)visible=1;background_visible[0]=1;background_visible[1]=0;"); 
-sCinema(oBarkley,'code','oDavis.visible=0;oDavis.t=1;oCagedBalla.visible=0;oBarkley.solid=1;');
+sCinema(oBarkley,'code',cine_0012); 
+sCinema(oBarkley,'code',cine_0013);
 sCinema(oBarkley,'tint',c_black,0);
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'dialog',"Hoopz! Are you ok?!",1);
@@ -117,7 +117,7 @@ sCinema(oFollower3,'dialog',"My head hurts, dad.",1);
 sCinema(oFollower2,'dialog',"Something's not right here...",1);
 sCinema(oBarkley,'dialog',"None of this shit adds up. None of it.",1);
 sCinema(oFollower0,'dialog',"Fortunately we found the keycard. Let's go back.",1);
-sCinema(oBarkley,'code',"global.skipper=0;");
+sCinema(oBarkley,'code',cine_0014);
 }
 </string>
           </argument>

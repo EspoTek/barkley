@@ -77,8 +77,8 @@ itemf[1]='Tobacco';
 itemf[2]='Steroids';
 itemf[3]='';
 sCinema(oChin,'dialog',"Back for more, Barkuri?",1);
-sCinema(oBarkley,'code',"sShop(oChin,'Buy','Sell','Leave');");
-sCinema(oBarkley,'cond',"if (instance_exists(oStartmenu)=0) good=1");
+sCinema(oBarkley,'code',cine_0023);
+sCinema(oBarkley,'cond',cine_0003);
 sCinema(oChin,'dialog',"You take care, Barkuri!",1);
 }</string>
           </argument>

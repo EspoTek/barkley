@@ -82,7 +82,6 @@ global.b_scover=0; //skip cover for diabetets and such
 global.b_evade=0;
 global.b_victory=0;
 //Create background image
-sprite_replace(sBBattle,"BG\BG"+ string(global.b_back) +".gif",1,0,0,0,1,0,0);
 backdrop=instance_create(0,20.5,oBDummy);
 backdrop.depth=5;
 backdrop.visible=1;
@@ -398,7 +397,7 @@ if (over=3) { over=61; sA('stopall'); sA('loop',mVictory); }
 if (over=61) global.descriptor="Gained " + string(global.b_exp) + " exp";
 if (over=121) global.descriptor="Found " + string(global.b_gold) + " neo-shekels";
 over+=1;
-if (over&gt;179) { if (plr!=-1) (instance_create(plr.fx-20+random(40),plr.fy,oSparkles)).target=plr; }
+if (over&gt;179) { if (plr!=-1) { tttmp=instance_create(plr.fx-20+random(40),plr.fy,oSparkles); tttmp.target=plr; } }
 if (over=180) { 
 sBattleExport(); 
 //Give rewards, add items later. Maybe have dialog after battle?
@@ -511,8 +510,7 @@ sBattleImport();
 //Enemy creation
 for (k=0; global.bene[k]!=""; k+=1) {
 sDelimit(global.bene[k]);
-sto="cfc=instance_create(view_xview[0]+8+"+arr[2]+",view_yview[0]+4+"+arr[3]+","+arr[0]+");";
-execute_string(sto);
+cfc=instance_create(view_xview[0]+8+real(arr[2]),view_yview[0]+4+real(arr[3]),asset_get_index(arr[0]));
 with (cfc) level=real(oBCamera.arr[1]);
 //with (cfc) refEnemy(orgname,real(oBCamera.arr[1]));
 }</string>

@@ -56,8 +56,8 @@ oMalice.t=3;
 oBalgord.t=3; oBalgord.x=224-4; oBalgord.y=112;
 oWroth.t=0; oPelpoc.t=0; oZorf.t=0; oJamal.t=2;
 global.nofollow=1;
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');");
+sCinema(oBarkley,'cond',cine_0148);
+sCinema(oBarkley,'code',cine_0074);
 repeat (14) sCinema1(oHoopz,'move','left',4);
 repeat (6) sCinema1(oHoopz,'move','up',4);
 sCinema1(oHoopz,'face','left');
@@ -66,7 +66,7 @@ repeat (4) sCinema2(oCyberdwarf,'move','up',4);
 repeat (13) sCinema3(oBalthios,'move','left',4);
 repeat (9) sCinema3(oBalthios,'move','up',4);
 sCinema3(oBalthios,'face','left');
-sCinema(oBarkley,'code','oCinema1.enable=1; oCinema2.enable=1; oCinema3.enable=1;');
+sCinema(oBarkley,'code',cine_0168);
 repeat (15) sCinema(oBarkley,'move','left',4);
 repeat (5) sCinema(oBarkley,'move','up',4);
 sCinema(oBarkley,'face','left');
@@ -96,7 +96,7 @@ sCinema(oCyberdwarf,'dialog',"These are Duergars, Barkley, my brethren. At least
 sCinema(oBarkley,'dialog',"Fine, we can see what's up but I'm not getting involved in this shit.",1);
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code','with (oIntro0c) event_user(3)');
+sCinema(oBarkley,'code',cine_0169);
 sCinema(oBarkley,'tint',c_black,0);
 } else {
 event_user(3);

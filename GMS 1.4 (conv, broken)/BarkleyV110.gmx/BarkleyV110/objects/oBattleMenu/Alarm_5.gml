@@ -1,0 +1,2 @@
+global.descriptor="";
+state="names";

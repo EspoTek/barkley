@@ -1,0 +1,2 @@
+global.dialog=1;
+sCinema(oBarkley,"dialog","Hoodlum:\\Man, you ever been to Jickleberg? All the chicken fries you could want, and it's all legal. Thing is, the list for passports out of this shithole is backed up for years. I'll probably be dead before my name comes up. It's a damn shame, you know that? And the women there, man. I've heard some stories you wouldn't believe... god damn it, man, look where you got me going! I need a chicken fry to take my mind off this. I'll be alright long as I got my babies... long as I got my chicken fries.");

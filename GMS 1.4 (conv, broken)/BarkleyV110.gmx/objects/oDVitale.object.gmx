@@ -108,7 +108,7 @@ sCinema(oDVitale,'dialog',"It's all great, Chuck. Can't get enough of this place
 sCinema(oBarkley,'dialog',"Alright, I'm gonna take a look around here. See you later Dick.",1);
 sCinema(oDVitale,'dialog',"Oh, well, there is one thing, you know, just one thing. This place has everything, and, well I bet all my money on keno and lost it all. I could use some coin, say 50 neo-shekels, if you get my drift, cause there's nothing like playing keno and catching the rays while sipping on some 'ade, baby!",1);
 sCinema(oBarkley,'dialog',"Choose:",0,"Here's 50 neo-shekels.","Nah, I can't spare any.");
-sCinema(oBarkley,'code','with (oDVitale) event_user(2);');
+sCinema(oBarkley,'code',cine_0061);
 }</string>
           </argument>
         </arguments>

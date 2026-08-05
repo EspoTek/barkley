@@ -1,0 +1,2 @@
+global.dialog=1;
+sCinema(oBarkley,"dialog","Genie:\\Abra-cadabra and alakazoo... ah, you caught me just as I was conjuring up an ancient genie hex on the Duergars. Lately, we genies have been contemplating importing Sludge Elfs to help with the labor. Duergars and Sludge Elfs have a long-standing feud and there is no doubt the Duergars would object fiercely. This is precisely why we need to do this. This is merely my own personal philosophy, but I believe we should display our intolerance for Duergars on every level.",0);

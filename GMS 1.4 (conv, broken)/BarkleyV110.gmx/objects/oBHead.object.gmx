@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_single=6;
+            <string>image_index=6; image_speed=0;
 speed=8;
 stage=0;</string>
           </argument>
@@ -108,7 +108,7 @@ if (point_distance(x,y,oBGhastly.x,oBGhastly.y)&lt;=speed*2) { instance_destroy(
           <argument>
             <kind>1</kind>
             <string>if (view_current!=0) exit;
-draw_sprite_ext(sprite_index,image_single,x,y,image_xscale,image_yscale,image_angle,c_white,1);</string>
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_white,1);</string>
           </argument>
         </arguments>
       </action>

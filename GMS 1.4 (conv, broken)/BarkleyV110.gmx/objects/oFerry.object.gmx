@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_single=0;
+            <string>image_index=0; image_speed=0;
 sail=0;
 //if (sOvar(object_index,-1)=1) { y=272; sail=1; }
-if (sOvar(object_index,-1)=2) { y=0; sail=0; image_single=1; }</string>
+if (sOvar(object_index,-1)=2) { y=0; sail=0; image_index=1; image_speed=0; }</string>
           </argument>
         </arguments>
       </action>
@@ -52,16 +52,16 @@ if (sOvar(object_index,-1)=2) { y=0; sail=0; image_single=1; }</string>
             <kind>1</kind>
             <string>//272
 if (sail=1) {
-image_single=1;
+image_index=1; image_speed=0;
 y-=1;
 with (oPlayer) y-=1;
 if (y&lt;272) { y+=16; with (oPlayer) y+=16; }
 }
 if (sail=2) {
-image_single=1;
+image_index=1; image_speed=0;
 y-=1;
 with (oPlayer) y-=1;
-if (y&lt;0) { sail=0; image_single=0; y=0; }
+if (y&lt;0) { sail=0; image_index=0; image_speed=0; y=0; }
 }</string>
           </argument>
         </arguments>

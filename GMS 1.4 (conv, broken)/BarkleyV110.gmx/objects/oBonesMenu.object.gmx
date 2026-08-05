@@ -177,8 +177,8 @@ if (ggg=2) msg="Heh heh, you don't know who you're up against do you?";
 if (ggg=3) msg="They don't call me the Bones Grandmaster for nothing, buster!";
 if (ggg=4) msg="Your neo-shekels are as good as mine! Hyah!";
 sCinema1(oHundley,'dialog',msg,1);
-sCinema1(oHundley,'code','with (oBonesMenu) event_user(1);');
-sCinema1(oHundley,'code','x=x;');
+sCinema1(oHundley,'code',cine_0005);
+sCinema1(oHundley,'code',cine_0006);
 } else if (type=1) {
 ggg=floor(random(5));
 if (ggg=0) msg="Never bet against the Hundley.";

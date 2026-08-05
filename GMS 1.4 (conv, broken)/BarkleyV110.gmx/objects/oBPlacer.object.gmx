@@ -69,7 +69,7 @@ bn[12]=-999;</string>
 
 if (sKey(vk_up,1)) lvl+=1;
 if (sKey(vk_down,1)) lvl-=1;
-if (sKey(vk_right,1) || sKey(vk_left,1)) lvl=real(get_string("Level","20"));
+if (sKey(vk_right,1) || sKey(vk_left,1)) lvl=real("20");
 if (mouse_check_button(mb_left)) {
 mouse_clear(mb_left);
 state+=1;

@@ -110,10 +110,10 @@ global.b_obj=global.b_middle;
 if (exec!=-1) { fff=0; exec=-1; doing=2; stage=0; exit; }
 if (stage=0) {
 if (fff=0) { fff=1; }
-if (fff=15) { sS(mBThrow); target=sEnemyTarget('random',!enemy); ggg=instance_create(x+10,y-10,oBNeedler); ggg.depth=target.depth-1; ggg.target=target; ggg.twist=1; ggg.master=id; ggg.sprite_index=sBDuergar; ggg.image_single=3; ggg.speed=7; }
-if (fff=30) { sS(mBThrow); target=sEnemyTarget('random',!enemy); ggg=instance_create(x+10,y-10,oBNeedler); ggg.depth=target.depth-1; ggg.target=target; ggg.twist=1; ggg.master=id; ggg.sprite_index=sBDuergar; ggg.image_single=3; ggg.speed=7; }
-if (fff=45) { sS(mBThrow); target=sEnemyTarget('random',!enemy); ggg=instance_create(x+10,y-10,oBNeedler); ggg.depth=target.depth-1; ggg.target=target; ggg.twist=1; ggg.master=id; ggg.sprite_index=sBDuergar; ggg.image_single=3; ggg.speed=7; }
-if (fff=60) { sS(mBThrow); target=sEnemyTarget('random',!enemy); ggg=instance_create(x+10,y-10,oBNeedler); ggg.depth=target.depth-1; ggg.target=target; ggg.twist=1; ggg.master=id; ggg.sprite_index=sBDuergar; ggg.image_single=3; ggg.speed=7; }
+if (fff=15) { sS(mBThrow); target=sEnemyTarget('random',!enemy); ggg=instance_create(x+10,y-10,oBNeedler); ggg.depth=target.depth-1; ggg.target=target; ggg.twist=1; ggg.master=id; ggg.sprite_index=sBDuergar; ggg.image_index=3; ggg.image_speed=0; ggg.speed=7; }
+if (fff=30) { sS(mBThrow); target=sEnemyTarget('random',!enemy); ggg=instance_create(x+10,y-10,oBNeedler); ggg.depth=target.depth-1; ggg.target=target; ggg.twist=1; ggg.master=id; ggg.sprite_index=sBDuergar; ggg.image_index=3; ggg.image_speed=0; ggg.speed=7; }
+if (fff=45) { sS(mBThrow); target=sEnemyTarget('random',!enemy); ggg=instance_create(x+10,y-10,oBNeedler); ggg.depth=target.depth-1; ggg.target=target; ggg.twist=1; ggg.master=id; ggg.sprite_index=sBDuergar; ggg.image_index=3; ggg.image_speed=0; ggg.speed=7; }
+if (fff=60) { sS(mBThrow); target=sEnemyTarget('random',!enemy); ggg=instance_create(x+10,y-10,oBNeedler); ggg.depth=target.depth-1; ggg.target=target; ggg.twist=1; ggg.master=id; ggg.sprite_index=sBDuergar; ggg.image_index=3; ggg.image_speed=0; ggg.speed=7; }
 if (fff&gt;60 &amp;&amp; instance_exists(oBNeedler)=0) { doing=-1; ended=0; finish=1; }
 }
 if (fff!=0) fff+=1;
@@ -143,7 +143,7 @@ if (fff!=0) fff+=1;
 global.b_obj=global.b_middle;
 if (exec!=-1) { fff=0; exec=-1; doing=1; stage=0; exit; }
 if (stage=0) {
-if (fff=0) { sS(mBGem); fff=1; repeat (20) { fr=instance_create(target.x-60+random(120),50+random(150),oBDummy); fr.visible=1; fr.vspeed=4+random(3); fr.alarm[11]=70; fr.sprite_index=sBDuergar; fr.image_single=2; if (floor(random(2))=0) fr.depth=0; else fr.depth=-1500; } }
+if (fff=0) { sS(mBGem); fff=1; repeat (20) { fr=instance_create(target.x-60+random(120),50+random(150),oBDummy); fr.visible=1; fr.vspeed=4+random(3); fr.alarm[11]=70; fr.sprite_index=sBDuergar; fr.image_index=2; fr.image_speed=0; if (floor(random(2))=0) fr.depth=0; else fr.depth=-1500; } }
 if (fff&gt;65) { sS(mMutantballer1); sDamage(doing); doing=-1; ended=0; finish=1; }
 }
 if (fff!=0) fff+=1;
@@ -174,7 +174,7 @@ global.b_obj=global.b_middle;
 if (exec!=-1) { fff=0; exec=-1; doing=0; stage=0; exit; }
 if (stage=0) {
 if (fff=0) { fff=1; }
-if (fff=15) { sS(mBCross); ggg=instance_create(x+20,y,oBNeedler); ggg.depth=target.depth-1; ggg.target=target; ggg.master=id; ggg.sprite_index=sBDuergar; ggg.image_single=1; ggg.speed=5; }
+if (fff=15) { sS(mBCross); ggg=instance_create(x+20,y,oBNeedler); ggg.depth=target.depth-1; ggg.target=target; ggg.master=id; ggg.sprite_index=sBDuergar; ggg.image_index=1; ggg.image_speed=0; ggg.speed=5; }
 if (fff&gt;15 &amp;&amp; instance_exists(oBNeedler)=0) { sS(mMutantballer1); sBCondition('inflict','diabetes',target.id); doing=-1; ended=0; finish=1; }
 }
 if (fff!=0) fff+=1;

@@ -85,7 +85,7 @@ sOvar(oIntro10,3);
 sCinema(oFollower2,'dialog',"There is no need to return, Barkley. Leave the dead to rest.",1);
 sCinema(oBarkley,'dialog',"Yes, Cyberdwarf. You are right...",1);
 sCinema(oBarkley,'move','down');
-sCinema(oBarkley,'code','sOvar(oIntro10,2)');</string>
+sCinema(oBarkley,'code',cine_0118);</string>
           </argument>
         </arguments>
       </action>

@@ -56,8 +56,8 @@ oSuitGold.visible=0;
 sOvar(oAllard,1);
 sBoss('oBAllard');
 sCinema(oBarkley,'dialog',"Allard:\Goddamn it... Don't think you've beaten me you fucking rats!");
-sCinema(oBarkley,'code',"sPos('save'); with (oIntro16) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;");</string>
+sCinema(oBarkley,'code',cine_0201);
+sCinema(oBarkley,'code',cine_0006);</string>
           </argument>
         </arguments>
       </action>
@@ -81,7 +81,7 @@ sCinema(oBarkley,'code',"x=x;");</string>
             <kind>1</kind>
             <string>sPos('load');
 with (oFollower) x=-999;
-sCinema(oBarkley,'code',"sDialog('set',1,'top');");
+sCinema(oBarkley,'code',cine_0017);
 sCinema(oBarkley,'wait',0.5);
 //snd key
 sCinema(oBarkley,'wait',0.5);
@@ -120,11 +120,11 @@ oAllard.visible=0;
 oLief.visible=0;
 global.nofollow=1;
 with (oFollower) x=-999;
-sCinema(oBarkley,'code',"sDialog('set',1,'top');");
+sCinema(oBarkley,'code',cine_0017);
 sCinema(oBarkley,'wait',0.5);
 //snd key
 sCinema(oBarkley,'wait',0.5);
-sCinema(oBarkley,'code','oAllard.visible=1;');
+sCinema(oBarkley,'code',cine_0202);
 sCinema(oAllard,'move','right');
 sCinema(oAllard,'move','right');
 sCinema(oAllard,'move','up');
@@ -155,8 +155,8 @@ sCinema(oBarkley,'dialog',"Allard:\It's patients like you who I can fix. People 
 sCinema(oBarkley,'dialog',"You're a goddamn lunatic.",1);
 sCinema(oBarkley,'dialog',"Allard:\You're a stubborn one aren't you. I gave you a chance. Leonard, take care of them.");
 sCinema(oBarkley,'dialog',"Bodyguard:\... Right away, sir.");
-sCinema(oBarkley,'code',"sPos('save'); with (oIntro16) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;");</string>
+sCinema(oBarkley,'code',cine_0201);
+sCinema(oBarkley,'code',cine_0006);</string>
           </argument>
         </arguments>
       </action>

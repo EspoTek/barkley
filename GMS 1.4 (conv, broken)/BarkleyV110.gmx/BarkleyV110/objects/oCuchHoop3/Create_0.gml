@@ -1,0 +1,9 @@
+progress=0;
+flick=0;
+cou=30;
+go[0]=0;
+go[1]=1;
+go[2]=0;
+go[3]=2;
+go[4]=2;
+alarm[0]=30;

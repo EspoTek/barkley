@@ -1,0 +1,5 @@
+event_inherited();
+if (view_current!=0) exit;
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,col,alp);
+img=image_index;
+event_user(15);

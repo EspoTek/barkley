@@ -1,0 +1,62 @@
+//160,192 cosby
+global.dialog=1;
+if (sOvar(object_index,-1)=-1) {
+sOvar(object_index,1);
+sOvar(oTerminalR,2);
+oBarkley.solid=0;
+with (slav) instance_destroy();
+sPos("save");
+// oBarkley - oFollower0
+sCinema(oBarkley,"catchup");
+sCinema(oBarkley,"item","Red Keycard",1);
+sCinema(oBarkley,"code",cine_0008);
+sCinema(oFollower0,"dialog","A red key card; this should work on those terminals we saw earlier.",1);
+sCinema(oBarkley,"dialog","I guess we need to head back to the start.",1);
+sCinema(oBarkley,"move","down");
+sCinema(oFollower3,"dialog","Owwwww!",1);
+sCinema(oBarkley,"dialog","Hoopz! What's wrong?",1);
+sCinema(oBarkley,"tint",c_black,1);
+sCinema(oBarkley,"wait",0.5);
+sCinema(oBarkley,"code",cine_0009); 
+sCinema(oBarkley,"code",cine_0010);
+sCinema(oBarkley,"wait",0.5);
+sCinema(oBarkley,"tint",c_black,0);
+sCinema(oBarkley,"face","left");
+sCinema(oBarkley,"catchup");
+repeat (3) sCinema(oDavis,"move","right");
+sCinema(oBarkley,"dialog","Doctor Davis:\\Excellent, excellent.");
+repeat (2) sCinema(oDavis,"move","left");
+sCinema(oBarkley,"dialog","Doctor Davis:\\The prototype performs even better than planned. The test subject's strength, stamina, and speed have all improved remarkably and his skill has increased nearly tenfold.");
+sCinema(oBarkley,"code",cine_0011);
+repeat (1) sCinema(oCosby,"move","up");
+repeat (3) sCinema(oCosby,"move","right");
+repeat (3) sCinema(oCosby,"move","up");
+sCinema(oBarkley,"dialog","Doctor Cosby:\\Working on the prototype, Davis?");
+repeat (2) sCinema(oCosby,"move","up");
+sCinema(oCosby,"move","left");
+sCinema(oDavis,"face","right");
+sCinema(oBarkley,"dialog","Doctor Davis:\\Yes, Doctor Cosby. Look at this analysis report. The test subject is showing near-Jordan performance. This is incredible!");
+sCinema(oBarkley,"dialog","Doctor Cosby:\\I agree, this is very incredible but... doesn't this remind you of anything?");
+sCinema(oBarkley,"dialog","Doctor Davis:\\Remind me of anything? What do you mean, Doctor Cosby?");
+sCinema(oBarkley,"dialog","Doctor Cosby:\\The... Space Jam, Davis. Look at all of this. We have created a basketball that not only enhances the physical attributes of the user, but also the skills and abilities. Think of the destruction this ball could cause in capable hands. I'm not going to be held responsible if some nobody does a Forbidden Dunk in a pickup game and someone gets hurt because of this ball.");
+sCinema(oBarkley,"dialog","Doctor Davis:\\That's ridiculous, Doctor Cosby! This ball is not nearly as powerful as the Ultimate B-ball. It is not only completely unfounded for you to compare the two, but it is just plain bananas.");
+sCinema(oBarkley,"dialog","Doctor Cosby:\\Call me bananas, Davis. I don't give a damn. I'm not going to let anyone get hurt because of a fucking b-ball.");
+repeat (5) sCinema(oCosby,"move","down");
+repeat (3) sCinema(oCosby,"move","left");
+repeat (4) sCinema(oCosby,"move","down");
+sCinema(oBarkley,"dialog","Doctor Davis:\\He's gone bananas... he's gone absolutely bananas.");
+sCinema(oBarkley,"wait",0.5);
+sCinema(oBarkley,"tint",c_black,1);
+sCinema(oBarkley,"wait",0.5);
+sCinema(oBarkley,"code",cine_0012); 
+sCinema(oBarkley,"code",cine_0013);
+sCinema(oBarkley,"tint",c_black,0);
+sCinema(oBarkley,"wait",0.5);
+sCinema(oBarkley,"dialog","Hoopz! Are you ok?!",1);
+sCinema(oFollower3,"dialog","My head hurts, dad.",1);
+sCinema(oFollower2,"dialog","Something's not right here...",1);
+sCinema(oBarkley,"dialog","None of this shit adds up. None of it.",1);
+sCinema(oFollower0,"dialog","Fortunately we found the keycard. Let's go back.",1);
+sCinema(oBarkley,"code",cine_0014);
+}
+

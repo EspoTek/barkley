@@ -1,0 +1,16 @@
+global.dialog=1;
+itemf[0]="Ecto Cooler";
+itemf[1]="BBall Juice";
+itemf[2]="Chicken Dew";
+itemf[3]="Chicken Fry";
+itemf[4]="BBall Tear";
+itemf[5]="Tobacco";
+itemf[6]="Chup";
+itemf[7]="Insulin";
+itemf[8]="Alcohol";
+itemf[9]="Fstone Mvitamin";
+itemf[10]="";
+sCinema(oBarkley,"dialog","Dealer:\\You're looking for my shit. You don't gotta say it but I can tell by the way you look that you some of what I got.");
+sCinema(oBarkley,"code",cine_0062);
+sCinema(oBarkley,"cond",cine_0003);
+sCinema(oBarkley,"dialog","Dealer:\\I got you covered, bro. You come back next time you're looking for some of what I got.");

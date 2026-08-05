@@ -1,0 +1,1 @@
+sShop(oChupper,'Buy','Leave');

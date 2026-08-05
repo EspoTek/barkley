@@ -94,7 +94,7 @@ with (master) sDamage(doing);</string>
           <argument>
             <kind>1</kind>
             <string>if (view_current!=0) exit;
-draw_sprite_ext(sprite_index,image_single,x,y,image_xscale,image_xscale,direction,c_white,1);</string>
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_xscale,direction,c_white,1);</string>
           </argument>
         </arguments>
       </action>

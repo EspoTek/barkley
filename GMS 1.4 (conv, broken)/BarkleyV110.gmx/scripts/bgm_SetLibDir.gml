@@ -1,8 +1,3 @@
-// This script has been depricated because it doesn't work correctly.
-
-/*  Changes the directory in which BGM will look for the DLLs.
-
-  bgm_SetLibDir( new directory without final backslash );
-*/
-
-global._bgm_path = argument0;
+// bgm.dll music extension stub — the DLL cannot exist on HTML5/macOS.
+// Only bgm_Init()/bgm_Close() were ever called; music plays via built-in sound_* functions.
+return 0;

@@ -1,0 +1,18 @@
+sOvar(object_index,2);
+sPos("load");
+global.nofollow=1;
+with (oFollower) x=-999;
+sBoss("oBTrex");
+sCinema(oBarkley,"wait",1);
+sCinema(oShadowBarkley,"dialog","N-no...",1);
+sCinema(oShadowBarkley,"move","up");
+sCinema(oShadowBarkley,"dialog","It seems you put up more of a fight than I thought you would, Charles Barkley. So be it.",1);
+sCinema(oBarkley,"code",cine_0343);
+sCinema(oBarkley,"wait",1);
+sCinema(oShadowBarkley,"face","down");
+sCinema(oShadowBarkley,"dialog","Now you must face my ultimate form! KWAHUAHAHA!",1);
+sCinema(oBarkley,"code",cine_0040);
+sCinema(oBarkley,"code",cine_0095);
+sCinema(oBarkley,"code",cine_0344);
+sCinema(oBarkley,"code",cine_0006);
+sound_stop_all();

@@ -82,7 +82,7 @@ sA('loop',mSewer);
             <kind>1</kind>
             <string>global.dialog=1;
 sCinema(oBarkley,'dialog',"Pump:\Among the most prominent Japanese composers (although I use the word 'Japanese' superfluously, as even the most well-known American composers are barely competent at best), one in particular stands out to the enlightened vidcon soundtrack consumer. His name: Yasunori Mitsuda. For the record, this is not to undermine the amazing works of other incredibly talented vidcon composers such as Uematsu-san or Sakuraba-san, but to highlight the unique, almost celto-tropic music (the word music is an understatement) that Yasunori Mitsuda has been composing for years. It would be sheer ignorance to deny that the Chrono Cross soundtrack is anything but the magnum opus of vidcon music; its lilting and oftentimes hauntingly peaceful guitar melodies soothe all but the most savage of breasts while its tense battle themes and mysterious donjon tunes ignite a blazing passion that can be quenched only by the vidcon's profound story and gameplay. It is a wonder that anyone can listen to anything besides vidcon musical compositions after listening to Mitsuda-san's immensely powerful soundtrack, but given that the primitive thuds of hip hop are America's current choice of 'music' (I use the term music liberally), one can see little hope in the mass appreciation of Mitsuda-san's work.");
-sCinema(oBarkley,'code','sFileData(4);');
+sCinema(oBarkley,'code',cine_0428);
 </string>
           </argument>
         </arguments>

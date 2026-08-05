@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"sEnemyBackup",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"sEnemyBackup",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

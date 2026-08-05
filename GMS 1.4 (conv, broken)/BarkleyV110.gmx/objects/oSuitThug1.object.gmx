@@ -80,8 +80,8 @@ sPos('save');
 sCinema(oBarkley,'dialog',"I'm here for Allard. Outta my way sucka.",1);
 sCinema(oBarkley,'dialog',"Suit:\It's been pretty slow recently. Thanks for this.");
 sOvar(oEvent13b,3.2);
-sCinema(oBarkley,'code',"with (oSuitThug1) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;"); //mirror battle in other thug
+sCinema(oBarkley,'code',cine_0475);
+sCinema(oBarkley,'code',cine_0006); //mirror battle in other thug
 } else if (global.selected=1) {
 //Nothing
 sCinema(oBarkley,'dialog',"Suit:\Then don't bother me.");
@@ -127,7 +127,7 @@ sCinema(oBarkley,'dialog',"Suit:\Okay, okay, not out loud. I don't want to have 
 sCinema(oBarkley,'dialog',"Suit:\Yeah?");
 if (sOvar(oSuitRufus,-1)=2) sCinema(oBarkley,'dialog',"Choose:",0,"Bust into the office.","Nothing","Are you Rufus?");
 else sCinema(oBarkley,'dialog',"Choose:",0,"Bust into the office.","Nothing");
-sCinema(oBarkley,'code','with (oSuitThug1) event_user(2);');
+sCinema(oBarkley,'code',cine_0476);
 } else {
 sOvar(oEvent13b,1);
 sCinema(oBarkley,'dialog',"Suit:\Allard's in with a patient. Busy. I suggest you wait like everyone else.");

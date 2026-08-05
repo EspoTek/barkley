@@ -84,14 +84,14 @@ sCinema(oFollower0,'dialog',"So... you're finally showing some sympathy for the 
 sCinema(oBarkley,'dialog',"I meant I'm not going to put up with it when it affects me and my son. It's hard enough to make ends meet in the post-cyberpocalypse, and that money could be put to use, not wasted on some bullshit toll.",1);
 sCinema(oFollower3,'dialog',"Dad, it's ok. I mean, let's just give 'em the money. It's fine. I don't want to see anybody get hurt. We can always spend less money.",1);
 sCinema(oBarkley,'dialog',"Hoopz, I've taught you that sometimes people need to stand up for what's right, haven't I? Well this is one of those times.",1);
-sCinema(oFollower2,'code','with (oCyberdwarf) t=1;');
+sCinema(oFollower2,'code',cine_0200);
 sCinema(oFollower0,'dialog',"Cyberdwarf, what's wrong?",1);
 sCinema(oFollower2,'dialog',"Hmmm? Nothing, nothing at all. We just need to get a move on. The Spalding factory is our goal. Whatever you decide to do about this, do it quickly. We don't have the time to squander on these petty conflicts. B.L.O.O.D.M.O.S.E.S. must be stopped.",1);
 if (sOvar(oSuitRufus,-1)=1) { sOvar(oSuitRufus,2); sCinema(oFollower0,'dialog',"You heard it, Charles. You decide what we're going to do. Either we pay the toll, or pay a visit to whoever you like. Dr. Allard or the gate guard. You also might want to find out who that 'Rufus' in the note is. All we know is a name, but perhaps looking into it could give us something we could use. In any case, choose quickly please.",1); }
 else sCinema(oFollower0,'dialog',"You heard it, Charles. You decide what we're going to do. Either we pay the toll, or pay a visit to whoever you like. Dr. Allard or the gate guard. In any case, choose quickly please.",1);
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code','sFollow("update");global.nofollow=0;with (oCyberdwarf) instance_destroy();with (oBalthios) instance_destroy();with (oHoopz) instance_destroy();');
+sCinema(oBarkley,'code',cine_0193);
 sCinema(oBarkley,'tint',c_black,0);</string>
           </argument>
         </arguments>

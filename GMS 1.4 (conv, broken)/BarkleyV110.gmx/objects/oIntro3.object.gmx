@@ -57,31 +57,31 @@ alarm[0]=1;</string>
             <kind>1</kind>
             <string>with (oWall0) solid=0;
 oIntro3a.visible=1;
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
+sCinema(oBarkley,'cond',cine_0148);
 sCinema(oBarkley,'move','down');
 sCinema(oBarkley,'quick','up');
 sCinema2(oBarkley,'jump','start');
 sCinema2(oBarkley,'move','down',5);
 sCinema4(oBarkley,'move','down',8);
-sCinema4(oBarkley,'code','sound_play(mBreak);');
-sCinema4(oBarkley,'code','oBarkley.sprt=sVarious1; oBarkley.subber=2;');
-sCinema4(oBarkley,'code','if (global.die&lt;=0) sDodie();');
+sCinema4(oBarkley,'code',cine_0298);
+sCinema4(oBarkley,'code',cine_0093);
+sCinema4(oBarkley,'code',cine_0299);
 sCinema4(oBarkley,'wait',1);
-sCinema4(oBarkley,'code','oBarkley.sprt=sBarkley; oBarkley.subber=0;');
+sCinema4(oBarkley,'code',cine_0096);
 sCinema4(oBarkley,'wait',0.5);
-sCinema(oBarkley,'code','if (global.passed=1) { oCinema2.enable=1; oIntro3.zzz=1; }');
-sCinema(oBarkley,'code','if (global.passed=0) { oCinema4.enable=1; oIntro3a.image_single=1; oIntro3.zzz=1; }');
-sCinema(oBarkley,'cond','if (oCinema2.enable=0) good=1;');
-sCinema(oBarkley,'cond','if (oCinema4.enable=0) good=1;');
+sCinema(oBarkley,'code',cine_0300);
+sCinema(oBarkley,'code',cine_0301);
+sCinema(oBarkley,'cond',cine_0102);
+sCinema(oBarkley,'cond',cine_0104);
 repeat(9) sCinema(oBarkley,'move','down',5);
 sCinema2(oBarkley,'jump','end');
 sCinema(oBarkley,'quick','cancel');
-sCinema3(oBarkley,'code','oBarkley.sprt=sVarious1; oBarkley.subber=2;');
-sCinema3(oBarkley,'code','if (global.die&lt;=0) sDodie();');
+sCinema3(oBarkley,'code',cine_0093);
+sCinema3(oBarkley,'code',cine_0299);
 sCinema3(oBarkley,'wait',3);
-sCinema3(oBarkley,'code','oBarkley.sprt=sBarkley; oBarkley.subber=0;');
-sCinema(oBarkley,'code','if (global.passed=0) oCinema3.enable=1;');
-sCinema(oBarkley,'cond','if (oCinema3.enable=0) good=1;');
+sCinema3(oBarkley,'code',cine_0096);
+sCinema(oBarkley,'code',cine_0302);
+sCinema(oBarkley,'cond',cine_0103);
 sCinema(oBarkley,'move','left');
 repeat(3) sCinema(oBarkley,'move','down',4);</string>
           </argument>

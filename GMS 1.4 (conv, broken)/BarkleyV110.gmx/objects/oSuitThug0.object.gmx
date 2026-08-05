@@ -77,13 +77,13 @@ sPos('load'); with (oFollower) { x=oBarkley.x; y=oBarkley.y; }</string>
             <string>if (global.selected=0) {
 sBoss('oBBodyguard0');
 sPos('save');
-sCinema(oBarkley,'code',"with (oEventO2) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;");
+sCinema(oBarkley,'code',cine_0138);
+sCinema(oBarkley,'code',cine_0006);
 sCinema(oBarkley,'dialog',"What do I want? I want you to get lost or get slammed.",1);
 sCinema(oBarkley,'dialog',"Suit:\By you? Hah. Let's see what you've got.");
 sOvar(oEvent13b,3.3);
-sCinema(oBarkley,'code',"with (oSuitThug0) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;"); //mirror battle in other thug
+sCinema(oBarkley,'code',cine_0473);
+sCinema(oBarkley,'code',cine_0006); //mirror battle in other thug
 } else if (global.selected=1) {
 //Nothing
 sCinema(oBarkley,'dialog',"Suit:\Then sit down like everyone else.");
@@ -129,7 +129,7 @@ sCinema(oBarkley,'dialog',"Suit:\Okay, okay, not out loud. I don't want to have 
 sCinema(oBarkley,'dialog',"Suit:\What do you want?");
 if (sOvar(oSuitRufus,-1)=2) sCinema(oBarkley,'dialog',"Choose:",0,"Bust into the office.","Nothing","Are you Rufus?");
 else sCinema(oBarkley,'dialog',"Choose:",0,"Bust into the office.","Nothing");
-sCinema(oBarkley,'code','with (oSuitThug0) event_user(2);');
+sCinema(oBarkley,'code',cine_0474);
 } else {
 sOvar(oEvent13b,1);
 sCinema(oBarkley,'dialog',"Suit:\I like your orange friend over there. The doctor could do some real good work on him. I'm guessing you're not here for surgery though. All the same, you're going to have to wait. Plenty of paying customers have been here for much longer than you have. Go have a seat.");

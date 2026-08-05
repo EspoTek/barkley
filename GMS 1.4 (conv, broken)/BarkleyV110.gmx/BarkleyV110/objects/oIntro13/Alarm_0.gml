@@ -1,0 +1,45 @@
+if (global.plot<9) oHoopz.x=-999;
+else oVince.x=-999;
+global.nofollow=1;
+with (oFollower) x=-999;
+if (global.plot<7) oCyberdwarf.x=-999;
+oVince.t=1;
+oHoopz.t=2;
+oCyberdwarf.t=0;
+oBalthios.t=3;
+oBarkley.t=1;
+right=0; res[0]=""; res[1]=""; res[2]="";
+//7 is cyber
+sCinema(oBarkley,"code",cine_0017);
+sCinema(oBarkley,"dialog","Hurry up, you've been writing that for an hour.",1);
+sCinema(oBalthios,"dialog","Patience, Barkley, good art takes time. I might as well show you what I have, however. Here you are...",1);
+sCinema(oBalthios,"dialog","\"Hark, I call upon thee Muse,\\To grant me thus the ability\\Of all Great bards, that is, to use\\Your gifts in poetry.\"");
+sCinema(oBalthios,"dialog","\"O Muse! Grant me words as that I need\\To speak of such Beauty as she;\\I am in bondage, aching to be freed\\By the beauty I speak of - J. Lindsay.\"");
+sCinema(oBarkley,"wait",1.5);
+sCinema(oBarkley,"dialog","Honestly, Balthios, that is probably worse than \"left me feeling smashing.\"",1);
+sCinema(oBalthios,"dialog","I... haven't written in a while. I apologize.",1);
+sCinema(oBarkley,"dialog","Don't worry. If we can just fill it with that shit we learned she's into, she'll probably like it more than the other one.",1);
+sCinema(oBalthios,"dialog","I hope so. Anyway, after this I have a few fragments I need some help with. I have the beginnings of some lines, but you need to make suggestions for the ends.",1);
+if (oVince.x!=-999) {
+sCinema(oVince,"dialog","Data analysis complete.",1);
+sCinema(oBarkley,"dialog","Huh? What are you on about Vince?",1);
+sCinema(oVince,"dialog","I have compiled the information gathered from J. Lindsay. Ready to assist in poem creation.",1);
+sCinema(oBarkley,"dialog","You actually listened to us talk about that shit?",1);
+sCinema(oVince,"dialog","Correct.",1);
+sCinema(oBalthios,"dialog","Vince, can you step away for a moment?",1);
+sCinema(oVince,"dialog","Affirmative.",1);
+sCinema(oVince,"move","left");
+sCinema(oBalthios,"dialog","Barkley, I don't mean to put Vince down or anything, but...",1);
+sCinema(oBarkley,"dialog","What now?",1);
+sCinema(oBalthios,"dialog","He's a robot Barkley. I don't think he knows anything about love. So take any of his suggestions with a grain of salt.",1);
+sCinema(oBarkley,"dialog","Whatever, let's get this over with already.",1);
+sCinema(oBalthios,"dialog","Alright Vince, any suggestions you have are appreciated.",1);
+sCinema(oVince,"move","right");
+}
+sCinema(oBalthios,"dialog","Here's the first part:",1);
+sCinema(oFollower0,"dialog","\"I ask that she envelops my fragile heart,\\And with her Magick, mends its cracks;\\I ask that we grow old, never apart,\\And that she...\"");
+sCinema(oFollower0,"dialog","And that is where I am stuck. So tell me what you like here.",1);
+sCinema(oBarkley,"code",cine_0194);
+if (oVince.x!=-999) sCinema(oFollower0,"dialog","\"And that she...\"",0,"lets me protect her from attacks","caresses my body, to help relax","with her hands, massages my back","Vince's Advice: enjoys hunting small prey");
+else sCinema(oFollower0,"dialog","\"And that she...\"",0,"lets me protect her from attacks","caresses my body, to help relax","with her hands, massages my back","enjoys hunting small prey");
+sCinema(oBarkley,"code",cine_0195);

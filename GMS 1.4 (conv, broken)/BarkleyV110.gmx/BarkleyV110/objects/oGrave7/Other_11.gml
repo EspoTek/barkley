@@ -1,0 +1,10 @@
+global.dialog=1;
+sPos("save");
+sOvar(object_index,2);
+sCinema(oBarkley,"dialog","Here lies Mr. 3000.");
+sCinema(oBarkley,"dialog","Mr. 3000... I... I wish I had gotten the chance to say goodbye...",1);
+sCinema(oBarkley,"dialog","???:\\Maybe it's not too late.");
+sCinema(oBarkley,"dialog","Who's there?!",1);
+sCinema(oBarkley,"dialog","???:\\Prepare yourself, Barkley, for a world undreamed of.");
+sCinema(oBarkley,"effect","fadein",3);
+global.roz=RomDeath1;

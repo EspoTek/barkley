@@ -54,7 +54,7 @@ spd=0.000000000000001;</string>
             <kind>1</kind>
             <string>global.dialog=1;
 sCinema(oBarkley,'dialog',"Pump:\I never thought I'd see such blatant trolling as I have in this forum. Step away from the computer, drop the ham sandwich and back the FRACK off, gaijin. I hate to use that word but you've made me that serious. As hard as it may be for you to fathom, some of us here are actual fans of the Final Fantasy series (pre FFX) and Square's work in general. You can try to bash me for an avatar that I bought because I happen to be a dedicated fan of perhaps the most poignant, painstakingly woven tapestry of love, loss and vengeance ever to be put from pen to paper, but you would fail, just like all of you flamers do in real life. Who can say that the minds at Square Enix (note: appropriate portmanteau is SQUENIX, not the laughable SQUEENIX) were not inspired by the works of William Shakespeare or Chuck Palahniuk? Cloud's bastard sword has more akin with the bastard sons of Macbeth than it does any armament or basilard of the time. The Honey Bee Club in Midgar reminds me more of the Fight Clubs than any brothel. So please, use your brains, not your sarcasm, and step up to the intellectual plate, or leave this forum and take your "+'"haterade"'+" with you.");
-sCinema(oBarkley,'code','sFileData(4);');</string>
+sCinema(oBarkley,'code',cine_0428);</string>
           </argument>
         </arguments>
       </action>

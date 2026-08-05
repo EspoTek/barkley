@@ -13,7 +13,7 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>1</width>
-  <height>1</height>
+  <width>400</width>
+  <height>256</height>
   <data>images\bNeo2.png</data>
 </background>

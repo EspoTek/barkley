@@ -64,5 +64,5 @@ if (argument0="oBDoomhell") { global.b_music=mBattle; global.b_back=10; ene[0]="
 if (argument0="oBBloodghoul") { global.b_music=mBattle; global.b_back=10; ene[0]="oBBloodghoul,18,40,112"; }
 if (argument0="oBDelmon") { global.b_music=mBattle; global.b_back=10; ene[0]="oBDelmon,18,40,142"; }
 if (argument0="oBGarnett") { global.b_music=mEpicbattle; global.b_back=10; ene[0]="oBGarnett,18,40,112"; }
-//sCinema(oBarkley,'code',"with (oSeaman) sBattleStart();");
-//sCinema(oBarkley,'code',"x=x;");
+//sCinema(oBarkley,'code',cine_0461);
+//sCinema(oBarkley,'code',cine_0006);

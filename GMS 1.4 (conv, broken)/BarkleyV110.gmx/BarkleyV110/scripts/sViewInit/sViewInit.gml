@@ -1,0 +1,14 @@
+function sViewInit() {
+	//wid=400;
+	//hei=300;
+	global.wid=320;
+	global.hei=240;
+	wid=global.wid;
+	hei=global.hei;
+	global.we0=wid/2;
+	global.he0=hei/2;
+	global.shake=0;
+	sViewFollow(id);
+
+
+}

@@ -77,7 +77,7 @@ sCinema(oBalthios,'dialog',"My hands are not clean, but everything I've done has
 sCinema(oBarkley,'dialog',"He's a real slimy son of a bitch though. He'll probably change his mind the moment we head down to Proto Neo New York. I just think everyone would be better off without him. But let's just hurry up and go. We've probably spent too much time here already.",1);
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code','sFollow("update");global.nofollow=0;with (oCyberdwarf) instance_destroy();with (oBalthios) instance_destroy();with (oHoopz) instance_destroy();');
+sCinema(oBarkley,'code',cine_0193);
 sCinema(oBarkley,'tint',c_black,0);</string>
           </argument>
         </arguments>

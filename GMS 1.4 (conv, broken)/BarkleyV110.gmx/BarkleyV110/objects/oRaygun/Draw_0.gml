@@ -1,0 +1,22 @@
+cou+=global.rd;
+if (cou>20) { instance_destroy(); exit; }
+tx=val0.x+12;
+ty=val0.y+16;
+if (floor(random(4))=0) instance_create(tx,ty,oSmoker);
+olength=val1;
+if (olength<0) dir=1; else dir=0;
+length=olength;
+lll=floor((olength/3)-(olength/12)+random(olength/6));
+length-=lll;
+draw_set_color(make_color_rgb(220+random(35),120+random(20),120+random(20)));
+draw_rectangle(tx,ty,tx+lll,ty+1,0);
+tx+=lll;
+lll=floor((olength/3)-(olength/12)+random(olength/6));
+length-=lll;
+draw_set_color(make_color_rgb(220+random(35),120+random(20),120+random(20)));
+draw_rectangle(tx,ty,tx+lll,ty+1,0);
+tx+=lll;
+draw_set_color(make_color_rgb(220+random(35),120+random(20),120+random(20)));
+draw_rectangle(tx,ty,tx+length,ty+1,0);
+if (dir=0) draw_sprite_ext(sWeapons,1,tx+length+10,ty+2,1,1,0,c_white,1);
+else draw_sprite_ext(sWeapons,1,(tx+length)-10,ty+2,-1,1,0,c_white,1);

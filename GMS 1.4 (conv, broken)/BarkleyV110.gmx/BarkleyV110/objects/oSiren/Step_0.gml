@@ -1,0 +1,10 @@
+if (visible=0) exit;
+if (dir=0) cou+=2.5;
+else cou-=2.5;
+if (dir=0) cou+=2.5;
+else cou-=2.5;
+if (cou>=255) dir=1;
+else if (cou<=0) dir=0;
+xx-=3;
+draw_set_font(font1);
+if (xx<-string_width(string_hash_to_newline(gtt))) instance_destroy();

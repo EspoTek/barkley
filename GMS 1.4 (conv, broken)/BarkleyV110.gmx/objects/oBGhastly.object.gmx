@@ -177,7 +177,7 @@ if (fff!=0) fff+=1;
 if (exec!=-1) { fff=0; exec=-1; stage=0; doing=3; exit; }
 global.b_obj=global.b_middle;
 if (stage=0) {
-if (fff=0) { fff=1; img=5; (instance_create(x,y,oBHead)).target=target; stage=1; }
+if (fff=0) { fff=1; img=5; { tttmp=instance_create(x,y,oBHead); tttmp.target=target; } stage=1; }
 } if (stage=1 &amp;&amp; instance_exists(oBHead)=0) {
 img=1;
 doing=-1;
@@ -219,7 +219,7 @@ ggg.target=target;
 ggg.master=id;
 ggg.daf=0;
 ggg.speed=6;
-ggg.sprite_index=sBDarklord; ggg.image_single=7;
+ggg.sprite_index=sBDarklord; ggg.image_index=7; ggg.image_speed=0;
 stage=1;
 }
 } if (stage=1 &amp;&amp; instance_exists(oBNeedler)=0) {
@@ -265,7 +265,7 @@ sS(mSuck);
 sBCondition('vp',-ceil(target._rvp/2),target);
 las=instance_create(target.x,target.y,oBSoul);
 las.sprite_index=target.sprite_index;
-las.image_single=target.image_single;
+las.image_index=target.image_index; las.image_speed=0;
 las.image_index=target.image_index;
 las.depth=-2000;
 img=2;

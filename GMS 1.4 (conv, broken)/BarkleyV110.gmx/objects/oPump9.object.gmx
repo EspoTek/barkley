@@ -79,7 +79,7 @@ oIntro17a.solid=1;</string>
             <kind>1</kind>
             <string>global.dialog=1;
 sCinema(oBarkley,'dialog',"Pump:\I promised earlier to divulge upon you the name of my favorite vidcon, but I have a treat: not only will I give you the name, but I will give you a tantalizing summary to entice you to try it (though you will no doubt need to brush up on your kanji before playing, as the vidcon's subtle yet flavorful use of Japanese idiosyncrasies can only be grasped in their entirety by those with a sound mastery of Japanese). The vidcon, as many of you may have guessed, is the absolutely stunning RPG/dating sim Angelique: Tenkuu no Chikonka, one of the first games to pioneer the moe aesthetic. It flawlessly merges a powerful and compelling RPG story and system with an incredibly advanced and realistic dating sim that has sixteen (that's right, SIXTEEN) datable characters. Though it is not generally my nature to develop crushes, I must admit to feeling the palpatations of love's caress once or twice while dating, as the characters are very beautifully drawn in the anime style. Add absolutely enchanting music with incredibly lush and colorful graphics and you've got the perfect recipe for the best game ever made.");
-sCinema(oBarkley,'code','sFileData(4);');
+sCinema(oBarkley,'code',cine_0428);
 </string>
           </argument>
         </arguments>

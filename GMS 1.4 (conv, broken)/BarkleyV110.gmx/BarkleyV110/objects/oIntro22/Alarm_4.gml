@@ -1,0 +1,13 @@
+global.dialog=1;
+with (oFollower) x=-999;
+sOvar(object_index,.5);
+sPos("load");
+sCinema(oBarkley,"dialog","Damn... That was tough.",1);
+sCinema(oBarkley,"dialog","Commentator:\\He did it folks! He's managed to make it to the final round! Only one challenge remains: the arena champion, Kevin Garnett!");
+repeat (4) sCinema(oDGarnett,"move","up");
+sCinema(oDGarnett,"dialog","This is it, Barkley. I'm going to take you down for what you did to me and my sport. I've been waiting years for this moment, a chance to finally rip you apart, feel your sinew and flesh between my fingers.",1);
+sCinema(oBarkley,"dialog","Kevin, we used to be friends. Don't let it end like this...",1);
+sCinema(oDGarnett,"dialog","Any man who can still call you a friend is a traitor. Enough talk! I've been waiting for this moment for too long, it's time to savor it!",1);
+sBoss("oBGarnett");
+sCinema(oBarkley,"code",cine_0243);
+sCinema(oBarkley,"code",cine_0006);

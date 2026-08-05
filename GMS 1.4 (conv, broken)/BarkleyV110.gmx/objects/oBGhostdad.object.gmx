@@ -71,7 +71,7 @@ ecto+=1;
 if (ecto&gt;3) {
 ecto=0;
 olk=instance_create(fx,fy,oBDummy);
-olk.visible=1; olk.sprite_index=sBGhostdad0; olk.image_single=0;
+olk.visible=1; olk.sprite_index=sBGhostdad0; olk.image_index=0; olk.image_speed=0;
 sound_play(mBSnail0); olk.alarm[11]=40;
 }
 }
@@ -161,7 +161,7 @@ olk=instance_create(x+15,y,oBDummy);
 olk.visible=1;
 olk.depth=-999;
 olk.sprite_index=sBGhostdad0;
-olk.image_single=1;
+olk.image_index=1; olk.image_speed=0;
 olk.alarm[11]=30;
 olk.direction=360-45+random(90);
 olk.speed=4+random(3);

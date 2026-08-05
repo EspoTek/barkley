@@ -1,0 +1,135 @@
+//make sure you can reset and don't allow backpedel like rm2k version
+if (stage=0) {
+if (global.selected=0) {
+stage+=1;
+sCinema(oDummy,"pan",4);
+sCinema(oBarkley,"dialog","Fine, I'll do it but I want you to know I don't give a damn either way what happens.",1);
+sCinema(oBarkley,"dialog","Jamal Bloodguzzle:\\That is noble of you to agree to help us, Charles Barkley. You are truly a man of character.",0);
+sCinema(oBarkley,"dialog","I'm no role model...",1);
+sCinema(oBarkley,"dialog","Mohammed Geniebane:\\The format for the Declaration of Duergar Rights is simple: you will be asked a question and you will be presented a number of answers. Choose the answer you most agree with.",0);
+sCinema(oBarkley,"dialog","Jamal Bloodguzzle:\\Some of the answers will favor one party over the other, while others will be compromises. I'm not asking you to favor us Duergars, Charles Barkley, but please consider each question carefully. Are you ready to write the Declaration of Duergar Rights?",0);
+sCinema(oBarkley,"dialog","As ready as I'll ever be, I guess.",1);
+sCinema(oBarkley,"code",cine_0140);
+} else {
+sCinema(oBarkley,"dialog","Jamal Bloodguzzle:\\I have to admit that I... had expected more from you, Charles Barkley. Perhaps if you change your mind you can come back and help out later.");
+}
+} else if (stage=1) {
+global.genie=0;
+global.duergar=0;
+instance_create(0,0,oHandmeter);
+stage+=1;
+sCinema(oBarkley,"dialog","Q1: What is your opinion on Sludge Elfs?",0,"Can nomore coexist than fire and water.","Intolerant against them.","True neutral to all Sludge Elfs.","God bless all Sludge Elfs.");
+sCinema(oBarkley,"code",cine_0140);
+} else if (stage=2) {
+if (global.selected=0) { global.duergar+=2; }
+if (global.selected=1 || global.selected=2) { global.genie+=1; global.duergar+=1; }
+if (global.selected=3) { global.genie+=2; }
+stage+=1;
+sCinema(oBarkley,"dialog","Q2: How do you feel about the current sewer crisis?",0,"Pro-sewers.","All sewers have a purpose...","Get lost in the sewers...","Anti-sewers.");
+sCinema(oBarkley,"code",cine_0140);
+} else if (stage=3) {
+sOvar(oPelpoc,0.5);
+if (global.selected=0) { global.duergar+=2; sOvar(oPelpoc,1); }
+if (global.selected=1 || global.selected=2) { global.genie+=1; global.duergar+=1; }
+if (global.selected=3) { global.genie+=2; }
+stage+=1;
+sCinema(oBarkley,"dialog","Q3: What should be the primary diet of all Duergars?",0,"Dunkaroos","Oats","Figs","Vitamin C");
+sCinema(oBarkley,"code",cine_0140);
+} else if (stage=4) {
+sOvar(oZorf,0.5);
+if (global.selected=0) { global.duergar+=2; sOvar(oZorf,1); } //dunkarroo guy here
+if (global.selected=1 || global.selected=2) { global.genie+=1; global.duergar+=1; }
+if (global.selected=3) { global.genie+=2; }
+stage+=1;
+sCinema(oBarkley,"dialog","Q4: Remove the ban on bubbling tinctures and elixirs?",0,"All brews are now legal.","Unban tinctures but not elixirs.","Only if they're arcane.","Destruction of all the brews.");
+sCinema(oBarkley,"code",cine_0140);
+} else if (stage=5) {
+sOvar(oWroth,0.5);
+if (global.selected=0) { global.duergar+=2; sOvar(oWroth,1); } //potion guy
+if (global.selected=1 || global.selected=2) { global.genie+=1; global.duergar+=1; }
+if (global.selected=3) { global.genie+=2; }
+stage+=1;
+sCinema(oBarkley,"dialog","Q5: What should be done about ensorcelled weaponry?",0,"I love a good enchantment.","Not too many enchantments...","Look upon them gravely.","Remove all gypsy hexes from axes.");
+sCinema(oBarkley,"code",cine_0140);
+} else if (stage=6) {
+if (global.selected=0) { global.duergar+=2; }
+if (global.selected=1 || global.selected=2) { global.genie+=1; global.duergar+=1; }
+if (global.selected=3) { global.genie+=2; }
+stage+=1;
+sCinema(oBarkley,"dialog","Q6: Your stance on Duergars with patriotic quilts?",0,"All quilts must be patriotic.","They keep us warm.","God bless this land, not quilts.","No patriotic quilts allowed.");
+sCinema(oBarkley,"code",cine_0140);
+} else if (stage=7) {
+sOvar(oMalice,0.5);
+if (global.selected=0) { global.duergar+=2; sOvar(oMalice,1); } //quit guy
+if (global.selected=1 || global.selected=2) { global.genie+=1; global.duergar+=1; }
+if (global.selected=3) { global.genie+=2; }
+stage+=1;
+sCinema(oBarkley,"dialog","Q7: How many hexes can be placed on each Duergar?",0,"0 hexes.","Only gypsy hexes.","Lava enchantments.","All of them.");
+sCinema(oBarkley,"code",cine_0140);
+} else if (stage=8) {
+if (global.selected=0) { global.duergar+=2; }
+if (global.selected=1 || global.selected=2) { global.genie+=1; global.duergar+=1; }
+if (global.selected=3) { global.genie+=2; }
+stage+=1;
+sCinema(oBarkley,"dialog","Q8: What is the maximum ratio of gilded chalices to rubies?",0,"Rubies, rubies, rubies.","1 chalice per 5 rubies.","1 chalice per 20 rubies.","No chalices permitted.");
+sCinema(oBarkley,"code",cine_0140);
+} else if (stage=9) {
+if (global.selected=0) { global.duergar+=2; }
+if (global.selected=1 || global.selected=2) { global.genie+=1; global.duergar+=1; }
+if (global.selected=3) { global.genie+=2; }
+stage+=1;
+sCinema(oBarkley,"dialog","Q9: How many caverns is each Duergar allowed to spelunk?",0,"To each his own...","10 caverns, 10 donjons.","They must stop when they find go.","Fantasy caverns are \"verbotten\".");
+sCinema(oBarkley,"code",cine_0140);
+} else if (stage=10) { //ends here
+if (global.selected=0) { global.duergar+=2; }
+if (global.selected=1 || global.selected=2) { global.genie+=1; global.duergar+=1; }
+if (global.selected=3) { global.genie+=2; }
+stage+=1;
+sCinema(oBarkley,"dialog","Are you sure these are the stances you take?",0,"Yeah.","Nah.");
+sCinema(oBarkley,"code",cine_0140);
+} else if (stage=11) {
+ if (global.selected=0) { 
+  with (oHandmeter) shake=1;
+  sCinema(oBarkley,"wait",2);
+  if (global.genie>global.duergar) {
+   sOvar(object_index,2);
+   sCinema(oBarkley,"dialog","Jamal Bloodguzzle:\\Your proposals, Barkley...");
+   sCinema(oBarkley,"dialog","Mohammed Geniebane:\\They favor the genies, just as I expected. You've done your country a great service today, Charles Barkley. You've put the welfare of many over an elite few. You've put the industry and commerce of Square Enix Goya over the gripes about rubies of a few obsidian black, cave-dwelling midgets with a penchant for enchanted maces. I think a reward is in due order.");
+   repeat (3) sCinema(oBarkley,"move","right");
+   sCinema(oBarkley,"move","up");
+   sCinema(oMuhammed,"face","down");
+   sCinema(oBarkley,"item","Genie Lamp",1);
+   sCinema(oBarkley,"dialog","Mohammed Geniebane:\\This is a magical lamp rubbed by many aristocrats and sultans. Now you too can rub it, Charles Barkley. When you need assistance, rub this lamp and the genie dwelling within will grant a wish... It is a powerful tool, so do not misuse it, as it can only be used once. Go now, Barkley, and know that wherever there's a genie... there's a friend.");
+   sCinema(oBarkley,"dialog","Jamal Bloodguzzle:\\The Duergars... what fate has befallen us...?");
+  } else if (global.genie<global.duergar) {
+   sOvar(object_index,1);
+   sCinema(oBarkley,"dialog","Mohammed Geniebane:\\These propositions clearly favor the Duergars...");
+   sCinema(oBarkley,"dialog","Jamal Bloodguzzle:\\You've got no choice but to accept the Declaration of Duergar Rights, Mohammed Geniebane. You agreed to the terms and the negotiator.");
+   sCinema(oBarkley,"dialog","Mohammed Geniebane:\\Drats... I trusted you, Barkley. I thought you were loyal to your country, your family, and Square Enix Goya.");
+   sCinema(oBarkley,"dialog","My family? The Duergars are my family now.",1);
+   sCinema(oBarkley,"dialog","Mohammed Geniebane:\\Hmph, it seems my trust was misplaced. We have nothing more to speak of, Charles Barkley.");
+   sCinema(oBarkley,"dialog","Jamal Bloodguzzle:\\Barkley, come here. I know we Duergars do not have much but I feel the need to repay you for what you've done.");
+   repeat (4) sCinema(oBarkley,"move","left");
+   sCinema(oBarkley,"move","up");
+   sCinema(oJamal,"face","down");
+   sCinema(oBarkley,"dialog","Jamal Bloodguzzle:\\Just once in every Duergar's life is he overtaken by an urge so powerful that he cannot control himself. No, it is not an urge for rubies red, as you may have guessed. It is an urge to create. Yes, we have blacksmiths and wood carvers and what have you that create on a daily basis, but this is an urge to create something more than a mere object. This is an urge to create art. This is a sacred part of every Duergar's maturity and when we are touched by this desire to create, all others must allow it to continue unimpeded. It is called the "+"\"Awakening of the Artisan\""+". What we create during our Awakening is a work of unparalelled splendor that can never be replicated or surpassed. I want you to have the item I forged in my awakening, Charles Barkley.");
+   sCinema(oBarkley,"code",cine_0141);
+   sCinema(oBarkley,"wait",0.5);
+   sCinema(oBarkley,"cond",cine_0142);
+   sCinema(oBarkley,"dialog","Jamal Bloodguzzle:\\It is the Shrekmono, a regular kimono except there is a picture of Shrek on it. I forged it 'twixt the hammer and anvil and it is the one thing I am most proud of, even more than my clan. It is yours, Charles Barkley. Take it.");
+   sCinema(oBarkley,"item","Shrekmono",1);
+   sCinema(oBarkley,"item","Shrekmono Piccie",1);
+   sCinema(oBarkley,"dialog","Jamal Bloodguzzle:\\Take care of it, Charles Barkley, and know that you are now a friend of Duergars all over the globe and beyond.");
+  } else {
+   sOvar(object_index,0);
+   sCinema(oBarkley,"dialog","Jamal Bloodguzzle:\\These propositions...");
+   sCinema(oBarkley,"dialog","Mohammed Geniebane:\\They benefit nobody...");
+   sCinema(oBarkley,"dialog","Jamal Bloodguzzle:\\Perhaps... perhaps it is better this way. Neither genie nor Duergar holds the upper hand. Perhaps this is true equality, Charles Barkley. Though I struggle to see the wisdom in your decisions, I trust that someday I shall.");
+   sCinema(oBarkley,"dialog","Mohammed Geniebane:\\You've done more to set us back than help us, Charles Barkley. You've made a dangerous enemy today. Don't forget that.");
+  }
+  sCinema(oBarkley,"code",cine_0143);
+ } else {
+  with (oHandmeter) instance_destroy();
+  stage=1; event_user(2);
+ }
+}

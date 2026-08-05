@@ -335,7 +335,7 @@ if (fff=1) sS(mBTspit);
 if (fff=25) { 
 img=8;
 //sS(mBNeedler); 
-ggg=instance_create(x+35,y+10,oBNeedler); ggg.target=target; ggg.master=id; ggg.sprite_index=sBTrex1; ggg.image_single=2; ggg.daf=0;
+ggg=instance_create(x+35,y+10,oBNeedler); ggg.target=target; ggg.master=id; ggg.sprite_index=sBTrex1; ggg.image_index=2; ggg.image_speed=0; ggg.daf=0;
 } else if (fff&gt;30 &amp;&amp; instance_exists(oBNeedler)=0) { 
 sBCondition('guard',-ceil(target._rguard*.15),target);
 sBCondition('speed',-ceil(target._rspeed*.15),target);

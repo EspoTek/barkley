@@ -83,8 +83,8 @@ sCinema(oVince,'dialog',"I... do not... remember.",1);
 sCinema(oBarkley,'dialog',"Vinceborg, you have to come with us until you remember.",1);
 sCinema(oVince,'dialog',"Yes... I will come with you, Charles. I must remember...",1);
 //
-sCinema(oBarkley,'code',"sParty('add',2);sFollow('add',oFollower1);oVince.x=-999;");
-sCinema(oBarkley,'code',"sFollow('update');");
+sCinema(oBarkley,'code',cine_0487);
+sCinema(oBarkley,'code',cine_0373);
 sCinema(oBarkley,'dialog',"Vinceborg has joined the party!");</string>
           </argument>
         </arguments>

@@ -57,7 +57,7 @@
     <instance objName="oExit273" x="144" y="224" name="inst_4F31DD3D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oMusic" x="0" y="0" name="inst_0FF1C027" locked="0" code="val=mLiberty;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oJenkins" x="160" y="112" name="inst_8045517F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oLRod" x="169" y="104" name="inst_3670ACD5" locked="0" code="image_single=0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oLRod" x="169" y="104" name="inst_3670ACD5" locked="0" code="image_index=0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oWall" x="224" y="112" name="inst_26C1B0EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oWall" x="224" y="96" name="inst_6B0A04AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oWall" x="160" y="64" name="inst_4D07A8CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

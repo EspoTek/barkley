@@ -1,0 +1,16 @@
+sOvar(object_index,1);
+sBoss("oBCryptspider");
+sCinema(oBarkley,"wait",1);
+repeat (16) sCinema(oBarkley,"move","up",4.5);
+sCinema(oBarkley,"wait",2.5);
+sCinema(oBarkley,"dialog","???:\\Welcome to my resting place, Charles Barkley.");
+sCinema(oBarkley,"dialog","Who... who are you?",1);
+sCinema(oBarkley,"dialog","???:\\I have had many names throughout the ages, but you may call me... Shimmerglobe.");
+sCinema(oBarkley,"dialog","Sh-Shimmerglobe...",1);
+sCinema(oBarkley,"dialog","Shimmerglobe:\\I was forged thousands of years ago by the proto-dwarfs in a volcano. They infused me with ancient magics to give me speed, bounce, range and most importantly... accuracy. I cannot miss a jump shot or a dunk, Charles Barkley. I cannot miss a slam, jam, thank you ma'am.");
+sCinema(oBarkley,"dialog","But that breaks all NBA rules and regulations!",1);
+sCinema(oBarkley,"dialog","Shimmerglobe:\\I came before rules and regulations! I wrote the rules and regulations! I have chosen you, Barkley, because I believe that you are the only one that can save b-ball. You are the only one that can restore it to its former glory.");
+sCinema(oBarkley,"dialog","B-but how?",1);
+sCinema(oBarkley,"dialog","Shimmerglobe:\\Only with the combined powers of myself and the Hell B-Ball which you just forged can we defeat B.L.O.O.D.M.O.S.E.S. and the Ultimate B-Ball. Only then can basketball begin anew. But first I must test you to see if you are truly the one to wield me. You must face my guardian, the dreaded B-Ball Spider.");
+sCinema(oBarkley,"dialog","Bring it on...",1);
+sCinema(oBarkley,"code",cine_0309);

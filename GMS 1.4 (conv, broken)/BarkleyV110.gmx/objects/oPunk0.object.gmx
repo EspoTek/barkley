@@ -58,8 +58,8 @@ itemf[4]='Sunglasses';
 itemf[5]='Wrist Brace';
 itemf[6]='';
 sCinema(oBarkley,'dialog',"Pusher-Man:\Hey man, I got the shit you need, just take a look.");
-sCinema(oBarkley,'code',"sShop(oPunk0,'Buy','Sell','Leave');");
-sCinema(oBarkley,'cond',"if (instance_exists(oStartmenu)=0) good=1");
+sCinema(oBarkley,'code',cine_0435);
+sCinema(oBarkley,'cond',cine_0003);
 sCinema(oBarkley,'dialog',"Pusher-Man:\Get outta here man.");</string>
           </argument>
         </arguments>

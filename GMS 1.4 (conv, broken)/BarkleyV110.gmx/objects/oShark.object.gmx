@@ -57,7 +57,7 @@ sItem('gold',-25);
 sCinema(oBarkley,'tint',c_black,0.5);
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'tint',c_black,1);
-sCinema(oBarkley,'code','sFullheal()');
+sCinema(oBarkley,'code',cine_0392);
 sCinema(oBarkley,'wait',2);
 sCinema(oBarkley,'tint',c_white,0);
 sCinema(oBarkley,'dialog',"All VP, BP, and conditions restored!");
@@ -90,7 +90,7 @@ sCinema(oBarkley,'dialog',"Damnit... Don't got enough Neo-Shekles to pay...",1);
 if (sOvar(oSign1,-1)!=2) {
 sCinema(oBarkley,'dialog',"Sredni:\You can stay if you don't shed all over the bed, norm.");
 sCinema(oBarkley,'dialog',"Stay at inn? You have $"+string(global.gold)+".",0,"Pay $25 to stay.","No dice.");
-sCinema(oBarkley,'code',"with (oShark) event_user(2);");
+sCinema(oBarkley,'code',cine_0463);
 }</string>
           </argument>
         </arguments>

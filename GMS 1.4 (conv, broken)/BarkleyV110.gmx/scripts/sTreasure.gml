@@ -1,5 +1,5 @@
 //Must have a dialog or unset dialog
-if (argument1=1) { image_single=global.treasure[argument0]; exit; }
+if (argument1=1) { image_index=global.treasure[argument0]; image_speed=0; exit; }
 if (global.treasure[argument0]=1) exit;
 oBarkley.move="";
 //0 is / was oven
@@ -80,9 +80,9 @@ sCinema(oBarkley,'item',"Bloody Zauber",1);
 if (argument0=19) { //Maze
 global.dialog=0;
 sItem('gold',1000); 
-sCinema(oBarkley,'code',"sDialog('set',2,'center');");
+sCinema(oBarkley,'code',cine_0153);
 sCinema(oBarkley,'dialog',"Captured $1000 Neo-Shekels!");
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');");
+sCinema(oBarkley,'code',cine_0074);
 }
 //Liberty road
 if (argument0=20) {
@@ -91,6 +91,6 @@ sCinema(oBarkley,'item',"Ultimate Wristband",1);
 }
 //technical code
 global.treasure[argument0]=1;
-image_single=1;
+image_index=1; image_speed=0;
 
 sound_play(mChest);

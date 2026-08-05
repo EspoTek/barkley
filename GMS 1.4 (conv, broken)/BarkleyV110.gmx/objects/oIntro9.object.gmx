@@ -87,15 +87,15 @@ with (oFollower) x=-999;
 if (global.plot=9) {
 global.cinema=0;
 global.freeze=0;
-sCinema(oBarkley,'code',"sParty('add',4);sFollow('add',oFollower3);sOvar(oIntro9,1);");
-sCinema(oBarkley,'code',"x=x;");
+sCinema(oBarkley,'code',cine_0368);
+sCinema(oBarkley,'code',cine_0006);
 sCinema(oBarkley,'dialog',"Hoopz has joined the party!");
 exit;
 }
 global.skipper=7;
 global.plot=9;
-sCinema(oBarkley,'code',"sDialog('set',1,'top');");
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
+sCinema(oBarkley,'code',cine_0017);
+sCinema(oBarkley,'cond',cine_0148);
 sCinema(oHoopz,'dialog',"Mr. Jordan was... he was gonna hurt me dad, wasn't he?",1);
 sCinema(oBarkley,'dialog',"Yes, son. He would have hurt you if we didn't get there in time.",1);
 sCinema(oHoopz,'dialog',"But what did I do?",1);
@@ -132,8 +132,8 @@ sCinema(oBarkley,'dialog',"I... I don't know where all this is leading but... bu
 sCinema(oCyberdwarf,'dialog',"F.A.T.E...",1);
 sCinema(oBalthios,'dialog',"We should get all the supplies we need here in Cesspool X, and then we'll take off.",1);
 sCinema(oBarkley,'dialog',"Good idea.",1);
-sCinema(oBarkley,'code',"global.skipper=0;sParty('add',4);sFollow('add',oFollower3);sOvar(oIntro9,1);");
-sCinema(oBarkley,'code',"x=x;");
+sCinema(oBarkley,'code',cine_0369);
+sCinema(oBarkley,'code',cine_0006);
 sCinema(oBarkley,'dialog',"Hoopz has joined the party!");</string>
           </argument>
         </arguments>
@@ -167,15 +167,15 @@ oBarkley.y=176;
 global.nofollow=1;
 global.plot=7;
 with (oFollower) x=-999;
-sCinema(oBarkley,'code',"sDialog('set',1,'top');");
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
+sCinema(oBarkley,'code',cine_0017);
+sCinema(oBarkley,'cond',cine_0148);
 repeat (2) sCinema1(oBalthios,'move','up');
 sCinema1(oBalthios,'move','right');
 sCinema1(oBalthios,'face','up');
 repeat (2) sCinema2(oVince,'move','up');
 sCinema2(oVince,'move','left');
 sCinema2(oVince,'face','up');
-sCinema(oBarkley,'code',"oCinema1.enable=1;oCinema2.enable=1;");
+sCinema(oBarkley,'code',cine_0370);
 repeat (3) sCinema(oBarkley,'move','up');
 sCinema(oBarkley,'dialog',"???:\Barkley, I've been waiting for you.");
 sCinema(oBarkley,'dialog',"C... Cyberdwarf?",1);
@@ -214,9 +214,9 @@ sCinema3(oVince,'move','right',1.1);
 sCinema3(oVince,'face','up',1.1);
 sCinema(oBarkley,'face','left');
 sCinema(oBalthios,'face','left');
-sCinema(oBarkley,'code',"oCinema3.enable=1;");
+sCinema(oBarkley,'code',cine_0295);
 sCinema(oVince,'dialog',"Bzzt! Zzzt! The... one... Zzzt! Bzzt!",1);
-sCinema(oBarkley,'cond','if (oCinema3.enable=0) good=1;');
+sCinema(oBarkley,'cond',cine_0103);
 sCinema(oBalthios,'dialog',"Vinceborg 2050, what's happening?",1);
 sCinema(oVince,'dialog',"N-nothing Balthios... I thought I was getting back my memories but it was... nothing.",1);
 sCinema(oBarkley,'face','up');
@@ -231,12 +231,12 @@ sCinema(oBalthios,'dialog',"I... don't know, Barkley. Only time can tell.",1);
 sCinema(oBarkley,'dialog',"Only time can tell...",1);
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code',"with (oCyberdwarf) instance_destroy(); with (oBalthios) instance_destroy(); with (oVince) instance_destroy();");
+sCinema(oBarkley,'code',cine_0371);
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'tint',c_black,0);
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');");
-sCinema(oBarkley,'code',"sParty('add',3);sFollow('add',oFollower2);global.nofollow=0;global.skipper=0;");
-sCinema(oBarkley,'code',"sFollow('update');");
+sCinema(oBarkley,'code',cine_0074);
+sCinema(oBarkley,'code',cine_0372);
+sCinema(oBarkley,'code',cine_0373);
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'dialog',"Cyberdwarf has joined the party!");</string>
           </argument>

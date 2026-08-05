@@ -104,9 +104,9 @@ sCinema(oBarkley,'dialog',"Nope.",1);
 sCinema(oFollower0,'dialog',"It just fascinates me, anthropologically. How exactly is a love letter between a man surgically altered to become a snail and a woman altered to become a fox written? If, Charles, I decided to say... open it. You wouldn't...",1);
 sCinema(oBarkley,'dialog','I am not going to tell the damn snail. I wonder if it reads like he talks. "Stir the deep dark waters of your soul" and all that shit. Just listening to him talk was bad enough.',1);
 sCinema(oFollower0,'dialog',"Well, here we go then.",1);
-sCinema(oBarkley,'code',"sDialog('set',2,'top');");
+sCinema(oBarkley,'code',cine_0077);
 sCinema(oBarkley,'dialog',"Perfect was our love,\True was our passion;\One touch from your beautiful hands,\Left me feeling smashing.");
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');");
+sCinema(oBarkley,'code',cine_0074);
 sCinema(oFollower0,'dialog',"Hm.",1);
 sCinema(oBarkley,'dialog',"Tough break. Your snail friend's fucked.",1);
 sCinema(oFollower0,'dialog',"Charles... we need to do something. We cannot allow her to receive this letter.",1);
@@ -118,8 +118,8 @@ sCinema2(oBarkley,'dialog',"We don't have time for that. I'm just gonna give her
 sCinema2(oFollower0,'dialog',"If you say so, Charles. Go ahead then.",1);
 sCinema1(oBarkley,'dialog',"Damn it. I guess we'll rewrite it. If I didn't you'd just bring up some more shit about me writing poems for Maureen, huh?",1);
 sCinema1(oFollower0,'dialog',"Perhaps. That's good though. First thing we should do is ask the kitsune some questions. Find out what her interests are, her likes and dislikes.",1);
-sCinema(oBarkley,'code',"if (global.selected=0) { oCinema1.enable=1; sOvar(oSnail,2); } else { oCinema2.enable=1; sOvar(oSnail,1); }");
-sCinema(oBarkley,'cond',"if (oCinema1.enable=0 &amp;&amp; oCinema2.enable=0) { good=1; keyboard_clear(global.key_action); }");
+sCinema(oBarkley,'code',cine_0078);
+sCinema(oBarkley,'cond',cine_0079);
 //What will you do?</string>
           </argument>
         </arguments>

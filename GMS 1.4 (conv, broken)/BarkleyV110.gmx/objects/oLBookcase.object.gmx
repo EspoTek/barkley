@@ -52,7 +52,7 @@ pull[3]=-1;</string>
           <argument>
             <kind>1</kind>
             <string>if (global.selected=3) {
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 exit;
 }
 pull[3]=pull[2];
@@ -62,14 +62,14 @@ pull[0]=global.selected+1;
 if (pull[0]=2 &amp;&amp; pull[1]=3 &amp;&amp; pull[2]=2 &amp;&amp; pull[3]=1) { //reverse
 sCinema(oBarkley,'move','down',6);
 sCinema(oBarkley,'catchup');
-sCinema(oBarkley,'code','sound_play(mGate);');
-repeat (16) { sCinema(oBarkley,'code','oLBookcase.x-=2;'); sCinema(oBarkley,'wait',.1); }
+sCinema(oBarkley,'code',cine_0405);
+repeat (16) { sCinema(oBarkley,'code',cine_0406); sCinema(oBarkley,'wait',.1); }
 sCinema(oBarkley,'dialog',"Hey, there's a door. That's gotta be our way out of here.",1);
 sOvar(object_index,2);
 } else {
 sCinema(oBarkley,'dialog',"Pulled book " + string(global.selected+1) + ".");
 sCinema(oBarkley,'dialog',"Pull which book?",0,"1","2","3","Leave.");
-sCinema(oBarkley,'code','with (global.coice) event_user(3);');
+sCinema(oBarkley,'code',cine_0407);
 }</string>
           </argument>
         </arguments>
@@ -96,24 +96,24 @@ sCinema(oBarkley,'code','with (global.coice) event_user(3);');
 if (global.selected=0) {
 if (sOvar(object_index,-1)=-1) sOvar(object_index,1);
 sCinema(oBarkley,'dialog',"There's a lot of books on here. Wait, there's three books on here labelled 1, 2, and 3. It looks like you can pull on them, but they won't seperate from the bookcase.",1);
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else if (global.selected=1) {
 if (sOvar(object_index,-1)=2) {
 sCinema(oBarkley,'dialog',"I don't need to use this again.",1);
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else if (sOvar(object_index,-1)=1) {
 sCinema(oBarkley,'dialog',"I guess I could pull the books in a certain order... Maybe the order is in the room some where? I wonder if there are any number references in this room...",1);
 sCinema(oBarkley,'dialog',"Pull which book?",0,"1","2","3","Leave.");
-sCinema(oBarkley,'code','with (global.coice) event_user(3);');
+sCinema(oBarkley,'code',cine_0407);
 } else {
 sCinema(oBarkley,'dialog',"What can I use? It's just books.",1);
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 }
 } else if (global.selected=2) {
 sCinema(oBarkley,'dialog',"Why would I want to do that?",1);
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else {
-sCinema(oBarkley,'code',"x=x;");
+sCinema(oBarkley,'code',cine_0006);
 }
 }</string>
           </argument>
@@ -145,7 +145,7 @@ exit;
 global.coice=id;
 stage=0;
 sCinema(oBarkley,'dialog',"You see a Bookcase.",0,"Examine Bookcase.","Use Bookcase.","Take Bookcase.","Leave Bookcase.");
-sCinema(oBarkley,'code','with (global.coice) event_user(2);');</string>
+sCinema(oBarkley,'code',cine_0399);</string>
           </argument>
         </arguments>
       </action>

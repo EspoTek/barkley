@@ -72,7 +72,7 @@ sCinema(oBarkley,'dialog',"J. Lindsay:\How do I like Cesspool X? The question sh
 if (q0=0 || q1=0 || q2=0) {
 sCinema(oFollower0,'dialog',"Barkley, are you sure you don't want to ask her more questions?",1);
 sCinema(oBarkley,'dialog',"Are you finished?",0,"No, I want to ask her more.","Yes, we're done here.");
-sCinema(oBarkley,'code',"with (oFox) event_user(2);");
+sCinema(oBarkley,'code',cine_0146);
 //sCinema(oBarkley,'wait',0.3);
 que=1;
 } else {
@@ -82,14 +82,14 @@ que=1;
 }
 if (global.selected!=3) {
 sCinema(oBarkley,'dialog',"What do you want to say?",0,"What are your interests?","How would you describe yourself?","How do you like Cesspool X?","That's all.");
-sCinema(oBarkley,'code',"with (oFox) event_user(2);");
+sCinema(oBarkley,'code',cine_0146);
 //sCinema(oBarkley,'wait',0.3);
 }
 } else { //leave previous
 que=0;
 if (global.selected=0) {
 sCinema(oBarkley,'dialog',"What do you want to say?",0,"What are your interests?","How would you describe yourself?","How do you like Cesspool X?","That's all.");
-sCinema(oBarkley,'code',"with (oFox) event_user(2);");
+sCinema(oBarkley,'code',cine_0146);
 //sCinema(oBarkley,'wait',0.3);
 } else {
 sCinema(oBarkley,'dialog',"Alright, J. Lindsay. That's it.",1);
@@ -175,7 +175,7 @@ sCinema(oFollower0,'dialog',"Great. Ok then, Barkley here will ask you a few que
 sCinema(oBarkley,'dialog',"J. Lindsay:\Bring 'em on!");
 sCinema(oBarkley,'dialog',"Ok, uh...",1);
 sCinema(oBarkley,'dialog',"What do you want to say?",0,"What are your interests?","How would you describe yourself?","How do you like Cesspool X?","That's all.");
-sCinema(oBarkley,'code',"with (oFox) event_user(2);");
+sCinema(oBarkley,'code',cine_0146);
 //sCinema(oBarkley,'wait',0.3);
 ////
 } else if (www=5 || www=6 || www=7) { //done basic / bad
@@ -191,7 +191,7 @@ if (www=4) { //bad
 sCinema(oBarkley,'dialog',"J. Lindsay:\This... oh my god... it's like he knows me even better than I know myself! He says I love animals, and he's right, I do love animals! And I don't mind cleaning up after them, and I love my friends here! I can't believe this... has he felt like this all this time? How could I have been so blind? Eric... I'm coming...");
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code','with (oIntro14) event_user(2);');
+sCinema(oBarkley,'code',cine_0147);
 } else {
 sCinema(oBarkley,'dialog',"J. Lindsay:\This... hmm. This is... it's something. I mean... it's long? He must have tried hard? Maybe? Thanks, I guess. If you see him you could tell him I said thank you to him too. I should probably come by and say it myself sometime. He's a cute guy and all but this poetry is really... bewildering, sort of. I just can't really imagine what was running through the writer's head. Anyway, thanks for bringing it by guys. I'll ask him about it later.");
 sCinema(oBarkley,'wait',1);

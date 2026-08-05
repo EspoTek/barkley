@@ -1,16 +1,3 @@
-/*  Returns the current row of the given mod.
-
-    Ex:
-      row = bgm_GetRow(mySong);
-    
-******************************************************************************/
-
-var ret;
-
-if (is_real(argument0))
-  ret = external_call(global._bgm_GetRowById, argument0)
-else
-  ret = external_call(global._bgm_GetRowByFname, argument0);
-if (ret==-1 && global._bgm_showErrors)
-  show_error(external_call(global._bgm_Error), false);
-return ret;
+// bgm.dll music extension stub — the DLL cannot exist on HTML5/macOS.
+// Only bgm_Init()/bgm_Close() were ever called; music plays via built-in sound_* functions.
+return 0;

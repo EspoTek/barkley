@@ -56,7 +56,7 @@ sCinema(oFollower0,'dialog',"I can too, Cyberdwarf. I believe this is some sort 
 sCinema(oBarkley,'dialog',"Okay.",1);
 sCinema(oBarkley,'tint',c_white,0.5);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code','sFullheal()');
+sCinema(oBarkley,'code',cine_0392);
 sCinema(oBarkley,'tint',c_white,0);
 sCinema(oBarkley,'dialog',"B-ball energies restored!");
 sCinema(oBarkley,'dialog',"I can feel my b-ball energies coming back to me! I feel revitalized.",1);
@@ -65,7 +65,7 @@ sCinema(oFollower2,'dialog',"Good idea.",1);
 } else {
 sCinema(oBarkley,'tint',c_white,0.5);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code','sFullheal()');
+sCinema(oBarkley,'code',cine_0392);
 sCinema(oBarkley,'tint',c_white,0);
 sCinema(oBarkley,'dialog',"B-ball energies restored!");
 }</string>

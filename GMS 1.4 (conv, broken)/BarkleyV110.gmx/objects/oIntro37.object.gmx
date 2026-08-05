@@ -65,7 +65,7 @@ sCinema(oBarkley,'dialog',"This power coursing through my body... I can... dribb
 sCinema(oBarkley,'dialog',"Shimmerglobe:\Come Barkley. We must leave at once. We have little time to stop B.L.O.O.D.M.O.S.E.S.");
 repeat (2) sCinema(oBarkley,'move','up');
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code','oBallground.visible=0;');
+sCinema(oBarkley,'code',cine_0308);
 sCinema(oBarkley,'dialog',"You recieved H/S B-ball! Shimmerglobe and the Hell B-ball can now be double dribbled for 2 attacks!");
 sCinema(oBarkley,'effect','fadein',3);
 global.roz=RomCuchEnter;</string>
@@ -105,7 +105,7 @@ sCinema(oBarkley,'dialog',"Shimmerglobe:\I came before rules and regulations! I 
 sCinema(oBarkley,'dialog',"B-but how?",1);
 sCinema(oBarkley,'dialog',"Shimmerglobe:\Only with the combined powers of myself and the Hell B-Ball which you just forged can we defeat B.L.O.O.D.M.O.S.E.S. and the Ultimate B-Ball. Only then can basketball begin anew. But first I must test you to see if you are truly the one to wield me. You must face my guardian, the dreaded B-Ball Spider.");
 sCinema(oBarkley,'dialog',"Bring it on...",1);
-sCinema(oBarkley,'code',"with (oIntro37) sBattleStart();");</string>
+sCinema(oBarkley,'code',cine_0309);</string>
           </argument>
         </arguments>
       </action>

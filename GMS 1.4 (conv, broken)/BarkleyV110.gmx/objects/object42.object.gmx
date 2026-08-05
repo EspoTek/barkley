@@ -28,7 +28,7 @@
             <string>global.shake=0
 //sViewInit();
 instance_create(0,0,object39);
-image_single=0;
+image_index=0; image_speed=0;
 //alarm[0]=180;
 alarm[4]=180;
 rocks=0;
@@ -61,8 +61,8 @@ limit=0;</string>
           <argument>
             <kind>1</kind>
             <string>flip=0;
-image_single+=1;
-if (image_single=10) { vspeed=20; alarm[0]=30; exit; }
+image_index+=1; image_speed=0;
+if (image_index=10) { vspeed=20; alarm[0]=30; exit; }
 alarm[11]=45; //30</string>
           </argument>
         </arguments>
@@ -179,7 +179,7 @@ alarm[9]=30;</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//image_single=2;
+            <string>//image_index=2;
 global.shake=5;
 rocks=1;
 sound_loop(mEarth);
@@ -229,7 +229,7 @@ alarm[1]=200;</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_single=1;
+            <string>image_index=1; image_speed=0;
 goku=1;
 alarm[7]=100;
 global.shake=3;</string>
@@ -315,7 +315,7 @@ alarm[8]=330; //300</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_single=2;
+            <string>image_index=2; image_speed=0;
 vspeed=-7;
 alarm[2]=30;</string>
           </argument>
@@ -344,7 +344,7 @@ if (st=0) {
 object59.visible=1;
 y=-100;
 gravity=0;
-image_single=12;
+image_index=12; image_speed=0;
 with (object52) instance_destroy();
 with (object51) instance_destroy();
 with (object44) instance_destroy();
@@ -355,7 +355,7 @@ st+=1;
 fire=0;
 global.shake=12;
 vspeed=0;
-image_single=12;
+image_index=12; image_speed=0;
 instance_create(0,0,oEchain);
 sA('stopall');
 with (oRainer) instance_destroy();
@@ -363,7 +363,7 @@ instance_create(0,0,oObscurez);
 st+=1;
 alarm[0]=60;
 } else if (st=2) {
-image_single=0;
+image_index=0; image_speed=0;
 st+=1;
 alarm[0]=90;
 } else if (st=3) {
@@ -419,7 +419,7 @@ repeat (3) instance_create(x+31-20+random(40),y+38-10+random(20),oFlame1);
 }
 if (goku=1) {
 bal+=0.25;
-(instance_create(x+31,y+38,oGokuer)).rad=bal;
+{ tttmp=instance_create(x+31,y+38,oGokuer); tttmp.rad=bal; }
 }
 if (rocks=1) {
 if (round(random(2))=0) instance_create(view_xview[0]-20+random(340),view_yview[0]+280,oQuake);
@@ -429,10 +429,10 @@ fst-=0.01;
 cou+=1;
 if (cou&gt;=fst) {
 cou=0;
-if (image_single=3) image_single=4;
-else if (image_single=4) image_single=5;
-else if (image_single=5) image_single=6;
-else image_single=3;
+if (image_index=3) { image_index=4; image_speed=0; }
+else if (image_index=4) { image_index=5; image_speed=0; }
+else if (image_index=5) { image_index=6; image_speed=0; }
+else { image_index=3; image_speed=0; }
 }
 }</string>
           </argument>

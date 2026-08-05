@@ -66,8 +66,8 @@ itemf[12]='';
 sCinema(oBarkley,'dialog',"Bert:\Not many people come here, you on the run?");
 sCinema(oBarkley,'dialog',"We're looking for Cuchulainn's Tomb. You know where it is?",1);
 sCinema(oBarkley,'dialog',"Bert:\It's in the building at the back of the parking lot. You're not thinking of going in unprepared, are you? You'd better stock up, man.");
-sCinema(oBarkley,'code',"sShop(oBert,'Buy','Sell','Leave');");
-sCinema(oBarkley,'cond',"if (instance_exists(oStartmenu)=0) good=1");
+sCinema(oBarkley,'code',cine_0002);
+sCinema(oBarkley,'cond',cine_0003);
 sCinema(oBarkley,'dialog',"Bert:\Thanks a lot man. You take care of yourself in Cuchulainn's Tomb. Most people who go in don't come back out.");</string>
           </argument>
         </arguments>

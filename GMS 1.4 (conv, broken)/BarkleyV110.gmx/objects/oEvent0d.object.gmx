@@ -93,8 +93,8 @@ sCinema(oFollower0,'dialog',"We need to get moving, Charles.",1);
 sCinema(oBarkley,'dialog',"Alright. Let's see what we can find in this factory...",1);
 repeat (2) sCinema(oBarkley,'move','right');
 sCinema(oBarkley,'move','up');
-sCinema(oBarkley,'code','sOvar(oEvent0d,1);with (oEvent0d)instance_destroy();');
-sCinema(oBarkley,'code','x=x;');</string>
+sCinema(oBarkley,'code',cine_0069);
+sCinema(oBarkley,'code',cine_0006);</string>
           </argument>
         </arguments>
       </action>

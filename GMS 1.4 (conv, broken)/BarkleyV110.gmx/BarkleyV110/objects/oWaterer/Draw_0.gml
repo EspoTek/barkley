@@ -1,0 +1,12 @@
+xx+=bx-__view_get( e__VW.XView, 0 );
+yy+=by-__view_get( e__VW.YView, 0 );
+if (xx>320) xx-=320;
+if (xx<0) xx+=320;
+if (yy>240) yy-=240;
+if (yy<0) yy+=240;
+i=image_index;
+image_speed=global.rd/10;
+draw_sprite(sWaterer,i,xx+(__view_get( e__VW.XView, 0 )),yy+(__view_get( e__VW.YView, 0 )));
+draw_sprite(sWaterer,i,xx+(__view_get( e__VW.XView, 0 )),yy+(__view_get( e__VW.YView, 0 )-240));
+draw_sprite(sWaterer,i,xx+(__view_get( e__VW.XView, 0 )-320),yy+(__view_get( e__VW.YView, 0 )));
+draw_sprite(sWaterer,i,xx+(__view_get( e__VW.XView, 0 )-320),yy+(__view_get( e__VW.YView, 0 )-240));

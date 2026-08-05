@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"key_joyinit",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"key_joyinit",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

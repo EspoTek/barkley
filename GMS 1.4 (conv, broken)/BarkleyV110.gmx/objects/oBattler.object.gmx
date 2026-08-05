@@ -270,7 +270,7 @@ depth=-fy;</string>
 sBCondition('inflict','diabetes',id);
 sBCondition('inflict','handicapable',id);
 exit;
-if (global.b_debug=1) sBCondition('cure',get_string("cure what?","stroke"),id);
+if (global.b_debug=1) sBCondition('cure',("stroke"),id);
 exit;
 shake=10;
 _vp-=50;
@@ -479,7 +479,7 @@ if (kex=0 &amp;&amp; enemy=1) {
 kex=1; cut=floor(random(2)); 
 if (cut=1) sS(mKillcut); else {
 if (floor(random(2))) sS(mKillfade); 
-else { (instance_create(x-sprite_xoffset,y-sprite_yoffset,oBExplode)).master=id; sS(mKillbake); }
+else { { tttmp=instance_create(x-sprite_xoffset,y-sprite_yoffset,oBExplode); tttmp.master=id; } sS(mKillbake); }
 }
 }
 if (enemy=1 &amp;&amp; cut=0) {

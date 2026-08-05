@@ -1,0 +1,25 @@
+sOvar(oMack,6);
+oDiabeastie.x=-999;
+with (oFollower) { x=oBarkley.x; y=oBarkley.y; }
+oLRod.visible=1;
+oSteambrast.visible=1;
+sA("stopall");
+sCinema(oBarkley,"dialog","The Diabeastie is finally dead. Wait... It dropped something.",1);
+repeat (3) sCinema(oBarkley,"move","up");
+sCinema(oBarkley,"catchup");
+sCinema(oBarkley,"dialog","It looks like some kind of gizmo.",1);
+sCinema(oBarkley,"code",cine_0376);
+sCinema(oBarkley,"item","Poleshaft",1);
+sCinema(oBarkley,"wait",1);
+sCinema(oBarkley,"code",cine_0377);
+sCinema(oBarkley,"wait",3);
+repeat (8) sCinema(oSteambrast,"move","up");
+sCinema(oBarkley,"code",cine_0017);
+sCinema(oBarkley,"dialog","???:\\Greetings, fine chaps. Good showing.",0);
+sCinema(oBarkley,"move","down");
+sCinema(oBarkley,"dialog","Who the hell are you?",1);
+sCinema(oBarkley,"dialog","???:\\It is I, Octavius Steambrast; traverser of the skies and above. I have come to retrieve an item of great magickal importance, the Magick Poleshaft. I came upon this island to slay the Diabeastie with my own hands, but thanks to you fellows that is no longer necessary.",0);
+sCinema(oBarkley,"dialog","You mean this Poleshaft? Hmm, I don't know. I think I could use this.",1);
+sCinema(oBarkley,"dialog","Octavius Steambrast:\\Very well, I would not expect you to go uncompensated. What say you, that in exchange for the relic, I pledge 20% of profits I make from my Mechanical Bird to the United Negro College Fund?",0);
+sCinema(oBarkley,"dialog","Give Steambrast the gizmo in exchange for the pledge?",0,"Yeah.","Nah.");
+sCinema(oBarkley,"code",cine_0378);

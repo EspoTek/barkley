@@ -146,7 +146,7 @@ image_angle+=30;
 speed=11;
 image_index=0;
 global.b_shadow=id;
-(instance_create(x,y,oBShadow)).shrink=0.1;
+{ tttmp=instance_create(x,y,oBShadow); tttmp.shrink=0.1; }
 sD();
 }
 if (type='ice') {
@@ -182,7 +182,7 @@ image_angle+=20;
 speed=8;
 image_index=4;
 global.b_shadow=id;
-(instance_create(x,y,oBShadow)).shrink=0.1;
+{ tttmp=instance_create(x,y,oBShadow); tttmp.shrink=0.1; }
 sD();
 }
 if (type='bloody') {

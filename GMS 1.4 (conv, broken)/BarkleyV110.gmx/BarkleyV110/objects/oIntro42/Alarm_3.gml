@@ -1,0 +1,17 @@
+sOvar(object_index,4);
+global.nofollow=1;
+with (oFollower) x=-999;
+oShadowBarkley.t=2;
+oBarkley.t=0;
+oBalthios.x=-999;
+oCyberdwarf.x=-999;
+oHoopz.x=-999;
+oBarkley.y=oShadowBarkley.y+48;
+sCinema(oBarkley,"wait",1);
+sCinema(oShadowBarkley,"dialog","Do you really think you can defeat me? Do you think that if you perform enough jumpers, dunks, and slams on me, that I will fade away? We are the same, Barkley. You cannot defeat me!",1);
+sCinema(oBarkley,"dialog","You took everything I had. You took my wife. You took my game. Hell, you even killed my friends... but that's where it stops. Heh... There's only enough time for one last dunk...",1);
+sCinema(oShadowBarkley,"dialog","No! Think of what we could do! B-Ball would usher in a new era!",1);
+sCinema(oBarkley,"dialog","I am the beginning and the end. The alpha and the omega. The first and the last.",1);
+sCinema(oBarkley,"effect","fadein",3);
+global.roz=RomChaos;
+sound_stop_all();

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_single=object4x.image_single;</string>
+            <string>image_index=object4x.image_index; image_speed=0;</string>
           </argument>
         </arguments>
       </action>

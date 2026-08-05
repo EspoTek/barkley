@@ -58,12 +58,12 @@ sCinema(oFollower2,'dialog',"O-okay. Alright, I will!",1);
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',0.5);
 sCinema(oCyberdwarf,'face','left');
-sCinema(oBarkley,'code','with (oFollower) { x=-999; } with (oCyberdwarf) { x=oBarkley.x; y=oBarkley.y; } oBarkley.x=-999;');
+sCinema(oBarkley,'code',cine_0055);
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'tint',c_black,0);
 sCinema(oBarkley,'wait',1);
-sCinema(oFollower2,'code',"instance_create(0,0,oWarninge)",1);
-sCinema(oFollower2,'cond',"good=!instance_exists(oWarninge);",1);
+sCinema(oFollower2,'code',cine_0056,1);
+sCinema(oFollower2,'cond',cine_0057,1);
 sCinema(oBarkley,'dialog',"Moe:\Excellent! What traits in particular are you looking for in a partner?");
 sCinema(oFollower2,'dialog',"Applebottom.",1);
 sCinema(oBarkley,'dialog',"Moe:\Anything else?");
@@ -124,11 +124,11 @@ sCinema(oFollower2,'dialog',"It has been a long time and... I have been lonely."
 sCinema(oBarkley,'dialog',"Well what are you waiting for? Come on, man! Go for it!",1);
 sCinema(oBarkley,'dialog',"Moe:\Have you made up your mind? Would you like to go on a date with one of our lovely ladies?");
 sCinema(oBarkley,'dialog',"Go on a date?",0,"Yes.","No.");
-sCinema(oBarkley,'code','with (oDMoe) event_user(2);');
+sCinema(oBarkley,'code',cine_0058);
 } else if (sOvar(object_index,-1)=1) {
 sCinema(oBarkley,'dialog',"Moe:\Have you made up your mind? Would you like to go on a date with one of our lovely ladies?");
 sCinema(oBarkley,'dialog',"Go on a date?",0,"Yes.","No.");
-sCinema(oBarkley,'code','with (oDMoe) event_user(2);');
+sCinema(oBarkley,'code',cine_0058);
 } else {
 sCinema(oBarkley,'dialog',"Moe:\I'm sorry Mr. Cyberdwarf. All applicants that meet your requirements are currently unavailable.");
 }</string>

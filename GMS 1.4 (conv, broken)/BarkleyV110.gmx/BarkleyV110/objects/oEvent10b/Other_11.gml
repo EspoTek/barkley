@@ -1,0 +1,27 @@
+//"Turkey Feather"
+if (sOvar(oTurkey,-1)=2) exit;
+with (oPlayer) solid=0;
+global.dialog=1;
+oBarkley.move="";
+sOvar(oTurkey,2); 
+sCinema(oBarkley,"dialog","???:\\Barkley, wait!");
+sCinema(oBarkley,"code",cine_0075);
+repeat (8) sCinema(oTurkey,"move","up");
+sCinema(oBarkley,"wait",1);
+sCinema(oBarkley,"move","down",2);
+sCinema(oBarkley,"move","down",2);
+sCinema(oBarkley,"move","down",2);
+sCinema(oTurkey,"dialog","There's... there's something I wanted to give you before you left.",1);
+sCinema(oBarkley,"dialog","Wait, what?",1);
+sCinema(oTurkey,"dialog","Whether you want to admit it or not, Barkley, I know you learned something from us while you were here in Cesspool X. It has... been a long time since I have had spoken to a \"norm\" and... I forgot how much we had in common. I mean, it is where we all came from, everyone here was a \"norm\" once.",1);
+sCinema(oBarkley,"dialog","What, do you want to give me a basketball or something?",1);
+sCinema(oTurkey,"dialog","No Barkley, I want you to know that you taught me to believe again. You've given me the hope to believe that someday, your people and my people can coexist, that someday there will be harmony between our two peoples and a bond of understanding and cohesion that will go beyond appearance. I wanted to give you one of my precious turkey feathers to symbolize the mutual strength we have gained from each other.",1);
+sCinema(oBarkley,"item","Turkey Feather",1);
+sCinema(oBarkley,"dialog","Oh, I thought you wanted to talk about rebounds or something.",1);
+sCinema(oTurkey,"dialog","Barkley... I don't know where you're headed, but don't ever forget us here in Cesspool X. Farewell, friend.",1);
+repeat (9) sCinema(oTurkey,"move","down");
+sCinema(oBarkley,"code",cine_0076);
+sCinema(oBarkley,"dialog","What am I supposed to do with this?",1);
+sCinema(oFollower0,"dialog","It symbolizes the potential unity between these animal people and us normal people, Charles.",1);
+sCinema(oFollower2,"dialog","Just throw it away, I don't care. We've got to get moving.",1);
+sCinema(oBarkley,"dialog","Right, let's get going.",1);

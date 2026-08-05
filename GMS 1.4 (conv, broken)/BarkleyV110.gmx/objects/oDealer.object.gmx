@@ -62,8 +62,8 @@ itemf[8]='Alcohol';
 itemf[9]='Fstone Mvitamin';
 itemf[10]='';
 sCinema(oBarkley,'dialog',"Dealer:\You're looking for my shit. You don't gotta say it but I can tell by the way you look that you some of what I got.");
-sCinema(oBarkley,'code',"sShop(oDealer,'Buy','Sell','Leave');");
-sCinema(oBarkley,'cond',"if (instance_exists(oStartmenu)=0) good=1");
+sCinema(oBarkley,'code',cine_0062);
+sCinema(oBarkley,'cond',cine_0003);
 sCinema(oBarkley,'dialog',"Dealer:\I got you covered, bro. You come back next time you're looking for some of what I got.");</string>
           </argument>
         </arguments>

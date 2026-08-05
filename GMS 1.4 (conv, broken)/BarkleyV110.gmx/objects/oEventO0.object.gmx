@@ -96,12 +96,12 @@ alarm[0]=25;</string>
             <kind>1</kind>
             <string>//Choose
 if (global.selected=0) {
-sCinema(oBarkley,'code','sOvar(oEventO0,0)');
+sCinema(oBarkley,'code',cine_0134);
 sCinema(oBarkley,'effect','fadein',3);
 global.roz=RomOverworld;
 } else {
 repeat (1) sCinema(oBarkley,'move','up');
-sCinema(oBarkley,'code','sOvar(oEventO0,0)');
+sCinema(oBarkley,'code',cine_0134);
 }</string>
           </argument>
         </arguments>
@@ -131,10 +131,10 @@ sOvar(object_index,1);
 if (sOvar(oIntro32,-1)!=3) {
 sCinema(oBarkley,'dialog',"Wait, this is the way out of town. We went the wrong way. Gatdam...",1);
 repeat (2) sCinema(oBarkley,'move','up');
-sCinema(oBarkley,'code','sOvar(oEventO0,0)');
+sCinema(oBarkley,'code',cine_0134);
 } else {
 sCinema(oBarkley,'dialog','Enter the world map?',0,"Yes","No");
-sCinema(oBarkley,'code','with (oEventO0) event_user(2);');
+sCinema(oBarkley,'code',cine_0135);
 }</string>
           </argument>
         </arguments>

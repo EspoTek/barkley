@@ -78,7 +78,7 @@ sOvar(oIntro11,1);
 sCinema(oBarkley,'dialog',"I... I can't leave Hoopz...",1);
 sCinema(oBarkley,'move','left');
 sCinema(oBarkley,'move','left');
-sCinema(oBarkley,'code','sOvar(oIntro11,-2)');</string>
+sCinema(oBarkley,'code',cine_0122);</string>
           </argument>
         </arguments>
       </action>

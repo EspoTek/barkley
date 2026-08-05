@@ -146,7 +146,7 @@ if (stage=0) {
 if (fff=0) { fff=1; sprite_index=sBVinceCelebrate; img=0; sS(mBBinary); }
 if (fff&gt;2 &amp;&amp; lou&lt;15) {
 las=instance_create(x-25+random(30),y-50,oBDummy);
-las.master=id; las.focus=1; las.visible=1; las.image_single=floor(random(2));
+las.master=id; las.focus=1; las.visible=1; las.image_index=floor(random(2)); las.image_speed=0;
 las.sprite_index=sBBinary; las.vspeed=3+random(2); las.depth=depth-1;
 lou+=1;
 fff=1;

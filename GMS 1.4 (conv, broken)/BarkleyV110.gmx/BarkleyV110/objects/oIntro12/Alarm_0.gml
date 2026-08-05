@@ -1,0 +1,18 @@
+sOvar(oIntro12,1);
+oHoopz.t=3;
+oCyberdwarf.t=1;
+oBalthios.t=0;
+oBarkley.t=2;
+oBarkley.x=192-4;
+oBarkley.y=816;
+global.nofollow=1;
+with (oFollower) x=-999;
+sCinema(oBarkley,"dialog","We probably should've killed him.",1);
+sCinema(oBalthios,"dialog","Charles, your son's right here.",1);
+sCinema(oBarkley,"dialog","I've said it before. I am not a role model. Still, it was probably the right thing to do. That guy's sick. And look who's talking. You're the 'Ultimate Hellbane.' You're certainly not afraid of killing anyone.",1);
+sCinema(oBalthios,"dialog","My hands are not clean, but everything I've done has been for the people of Neo New York. Allard was a cruel dictator, but he's nothing like B.L.O.O.D.M.O.S.E.S. Besides, he's called off his guards and promised to lower his prices for his surgeries. Surgeries that help the people down here, regardless of what you think of them.",1);
+sCinema(oBarkley,"dialog","He's a real slimy son of a bitch though. He'll probably change his mind the moment we head down to Proto Neo New York. I just think everyone would be better off without him. But let's just hurry up and go. We've probably spent too much time here already.",1);
+sCinema(oBarkley,"tint",c_black,1);
+sCinema(oBarkley,"wait",1);
+sCinema(oBarkley,"code",cine_0193);
+sCinema(oBarkley,"tint",c_black,0);

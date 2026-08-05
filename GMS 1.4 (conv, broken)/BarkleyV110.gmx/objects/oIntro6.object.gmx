@@ -64,11 +64,11 @@ global.skipper=5;
 sItem("Battlers Tome 1",1);
 sItem("Battlers Tome 2",1);
 sItem("Battlers Tome 3",1);
-sCinema(oBarkley,'cond','if (instance_exists(oFader)=0) good=1;');
+sCinema(oBarkley,'cond',cine_0148);
 repeat(3)sCinema1(oHellbane,'move','right');
 sCinema1(oHellbane,'move','up');
 sCinema1(oHellbane,'face','right');
-sCinema(oBarkley,'code','oCinema1.enable=1;');
+sCinema(oBarkley,'code',cine_0178);
 repeat(3)sCinema(oBarkley,'move','right');
 sCinema(oBarkley,'face','left');
 sCinema(oBarkley,'dialog',"Wh-what the hell is going on? Who are you? Where is Hoopz?",1);
@@ -105,8 +105,8 @@ sCinema(oBarkley,'dialog',"Yes, let's get going.",1);
 sCinema(oHellbane,'dialog',"One more thing... I have some Battler's Tomes you might want to read before venturing forward. You can check them in your item pouch.",1);
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code',"global.skipper=0;sFollow('add',oFollower0);oHellbane.visible=0;oHellbane.x=-999;");
-sCinema(oBarkley,'code',"sFollow('update');sParty('add',1);");
+sCinema(oBarkley,'code',cine_0355);
+sCinema(oBarkley,'code',cine_0356);
 sCinema(oBarkley,'tint',c_black,0);</string>
           </argument>
         </arguments>

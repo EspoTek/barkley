@@ -1,0 +1,11 @@
+sOvar(object_index,1);
+sCinema(oBarkley,"wait",.5);
+if (oBarkley.x<384) repeat (7) sCinema(oBarkley,"move","right");
+else repeat (10) sCinema(oBarkley,"move","left");
+sCinema(oBarkley,"wait",.5);
+sCinema(oBarkley,"face","up");
+sCinema(oBarkley,"wait",.5);
+sCinema(oBarkley,"face","down");
+sCinema(oBarkley,"dialog","Alright, what kind of boondoggle have we found ourselves in now?",1);
+sCinema(oFollower2,"dialog","What a disasater... I wonder if the old man is even still here?",1);
+sCinema(oFollower0,"dialog","This is strange to be sure. Let's try and find a resident here, perhaps they could help us. Liberty Tower is up north, that's probably a good place to start.",1);

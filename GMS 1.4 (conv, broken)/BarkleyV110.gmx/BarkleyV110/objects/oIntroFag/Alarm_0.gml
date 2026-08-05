@@ -1,0 +1,16 @@
+global.savefaggot=0;
+global.gold=0;
+oHundley.spd=3;
+oBarkley.t=2;
+sCinema(oBarkley,"cond",cine_0148);
+repeat(7) sCinema(oHundley,"move","up");
+sCinema(oBarkley,"wait",1);
+sCinema(oBarkley,"dialog","Huh?",1);
+sCinema(oHundley,"dialog","YOU ARE A FAGGOTSTEIN.",1);
+sCinema(oBarkley,"dialog","Who, me?",1);
+sCinema(oHundley,"dialog","Installing barkley_trojan.bat...\\Virus installation complete.",1);
+sCinema(oBarkley,"wait",1);
+repeat(9) sCinema(oHundley,"move","down");
+sCinema(oBarkley,"dialog","What the fuck just happend? Hey, where did all my neo-shekels go?!",1);
+sCinema(oBarkley,"code",cine_0374);
+sCinema(oBarkley,"code",cine_0375);

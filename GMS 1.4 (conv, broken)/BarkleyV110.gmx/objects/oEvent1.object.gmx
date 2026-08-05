@@ -76,7 +76,7 @@ global.dialog=1;
 oBarkley.move='';
 global.scheme[22]=1; 
 with (oEvent1) instance_destroy();
-sCinema(oBarkley,'code',"sDialog('set',1,'top');");
+sCinema(oBarkley,'code',cine_0017);
 sCinema(oBarkley,'dialog',"What is this pool?",1);
 sCinema(oHellbane,'dialog',"This pool commemorates the lives of all of the ballers who were never seen again after the Great B-Ball Purge. Men like Shaquille O'Neal, Ron Artest, and even the great Hakeem Olajuwon. Although they were never found, all of their fates are almost certain...",1);
 sCinema(oBarkley,'move','up',2);
@@ -99,7 +99,7 @@ sCinema(oBarkley,'wait',2);
 sCinema(oBarkley,'dialog',"Who... Who are you?",1);
 sCinema(oHellbane,'dialog',"I can't tell you now but... but you will soon understand. Come on, we've got to get moving.",1);
 sCinema(oBarkley,'dialog',"Yeah... You're right.",1);
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');");</string>
+sCinema(oBarkley,'code',cine_0074);</string>
           </argument>
         </arguments>
       </action>

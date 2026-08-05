@@ -1,0 +1,10 @@
+if (global.scheme[25]=1) exit;
+global.dialog=1;
+oBarkley.move="";
+global.scheme[25]=1; 
+sCinema(oHellbane,"dialog","No, Barkley! There's no turning back!",1);
+sCinema(oBarkley,"dialog","But... But Hoopz!",1);
+sCinema(oHellbane,"dialog","You'll have to trust me Barkley, he's safe. Come on, we've got to get moving.",1);
+sCinema(oBarkley,"dialog","O-okay...",1);
+sCinema(oBarkley,"move","right");
+sCinema(oBarkley,"code",cine_0067);

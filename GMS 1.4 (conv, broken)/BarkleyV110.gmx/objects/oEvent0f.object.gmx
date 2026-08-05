@@ -79,7 +79,7 @@ sOvar(object_index,1);
 repeat (15) sCinema(oBarkley,'move','right',4);
 sCinema(oBarkley,'face','down');
 sCinema(oBarkley,'catchup');
-sCinema(oBarkley,'code','with (oFollower) depth=oBarkley.depth-1;');
+sCinema(oBarkley,'code',cine_0071);
 sCinema(oFollower2,'move','right');
 sCinema(oFollower2,'move','down');
 sCinema(oFollower2,'face','left');
@@ -98,7 +98,7 @@ sCinema(oFollower0,'move','right');
 sCinema(oFollower0,'move','up');
 sCinema(oFollower2,'move','left');
 sCinema(oFollower2,'move','up');
-sCinema(oBarkley,'code','with (oPlayer) solid=1;with (oFollower) { solid=0; depth=oBarkley.depth+1; }');</string>
+sCinema(oBarkley,'code',cine_0072);</string>
           </argument>
         </arguments>
       </action>

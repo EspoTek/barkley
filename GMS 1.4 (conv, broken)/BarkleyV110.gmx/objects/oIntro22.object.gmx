@@ -91,9 +91,9 @@ sCinema(oFollower0,'dialog',"I'm... I'm proud of you, Barkley. Good work.",1);</
 with (oFollower) x=-999;
 sOvar(object_index,1);
 sPos('load');
-sCinema(oBarkley,'code',"sA('stopall');sA('loop',mCyberdwarf);global.shake=5;oDGarnett.face=21;");
+sCinema(oBarkley,'code',cine_0241);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code',"global.shake=0;");
+sCinema(oBarkley,'code',cine_0095);
 sCinema(oDGarnett,'move','down');
 sCinema(oDGarnett,'dialog',"B-Barkley...",1);
 sCinema(oBarkley,'move','down');
@@ -106,7 +106,7 @@ sCinema(oBarkley,'dialog',"Wow, say it don't spray it.",1);
 sCinema(oDGarnett,'dialog',"Goodbye... I hope someday... you can forgive me...",1);
 sCinema(oBarkley,'tint',c_white,1);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code',"oDGarnett.visible=0;");
+sCinema(oBarkley,'code',cine_0242);
 sCinema(oBarkley,'tint',c_white,0);
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'dialog',"Goodbye, Kevin...",1);
@@ -144,8 +144,8 @@ sCinema(oDGarnett,'dialog',"This is it, Barkley. I'm going to take you down for 
 sCinema(oBarkley,'dialog',"Kevin, we used to be friends. Don't let it end like this...",1);
 sCinema(oDGarnett,'dialog',"Any man who can still call you a friend is a traitor. Enough talk! I've been waiting for this moment for too long, it's time to savor it!",1);
 sBoss("oBGarnett");
-sCinema(oBarkley,'code',"sPos('save'); with (oIntro22) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;");</string>
+sCinema(oBarkley,'code',cine_0243);
+sCinema(oBarkley,'code',cine_0006);</string>
           </argument>
         </arguments>
       </action>
@@ -174,8 +174,8 @@ sPos('load');
 sCinema(oBarkley,'dialog',"Commentator:\Your fourth foe, Charles Barkley, will be a hell demon! The crowd is going mad, you're in the semi-finals! If you make it past this fight, you'll have to face the arena champion, Kevin Garnett himself! Can you handle the pressure?");
 sCinema(oBarkley,'dialog',"You suckers got nothing on me.",1);
 sBoss('oBDelmon');
-sCinema(oBarkley,'code',"sPos('save'); with (oIntro22) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;");</string>
+sCinema(oBarkley,'code',cine_0243);
+sCinema(oBarkley,'code',cine_0006);</string>
           </argument>
         </arguments>
       </action>
@@ -204,8 +204,8 @@ sPos('load');
 sCinema(oBarkley,'dialog',"Fools...",1);
 sCinema(oBarkley,'dialog',"Commentator:\Your third opponent, Charles Barkley: a cryptic blood ghoul!");
 sBoss('oBBloodghoul');
-sCinema(oBarkley,'code',"sPos('save'); with (oIntro22) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;");</string>
+sCinema(oBarkley,'code',cine_0243);
+sCinema(oBarkley,'code',cine_0006);</string>
           </argument>
         </arguments>
       </action>
@@ -234,8 +234,8 @@ sPos('load');
 sCinema(oBarkley,'dialog',"Chumps...",1);
 sCinema(oBarkley,'dialog',"Commentator:\Your second foe, Charles Barkley: a ghastly doom hell skeleton!");
 sBoss("oBDoomhell");
-sCinema(oBarkley,'code',"sPos('save'); with (oIntro22) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;");</string>
+sCinema(oBarkley,'code',cine_0243);
+sCinema(oBarkley,'code',cine_0006);</string>
           </argument>
         </arguments>
       </action>
@@ -270,8 +270,8 @@ sCinema(oBarkley,'dialog',"Time to test my mettle on some danger...",1);
 sCinema(oBarkley,'dialog',"Commentator:\Your first challenge, Charles Barkley: an orc from hell!");
 sCinema(oBarkley,'face','down');
 sBoss("oBHellorc");
-sCinema(oBarkley,'code',"sPos('save'); with (oIntro22) sBattleStart();");
-sCinema(oBarkley,'code',"x=x;");</string>
+sCinema(oBarkley,'code',cine_0243);
+sCinema(oBarkley,'code',cine_0006);</string>
           </argument>
         </arguments>
       </action>

@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>alarm[0]=250;
 friction=1;
-image_single=floor(random(3));</string>
+image_index=floor(random(3)); image_speed=0;</string>
           </argument>
         </arguments>
       </action>

@@ -1,0 +1,293 @@
+//All responses go here , 2-3-5 labels done
+if (rsp="part1") {
+oIvory.x=-999;
+oBarkley.x=-999;
+with (oFollower) x=-999;
+sFollow("delete",oFollower2);
+sOvar(object_index,1);
+love=0;
+global.dialog=1;
+with (oFollower) x=-999;
+with (oBarkley) x=-999;
+sCinema(oIvory,"dialog","Umm... hi... I'm Ivory Latta... I guess you can just call me Ivory... I mean, that's my name... I mean... um... well, just call me whatever you want...",1);
+sCinema(oFollower2,"dialog","Response:",0,"That's a pretty name, Ivory.","Okay.","Sure thing, babs.","Lemme glimpse that applebottom.");
+sCinema(oIvory,"code",cine_0245);
+}
+ if (rsp="That's a pretty name, Ivory.") {
+ love+=1;
+ sCinema(oFollower2,"dialog","That's a pretty name, Ivory.",1);
+ sCinema(oIvory,"dialog","Th... thank you. Nobody's ever said my name is pretty before.",1);
+ sCinema(oIvory,"code",cine_0246);
+ }
+ if (rsp="Okay.") {
+ sCinema(oFollower2,"dialog","Okay.",1);
+ sCinema(oIvory,"dialog","Umm... Okay...",1);
+ sCinema(oIvory,"code",cine_0246);
+ }
+ if (rsp="Sure thing, babs.") {
+ sCinema(oFollower2,"dialog","Sure thing, babs.",1);
+ sCinema(oIvory,"dialog","Oh, so you're calling me babs... I like that, I guess...",1);
+ sCinema(oIvory,"code",cine_0246);
+ }
+ if (rsp="Lemme glimpse that applebottom.") {
+ love-=1;
+ sCinema(oFollower2,"dialog","Lemme glimpse that applebottom.",1);
+ sCinema(oIvory,"dialog","M... my applebottom?",1);
+ sCinema(oFollower2,"dialog","Gotta see it.",1);
+ sCinema(oIvory,"dialog","I... I don't know about that Mister Cyberdwarf. We just met and my applebottom is private...",1);
+ sCinema(oFollower2,"dialog","Gotta see it.",1);
+ sCinema(oIvory,"dialog","N... no thank you.",1);
+ sCinema(oIvory,"code",cine_0246);
+ }
+if (rsp="part3") {
+sCinema(oIvory,"dialog","I... I don't really know what to say. I'm not really good with people...",1); //<--
+sCinema(oFollower2,"dialog","Response:",0,"You used to play for the WNBA?","What are some of your interests?","I can give you a free mammogram.");
+sCinema(oIvory,"code",cine_0245);
+}
+ if (rsp="You used to play for the WNBA?" || rsp="5") {
+ sCinema(oFollower2,"dialog","Moe said you used to play for the Tar Heels in the WNBA.",1);
+ sCinema(oIvory,"dialog","I was just a rookie... I wasn't any good. Our coach would always yell at me, he'd say "+"\"Latta, get the damn ball, Latta! Don"+"'t drop the damn ball Latta! You dropped the ball! You'"+"re a failure, Latta!\""+" I tried as hard as I could but I just wasn't good enough for the team.",1);
+ sCinema(oFollower2,"dialog","Response:",0,"I think you just doubt yourself.","You sound pretty bad.");
+ sCinema(oIvory,"code",cine_0245);
+ }
+  if (rsp="I think you just doubt yourself.") {
+  love+=1;
+  sCinema(oFollower2,"dialog","I think you're just doubting yourself. They put you on that team for a reason, Ivory. They wouldn't have if they didn't see any value in it.",1);
+  sCinema(oIvory,"dialog","I... thank you Cyberdwarf. That was the kindest thing anyone has ever said to me. It just feels like the whole world wants me to fail sometimes.",1);
+  sCinema(oIvory,"code",cine_0247);
+  }
+  if (rsp="1") {
+  sCinema(oFollower2,"dialog","Let me tell you something. When I was a kid, they said dwarves couldn't play b-ball. They said we were too short to dunk, too stocky to be effective. That didn't stop me. I trained and practiced for days and nights to get better and you know what? I was the first dwarf to slam dunk. I didn't let them stop me, Ivory. Neither should you.",1);
+  sCinema(oIvory,"dialog","That was so inspirational, Cyberdwarf. Th...thank you for being so kind to me. Most people aren't very kind... one time I was working on my dunk and my one of my teammates said I had the worst dunk she'd ever seen... she was probably right.",1);
+  sCinema(oFollower2,"dialog","Response:",0,"I don't think so.","Yeah.");
+  sCinema(oIvory,"code",cine_0245);
+  }
+   if (rsp="I don't think so.") {
+   love+=1;
+   sCinema(oFollower2,"dialog","I don't think so, Ivory.",1);
+   sCinema(oIvory,"dialog","No, it's bad... I'm just a bad b-ball player. I can't help it.",1);
+   sCinema(oFollower2,"dialog","I'll judge that for myself. Let me see it.",1);
+   sCinema(oIvory,"dialog","W-what?",1);
+   sCinema(oFollower2,"dialog","Let me see your dunk, Ivory. I'll tell you if it's bad or not.",1);
+   sCinema(oIvory,"dialog","It's not good... You'll yell at me and call me stupid...",1);
+   sCinema(oFollower2,"dialog","No I won't. Just show me your dunk.",1);
+   sCinema(oIvory,"dialog","Are you sure?",1);
+   sCinema(oFollower2,"dialog","Yes, I'm sure.",1);
+   sCinema(oIvory,"dialog","O-okay... here goes...",1);
+   sCinema(oIvory,"code",cine_0248);
+   }
+   if (rsp="4") {
+   sCinema(oIvory,"code",cine_0249);
+   sCinema(oIvory,"cond",cine_0250);
+   sCinema(oFollower2,"dialog","Response:",0,"That... that was amazing.","Yep, that was pretty bad.","Your ass is like granny smiths.");
+   sCinema(oIvory,"code",cine_0245);
+   }
+    if (rsp="That... that was amazing." || rsp="2") {
+    love+=1;
+    sCinema(oFollower2,"dialog","Ivory... that was amazing. I... I can't believe my eyes. That was one of the best dunks I've ever seen.",1);
+    sCinema(oIvory,"dialog","You... you mean it?",1);
+    sCinema(oFollower2,"dialog","I'm in complete awe. It was flawless.",1);
+    sCinema(oIvory,"dialog","Th...thank you Cyberdwarf. I'm... I'm blushing a little.",1);
+    sCinema(oFollower2,"dialog","Do you want to talk about something else now?",1);
+    sCinema(oIvory,"dialog","Oh, I'm... I'm blushing. You're so sweet Cyberdwarf. Let's talk about something else.",1);
+    sCinema(oIvory,"code",cine_0251);
+    }
+    if (rsp="Yep, that was pretty bad." || rsp="3") {
+    love-=1;
+    sCinema(oFollower2,"dialog","Yeah, they were right. It was pretty bad.",1);
+    sCinema(oIvory,"dialog","That's what I thought... I'm... I'm sorry to have wasted your time.",1);
+    sCinema(oFollower2,"dialog","Me too.",1);
+    sCinema(oIvory,"code",cine_0251);
+    }
+    if (rsp="Your ass is like granny smiths.") {
+    sCinema(oFollower2,"dialog","Did someone put a bushel of granny smiths down your pants because you got one fine applebottom.",1);
+    sCinema(oIvory,"dialog","N... no. Nobody put any apples down my pants. Did you like my dunk?",1);
+    sCinema(oFollower2,"dialog","Response:",0,"Yes.","No.");
+    sCinema(oBarkley,"code",cine_0252);
+    }
+   if (rsp="Yeah.") {
+   love-=1;
+   sCinema(oFollower2,"dialog","Yeah.",1);
+   sCinema(oIvory,"dialog","That's what everyone always said anyway... it's no surprise you'd think so too...",1);
+   sCinema(oFollower2,"dialog","Let me see it.",1);
+   sCinema(oIvory,"dialog","M... my dunk?",1);
+   sCinema(oFollower2,"dialog","Sure.",1);
+   sCinema(oIvory,"dialog","You... you mean you really want to see my dunk?",1);
+   sCinema(oFollower2,"dialog","Sort of.",1);
+   sCinema(oIvory,"dialog","Umm... o...okay... Here I go...",1);
+   sCinema(oIvory,"code",cine_0248);
+   }
+  if (rsp="You sound pretty bad.") {
+  love-=1;
+  sCinema(oIvory,"dialog","You sound a lot like my coach... He would tell me I wasn't good enough for the team and that I was a failure of a b-ball player...",1);
+  sCinema(oFollower2,"dialog","Response:",0,"I'm sorry, I didn't mean that.","I just want to see your keister.");
+  sCinema(oIvory,"code",cine_0245);
+  }
+   if (rsp="I'm sorry, I didn't mean that.") {
+   sCinema(oFollower2,"dialog","I'm sorry, I didn't mean it that way.",1);
+   sCinema(oIvory,"dialog","It's okay, you don't need to lie. Everyone says I'm a failure anyway...",1);
+   sCinema(oIvory,"code",cine_0247);
+   }
+   if (rsp="I just want to see your keister.") {
+   sCinema(oFollower2,"dialog","I just want to see that keister.",1);
+   sCinema(oIvory,"dialog","I... um... I don't think I can show that to you.",1);
+   sCinema(oFollower2,"dialog","I am wearing 3D glasses so your applebottom pops out at me.",1);
+   sCinema(oIvory,"dialog","I... I wish you'd stop...",1);
+   sCinema(oFollower2,"dialog","Can't.",1);
+   sCinema(oIvory,"dialog","Um... o...okay...",1);
+   sCinema(oIvory,"code",cine_0247);
+   }
+ if (rsp="What are some of your interests?") {
+ love+=1;
+ sCinema(oFollower2,"dialog","What are some of your interests?",1);
+ sCinema(oIvory,"dialog","N...nobody ever asks me that. They think all I care about is b-ball. I... I love b-ball but sometimes I just like to let go and read.",1);
+ sCinema(oFollower2,"dialog","Response:",0,"What books do you like?","Let's talk about b-ball.","I have an applebottom detector."); 
+ sCinema(oIvory,"code",cine_0245);
+ }
+  if (rsp="What books do you like?" || rsp="6") {
+  sCinema(oFollower2,"dialog","What books do you like?",1);
+  sCinema(oIvory,"dialog","Oh, I don't know, I guess fantasy books. Books  about magical realms far away where the world is different and the people are nicer. I... I also like romance novels...",1);
+  sCinema(oFollower2,"dialog","Response:",0,"I also read romance novels.","Neeeeeeeeerd.");
+  sCinema(oIvory,"code",cine_0245);
+  }
+   if (rsp="I also read romance novels.") {
+   love+=2;
+   sCinema(oFollower2,"dialog","I... I also read romance novels. I sometimes like to pretend I'm the lead male protagonist and I am sweeping the girl off her feet.",1);
+   sCinema(oIvory,"dialog","I... I like to pretend I'm being swept off my feet when I read romance novels too...",1);
+   sCinema(oFollower2,"dialog","R-really?",1);
+   sCinema(oIvory,"dialog","Y... yes...",1);
+   sCinema(oIvory,"wait",1.3);
+   sCinema(oFollower2,"dialog","Ummm...",1);
+   sCinema(oIvory,"code",cine_0253);
+   }
+   if (rsp="Neeeeeeeeerd.") {
+   love-=1;
+   sCinema(oFollower2,"dialog","Neeeeeeeeeeerd. Neeeeeeeeeerd. You're a nerd.",1);
+   sCinema(oIvory,"dialog","Um... I'm... I'm sorry...",1);
+   sCinema(oFollower2,"dialog","Neeeeeeeeeeeerd.",1);
+   sCinema(oIvory,"dialog","Let's just talk about b-ball... please...",1);
+   sCinema(oIvory,"wait",.9);
+   sCinema(oIvory,"code",cine_0253);
+   }
+  if (rsp="Let's talk about b-ball.") {
+  love-=1;
+  sCinema(oFollower2,"dialog","That was my way of saying \"let"+"'"+"s talk about b-ball\".",1);
+  sCinema(oIvory,"dialog","Oh, you don't want to talk about books?",1);
+  sCinema(oFollower2,"dialog","Nope.",1);
+  sCinema(oIvory,"dialog","Oh... okay...",1);
+  sCinema(oIvory,"code",cine_0253);
+  }
+  if (rsp="I have an applebottom detector.") {
+  love-=1;
+  sCinema(oFollower2,"dialog","If I had an applebottom detector, it would be going on like mad right now. Beep beep beep!",1);
+  sCinema(oIvory,"dialog","Wh-what's an applebottom dete-",1);
+  sCinema(oFollower2,"dialog","Beep beep! Beep beep beepepepepeep! Damn girl! You got one hell of a bushel in there.",1);
+  sCinema(oIvory,"dialog","A... a bushel? A bushel of apples?",1);
+  sCinema(oFollower2,"dialog","Okay we are talking about books now.",1);
+  sCinema(oIvory,"dialog","O... okay...",1);
+  sCinema(oIvory,"code",cine_0254);
+  }
+ if (rsp="I can give you a free mammogram.") {
+ love-=1;
+ sCinema(oFollower2,"dialog","I can give you a free mammogram.",1);
+ sCinema(oIvory,"dialog","I... well, thank you but... I don't really... um...",1);
+ sCinema(oFollower2,"dialog","Totally free of charge.",1);
+ sCinema(oIvory,"dialog","N...no thank you... why don't we talk about b-ball?",1);
+ sCinema(oIvory,"code",cine_0253);
+ }
+if (rsp="part2") {
+sCinema(oIvory,"dialog","Cyberdwarf, there's... there's somewhere I want to show you.",1);
+sCinema(oIvory,"tint",c_black,1);
+sCinema(oIvory,"wait",1);
+sCinema(oIvory,"code",cine_0255);
+sCinema(oIvory,"wait",1);
+sCinema(oIvory,"tint",c_black,0);
+sCinema(oIvory,"wait",1);
+sCinema(oFollower2,"dialog","Response:",0,"It's... beautiful.","Hey, it's the moon.","You tookis is mine.");
+sCinema(oIvory,"code",cine_0245);
+}
+ if (rsp="It's... beautiful.") {
+ love+=1;
+ sCinema(oFollower2,"dialog","It's... it's beautiful.",1);
+ sCinema(oIvory,"code",cine_0256);
+ }
+ if (rsp="7") {
+ sCinema(oIvory,"dialog","I come here when I want to be alone, when I just want to look up at the moon and think. Nobody knows about this place but me... and you.",1);
+ sCinema(oFollower2,"dialog","Response:",0,"What do you usually think about?","I need to tell you something.","Guess what I am thinking about.");
+ sCinema(oIvory,"code",cine_0245);
+ }
+  if (rsp="What do you usually think about?") {
+  love+=1;
+  sCinema(oFollower2,"dialog","What do you usually think about, Ivory?",1);
+  sCinema(oIvory,"dialog","Plays, shooting, dunks... sometimes... how lonely I am...",1);
+  sCinema(oFollower2,"dialog","Ivory...",1);
+  sCinema(oIvory,"code",cine_0257);
+  }
+  if (rsp="I need to tell you something." || rsp="9") {
+  sCinema(oFollower2,"dialog","Ivory, there's something I need to tell you...",1);
+  sCinema(oIvory,"dialog","Cyberdwarf...?",1);
+  sCinema(oFollower2,"dialog","In all my life I've never known a woman so incredible as you. You're smart, beautiful, funny, talented, sweet... I could go on forever. I want you to know, Ivory... you're a shooting star.",1);
+  sCinema(oIvory,"code",cine_0258);
+  }
+  if (rsp="Guess what I am thinking about.") {
+  love-=1;
+  sCinema(oFollower2,"dialog","Guess what I am thinking about.",1);
+  sCinema(oIvory,"dialog","Umm... I... I don't know.",1);
+  sCinema(oFollower2,"dialog","Just guess.",1);
+  sCinema(oIvory,"dialog","I don't know, Cyberdwarf...",1);
+  sCinema(oFollower2,"dialog","God damnit, just guess!",1);
+  sCinema(oIvory,"dialog","Umm... you... you're thinking about my... r-rump, aren't you?",1);
+  sCinema(oFollower2,"dialog","Only care about applebottoms. Let me touch it.",1);
+  sCinema(oIvory,"dialog","N...no... Cyberdwarf, I... no, please...",1);
+  sCinema(oIvory,"code",cine_0257);
+  }
+ if (rsp="Hey, it's the moon.") {
+ sCinema(oFollower2,"dialog","Hey, it's the moon.",1);
+ sCinema(oIvory,"code",cine_0256);
+ }
+ if (rsp="You tookis is mine.") {
+ love+=1;
+ sCinema(oFollower2,"dialog","I have waited for too long! It is time to go bobbing for applebottoms! You must quench my tireless thirst for keisters!",1);
+ sCinema(oIvory,"dialog","Wh-what? Cyberdwarf... what... what are you talking about?",1);
+ sCinema(oFollower2,"dialog","I have had my eye on your tookis all night.",1);
+ sCinema(oIvory,"dialog","You... you think I'm pretty?",1);
+ sCinema(oFollower2,"dialog","No, Ivory.",1);
+ sCinema(oIvory,"dialog","I... I didn't think you did. Everyone says I'm ugly...",1);
+ sCinema(oFollower2,"dialog","I'm saying... you're beautiful.",1);
+ sCinema(oIvory,"dialog","C...cyberdwarf... I... I...",1);
+ sCinema(oIvory,"wait",1.5);
+ sCinema(oIvory,"code",cine_0256);
+ }
+if (rsp="8") {
+sCinema(oIvory,"wait",1.5);
+if (love>4) {
+sCinema(oIvory,"dialog","C-Cyberdwarf... I... I feel the same way about you. You're... you're so kind to me, you're so... so wonderful Cyberdwarf. I'm so glad I met you.",1);
+sCinema(oFollower2,"dialog","Ivory...",1);
+sCinema(oIvory,"tint",c_black,1);
+sCinema(oIvory,"wait",1);
+sCinema(oIvory,"code",cine_0259);
+sCinema(oIvory,"wait",1);
+sCinema(oIvory,"tint",c_black,0);
+sCinema(oIvory,"wait",4);
+sCinema(oIvory,"code",cine_0260);
+sCinema(oIvory,"wait",5);
+sCinema(oIvory,"tint",c_black,1);
+sCinema(oIvory,"wait",1);
+sCinema(oIvory,"code",cine_0261);
+sCinema(oIvory,"tint",c_black,0);
+sCinema(oIvory,"dialog","Cyberdwarf, there's something I want to give you.",1);
+sCinema(oFollower2,"dialog","Y-yes?",1);
+sCinema(oIvory,"dialog","It's tupperware armor. Only cyber dwarfs can wear it. I know you're on a quest to save the world, I've been following you since you left the sewers. I... I've thought you were handsome for a very long time... but that's not the point. This will protect you from whatever it is you're up against and hopefully... it'll remind you of me.",1);
+sCinema(oBarkley,"item","Tupperware Armor",1);
+sCinema(oFollower2,"dialog","I'll treasure this, Ivory. I swear it.",1);
+sCinema(oIvory,"dialog","I know you will...",1);
+} else {
+sCinema(oIvory,"dialog","Th... thank you very much Mister Cyberdwarf but... but I don't think I'm ready for anything serious right now. But um... thank you for the date. You were very courteous. Goodbye.",1);
+}
+//hide picture
+sCinema(oFollower2,"dialog","Ivory... My sweet Ivory...",1);
+global.lover=love;
+//CONCLUSION fade effect leave
+sCinema(oBarkley,"effect","fadein",3);
+global.roz=RomDimensionSim0;
+}

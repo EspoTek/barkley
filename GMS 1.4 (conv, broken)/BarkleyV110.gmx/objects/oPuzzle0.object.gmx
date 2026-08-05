@@ -54,7 +54,7 @@ sCinema(oBarkley,'item','Gatorade Gum',1);
 sCinema(oFollower0,'dialog',"Wow, I thought this gum was only a myth! This is certainly a great find, Barkley.",1);
 sCinema(oBarkley,'dialog',"Alright, I had enough of this room.",1);
 sCinema(oFollower0,'dialog',"I concur. We need to go further on.",1);
-sCinema(oFollower0,'code','global.freeze=0; global.camera=oBarkley; oHilight.visible=0;');
+sCinema(oFollower0,'code',cine_0437);
 global.scheme[27]=2;
 </string>
           </argument>
@@ -83,7 +83,7 @@ if (global.scheme[27]=0) {
 global.scheme[27]=1;
 sCinema(oFollower0,'dialog',"This contraption intrigues me. I have yet to find out what it's purpose is.",1);
 sCinema(oBarkley,'dialog',"Look's like one of those spinning globes, only a B-Ball instead. I wonder if it still spins.",1);
-sCinema(oBarkley,'code','oShift.go="left";');
+sCinema(oBarkley,'code',cine_0438);
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'face','down');
 sCinema(oFollower0,'face','down');
@@ -96,7 +96,7 @@ sCinema(oFollower0,'dialog',"Nothing is certain, be if we manage to solve this c
 }
 if (global.scheme[27]&lt;2) {
 sCinema(oFollower0,'dialog',"Controls:\Movement Keys - Move cursor\Action Key - Shift cursor tile\Cancel Key - Leave");
-sCinema(oBarkley,'code','oShift.active=1; global.freeze=0; global.camera=oDummy;');
+sCinema(oBarkley,'code',cine_0439);
 } else sCinema(oFollower0,'dialog',"We already solved this contraption, Barkley. Let's move on.",1);</string>
           </argument>
         </arguments>

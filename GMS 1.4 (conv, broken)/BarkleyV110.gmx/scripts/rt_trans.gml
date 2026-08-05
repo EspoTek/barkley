@@ -1,40 +1,4 @@
-i=0;
-arp[i]=rt_spin; i+=1;
-arp[i]=rt_wavy; i+=1;
-arp[i]=rt_pixelate; i+=1;
-arp[i]=rt_blur; i+=1;
-arp[i]=rt_fadespin; i+=1;
-arp[i]=rt_fadewavy; i+=1;
-arp[i]=rt_fadepixelate; i+=1;
-arp[i]=rt_fadeblur; i+=1;
-//arp[i]=rt_warp; i+=1;
-arp[i]=rt_quake; i+=1;
-arp[i]=rt_zoom; i+=1;
-arp[i]=rt_pcrumble; i+=1;
-arp[i]=rt_pexplode1; i+=1;
-arp[i]=rt_pexplode2; i+=1;
-arp[i]=rt_pimplode1; i+=1;
-arp[i]=rt_pimplode2; i+=1;
-arp[i]=rt_ptornado1; i+=1;
-arp[i]=rt_ptornado2; i+=1;
-arp[i]=rt_pdrain; i+=1;
-arp[i]=rt_phblinds; i+=1;
-arp[i]=rt_pvblinds; i+=1;
-arp[i]=rt_pshrinkpixels; i+=1;
-arp[i]=rt_pgrowpixels; i+=1;
-arp[i]=rt_pdissolvepixels; i+=1;
-arp[i]=rt_prandompixels; i+=1;
-arp[i]=rt_pdissolveleft; i+=1;
-arp[i]=rt_pdissolveright; i+=1;
-arp[i]=rt_pdissolveup; i+=1;
-arp[i]=rt_pdissolvedown; i+=1;
-arp[i]=rt_cubeleft; i+=1;
-arp[i]=rt_cuberight; i+=1;
-arp[i]=rt_cubeup; i+=1;
-arp[i]=rt_cubedown; i+=1;
-arp[i]=rt_planeleft; i+=1;
-arp[i]=rt_planeright; i+=1;
-arp[i]=rt_planeup; i+=1;
-arp[i]=rt_planedown; i+=1;
-iii=arp[floor(random(i))];
-script_execute(iii,argument0,1);
+// Battle-entry transition. The original picked a random GM6 blocking screen
+// effect (sleep/screen_refresh/object_event_add — all impossible on HTML5).
+// Ported as an instant room change; a non-blocking swirl can be layered in later.
+room_goto(argument0);

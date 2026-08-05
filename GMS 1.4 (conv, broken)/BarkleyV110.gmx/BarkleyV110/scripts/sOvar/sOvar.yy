@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"sOvar",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"sOvar",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

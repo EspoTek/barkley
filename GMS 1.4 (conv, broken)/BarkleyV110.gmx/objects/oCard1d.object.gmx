@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 visible=1;
-image_single=1;
+image_index=1; image_speed=0;
 sou=30;
 hav=0;
 if (sOvar(object_index,-1)!=1) slav=instance_create(x,y,oShiner);
@@ -70,7 +70,7 @@ sPos('save');
 // oBarkley - oFollower0
 sCinema(oBarkley,'catchup');
 sCinema(oBarkley,'item','Blue Keycard',1);
-sCinema(oBarkley,'code','global.skipper=23;with (oCard1d) instance_destroy();');
+sCinema(oBarkley,'code',cine_0015);
 sCinema(oFollower2,'dialog',"Excellent, we can finally operate the lift. Let's head back immediately and take the elevator to the highest floor.",1);
 sCinema(oBarkley,'move','left');
 sCinema(oBarkley,'move','left');
@@ -80,8 +80,8 @@ sCinema(oBarkley,'dialog',"Huh?",1);
 sCinema(oFollower3,'dialog',"I can hear someone talking...",1);
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',0.5);
-sCinema(oBarkley,'code',"sDialog('set',1,'bottom');oBarkley.visible=0;with (oFollower)visible=0;background_visible[0]=0;background_visible[1]=1;"); 
-sCinema(oBarkley,'code','oBallground.visible=1;oDavis.visible=1;oDavis.t=2;oCosby.visible=1;oLeonard.visible=1;');
+sCinema(oBarkley,'code',cine_0009); 
+sCinema(oBarkley,'code',cine_0016);
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'tint',c_black,0);
 sCinema(oBarkley,'face','left');
@@ -97,7 +97,7 @@ sCinema(oCosby,'face','down');
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'dialog',"Doctor Cosby:\I'm leaving, Davis. I am not coming back. When millions of people die, it will be your fault and not mine. Goodbye forever.");
 repeat (6) sCinema(oCosby,'move','down');
-sCinema(oBarkley,'code',"sDialog('set',1,'top');");
+sCinema(oBarkley,'code',cine_0017);
 sCinema(oLeonard,'face','down');
 sCinema(oBarkley,'dialog',"Leonard:\Doctor Cosby, wait! You forgot your basketball!");
 repeat (4) sCinema(oLeonard,'move','up',5);
@@ -106,21 +106,21 @@ sCinema(oBarkley,'dialog',"Doctor Cosby:\Leonard, don't touch that!");
 repeat (4) sCinema(oCosby,'move','up',6);
 sCinema(oLeonard,'move','up',5);
 sCinema(oBarkley,'dialog',"Doctor Cosby:\NOOOOOOOOOOOOOO!!!");
-sCinema(oBarkley,'code','global.shake=9');
+sCinema(oBarkley,'code',cine_0018);
 repeat (20) {
-sCinema(oBarkley,'code','instance_create(random(352),random(240),oLightning)');
-sCinema(oBarkley,'code','instance_create(random(352),random(240),oLightning)');
+sCinema(oBarkley,'code',cine_0019);
+sCinema(oBarkley,'code',cine_0019);
 sCinema(oBarkley,'wait',0.1);
 }
-sCinema(oBarkley,'code','instance_create(random(352),random(240),oAtombomb)');
+sCinema(oBarkley,'code',cine_0020);
 sCinema(oBarkley,'wait',0.5);
-sCinema(oBarkley,'code','instance_create(random(352),random(240),oAtombomb)');
+sCinema(oBarkley,'code',cine_0020);
 sCinema(oBarkley,'wait',0.5);
-sCinema(oBarkley,'code','instance_create(random(352),random(240),oAtombomb)');
+sCinema(oBarkley,'code',cine_0020);
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'tint',c_white,1);
 sCinema(oBarkley,'wait',1);
-sCinema(oBarkley,'code','oDavis.visible=0;oLeonard.visible=0;oCosby.sprt=sGhostdad;oBallground.visible=0;global.shake=0;');
+sCinema(oBarkley,'code',cine_0021);
 sCinema(oBarkley,'wait',1);
 sCinema(oBarkley,'tint',c_gray,0);
 sCinema(oBarkley,'wait',1);
@@ -128,8 +128,8 @@ sCinema(oBarkley,'dialog',"Doctor Cosby:\N-no! NO!!! What have I become!? What h
 sCinema(oBarkley,'wait',0.5);
 sCinema(oBarkley,'tint',c_black,1);
 sCinema(oBarkley,'wait',0.5);
-sCinema(oBarkley,'code',"oBarkley.visible=1;with (oFollower)visible=1;background_visible[0]=1;background_visible[1]=0;"); 
-sCinema(oBarkley,'code','oDavis.visible=0;oBallground.visible=0;oBarkley.solid=1;oCosby.visible=0;oLeonard.visible=0;');
+sCinema(oBarkley,'code',cine_0012); 
+sCinema(oBarkley,'code',cine_0022);
 sCinema(oBarkley,'tint',c_black,0);
 sCinema(oBarkley,'wait',0.5);
 sCinema(oFollower3,'dialog',"Leonard... he's a ghost.",1);
@@ -141,7 +141,7 @@ sCinema(oFollower2,'dialog',"I see, but should we come across a trial that requi
 sCinema(oFollower3,'dialog',"Y-yes, I think so.",1);
 sCinema(oFollower0,'dialog',"There's more to the story we've yet to find out. Let's see where the blue card leads us.",1);
 sCinema(oBarkley,'dialog',"Alright.",1);
-sCinema(oBarkley,'code',"global.skipper=0;");
+sCinema(oBarkley,'code',cine_0014);
 }</string>
           </argument>
         </arguments>

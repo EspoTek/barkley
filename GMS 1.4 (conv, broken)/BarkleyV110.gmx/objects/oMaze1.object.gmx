@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited(); //The room previous resets cour globals
-image_single=0;
+image_index=0; image_speed=0;
 cou=0;</string>
           </argument>
         </arguments>
@@ -50,14 +50,14 @@ cou=0;</string>
           <argument>
             <kind>1</kind>
             <string>if (global.cour[cid]&gt;0) {
-image_single=cid;
-global.tamp=id; with (oMaze0) { if (cid=global.tamp.cid) image_single=cid; }
+image_index=cid; image_speed=0;
+global.tamp=id; with (oMaze0) { if (cid=global.tamp.cid) { image_index=cid; image_speed=0; } }
 global.cour[cid]-=global.rd;
 if (global.cour[cid]&lt;=0) {
 sound_play(mOpen);
-image_single=0;
+image_index=0; image_speed=0;
 global.tamp=id;
-with (oMaze0) if (cid=global.tamp.cid) image_single=0;
+with (oMaze0) if (cid=global.tamp.cid) { image_index=0; image_speed=0; }
 }
 }</string>
           </argument>
@@ -88,17 +88,17 @@ if (sOvar(object_index,-1)=-1) {
 sOvar(object_index,1);
 global.tamp=id;
 sCinema(oFollower3,'dialog',"It looks like you can press the crystal in, dad.",1);
-sCinema(oBarkley,'code','with (global.tamp) { image_single=cid; with (oMaze0) { if (cid=global.tamp.cid) image_single=cid; } sound_play(mOpen); }');
+sCinema(oBarkley,'code',cine_0424);
 sCinema(oBarkley,'wait',1);
 sCinema(oFollower0,'dialog','Hmm, I think this crystal may have something to do with unlocking the door we saw earlier.',1);
 sCinema(oBarkley,'dialog',"What kind of madman would do that? There's got to be a key laying around here somewhere, it doesn't make any sense why someone would use crystals to unlock a door.",1);
 sCinema(oFollower2,'dialog',"This is no ordinary man we are dealing with Barkley. Cuchlainn has been known to make dangerous donjon caverns with complex mechanics to drive those who wander them insane. They didn't call him a crazed space warlord for no reason, that's for certain.",1);
-sCinema(oBarkley,'code','with (global.tamp) global.cour[cid]=por*(20*30);'); //15 seconds
+sCinema(oBarkley,'code',cine_0425); //15 seconds
 exit;
 }
-image_single=cid; global.tamp=id; with (oMaze0) { if (cid=global.tamp.cid) image_single=cid; } global.cour[cid]=por*(20*30); sound_play(mOpen);
+image_index=cid; image_speed=0; global.tamp=id; with (oMaze0) { if (cid=global.tamp.cid) { image_index=cid; image_speed=0; } } global.cour[cid]=por*(20*30); sound_play(mOpen);
 global.tamp=0;
-with (oMaze1) if (image_single!=0) global.tamp+=1;
+with (oMaze1) if (image_index!=0) global.tamp+=1;
 if (global.tamp&gt;=4) {
 sound_play(mGate);
 with (oMaze1) global.cour[cid]=0;
@@ -107,7 +107,7 @@ with (oMaze2) instance_destroy();
 sCinema(oBarkley,'dialog','Huh? What was that?',1);
 sCinema(oFollower0,'dialog',"It sounds like something moved. Let's go back an investigate.",1);
 }
-sCinema(oBarkley,'code','x=x;');</string>
+sCinema(oBarkley,'code',cine_0006);</string>
           </argument>
         </arguments>
       </action>

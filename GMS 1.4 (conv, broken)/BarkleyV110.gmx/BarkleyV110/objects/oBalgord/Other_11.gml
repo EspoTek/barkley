@@ -1,0 +1,2 @@
+global.dialog=1;
+sCinema(oBarkley,"dialog","Balgord Beardmist:\\Aye, these are the Chup Mines, home of the Duergars and recently our genie masters. Curse all genies, big or small. No matter their size or shape, I want to batter them with a spike-laden warhammer ensorceled with eldritch enchantments... I'm sorry, I got carried away but Duergars are predisposed towards violence and ensorceled weaponry. Regardless, my ebony friend, these genies have taken away our rights and we demand them back. Be warned, if you are part genie, your blood will be spilled.",0);

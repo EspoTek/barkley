@@ -1,0 +1,14 @@
+global.camera=oDummy;
+sOvar(object_index,1);
+sCinema(oBarkley,"pan",2);
+sCinema(oBarkley,"dialog","Th-this is it... Cuchulainn's Tomb.",1);
+sCinema(oBarkley,"code",cine_0143);
+repeat (6) sCinema(oBarkley,"move","up");
+sCinema(oFollower2,"dialog","Barkley, are you aware of the story of Cuchulainn?",1);
+sCinema(oBarkley,"dialog","Not really. Should I be?",1);
+sCinema(oFollower2,"dialog","Yes, Barkley... You should be very aware of his story. It began long ago, long before the Cyberpocalypse. Cuchulainn was a Celtic space warlord with crimes too unbearable to even mention.",1);
+sCinema(oFollower3,"dialog","What did he do, Cyberdwarf?",1);
+sCinema(oFollower2,"dialog","What he did was... too gruesome, too terrible to tell. I am sure that someday, Hoopz, you will know what he did, but his crimes are not important now. What is important is that Clispaeth was able to seal Cuchulainn's power away and prevent him from ever causing harm again. However, as millenia passed, the power of the seal eroded and Cuchulainn was once again able to extend his darkened tendrils into the world. Granted, he's still sealed but some of his power has leaked through to our dimension.",1);
+sCinema(oBarkley,"dialog","What does all this mean, Cyberdwarf? Is Cuchulainn coming back or what? I don't get it.",1);
+sCinema(oFollower2,"dialog","Cuchulainn has the ability to show a man what he most desires, Barkley. It means that if you see what it is you want the most inside this tomb, absolutely do not touch it. Touching it will break the seal forever and release Cuchulainn back into the world.",1);
+sCinema(oBarkley,"dialog","I'll... remember that. We'd better get going though, that jamicite isn't going to get itself.",1);

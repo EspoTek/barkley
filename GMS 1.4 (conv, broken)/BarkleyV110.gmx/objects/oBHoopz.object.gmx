@@ -332,7 +332,7 @@ dir=point_direction(x,y,target.x,target.y);
 face=dir;
 xx=x+lengthdir_x(shaft,dir-90)+lengthdir_x(barrel,dir);
 yy=y+lengthdir_y(shaft,dir-90)+lengthdir_y(barrel,dir);
-execute_string('sound_play(mBGun'+string(imgz)+');');
+sound_play(asset_get_index('mBGun'+string(imgz)));
 bul=instance_create(xx,yy,oBBullet);
 bul.type=2;
 bul.speed=(10+random(5))/2; //mega shot slow
@@ -377,7 +377,7 @@ dir=point_direction(x,y,target.x,target.y);
 face=dir;
 xx=x+lengthdir_x(shaft,dir-90)+lengthdir_x(barrel,dir);
 yy=y+lengthdir_y(shaft,dir-90)+lengthdir_y(barrel,dir);
-execute_string('sound_play(mBGun'+string(imgz)+');');
+sound_play(asset_get_index('mBGun'+string(imgz)));
 bul=instance_create(xx,yy,oBBullet);
 bul.type=0;
 bul.speed=10+random(5);
@@ -414,7 +414,7 @@ stray=min(60,point_distance(bullet.x,bullet.y,target.x,target.y))*2;
 stray=abs(stray-120);
 xx=x+lengthdir_x(shaft,dir-90)+lengthdir_x(barrel,dir);
 yy=y+lengthdir_y(shaft,dir-90)+lengthdir_y(barrel,dir);
-execute_string('sound_play(mBGun'+string(imgz)+');');
+sound_play(asset_get_index('mBGun'+string(imgz)));
 bul=instance_create(xx,yy,oBBullet);
 bul.type=1;
 bul.times=stray;
@@ -458,10 +458,10 @@ if (stage=0) {
 if (cou=0) { sound_play(mBGunReload); rot=180; face=180; sface=180; cou=1; }
 shoot=1;
 face+=20;
-if (face&gt;sface+360) { face=180; shoot=0; reload=0; stage=1; sprite_index=sBHoopzSkill1; image_single=0; }
+if (face&gt;sface+360) { face=180; shoot=0; reload=0; stage=1; sprite_index=sBHoopzSkill1; image_index=0; image_speed=0; }
 } else if (stage=1) {
 cou+=1;
-if (cou&gt;5) { cou=0; image_single+=1; if (image_single&gt;1) { stage=2; image_single=2; walk=target; } }
+if (cou&gt;5) { cou=0; image_index+=1; image_speed=0; if (image_index&gt;1) { stage=2; image_index=2; image_speed=0; walk=target; } }
 } else if (stage=2) {
 image_angle+=20;
 wspd=3;
@@ -470,7 +470,7 @@ dirt=point_direction(fx,fy,walk.fx+walkdist,walk.fy);
 x+=lengthdir_x(wspd,dirt);
 y+=lengthdir_y(wspd*2,dirt);
 dist=point_distance(fx,fy,walk.fx+walkdist,walk.fy);
-if (dist&lt;wspd) { stage=3; image_single=4; image_angle=0; cou=0; }
+if (dist&lt;wspd) { stage=3; image_index=4; image_speed=0; image_angle=0; cou=0; }
 } else if (stage=3) {
 out=1;
 cou+=1;
@@ -482,7 +482,7 @@ barrel+=10;
 xx=x-30+lengthdir_x(shaft,dir-90)+lengthdir_x(barrel,dir);
 yy=y-5+lengthdir_y(shaft,dir-90)+lengthdir_y(barrel,dir);
 barrel-=10;
-execute_string('sound_play(mBGun'+string(imgz)+');');
+sound_play(asset_get_index('mBGun'+string(imgz)));
 bul=instance_create(xx,yy,oBBullet);
 dir=point_direction(xx,yy,target.x,target.y);
 bul.type=3;
@@ -492,7 +492,7 @@ bul.img=8;
 rot-=20+random(5);
 stage=8; //4;
 } else if (stage=8) {
-image_single=2;
+image_index=2; image_speed=0;
 image_xscale=-1;
 out=0;
 walk=slav;
@@ -503,10 +503,10 @@ dirt=point_direction(fx,fy,walk.fx+walkdist,walk.fy);
 x+=lengthdir_x(wspd,dirt);
 y+=lengthdir_y(wspd*2,dirt);
 dist=point_distance(fx,fy,walk.fx+walkdist,walk.fy);
-if (dist&lt;wspd) { stage=9; cou=0; image_single=1; image_angle=0; }
+if (dist&lt;wspd) { stage=9; cou=0; image_index=1; image_speed=0; image_angle=0; }
 } else if (stage=9) {
 cou+=1;
-if (cou&gt;5) { cou=0; image_single-=1; if (image_single&lt;0) { mov=-999; image_xscale=1; alarm[5]=1; } }
+if (cou&gt;5) { cou=0; image_index-=1; image_speed=0; if (image_index&lt;0) { mov=-999; image_xscale=1; alarm[5]=1; } }
 }</string>
           </argument>
         </arguments>
@@ -572,7 +572,7 @@ face=dir;
 stray=2;
 xx=x+lengthdir_x(shaft,dir-90)+lengthdir_x(barrel,dir);
 yy=y+lengthdir_y(shaft,dir-90)+lengthdir_y(barrel,dir);
-execute_string('sound_play(mBGun'+string(imgz)+');');
+sound_play(asset_get_index('mBGun'+string(imgz)));
 bul=instance_create(xx,yy,oBBullet);
 bul.type=1;
 bul.speed=15+random(5);
@@ -616,52 +616,52 @@ dirt=point_direction(fx,fy,walk.fx+walkdist,walk.fy);
 x+=lengthdir_x(wspd,dirt);
 y+=lengthdir_y(wspd*2,dirt);
 dist=point_distance(fx,fy,walk.fx+walkdist,walk.fy);
-if (dist&lt;wspd) { stage=1; image_single=0; sprite_index=sBHoopzSkill3; }
+if (dist&lt;wspd) { stage=1; image_index=0; image_speed=0; sprite_index=sBHoopzSkill3; }
 } else if (stage=1) {
 cou+=1;
-if (cou&gt;3) { cou=0; image_single+=1; if (image_single&gt;1) { stage=2; image_single=1; } }
+if (cou&gt;3) { cou=0; image_index+=1; image_speed=0; if (image_index&gt;1) { stage=2; image_index=1; image_speed=0; } }
 } else if (stage=2) {
 image_angle+=3*3;
 y-=2*3;
 if (image_angle&gt;80) { stage=3; global.b_shadow=id; }
 } else if (stage=3) {
 if (cou=1) instance_create(x,y,oBShadow);
-if (cou=0) { cou=1; path_start(pHoopz0,9,0,0); image_single=2; scj=0; }
+if (cou=0) { cou=1; path_start(pHoopz0,9,0,0); image_index=2; image_speed=0; scj=0; }
 out=1;
 image_angle=point_direction(x,y,target.x,target.y);
 face=image_angle;
 } else if (stage=4) { //shoot after first land
 out=0;
 image_angle=0;
-image_single=0;
+image_index=0; image_speed=0;
 cou+=1; //was 7 below
-if (cou&gt;9) { cou=0; stage=5; image_single=3; out=2; sound_play(mBGunCharge); scj=0; }
+if (cou&gt;9) { cou=0; stage=5; image_index=3; image_speed=0; out=2; sound_play(mBGunCharge); scj=0; }
 } else if (stage=6) {
-image_single=0;
+image_index=0; image_speed=0;
 cou+=1;
-if (cou&gt;1) { stage=7; cou=0; image_single=1; } //7
+if (cou&gt;1) { stage=7; cou=0; image_index=1; image_speed=0; } //7
 } else if (stage=7) {
 image_angle-=3*3;
 y-=2*3;
 if (image_angle&lt;-80) { stage=8; }
 } else if (stage=8) {
 if (cou=1) instance_create(x,y,oBShadow);
-if (cou=0) { cou=1; path_start(pHoopz1,9,0,0); image_single=2; scj=0; }
+if (cou=0) { cou=1; path_start(pHoopz1,9,0,0); image_index=2; image_speed=0; scj=0; }
 out=1;
 image_angle=point_direction(x,y,target.x,target.y);
 face=image_angle;
 } else if (stage=9) { //ending deal
 out=0;
 image_angle=0;
-image_single=0;
+image_index=0; image_speed=0;
 image_xscale=-1;
 cou+=1;
-if (cou&gt;9) { cou=0; stage=10; image_single=3; out=2; sound_play(mBGunCharge); scj=0; }
+if (cou&gt;9) { cou=0; stage=10; image_index=3; image_speed=0; out=2; sound_play(mBGunCharge); scj=0; }
 } else if (stage=11) {
-image_single=0;
+image_index=0; image_speed=0;
 image_xscale=1;
 cou+=1;
-if (cou&gt;1) { stage=12; cou=0; image_single=1; walk=slav; sprite_index=sBHoopzRun; image_xscale=-1; image_speed=0.25; }
+if (cou&gt;1) { stage=12; cou=0; image_index=1; image_speed=0; walk=slav; sprite_index=sBHoopzRun; image_xscale=-1; image_speed=0.25; }
 } else if (stage=12) {
 walkdist=0;
 dirt=point_direction(fx,fy,walk.fx+walkdist,walk.fy);
@@ -680,7 +680,7 @@ scj=0;
 dir=point_direction(x,y,target.x,target.y);
 xx=x+lengthdir_x(43,dir+10)//+lengthdir_x(barrel,dir);
 yy=y+lengthdir_y(43,dir+10)//+lengthdir_y(barrel,dir);
-execute_string('sound_play(mBGun'+string(imgz)+');');
+sound_play(asset_get_index('mBGun'+string(imgz)));
 bul=instance_create(xx,yy,oBBullet);
 bul.type=0;
 bul.speed=5+random(2.5);
@@ -699,7 +699,7 @@ dir=point_direction(x,y,target.x,target.y);
 face=dir;
 xx=x+11+lengthdir_x(shaft,dir-90)+lengthdir_x(barrel,dir);
 yy=y-16+lengthdir_y(shaft,dir-90)+lengthdir_y(barrel,dir);
-execute_string('sound_play(mBGun'+string(imgz)+');');
+sound_play(asset_get_index('mBGun'+string(imgz)));
 bul=instance_create(xx,yy,oBBullet);
 bul.type=2;
 bul.speed=10+random(5);
@@ -745,10 +745,10 @@ dirt=point_direction(fx,fy,walk.fx+walkdist,walk.fy);
 x+=lengthdir_x(wspd,dirt);
 y+=lengthdir_y(wspd*2,dirt);
 dist=point_distance(fx,fy,walk.fx+walkdist,walk.fy);
-if (dist&lt;wspd) { stage=1; image_single=0; sprite_index=sBHoopzSkill2; }
+if (dist&lt;wspd) { stage=1; image_index=0; image_speed=0; sprite_index=sBHoopzSkill2; }
 } else if (stage=1) {
 cou+=1;
-if (cou&gt;4) { cou=0; image_single+=1; if (image_single&gt;2) { stage=2; } img=image_single; }
+if (cou&gt;4) { cou=0; image_index+=1; image_speed=0; if (image_index&gt;2) { stage=2; } img=image_index; }
 } else if (stage=2) {
 cou+=1;
 //if (img=6 &amp;&amp; cou=4) sound_play(mBGun2);
@@ -760,11 +760,11 @@ else if (img=4) { target=sEnemyTarget('random',1); out=1; img=3; dir=point_direc
 else if (img=5) { out=0; img=6; }
 bou+=1;
 }
-image_single=img;
+image_index=img; image_speed=0;
 if (bou&gt;40) { stage=3; cou=0; bou=0; }
 } else if (stage=3) {
 cou+=1;
-if (cou&gt;4) { cou=0; image_single+=1; if (image_single&gt;9) { image_index=-1; image_single=-1; stage=4; walk=slav; image_xscale=-1; sprite_index=sBHoopzWalk; image_speed=0.25; } }
+if (cou&gt;4) { cou=0; image_index+=1; image_speed=0; if (image_index&gt;9) { image_index=-1; image_index=-1; image_speed=0; stage=4; walk=slav; image_xscale=-1; sprite_index=sBHoopzWalk; image_speed=0.25; } }
 } else if (stage=4) {
 walkdist=0;
 dirt=point_direction(fx,fy,walk.fx+walkdist,walk.fy);
@@ -776,7 +776,7 @@ if (dist&lt;wspd) { mov=-999; alarm[5]=1; }
 
 /////////////////////////////////////shoot
 if (out=1) {
-execute_string('sound_play(mBGun'+string(imgz)+');');
+sound_play(asset_get_index('mBGun'+string(imgz)));
 out=2;
 dir=point_direction(x+xo,y+yo,target.x,target.y); face=dir; rot=face;
 xx=x+xo+lengthdir_x(shaft,dir-90)+lengthdir_x(barrel,dir);
@@ -863,7 +863,7 @@ if (stage=0) {
 rot=mean(rot,face);
 draw_sprite_ext(sBGun,imgz,x-44+3,y-15,1,1,rot,c_white,1);
 draw_sprite(sBHoopz1,2,x,y);
-} else if (image_single=2) {
+} else if (image_index=2) {
 draw_sprite_ext(sBHoopzSkill1,2,x,y,image_xscale,1,0,c_white,1);
 draw_sprite_ext(sBHoopzSkill1,3,x+3,y+19,image_xscale,1,image_angle,c_white,1);
 } else if (out=1) {

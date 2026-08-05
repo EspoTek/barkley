@@ -49,13 +49,13 @@ x+=4;</string>
           <argument>
             <kind>1</kind>
             <string>if (global.selected=0) {
-sCinema(oBarkley,'code',"sShop(oVending,'Buy','Leave');");
-sCinema(oBarkley,'cond',"if (instance_exists(oStartmenu)=0) { good=1; global.vending=0; }");
-sCinema(oBarkley,'code',"x=x;");
+sCinema(oBarkley,'code',cine_0484);
+sCinema(oBarkley,'cond',cine_0485);
+sCinema(oBarkley,'code',cine_0006);
 } else if (global.selected=1) {
 sCinema(oBarkley,'dialog',"Insufficient science points: failed to hack the vending machine.");
 sCinema(oBarkley,'dialog','A vending machine. What do you want to do?',0,"Buy Items","Hack","Leave");
-sCinema(oBarkley,'code','with (oVending) event_user(2);');
+sCinema(oBarkley,'code',cine_0486);
 }</string>
           </argument>
         </arguments>
@@ -103,7 +103,7 @@ sCinema(oBarkley,'dialog',"Alright, let's check this out.",1);
 sOvar(object_index,1);
 }
 sCinema(oBarkley,'dialog','A vending machine. What do you want to do?',0,"Buy Items","Hack","Leave");
-sCinema(oBarkley,'code','with (oVending) event_user(2);');</string>
+sCinema(oBarkley,'code',cine_0486);</string>
           </argument>
         </arguments>
       </action>

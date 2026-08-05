@@ -1,0 +1,12 @@
+global.dialog=1;
+itemf[0]="Volleyball";
+itemf[1]="Jersey";
+itemf[2]="Bapes";
+itemf[3]="Backwards Cap";
+itemf[4]="Sunglasses";
+itemf[5]="Wrist Brace";
+itemf[6]="";
+sCinema(oBarkley,"dialog","Pusher-Man:\\Hey man, I got the shit you need, just take a look.");
+sCinema(oBarkley,"code",cine_0435);
+sCinema(oBarkley,"cond",cine_0003);
+sCinema(oBarkley,"dialog","Pusher-Man:\\Get outta here man.");

@@ -51,15 +51,15 @@ if (sOvar(object_index,-1)=1) instance_destroy();</string>
             <string>if (stage=0) {
 if (global.selected=0) {
 sCinema(oBarkley,'dialog',"Some kind of fancy wooden door. It looks like it's jammed shut.",1);
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else if (global.selected=1) {
 sCinema(oBarkley,'dialog',"I can't open it, it's jammed.",1);
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else if (global.selected=2) {
 sCinema(oBarkley,'dialog',"Taking the door isn't gonna happen.",1);
-sCinema(oBarkley,'code','with (global.coice) event_user(1);');
+sCinema(oBarkley,'code',cine_0396);
 } else {
-sCinema(oBarkley,'code',"x=x;");
+sCinema(oBarkley,'code',cine_0006);
 }
 }</string>
           </argument>
@@ -87,7 +87,7 @@ sCinema(oBarkley,'code',"x=x;");
 global.coice=id;
 stage=0;
 sCinema(oBarkley,'dialog',"You see a Wooden Door.",0,"Examine Wooden Door.","Use Wooden Door.","Take Wooden Door.","Leave Wooden Door.");
-sCinema(oBarkley,'code','with (global.coice) event_user(2);');</string>
+sCinema(oBarkley,'code',cine_0399);</string>
           </argument>
         </arguments>
       </action>

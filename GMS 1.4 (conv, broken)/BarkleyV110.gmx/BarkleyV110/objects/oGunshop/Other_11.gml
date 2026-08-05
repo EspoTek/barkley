@@ -1,0 +1,15 @@
+global.dialog=1;
+itemf[0]="ZX Zaubertech1";
+itemf[1]="ZX ZaubertechZ";
+itemf[2]="Mithril'braster";
+itemf[3]="Battlestech Gun";
+itemf[4]="ZX ModelX571X";
+itemf[5]="Ultimate Wristband";
+itemf[6]="Chicken Dew";
+itemf[7]="Ecto Cooler";
+itemf[8]="BBall Shard";
+itemf[9]="";
+sCinema(oBarkley,"dialog","D-Dawg:\\Welcome to Gun's! Gun's! Gun's!, your one-stop shopping emporium for all things gun's related!");
+sCinema(oBarkley,"code",cine_0149);
+sCinema(oBarkley,"cond",cine_0003);
+sCinema(oBarkley,"dialog","D-Dawg:\\You can never have enough Gun's!");

@@ -80,7 +80,7 @@ sA('loop',mProto);
             <kind>1</kind>
             <string>global.dialog=1;
 sCinema(oBarkley,'dialog',"Pump:\The Vidcon Manifesto\by\Pump\1. All vidcons must be released alongside a minimum of FOUR limited edition wall scrolls. The wall scrolls will feature pictures of characters from the vidcon in the anime style. The only exceptions to this rule are sports games, which will not be released with any wall scrolls (as there is enough sports memorabilia to last its ignorant fans for a lifetime).\2. Only one vidcon per sport can be released a year. For example, there can only be one basketball vidcon, one football vidcon, one baseball vidcon, etc.\3. All vidcons with English voice acting must make Japanese voice acting optional. Furthermore, they must allow for subtitles. "+'"Subs not dubs."'+"\4. All RPGs must strictly adhere to the moe aesthetic (this may anger some Western RPG vidconners, but I barely consider them vidconners at all.)\5. All vidcons must have a minimum of three beautifully crafted anime cutscenes.\6. All vidcons must be released alongside its full, feature-length soundtrack. In order to avoid confusion, the soundtrack MUST be called GAMENAME OST (for example Ar Tonelico: Melody of Elemia OST). It may not have any subtitles (for example Ar Tonelico: Melody of Elemia Rhapsody of Music Soundtrack). This rule does NOT apply to arranged soundtracks.");
-sCinema(oBarkley,'code','sFileData(4);');
+sCinema(oBarkley,'code',cine_0428);
 </string>
           </argument>
         </arguments>

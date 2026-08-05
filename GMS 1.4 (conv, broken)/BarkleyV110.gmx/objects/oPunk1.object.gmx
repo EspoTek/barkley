@@ -53,8 +53,8 @@ t=1;</string>
 itemf[0]='Ecto Cooler?';
 itemf[1]='';
 sCinema(oBarkley,'dialog',"Street Tough:\Hey, you want some ecto cooler? I got the best shit there is, don't trust none of them other guys. 35 neo-shekels, that's the best I can do.");
-sCinema(oBarkley,'code',"sShop(oPunk1,'Buy','Leave');");
-sCinema(oBarkley,'cond',"if (instance_exists(oStartmenu)=0) good=1");
+sCinema(oBarkley,'code',cine_0436);
+sCinema(oBarkley,'cond',cine_0003);
 sCinema(oBarkley,'dialog',"Street Tough:\Come by any time, my man.");</string>
           </argument>
         </arguments>
