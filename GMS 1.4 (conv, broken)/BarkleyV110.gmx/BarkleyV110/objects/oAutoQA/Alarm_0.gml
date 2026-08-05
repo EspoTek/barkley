@@ -30,6 +30,8 @@ try {
 keys  = [global.key_up, global.key_down, global.key_left, global.key_right,
          global.key_action, global.key_cancel, global.key_start];
 nkeys = array_length(keys);
+// Clockwise, so "turn" is +/-1 and "reverse" is +2 -- see the walk in Step.
+mdirs = [global.key_up, global.key_right, global.key_down, global.key_left];
 
 // Globals that only a specific entry flow ever assigns. Warping straight into
 // the rooms that read them would otherwise raise unset-variable errors that no

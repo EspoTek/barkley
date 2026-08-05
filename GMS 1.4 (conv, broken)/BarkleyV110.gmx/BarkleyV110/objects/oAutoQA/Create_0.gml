@@ -181,6 +181,36 @@ phase     = 0;      // 0 = need init, 1 = warping, 2 = settling, 3 = interacting
 timer     = 0;
 roomtimer = 0;
 started   = false;
+
+// --- monkey walk state ------------------------------------------------------
+// A monkey that re-rolls its key every few frames is doing a random walk: net
+// displacement grows with sqrt(t), so it burns the room budget jittering on one
+// spot instead of finding the exits. The fix is holding a direction long enough
+// to actually travel -- see the tap-or-hold policy in Step.
+mdirs      = [];     // the four bound direction keys, clockwise; built in Alarm_0
+mlastx     = -1;     // last observed player position, for stuck detection
+mlasty     = -1;
+mstill     = 0;      // frames since the player last moved
+mstuckcool = 0;      // earliest frame a stuck-rotation may fire again
+// --- directed interaction state (phase 5) -----------------------------------
+tlist      = [];     // oItem instances in the current room, minus exits
+tbuilt     = 0;      // 1 once tlist is built for this room
+tskipped   = 0;      // exits deliberately not touched, reported per room
+ti         = 0;      // index into tlist
+tstate     = 0;      // 0 place, 1 wait for oTalker, 2 release, 3 let it play, 4 fuzz
+ttimer     = 0;
+trep       = 0;      // which repeat of the current target we are on
+treps      = 3;      // repeats per interactable: the same approach lands in a
+                     // different state each time (dialog page, shop, post-cutscene),
+                     // and the fuzz burst explores from wherever it ended up
+tburst     = 45;     // frames of true-random input after each interaction, ~1.5s
+tout       = 0;      // frames spent outside the target room on an excursion
+tresume    = 0;      // 1 = rebuilding tlist after returning, so keep the cursor
+// Release whatever is held. Called on room change and at sweep end so a key
+// cannot leak into the next room and jam its input.
+qa_release = function() {
+	if (held >= 0) { keyboard_key_release(held); held = -1; }
+};
 // Anything that escapes a try/catch -- typically an error raised later, in some
 // other object's Step, after we perturbed it -- would otherwise pop the runner's
 // modal error dialog and block the whole sweep until a human clicks it. Log it
