@@ -24,6 +24,27 @@ cd "$(dirname "$0")/.."
 
 MODE="${1:-rooms}"
 MAXLAUNCH="${2:-400}"
+
+# Replay: re-run one exact launch. Seeds and cursor come from a FATAL/CAUGHT
+# entry in a previous report, so the same inputs are regenerated.
+#   ./tools/autoqa.sh replay <mode> <room> <inst> <gameseed> <monkeyseed>
+if [ "$MODE" = "replay" ]; then
+  RMODE="$2"; RROOM="$3"; RINST="$4"; RSEED="$5"; RMSEED="$6"
+  mkdir -p tools/autoqa-logs
+  echo "replay: mode=$RMODE room=$RROOM inst=$RINST seed=$RSEED mseed=$RMSEED"
+  BARKLEY_AUTOQA="$RMODE" BARKLEY_AUTOQA_ROOM="$RROOM" BARKLEY_AUTOQA_INST="$RINST" \
+  BARKLEY_AUTOQA_SEED="$RSEED" BARKLEY_AUTOQA_MSEED="$RMSEED" \
+  BARKLEY_AUTOQA_FRAMES="${BARKLEY_AUTOQA_FRAMES:-600}" \
+  npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac \
+      > tools/autoqa-logs/replay.out 2>&1
+  echo "--- inputs ---"; grep "AUTOQA INPUT" tools/autoqa-logs/replay.out | tail -40
+  echo "--- outcome ---"
+  if grep -qE "AUTOQA FATAL|AUTOQA CAUGHT" tools/autoqa-logs/replay.out; then
+    grep -E "AUTOQA FATAL|AUTOQA CAUGHT" tools/autoqa-logs/replay.out | head -6
+    echo "REPLAY: bug still reproduces"; exit 1
+  fi
+  echo "REPLAY: clean -- no error at this position"; exit 0
+fi
 OUT="tools/autoqa-report.txt"
 LOGDIR="tools/autoqa-logs"
 mkdir -p "$LOGDIR"
@@ -75,13 +96,16 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
   fi
 
   # errors caught in-engine: the sweep survived these and kept going
-  grep "AUTOQA CAUGHT" "$LOG" | sed 's/^[^A]*AUTOQA CAUGHT /CAUGHT /' >> "$OUT"
+  grep "AUTOQA CAUGHT" "$LOG" | sed "s|^[^A]*AUTOQA CAUGHT |CAUGHT [replay: ./tools/autoqa.sh replay $MODE $room $inst $gseed $mseed] |" >> "$OUT"
 
   if grep -q "AUTOQA DONE" "$LOG"; then
     echo "sweep complete after $launch launch(es)" | tee -a "$OUT"
     break
   fi
 
+  seeds=$(grep -o "AUTOQA SEEDS game=[0-9]* monkey=[0-9]*" "$LOG" | head -1)
+  gseed=$(sed -n 's/.*game=\([0-9]*\).*/\1/p' <<<"$seeds")
+  mseed=$(sed -n 's/.*monkey=\([0-9]*\).*/\1/p' <<<"$seeds")
   step=$(grep "AUTOQA STEP" "$LOG" | tail -1)
   fatal=$(grep -E "AUTOQA FATAL" "$LOG" | head -4)
   err=$(grep -A4 -E "ERROR in action|not set before reading" "$LOG" | head -12)
@@ -90,6 +114,8 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
     { echo "=============================================================="
       echo "FATAL  (launch $launch)"
       echo "  last step: ${step:-<no step logged>}"
+      echo "  replay:    ./tools/autoqa.sh replay $MODE $room $inst $gseed $mseed"
+      echo "  inputs:    $(grep -c 'AUTOQA INPUT' "$LOG") logged, tail in $LOG"
       [ -n "$fatal" ] && echo "$fatal" | sed 's/^[^A]*AUTOQA/  AUTOQA/'
       [ -n "$err" ]   && echo "$err"   | sed 's/^/  /'
     } | tee -a "$OUT"

@@ -78,10 +78,15 @@ if (phase = 4) {                                   // monkey: mash the bound key
 	// Drive the *bound* keys rather than arbitrary scancodes, so this exercises
 	// the real input path (sKey/key_eat) and honours any rebinding.
 	if (timer >= nextswitch) {
-		if (held >= 0) keyboard_key_release(held);
-		held       = keys[irandom(nkeys - 1)];
-		nextswitch = timer + 2 + irandom(10);
+		if (held >= 0) {
+			keyboard_key_release(held);
+			show_debug_message("AUTOQA INPUT f=" + string(timer) + " key=" + string(held) + " down=0");
+		}
+		held       = keys[qa_next() mod nkeys];
+		nextswitch = timer + 2 + (qa_next() mod 11);
 		keyboard_key_press(held);
+		show_debug_message("AUTOQA INPUT f=" + string(timer) + " room=" + room_get_name(rooms[ri])
+			+ " key=" + string(held) + " down=1");
 	}
 	exit;
 }

@@ -31,5 +31,12 @@ keys  = [global.key_up, global.key_down, global.key_left, global.key_right,
          global.key_action, global.key_cancel, global.key_start];
 nkeys = array_length(keys);
 
+// Globals that only a specific entry flow ever assigns. Warping straight into
+// the rooms that read them would otherwise raise unset-variable errors that no
+// player can hit. Seed them to a sensible value so the sweep can cover those
+// rooms; anything that still crashes afterwards is a genuine finding.
+if (!variable_global_exists("romname"))    global.romname    = "QA";   // set by sFileData(4)
+if (!variable_global_exists("diemessage")) global.diemessage = "";     // set on death
+
 started = true;
 phase   = 1;

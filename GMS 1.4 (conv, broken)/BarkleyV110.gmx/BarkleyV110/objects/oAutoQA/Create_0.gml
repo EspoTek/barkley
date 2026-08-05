@@ -17,6 +17,24 @@ var _r = environment_get_variable("BARKLEY_AUTOQA_ROOM");
 var _i = environment_get_variable("BARKLEY_AUTOQA_INST");
 ri = (_r == "") ? 0 : real(_r);
 ii = (_i == "") ? 0 : real(_i);
+// Determinism. The game seed makes the run reproducible; the monkey gets its
+// OWN stream so the input sequence does not depend on how much RNG the game
+// consumes -- otherwise any bugfix shifts every later keypress and a replay
+// stops proving anything. Both are logged so a run can be replayed exactly.
+var _gs = environment_get_variable("BARKLEY_AUTOQA_SEED");
+var _ms = environment_get_variable("BARKLEY_AUTOQA_MSEED");
+if (_gs != "") random_set_seed(real(_gs));
+gameseed  = random_get_seed();
+mk_state  = (_ms == "") ? ((gameseed ^ 0x9E3779B9) & 0xFFFFFFFF) : (real(_ms) & 0xFFFFFFFF);
+if (mk_state == 0) mk_state = 1;              // xorshift must not start at zero
+monkeyseed = mk_state;
+qa_next = function() {                        // xorshift32, independent of random()
+	mk_state = mk_state ^ ((mk_state << 13) & 0xFFFFFFFF);
+	mk_state = mk_state ^ (mk_state >> 17);
+	mk_state = mk_state ^ ((mk_state << 5)  & 0xFFFFFFFF);
+	mk_state = mk_state & 0xFFFFFFFF;
+	return mk_state;
+};
 var _f = environment_get_variable("BARKLEY_AUTOQA_FRAMES");
 monkeyframes = (_f == "") ? 600 : real(_f);   // ~20s of mashing per room at 30fps
 held       = -1;                              // key currently held down, -1 = none
@@ -168,5 +186,6 @@ exception_unhandled_handler(function(_ex) {
 	game_end();
 });
 crashes = 0;
+show_debug_message("AUTOQA SEEDS game=" + string(gameseed) + " monkey=" + string(monkeyseed));
 show_debug_message("AUTOQA BEGIN mode=" + string(mode) + " room=" + string(ri) + " inst=" + string(ii) + " nrooms=" + string(nrooms));
 alarm[0] = 2;
