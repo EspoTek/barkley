@@ -1,6 +1,5 @@
 event_inherited();
 sprt=sTurkey;
-sEGroup(group);
 t=1;
 vis=instance_create(x,y,oVision)
 vis.master=id;
@@ -8,7 +7,6 @@ vis.master=id;
 sBattled("status",id);
 y+=26;
 x+=12;
-sDelimit(moves);
 mask_index=sRMask;
 ambattler=1;
 walk=1;
