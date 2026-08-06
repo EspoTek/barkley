@@ -77,6 +77,10 @@ if (phase = 1) {                                   // warp into the target room
 	// global.roz is the same kind of leftover: it drives a fadeout on room start.
 	if (variable_global_exists("posser")) global.posser = -1;
 	if (variable_global_exists("roz"))    global.roz    = -1;
+	// Same reasoning: global.roomer marks a transition the game still intends to
+	// finish. Force-warping elsewhere leaves it pointing at a move that will never
+	// happen, and oController's Step_2 acts on it every step.
+	if (variable_global_exists("roomer")) global.roomer = -1;
 	// Before the warp, so the incoming room's oBarkley Create sees the right
 	// global.following and materialises the party via sFollow("update").
 	qa_state();
