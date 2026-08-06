@@ -53,7 +53,21 @@ function sItemShow(argument0, argument1, argument2, argument3, argument4) {
 	 if (arr="global.item_id") { for(m=0; global.item_id[m]!=""; m+=1) item[m]=global.item_id[m]; }
 	 else if (arr="itemf") { for(m=0; itemf[m]!=""; m+=1) item[m]=itemf[m]; }
 	 else if (arr="global.temp.itemf") { srcinst=global.temp; for(m=0; srcinst.itemf[m]!=""; m+=1) item[m]=srcinst.itemf[m]; }
-	 else { srcinst=real(string_digits(arr)); for(m=0; srcinst.itemf[m]!=""; m+=1) item[m]=srcinst.itemf[m]; } //"(<id>).itemf"
+	 //port: "(<id>).itemf".  This was execute_string of
+	 //  "for(m=0;"+arr+"[m]!='';m+=1)item[m]="+arr+"[m];"
+	 //so arr was pasted straight in as code, and GM6 resolved a negative instance
+	 //id as `self`.  oStartmenu's Create leaves keeper=-1, so "(-1).itemf" read the
+	 //menu's own array -- the same thing the "itemf" branch above does.
+	 //string_digits drops the minus, which turned self into object index 1 and made
+	 //the Buy row of the ordinary pause menu fatal.  Keep the sign, and resolve a
+	 //negative id the way GM6 did.
+	 else {
+	  srcinst=real(string_digits(arr));
+	  if (string_count("(-",arr)>0) srcinst=-srcinst;
+	  m=0;
+	  if (srcinst<0) { for(m=0; itemf[m]!=""; m+=1) item[m]=itemf[m]; }
+	  else if (instance_exists(srcinst)) { for(m=0; srcinst.itemf[m]!=""; m+=1) item[m]=srcinst.itemf[m]; }
+	 }
 	 item[m]="";
 	 itemdsc[0]="";
 	 itempts[0]="";
