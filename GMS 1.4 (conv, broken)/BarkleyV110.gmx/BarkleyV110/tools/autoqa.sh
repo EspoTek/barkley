@@ -29,6 +29,11 @@ MAXLAUNCH="${2:-400}"
 # takes, or it truncates the run and the truncation gets misread as a crash.
 # rooms mode is minutes; touch mode is hours.
 LAUNCH_CAP="${AUTOQA_LAUNCH_CAP:-36000}"
+# Seconds of no new output before a launch is treated as wedged. The heartbeat is
+# every 60 frames, so this only needs to exceed 60 frame-times -- but a throttled
+# runner (a closed lid, a busy machine) stretches those, and too tight a value
+# turns a slow run into a fake "wedged" finding. Raise it for unattended runs.
+QUIET_MAX="${AUTOQA_QUIET:-25}"
 # Stop at the first finding so it gets fixed before the sweep moves on.
 # AUTOQA_CONTINUE=1 restores the old skip-and-keep-going behaviour.
 CONTINUE="${AUTOQA_CONTINUE:-0}"
@@ -48,6 +53,7 @@ if [ "$MODE" = "replay" ]; then
   echo "replay: mode=$RMODE room=$RROOM inst=$RINST seed=$RSEED mseed=$RMSEED pass=${RPASS:-<none>}"
   BARKLEY_AUTOQA="$RMODE" BARKLEY_AUTOQA_ROOM="$RROOM" BARKLEY_AUTOQA_INST="$RINST" \
   BARKLEY_AUTOQA_SEED="$RSEED" BARKLEY_AUTOQA_MSEED="$RMSEED" \
+  BARKLEY_AUTOQA_PLOT="${AUTOQA_PLOT:-}" \
   BARKLEY_AUTOQA_FRAMES="${BARKLEY_AUTOQA_FRAMES:-600}" \
   npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac > "$RLOG" 2>&1 &
   rpid=$!
@@ -58,7 +64,7 @@ if [ "$MODE" = "replay" ]; then
     kill -0 "$rpid" 2>/dev/null || break
     grep -q "AUTOQA DONE" "$RLOG" 2>/dev/null && break
     sz=$(wc -c <"$RLOG" 2>/dev/null || echo 0)
-    if [ "$sz" = "$last" ]; then quiet=$((quiet+1)); [ "$quiet" -ge 30 ] && break
+    if [ "$sz" = "$last" ]; then quiet=$((quiet+1)); [ "$quiet" -ge "$QUIET_MAX" ] && break
     else quiet=0; last=$sz; fi
   done
   pkill -f "Runner" 2>/dev/null; kill "$rpid" 2>/dev/null; wait "$rpid" 2>/dev/null
@@ -134,6 +140,7 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
   BARKLEY_AUTOQA_INST="$inst" \
   BARKLEY_AUTOQA_SEED="${AUTOQA_SEED:-}" \
   BARKLEY_AUTOQA_MSEED="${AUTOQA_MSEED:-}" \
+  BARKLEY_AUTOQA_PLOT="${AUTOQA_PLOT:-}" \
   BARKLEY_AUTOQA_FRAMES="${BARKLEY_AUTOQA_FRAMES:-600}" \
   npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac \
       >"$LOGDIR/run$launch.out" 2>&1 &
@@ -151,7 +158,7 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
     size=$(wc -c <"$LOG" 2>/dev/null || echo 0)
     if [ "$size" = "$last_size" ]; then
       quiet=$((quiet+1))
-      [ "$quiet" -ge 25 ] && break     # 25s with no new output => wedged
+      [ "$quiet" -ge "$QUIET_MAX" ] && break     # 25s with no new output => wedged
     else
       quiet=0; last_size=$size
     fi

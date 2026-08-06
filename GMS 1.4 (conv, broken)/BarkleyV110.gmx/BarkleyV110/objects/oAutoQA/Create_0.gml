@@ -296,7 +296,12 @@ qa_world = function() {
 	// sweep so far ran at the very start of the story and everything gated on later
 	// progress was unreachable. That is why the oIntro5 and oIntro25 crashes had to
 	// be found by static analysis -- no room warp could ever fire those scenes.
-	qaplot      = qa_next() mod 11;          // plot is a 0-10 progression
+	// A sweep only ever tests the one plot value it rolled, so a clean run proves
+	// nothing about the other ten. BARKLEY_AUTOQA_PLOT pins it, which is what lets
+	// the story positions be walked deliberately instead of sampled by luck.
+	var _pl = environment_get_variable("BARKLEY_AUTOQA_PLOT");
+	qaplot      = (_pl == "") ? (qa_next() mod 11) : real(_pl);
+	if (_pl != "") qa_next();                // keep the draw count stable either way
 	qavictorian = ((qa_next() mod 4) = 0);   // the alternate-name/language mode
 	qatext      = qa_next() mod 3;           // dialog speed, read by dialog_step
 	var _c;
