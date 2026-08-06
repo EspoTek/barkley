@@ -1,4 +1,8 @@
-if (room!=RomSubwayCar0) { oTubman.t=1; exit; }
+//port: this alarm runs on the post-Liberty train ride, in every car. Harriet is
+//only placed in RomSubwayCar0 and the two boarding rooms, so in Cars 1-3 this
+//turned an object with no instances -- fatal under GameMaker 2024, ignored by the
+//GM6 build, which is byte-identical here. `with` is the no-op GM6 effectively had.
+if (room!=RomSubwayCar0) { with (oTubman) t=1; exit; }
 oHoopzdummy.visible=1;
 oHoopzdummy.y-=8;
 oHoopzdummy.x-=2;
