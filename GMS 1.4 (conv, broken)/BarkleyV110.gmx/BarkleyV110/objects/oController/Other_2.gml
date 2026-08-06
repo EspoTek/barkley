@@ -29,6 +29,19 @@ global.c__=0;
 //alarm[1], which tests `global.lover>4` against a value nothing ever set.  GM6
 //read that as 0 and skipped the branch; GameMaker 2024 raises.
 global.lover=0;
+//port: global.timpy is a scratch slot for stashing a y-coordinate -- cine_0460
+//saves oFerry.y into it and oSeaman's alarm[2] restores it, cine_0166 does the
+//same for oHoopz and oIntro0 reads it back.  Reach either restore without its
+//matching save having run and the value was never assigned.  GM6 read 0 and put
+//the sprite at the top of the room; GameMaker 2024 raises.
+global.timpy=0;
+global.timpx=0;   //read one line before timpy in oIntro0's alarm[0], same story
+//port: hand-meter counters.  oEventc0's Other_12 initialises them to 0 and then
+//adds to them, but oHandmeter's Draw event reads `global.duergar*12` every frame
+//and can be on screen before that interaction has ever happened.  GM6 read 0;
+//GameMaker 2024 raises once per frame.
+global.duergar=0;
+global.genie=0;
 global.b_music=mBattle; //Battle music
 global.b_back=0; //Battle background
 global.b_resume=-1; //For resuming music
