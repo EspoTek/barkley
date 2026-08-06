@@ -23,6 +23,12 @@ global.doload=0; //port: RomLoad's oLoader reads this; GM6 read the unset value 
 //all call load in an alarm -- therefore read it unset.  GM6 treated that as 0, so
 //the loop ran zero times and the restore was a no-op; GameMaker 2024 raises.
 global.c__=0;
+//port: the Ivory dating sim marks itself started (sOvar 1) in oIntro23's
+//"part1" response, but global.lover is only assigned in the conclusion branch.
+//Begin it and leave before finishing, and re-entering RomDimensionSim1 fires
+//alarm[1], which tests `global.lover>4` against a value nothing ever set.  GM6
+//read that as 0 and skipped the branch; GameMaker 2024 raises.
+global.lover=0;
 global.b_music=mBattle; //Battle music
 global.b_back=0; //Battle background
 global.b_resume=-1; //For resuming music
