@@ -26,6 +26,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-22.04
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
 
@@ -34,6 +35,7 @@ jobs:
           node-version: 26
 
       - name: Package web build
+        timeout-minutes: 25
         shell: bash
         working-directory: ${{ env.PROJECT_DIR }}
         run: |

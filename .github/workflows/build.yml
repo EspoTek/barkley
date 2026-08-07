@@ -34,6 +34,7 @@ jobs:
           - { os: ubuntu-22.04,    target: linux,   name: linux-x64 }
           - { os: ubuntu-22.04-arm, target: linux,  name: linux-arm64 }
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
 
@@ -42,6 +43,7 @@ jobs:
           node-version: 26
 
       - name: Package
+        timeout-minutes: 25
         shell: bash
         working-directory: ${{ env.PROJECT_DIR }}
         run: |
