@@ -15,7 +15,7 @@ name: build
 
 on:
   push:
-    branches: [master, modern-port]
+    branches: [master]
     tags: ['v*']
   workflow_dispatch:
 
@@ -39,14 +39,14 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 26
 
       - name: Package
         shell: bash
         working-directory: ${{ env.PROJECT_DIR }}
         run: |
           npx @gamemaker/gm-cli@latest package BarkleyV110.yyp \
-            --target ${{ matrix.target }} --errors-only \
+            --target ${{ matrix.target }} --verbose \
             -o "${{ github.workspace }}/dist/barkley-${{ matrix.name }}.zip"
 
       - name: Check signing secrets
