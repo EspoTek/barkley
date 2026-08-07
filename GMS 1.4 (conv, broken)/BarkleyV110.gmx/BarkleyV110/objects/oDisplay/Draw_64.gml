@@ -53,6 +53,12 @@ if (crt == 2 && crtdbok) {
 	shader_set_uniform_f(u_db_time, (current_time mod 100000) / 1000);
 	shader_set_uniform_f(u_db_outsize, dw, dh);
 	shader_set_uniform_f(u_db_warp, global.sat[7] / 100);
+	shader_set_uniform_f(u_db_shadow, global.sat[8] / 25);
+	shader_set_uniform_f(u_db_vig, global.sat[9] / 25);
+	shader_set_uniform_f(u_db_scan, global.sat[10] / 25);
+	shader_set_uniform_f(u_db_mask, global.sat[11] / 25);
+	shader_set_uniform_f(u_db_grain, global.sat[12] / 25);
+	shader_set_uniform_f(u_db_ghost, global.sat[13] / 25);
 	texture_set_stage(u_db_blurbuf, surface_get_texture(crtaccum));
 	draw_surface_stretched(application_surface, ox, oy, dw, dh);
 	shader_reset();

@@ -14,9 +14,17 @@ precision highp float;
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
+// All strengths are 0..1 where 1 = as dosbox-crt shipped; the tune menu
+// (oCRTTune) drives them from global.sat[7..13] via oDisplay.
 uniform float u_time;    // seconds, wraps every 100s
 uniform vec2  u_outsize; // destination rect size in gui pixels
 uniform float u_warp;    // fraction of the full curve applied (dosbox-crt shipped 0.20)
+uniform float u_shadow;  // outer corner-shadow falloff
+uniform float u_vig;     // inner vignette
+uniform float u_scan;    // scanline depth
+uniform float u_mask;    // vertical shadow-mask strength
+uniform float u_grain;   // film grain amount
+uniform float u_ghost;   // ghosting/bloom strength
 uniform sampler2D u_blurbuf;
 
 vec3 tsample(sampler2D samp, vec2 tc)
@@ -73,7 +81,7 @@ void main()
     i = (1.0 - i) * 0.85 + 0.15;
 
     // ghosting from the blurred accumulation buffer
-    float ghs = 0.05;
+    float ghs = 0.05 * u_ghost;
     vec3 r = tsample(u_blurbuf, vec2(x - 0.014, -0.027) * 0.45
         + 0.007 * vec2(0.35 * sin(1.0 / 7.0 + 15.0 * curved_uv.y + 0.9 * u_time),
                        0.35 * sin(2.0 / 7.0 + 10.0 * curved_uv.y + 1.37 * u_time))
@@ -97,22 +105,22 @@ void main()
     // vignette
     float vig = 0.1 + 16.0 * curved_uv.x * curved_uv.y * (1.0 - curved_uv.x) * (1.0 - curved_uv.y);
     vig = 1.3 * pow(vig, 0.5);
-    col *= vig;
+    col *= mix(1.0, vig, u_vig);
 
     // scanlines (static, output-relative like dosbox-crt)
     float scans = clamp(0.35 + 0.18 * sin(curved_uv.y * u_outsize.y * 1.5), 0.0, 1.0);
     float s = pow(scans, 0.9);
-    col = col * vec3(s);
+    col *= mix(1.0, s, u_scan);
 
     // shadow mask
-    col *= 1.0 - 0.23 * clamp(mod(gl_FragCoord.x, 3.0) / 2.0, 0.0, 1.0);
+    col *= 1.0 - 0.23 * u_mask * clamp(mod(gl_FragCoord.x, 3.0) / 2.0, 0.0, 1.0);
 
     // tone map
     col = filmic(col);
 
     // film grain
     vec2 seed = curved_uv * u_outsize;
-    col -= 0.015 * pow(vec3(rand(seed + u_time), rand(seed + u_time * 2.0), rand(seed + u_time * 3.0)), vec3(1.5));
+    col -= 0.015 * u_grain * pow(vec3(rand(seed + u_time), rand(seed + u_time * 2.0), rand(seed + u_time * 3.0)), vec3(1.5));
 
     // flicker
     col *= 1.0 - 0.004 * (sin(50.0 * u_time + curved_uv.y * 2.0) * 0.5 + 0.5);
@@ -121,9 +129,9 @@ void main()
     if (curved_uv.x < 0.0 || curved_uv.x > 1.0) col *= 0.0;
     if (curved_uv.y < 0.0 || curved_uv.y > 1.0) col *= 0.0;
 
-    // soft outer falloff (dosbox-crt applies this even without the bezel)
+    // soft outer corner shadow (dosbox-crt applies this even without the bezel)
     float fvig = clamp(512.0 * uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y), 0.2, 0.85);
-    col *= fvig;
+    col *= mix(1.0, fvig, u_shadow);
 
     gl_FragColor = vec4(col, 1.0) * v_vColour;
 }

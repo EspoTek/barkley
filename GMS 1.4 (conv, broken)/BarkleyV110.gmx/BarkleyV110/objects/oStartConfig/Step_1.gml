@@ -1,4 +1,5 @@
 if (key_makestuff.doall!=-1) exit;
+if (instance_exists(oCRTTune)) exit; //port: tune-CRT overlay owns input
 if (img=0) {
 
 if (sKey(global.key_up,1) || sKey(vk_up,1)) { sP();
@@ -26,6 +27,7 @@ if (global.sat[4]=2) { with (key_makestuff) { event_user(1); } sConfig(1); sound
 } else {
 if (global.control=9) with (key_makestuff) event_user(0);
 else if (global.edit!=-1) global.edit=-1;
+else if (global.control=6) { instance_create(0,0,oCRTTune); } //port: open the tune-CRT screen
 else global.edit=global.control;
 }
 

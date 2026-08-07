@@ -287,6 +287,7 @@
     {"id":{"name":"oController","path":"objects/oController/oController.yy",},},
     {"id":{"name":"oCosby","path":"objects/oCosby/oCosby.yy",},},
     {"id":{"name":"oCounter","path":"objects/oCounter/oCounter.yy",},},
+    {"id":{"name":"oCRTTune","path":"objects/oCRTTune/oCRTTune.yy",},},
     {"id":{"name":"oCuchBack","path":"objects/oCuchBack/oCuchBack.yy",},},
     {"id":{"name":"oCuchBarkley0","path":"objects/oCuchBarkley0/oCuchBarkley0.yy",},},
     {"id":{"name":"oCuchBarkley1","path":"objects/oCuchBarkley1/oCuchBarkley1.yy",},},

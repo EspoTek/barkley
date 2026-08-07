@@ -25,6 +25,13 @@ function sConfig(argument0) {
 	if (arg=0) global.sat[7]=10; // Dosbox CRT corner-warp percent, tuned with +/-
 	else if (arg=1) { file_text_write_real(tfl,global.sat[7]); file_text_writeln(tfl); }
 	else { if (file_text_eof(tfl)) global.sat[7]=10; else { global.sat[7]=min(25,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } }
+	//Dosbox CRT tune-menu strengths, 0..25 where 25 = as dosbox-crt shipped:
+	//sat[8]=corner shadow, 9=vignette, 10=scanlines, 11=mask, 12=grain, 13=ghosting
+	for (tcl=8; tcl<=13; tcl+=1) {
+	if (arg=0) global.sat[tcl]=25;
+	else if (arg=1) { file_text_write_real(tfl,global.sat[tcl]); file_text_writeln(tfl); }
+	else { if (file_text_eof(tfl)) global.sat[tcl]=25; else { global.sat[tcl]=min(25,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } }
+	}
 	//
 	if (arg!=0) file_text_close(tfl);
 	if (arg=1) sConvert("config0.txt","config.txt");
