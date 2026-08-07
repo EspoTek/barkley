@@ -228,8 +228,15 @@ function sFileData(argument0, argument1) {
 	else if (arg=1) { file_text_write_real(tfl,global.cvy); file_text_writeln(tfl); }
 	else { temp2=file_text_read_real(tfl); file_text_readln(tfl); }
 	if (arg=0) temp3=RomBarkleyApart;
-	else if (arg=1) { file_text_write_real(tfl,global.croom); file_text_writeln(tfl); }
-	else { temp3=file_text_read_real(tfl); file_text_readln(tfl); }
+	else if (arg=1) { file_text_write_string(tfl,room_get_name(global.croom)); file_text_writeln(tfl); }
+	else {
+	temp4=file_text_read_string(tfl); file_text_readln(tfl);
+	temp3=asset_get_index(temp4);
+	if (temp3<0 || !room_exists(temp3)) { //pre-name-format saves stored the numeric room index
+	if (string_digits(temp4)=="") show_error("Save file names unknown room '"+temp4+"'",true);
+	temp3=real(string_replace(temp4,",","."));
+	}
+	}
 	if (arg=0) for (i=0; i<100; i+=1) { global.fighter[i]=-999; global.fighters[i]=0; }
 	else if (arg=1) for (i=0; i<100; i+=1) { sF(ww,nn,global.fighter[i]); sF(ww,nn,global.fighters[i]); }
 	else if (arg=2) for (i=0; i<100; i+=1) { global.fighter[i]=sF(rr,nn); global.fighters[i]=sF(rr,nn); }
