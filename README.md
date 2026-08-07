@@ -16,18 +16,18 @@ https://github.com/EspoTek/barkley/releases
 
 or visit https://barkley.github.io and play it right here in the browser!
 
+## Controls
+
+Keyboard, rebindable in the settings menu (defaults: arrow keys to move, + Z/X/C for action/cancel/menu).
+Gamepad support is planned. Saves and config are written next to the game
+(`Save*.sav`, `config.txt`, `controls.txt` — delete the latter two to reset settings).
+
 ## Changes from V1.20
 
 - The window is freely resizable - no more 1x/2x/3x scaling.
 - No more music DLL (the TOGSound intro in the start is a lie!)
 - Nearest neighbor interpolation by default, with an option for integral scaling (see the settings menu)
 - A gatdam *configurable CRT filter* 
-
-## Controls
-
-Keyboard, rebindable in the settings menu (defaults: arrows + the keys shown there).
-Gamepad support is planned. Saves and config are written next to the game
-(`Save*.sav`, `config.txt`, `controls.txt` — delete the latter two to reset settings).
 
 ## License
 
