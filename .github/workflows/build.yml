@@ -181,19 +181,41 @@ jobs:
             dist/*.zip
             dist/*.dmg
 
+  # Every master push refreshes the rolling "continuous" release (a real,
+  # published release -- not a draft) with all five artifacts; a v* tag still
+  # gets its own versioned release.
   release:
-    if: startsWith(github.ref, 'refs/tags/')
+    if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/')
     needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Move the continuous tag to this commit
+        if: github.ref == 'refs/heads/master'
+        run: |
+          git tag -f continuous ${{ github.sha }}
+          git push -f origin continuous
+
       - uses: actions/download-artifact@v4
         with:
           path: dist
           merge-multiple: true
+
       - uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'continuous' }}
+          name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'Latest build' }}
+          draft: false
+          prerelease: false
+          body: |
+            Rolling build of the newest code on `master` (commit ${{ github.sha }}).
+            macOS: signed + notarized DMG (drag to Applications) or zip.
+            Windows 10+ x64 and Linux x64/arm64: unzip and run.
+
+            Play in the browser instead: https://espotek.github.io/barkley
           files: |
             dist/*.zip
             dist/*.dmg
