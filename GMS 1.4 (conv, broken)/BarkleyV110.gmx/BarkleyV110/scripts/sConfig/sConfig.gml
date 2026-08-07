@@ -19,6 +19,9 @@ function sConfig(argument0) {
 	if (arg=0) global.sat[5]=0;
 	else if (arg=1) { file_text_write_real(tfl,global.sat[5]); file_text_writeln(tfl); }
 	else { global.sat[5]=file_text_read_real(tfl); file_text_readln(tfl); }
+	if (arg=0) global.sat[6]=0; // 0=off, 1=CRT shader (port addition)
+	else if (arg=1) { file_text_write_real(tfl,global.sat[6]); file_text_writeln(tfl); }
+	else { if (file_text_eof(tfl)) global.sat[6]=0; else { global.sat[6]=file_text_read_real(tfl); file_text_readln(tfl); } } // configs from before the FILTER row have 5 lines
 	//
 	if (arg!=0) file_text_close(tfl);
 	if (arg=1) sConvert("config0.txt","config.txt");
