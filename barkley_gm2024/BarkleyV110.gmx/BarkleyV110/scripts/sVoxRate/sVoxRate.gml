@@ -24,10 +24,18 @@ function sVoxRate(argument0) {
 	if (string_pos("3000",nl)>0) return(55);
 	if (string_pos("boyardee",nl)>0) return(70);
 	if (string_pos("hundley",nl)>0 || string_pos("hughley",nl)>0) return(80);
-	//hash-voiced NPCs also get a stable hash-flavoured pace (55-95ms)
-	var vh;
+	//hash-voiced NPCs: stable hash-flavoured pace, banded by class --
+	//monsters lumber (95-135ms), robots tick steadily (70), kids chatter
+	//(45-60ms), everyone else 55-95ms
+	var vh, vc;
 	vh=sVoxHash(nl);
-	if (vh>=0) return(55+((vh div 12) mod 41));
+	if (vh>=0) {
+	vc=sVoxClass(nl);
+	if (vc=2) return(45+((vh div 12) mod 16));
+	if (vc=3) return(95+((vh div 12) mod 41));
+	if (vc=4) return(70);
+	return(55+((vh div 12) mod 41));
+	}
 	return(55);
 
 

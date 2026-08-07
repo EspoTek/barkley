@@ -12,6 +12,7 @@ function sVoxPitch(argument0) {
 	if (string_pos("dwarf",nl)>0 || string_pos("vince",nl)>0 || string_pos("lebron",nl)>0 || string_pos("garnett",nl)>0) return(1);
 	if (string_pos("latta",nl)>0 || string_pos("vitale",nl)>0 || string_pos("brimley",nl)>0 || string_pos("juwanna",nl)>0) return(1);
 	if (string_pos("3000",nl)>0 || string_pos("boyardee",nl)>0 || string_pos("hundley",nl)>0 || string_pos("hughley",nl)>0) return(1);
+	if (string_pos("juwina",nl)>0) return(1);
 	var vh;
 	vh=sVoxHash(nl);
 	if (vh>=0) return(0.92+((vh div 500) mod 5)*0.05);

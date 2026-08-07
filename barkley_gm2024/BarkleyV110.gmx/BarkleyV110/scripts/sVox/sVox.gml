@@ -19,15 +19,20 @@ function sVox(argument0) {
 	if (string_pos("latta",nl)>0) return(asset_get_index("mVoxLatta"+string(global.sat[23])));
 	if (string_pos("vitale",nl)>0) return(asset_get_index("mVoxVitale"+string(global.sat[24])));
 	if (string_pos("brimley",nl)>0) return(asset_get_index("mVoxBrimley"+string(global.sat[25])));
-	if (string_pos("juwanna",nl)>0) return(asset_get_index("mVoxJuwanna"+string(global.sat[26])));
+	if (string_pos("juwanna",nl)>0 || string_pos("juwina",nl)>0) return(asset_get_index("mVoxJuwanna"+string(global.sat[26]))); //the game also spells her Juwina
 	if (string_pos("3000",nl)>0) return(asset_get_index("mVoxMr3000"+string(global.sat[27])));
 	if (string_pos("boyardee",nl)>0) return(asset_get_index("mVoxChef"+string(global.sat[28])));
 	if (string_pos("hundley",nl)>0 || string_pos("hughley",nl)>0) return(asset_get_index("mVoxHundley"+string(global.sat[29])));
-	//every other NAMED speaker: stable hash-interpolated voice from the
-	//generic pool (nameless narration stays silent)
-	var vh;
+	//every other NAMED speaker: stable hash-interpolated voice, drawn from the
+	//pool matching their name's class (nameless narration stays silent)
+	var vh, vc;
 	vh=sVoxHash(nl);
 	if (vh<0) return(-1);
+	vc=sVoxClass(nl);
+	if (vc=1) return(asset_get_index("mVoxNpcF"+string(vh mod 4)));
+	if (vc=2) return(asset_get_index("mVoxNpcK"+string(vh mod 2)));
+	if (vc=3) return(asset_get_index("mVoxNpcM"+string(vh mod 3)));
+	if (vc=4) return(asset_get_index("mVoxNpcR"+string(vh mod 2)));
 	return(asset_get_index("mVoxNpc"+string(vh mod 12)));
 
 
