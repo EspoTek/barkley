@@ -61,8 +61,12 @@ npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac                   
   scripts `cine_0000`–`cine_0490`; `oCinema` dispatches via `script_execute`.
   `sS`/`sBItemComm`/`sItemUseComm` replace other dynamic-code sites.
 - **Display**: persistent `oDisplay` object (created in oController's Game Start)
-  presents the 320×240 application surface: Post-Draw blit, nearest-neighbour,
-  mode from `global.sat[0]` (0 = fit window/aspect, 1 = strict integer + borders).
+  presents the 320×240 application surface: Draw-GUI blit (black rect + surface),
+  nearest-neighbour, mode from `global.sat[0]` (0 = fit window/aspect, 1 = strict
+  integer + borders). NOT Post Draw: the 2026 runtime auto-presents the
+  application surface over anything drawn there (even with
+  application_surface_draw_enable(false)), and application_set_position was
+  removed; the GUI layer composites after the auto-present, so it always wins.
   Fullscreen = `global.sat[1]` (applied in its Step). Room view ports are normalized
   to native view size. Settings row "SCALING" = the mode toggle; config persists
   via `sConfig` (config.txt).
@@ -104,8 +108,9 @@ NEXT (roughly in order):
    and text-speed settings, Al Bhed language mode, battles (esp. the 4 enemies
    with materialized particle objects: oBWhistle/oBMech/oBMutantballer/
    oBSlamspectre), shops, the RomTest settings-apply flow, Gameover, credits.
-2. **Integer-scaling QA** — toggle SCALING to Integer, verify black borders and
-   whole-number scale at several window sizes and in fullscreen.
+2. **Integer-scaling QA** — windowed verified (borders + whole-number scale at
+   several sizes, live resize OK) after moving presentation to Draw GUI;
+   fullscreen integer still unverified.
 3. **Gamepad QA** — bridge is implemented but UNTESTED with hardware
    (objects/oDisplay/Step_1.gml). Verify with a real controller, tune stick
    threshold, consider a second pad ignore/selection policy.

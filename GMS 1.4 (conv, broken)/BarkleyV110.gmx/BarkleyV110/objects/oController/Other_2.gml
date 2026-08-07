@@ -9,7 +9,8 @@ randomise();
 if (environment_get_variable("BARKLEY_AUTOQA") != "") instance_create(0,0,oAutoQA);
 // Port: build the original bitmap fonts before anything can draw text.
 sFontInit();
-// Display scaling (port): render at native 320x240, composite ourselves (see Post Draw)
+// Display scaling (port): render at native 320x240; oDisplay's Draw GUI
+// event letterboxes it into the window (fit or integer mode)
 global.integer_scale = 0; // 0 = fill window (aspect kept), 1 = integer scale + black border
 application_surface_draw_enable(false);
 //Make paths
