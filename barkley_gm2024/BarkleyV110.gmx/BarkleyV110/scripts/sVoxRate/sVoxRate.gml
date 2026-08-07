@@ -10,6 +10,18 @@ function sVoxRate(argument0) {
 	if (string_pos("hoopz",nl)>0) return(42);
 	if (string_pos("jordan",nl)>0) return(95);
 	if (string_pos("balthios",nl)>0) return(95);
+	if (string_pos("dwarf",nl)>0) return(85);
+	if (string_pos("vince",nl)>0) return(65);
+	if (string_pos("hellbane",nl)>0) return(80);
+	if (string_pos("lebron",nl)>0) return(60);
+	if (string_pos("garnett",nl)>0) return(48);
+	if (string_pos("latta",nl)>0) return(45);
+	if (string_pos("vitale",nl)>0) return(35);
+	if (string_pos("brimley",nl)>0) return(115);
+	if (string_pos("juwanna",nl)>0) return(50);
+	if (string_pos("3000",nl)>0) return(55);
+	if (string_pos("boyardee",nl)>0) return(70);
+	if (string_pos("hundley",nl)>0 || string_pos("hughley",nl)>0) return(80);
 	return(55);
 
 

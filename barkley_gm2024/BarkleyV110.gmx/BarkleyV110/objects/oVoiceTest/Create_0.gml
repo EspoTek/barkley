@@ -1,28 +1,37 @@
-// VOICE TEST screen (port addition). Hidden dev tool for auditioning the
-// "Realistic Voice Acting" dialogue bloops: created at game start only when
+// VOICE TEST screen (port addition). Hidden casting studio for the
+// "Realistic Voice Acting" bloops: created at game start only when
 // BARKLEY_VOICETEST is set in the environment (same pattern as oAutoQA).
-// F9 toggles it anywhere; picks write straight to sat[15..18] and autosave,
-// so a chosen voice is immediately live in real dialogue too.
+// F9 toggles it. A 4x4 grid of the major cast's portraits (sFaces frames);
+// arrow/hover to select, Z/click to hear that character's sample sentence
+// at their own cadence. V cycles the variant for the four variant-having
+// leads and autosaves the pick, so choices go live in real dialogue.
 depth=-1000;
 open=1; //the flag means you came here to test: start open
 cur=0;
-vch[0]="BARKLEY"; vch[1]="HOOPZ"; vch[2]="JORDAN"; vch[3]="BALTHIOS";
-vsat[0]=15; vsat[1]=16; vsat[2]=17; vsat[3]=18;
-vname[0]="mVoxBarkley"; vname[1]="mVoxHoopz"; vname[2]="mVoxJordan"; vname[3]="mVoxBalthios";
-//variant captions: measured basis from the real voice samples (f0 dominant mode)
-vdesc[0,0]="'93 interview  123Hz";
-vdesc[0,1]="TNT-era deep  100Hz";
-vdesc[0,2]="extra deep  85Hz";
-vdesc[1,0]="Fresh Prince '90  147Hz bright";
-vdesc[1,1]="energetic  160Hz snappy";
-vdesc[1,2]="smoother  135Hz";
-vdesc[2,0]="ref interview  90Hz slow";
-vdesc[2,1]="deeper  78Hz slow";
-vdesc[2,2]="brighter  105Hz slow";
-vdesc[3,0]="'03 rookie  120Hz";
-vdesc[3,1]="brighter heir  135Hz";
-vdesc[3,2]="warmer  105Hz";
+//grid order: leads, party, then the famous guest cast
+vnm[0]="CHARLES BARKLEY"; vfc[0]=4;  vk[0]="barkley";
+vnm[1]="HOOPZ";           vfc[1]=1;  vk[1]="hoopz";
+vnm[2]="MICHAEL JORDAN";  vfc[2]=3;  vk[2]="jordan";
+vnm[3]="BALTHIOS";        vfc[3]=2;  vk[3]="balthios";
+vnm[4]="CYBERDWARF";      vfc[4]=6;  vk[4]="dwarf";
+vnm[5]="VINCEBORG";       vfc[5]=13; vk[5]="vince";
+vnm[6]="HELLBANE";        vfc[6]=10; vk[6]="hellbane";
+vnm[7]="LEBRON JAMES";    vfc[7]=11; vk[7]="lebron";
+vnm[8]="KEVIN GARNETT";   vfc[8]=20; vk[8]="garnett";
+vnm[9]="IVORY LATTA";     vfc[9]=22; vk[9]="latta";
+vnm[10]="DICK VITALE";    vfc[10]=23; vk[10]="vitale";
+vnm[11]="WILFORD BRIMLEY"; vfc[11]=27; vk[11]="brimley";
+vnm[12]="JUWANNA MANN";   vfc[12]=17; vk[12]="juwanna";
+vnm[13]="MR 3000";        vfc[13]=26; vk[13]="3000";
+vnm[14]="CHEF BOYARDEE";  vfc[14]=25; vk[14]="boyardee";
+vnm[15]="HUNDLEY";        vfc[15]=16; vk[15]="hundley";
+//the four leads keep 3 selectable variants in sat[15..18]; the rest are fixed
+for (vi=0; vi<16; vi+=1) vvar[vi]=1;
+vvar[0]=3; vvar[1]=3; vvar[2]=3; vvar[3]=3;
+//layout: portraits are 48x49, native-size grid
+gx0=28; gy0=18; gcw=66; gch=51;
 playing=0; //bloops left in the current sample sentence
 pt=0;      //frames until next bloop
+pvb=2;     //frames per bloop for the sentence being played
 plsnd=-1;
 pw=0;

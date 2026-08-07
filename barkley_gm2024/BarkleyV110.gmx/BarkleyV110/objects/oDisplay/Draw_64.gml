@@ -24,6 +24,10 @@ if (mode >= 1) {
 }
 var ox = (ww - dw) div 2;
 var oy = (wh - dh) div 2;
+//port: publish the blit rect so overlays (oVoiceTest) can map window mouse
+//coords back to 320x240 game space under this custom letterboxing
+global.disp_ox = ox; global.disp_oy = oy;
+global.disp_dw = dw; global.disp_dh = dh;
 // the game leaves draw alpha/colour in fade states; neutralize for the blit
 var pa = draw_get_alpha();
 var pc = draw_get_color();
