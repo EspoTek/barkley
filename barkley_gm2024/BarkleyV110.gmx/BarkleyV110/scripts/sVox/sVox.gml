@@ -23,7 +23,12 @@ function sVox(argument0) {
 	if (string_pos("3000",nl)>0) return(asset_get_index("mVoxMr3000"+string(global.sat[27])));
 	if (string_pos("boyardee",nl)>0) return(asset_get_index("mVoxChef"+string(global.sat[28])));
 	if (string_pos("hundley",nl)>0 || string_pos("hughley",nl)>0) return(asset_get_index("mVoxHundley"+string(global.sat[29])));
-	return(-1);
+	//every other NAMED speaker: stable hash-interpolated voice from the
+	//generic pool (nameless narration stays silent)
+	var vh;
+	vh=sVoxHash(nl);
+	if (vh<0) return(-1);
+	return(asset_get_index("mVoxNpc"+string(vh mod 12)));
 
 
 }

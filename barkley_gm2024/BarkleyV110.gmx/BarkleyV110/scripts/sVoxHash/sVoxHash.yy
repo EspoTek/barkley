@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"sVoxHash",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"sVoxHash",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

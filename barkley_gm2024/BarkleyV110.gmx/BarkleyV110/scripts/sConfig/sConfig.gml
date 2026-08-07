@@ -44,8 +44,10 @@ function sConfig(argument0) {
 	//user's audition picks (2026-08-07). sat[19..29]=extended cast variants:
 	//19=Cyberdwarf 20=Vinceborg 21=Lebron 22=Garnett 23=Latta 24=Vitale
 	//25=Brimley 26=Juwanna 27=Mr3000 28=Chef 29=Hundley
-	tdef[15]=1; tdef[16]=1; tdef[17]=0; tdef[18]=2;
+	//(all fifteen are the user's saved audition picks, 2026-08-07)
+	tdef[15]=1; tdef[16]=1; tdef[17]=1; tdef[18]=2;
 	for (tcl=19; tcl<=29; tcl+=1) tdef[tcl]=0;
+	tdef[19]=1; tdef[20]=2; tdef[21]=1; tdef[27]=2;
 	for (tcl=15; tcl<=29; tcl+=1) {
 	if (arg=0) global.sat[tcl]=tdef[tcl];
 	else if (arg=1) { file_text_write_real(tfl,global.sat[tcl]); file_text_writeln(tfl); }

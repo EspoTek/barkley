@@ -24,6 +24,10 @@ function sVoxRate(argument0) {
 	if (string_pos("3000",nl)>0) return(55);
 	if (string_pos("boyardee",nl)>0) return(70);
 	if (string_pos("hundley",nl)>0 || string_pos("hughley",nl)>0) return(80);
+	//hash-voiced NPCs also get a stable hash-flavoured pace (55-95ms)
+	var vh;
+	vh=sVoxHash(nl);
+	if (vh>=0) return(55+((vh div 12) mod 41));
 	return(55);
 
 
