@@ -42,6 +42,16 @@ global.timpx=0;   //read one line before timpy in oIntro0's alarm[0], same story
 //GameMaker 2024 raises once per frame.
 global.duergar=0;
 global.genie=0;
+//port: Cuchulainn maze door timers.  Only oItem0g (placed in RomCuchMain, the
+//room before the maze) initialises these, and sFileData never saves them -- so
+//loading a save taken past the hub and walking back into RomCuchMaze read them
+//unset.  GM6 read 0 and the doors were simply shut; GameMaker 2024 raises in
+//oMaze1's Step.  oItem0g still re-initialises them on the forward path.
+global.cour[0]=0;
+global.cour[1]=0;
+global.cour[2]=0;
+global.cour[3]=0;
+global.cour[4]=0;
 global.b_music=mBattle; //Battle music
 global.b_back=0; //Battle background
 global.b_resume=-1; //For resuming music
