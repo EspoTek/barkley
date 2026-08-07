@@ -10,7 +10,7 @@ draw_set_alpha(fff);
 draw_set_font(Arial12);
 draw_set_color(c_white);
 h=cou-abs(1-fade);
-if (h=-1) h=3;
+if (h=-1) h=4; //index of the LAST quote: h=-1 is the fade-out after cou wraps to 0
 draw_text_ext(160,220,string_hash_to_newline(quote[h]),-1,230);
 draw_set_alpha(1);
 draw_set_halign(fa_right);
