@@ -29,7 +29,7 @@ vnm[15]="HUNDLEY";        vfc[15]=16; vk[15]="hundley";
 for (vi=0; vi<16; vi+=1) vvar[vi]=1;
 vvar[0]=3; vvar[1]=3; vvar[2]=3; vvar[3]=3;
 //layout: portraits are 48x49, native-size grid
-gx0=28; gy0=18; gcw=66; gch=51;
+gx0=28; gy0=14; gcw=66; gch=51;
 playing=0; //bloops left in the current sample sentence
 pt=0;      //frames until next bloop
 pvb=2;     //frames per bloop for the sentence being played
