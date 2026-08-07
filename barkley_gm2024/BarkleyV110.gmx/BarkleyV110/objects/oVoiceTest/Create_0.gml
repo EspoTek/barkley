@@ -36,5 +36,6 @@ gx0=28; gy0=14; gcw=66; gch=51;
 playing=0; //bloops left in the current sample sentence
 pt=0;      //frames until next bloop
 pvb=2;     //frames per bloop for the sentence being played
+ppm=1;     //pitch multiplier for the sentence being played (sVoxPitch)
 plsnd=-1;
 pw=0;

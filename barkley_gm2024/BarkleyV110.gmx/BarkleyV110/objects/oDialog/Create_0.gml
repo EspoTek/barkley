@@ -41,4 +41,5 @@ vres=0;
 vsnd=-1;
 vlast=0;
 vrate=55; //ms between bloops; sVoxRate + line gravity set it at first reveal
+vpmul=1; //per-speaker pitch multiplier (sVoxPitch)
 vq=0; //queued trailing notes (instant-reveal burst)

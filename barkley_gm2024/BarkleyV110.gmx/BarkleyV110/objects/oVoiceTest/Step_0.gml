@@ -22,6 +22,7 @@ if (mouse_check_button_pressed(mb_left)) vplay=1;
 if (vplay=1) {
 plsnd=sVox(vk[cur]); //leads resolve their sat[15..18] variant inside sVox
 pvb=max(1,round(sVoxRate(vk[cur])/33));
+ppm=sVoxPitch(vk[cur]);
 playing=14; pw=0; pt=0;
 }
 if (keyboard_check_pressed(ord("V"))) {
@@ -34,7 +35,7 @@ pt-=1;
 if (pt<=0) {
 pw+=1;
 if (pw mod 4=0) pt=pvb+3; else pt=pvb;
-if (plsnd>=0) audio_play_sound(plsnd,10,false,0.85,0,0.94+random(0.12));
+if (plsnd>=0) audio_play_sound(plsnd,10,false,0.85,0,ppm*(0.94+random(0.12)));
 playing-=1;
 }
 }
