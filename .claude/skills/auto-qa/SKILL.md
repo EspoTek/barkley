@@ -9,7 +9,7 @@ user-invocable: true
 Drives `tools/autoqa.sh` and works each finding through to a committed fix.
 
 Working dir for everything below:
-`Modern port (GameMaker 2024, working)/BarkleyV110.gmx/BarkleyV110`
+`barkley_gm2024/BarkleyV110.gmx/BarkleyV110`
 
 ## The loop
 
@@ -107,7 +107,7 @@ If it still crashes, it was never (a) — treat it as (c).
 
 **(b) Genuinely unreachable dead code.** The identifier is never assigned
 anywhere, or its guard can never be true. Confirm against the GM6 ground truth
-(`GM 6.1/BarkleyV110.gm6`, plaintext — grep it) before concluding. Comment it
+(`barkley_gm6/BarkleyV110.gm6`, plaintext — grep it) before concluding. Comment it
 out with a note explaining why, as with `sBClock` in `oBTimer`. Do not delete.
 
 **(c) A real bug.** Fix it. The usual cause is GM6 treat-uninitialised-as-0

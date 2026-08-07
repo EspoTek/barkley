@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  PROJECT_DIR: Modern port (GameMaker 2024, working)/BarkleyV110.gmx/BarkleyV110
+  PROJECT_DIR: barkley_gm2024/BarkleyV110.gmx/BarkleyV110
 
 jobs:
   deploy:
@@ -40,7 +40,6 @@ jobs:
         working-directory: ${{ env.PROJECT_DIR }}
         run: |
           npx @gamemaker/gm-cli@latest package BarkleyV110.yyp \
-            --cache-dir "$RUNNER_TEMP/gmcache" \
             --target operagx --verbose \
             -o "${{ github.workspace }}/web.zip"
 

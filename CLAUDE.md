@@ -13,12 +13,12 @@ asks in the current conversation. `upstream` → sanlor/Barkley1_Original
 
 ## Layout
 
-- `GM 6.1/BarkleyV110.gm6` — **ground truth**. GM6 file, code stored as plaintext;
+- `barkley_gm6/BarkleyV110.gm6` — **ground truth**. GM6 file, code stored as plaintext;
   when unsure what original code said, `strings`/search this file (it's v1.09/1.10,
   the final 2008 build; v1.20 from 2014 added only the two sound fixes, already applied).
-- `Modern port (GameMaker 2024, working)/BarkleyV110.gmx/` — repaired GMS 1.4 source tree
+- `barkley_gm2024/BarkleyV110.gmx/` — repaired GMS 1.4 source tree
   (reference only; no longer the build tree).
-- `Modern port (GameMaker 2024, working)/BarkleyV110.gmx/BarkleyV110/` — **the live GameMaker 2024
+- `barkley_gm2024/BarkleyV110.gmx/BarkleyV110/` — **the live GameMaker 2024
   project** (`BarkleyV110.yyp`). All fixes go here.
 - `mvc/` inside the .gmx dir — importer staging junk, gitignored-by-exclusion
   (`git add -A ':!*/mvc/*' ':!*/.gmcache/*'`).
@@ -28,7 +28,7 @@ asks in the current conversation. `upstream` → sanlor/Barkley1_Original
 ## Build / run / debug
 
 ```sh
-cd "Modern port (GameMaker 2024, working)/BarkleyV110.gmx/BarkleyV110"
+cd "barkley_gm2024/BarkleyV110.gmx/BarkleyV110"
 npx @gamemaker/gm-cli@latest compile BarkleyV110.yyp --target mac --errors-only  # build
 npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac                    # launch
 ```
