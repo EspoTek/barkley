@@ -54,7 +54,13 @@ jobs:
         shell: bash
         env:
           CERT: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
-        run: echo "ok=${CERT:+true}" >> "$GITHUB_OUTPUT"
+          NOTARY: ${{ secrets.APPLE_APP_PASSWORD }}
+        run: |
+          if [ -n "$CERT" ] && [ -n "$NOTARY" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Sign and notarize (macOS)
         if: matrix.target == 'mac' && steps.cansign.outputs.ok == 'true'
