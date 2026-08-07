@@ -6,13 +6,14 @@
 //   rooms     warp through every room, let each settle so Create/Room Start/Draw run
 //   interact  ...and fire User Event 1 (the talk/open event) on every instance
 //   monkey    ...and mash the bound keys at random for a while in each room
+//   attacks   execute every regular-attack subtype, skill and battle item
 //
 // Most runtime errors are caught in-engine and the sweep carries on; anything
 // that escapes hits the unhandled handler, which logs and ends the process so
 // the shell driver can relaunch and resume past the offending step.
 persistent = true;
 visible = false;
-mode      = environment_get_variable("BARKLEY_AUTOQA");   // rooms | interact | monkey
+mode      = environment_get_variable("BARKLEY_AUTOQA");   // rooms | interact | monkey | attacks
 var _r = environment_get_variable("BARKLEY_AUTOQA_ROOM");
 var _i = environment_get_variable("BARKLEY_AUTOQA_INST");
 ri = (_r == "") ? 0 : real(_r);
@@ -212,6 +213,40 @@ texc       = 0;      // excursions taken in this room, to bound re-entry attempt
 texcri     = -1;     // room index texc belongs to
 qteheld    = -1;     // key held for the current quick-time event, -1 = none
 qtetimer   = 0;      // frame that key went down
+// --- attacks mode state (phase 6/7) -----------------------------------------
+// ri is the character index (0 Barkley, 1 Balthios, 2 Vinceborg, 3 Cyberdwarf,
+// 4 Hoopz), ii the index into that character's attack list, so the driver's
+// FATAL-resume cursor advances through attacks exactly as interact mode does
+// through instances. The list is built per character in phase 6 from
+// global.char_eskill -- the game's own learned-skill array -- after Alarm_0 has
+// granted the full roster through sBattleSkill. Regular attacks are explicit
+// because each character's Attack opens a different real-time input minigame.
+alist      = [];     // ["attack:<subtype>"..., <skills...>, then Barkley items]
+albuilt    = -1;     // which ri the list was built for
+astate     = 0;      // 0 arm battle, 1 wait for menu, 2 executing, 3 verdict
+atimer     = 0;
+aname      = "";     // attack currently in flight, for the verdict line
+acode      = "";     // internal alist entry; preserves attack:/item: dispatch kind
+adispatched= 0;      // set only after the real menu-equivalent branch was armed
+aactor     = noone;  // battler whose turn was dispatched (global.turn later rotates)
+atarget    = noone;  // target resolved in oAutoQA scope, never through nested with
+atargettype= "";
+askillevent= -1;
+askillcost = 0;
+ainputstate= 0;      // state-aware subtype choreography; never blind-repeat forever
+ainputcount= 0;      // bounded edges/shots/retries within the current subtype
+ainputwait = 0;
+achaincase = 0;
+achainlength=0;
+achainstep = 0;
+achainmove = -1;
+achaincur  = 0;
+achainnames= ["Jab", "Kick", "Punch", "Push", "Toss", "Suplex"];
+achaincosts= [7, 9, 11, 15, 18, 21];
+areent     = 0;      // battle re-entries for the current character
+// Battle items, filtered from qa_itemnames by the game's own refItem tBattle
+// flag in phase 6. Exercised once, under Barkley, via the menu's alarm[3] path.
+qa_battleitems = [];
 qaplot     = 0;      // story position for this launch, applied every room
 qavictorian= 0;      // alternate-name / language mode for this launch
 qatext     = 0;      // dialog speed for this launch
@@ -224,6 +259,41 @@ bsustain   = 1;      // 1 = keep the party standing this fight, 0 = let them los
 // cannot leak into the next room and jam its input.
 qa_release = function() {
 	if (held >= 0) { keyboard_key_release(held); held = -1; }
+	if (variable_global_exists("key_up")) {
+		keyboard_key_release(global.key_up);
+		keyboard_key_release(global.key_down);
+		keyboard_key_release(global.key_left);
+		keyboard_key_release(global.key_right);
+		keyboard_key_release(global.key_action);
+		keyboard_key_release(global.key_cancel);
+		keyboard_key_release(global.key_start);
+	}
+};
+// Attack-mode inputs are logged separately from monkey input. This makes a
+// verdict auditable: a regular attack only counts when the log proves the bot
+// pressed and released the subtype's actual bound key(s).
+qa_attack_key = function(_key, _down) {
+	if (_down) keyboard_key_press(_key); else keyboard_key_release(_key);
+	show_debug_message("AUTOQA INPUT f=" + string(timer)
+		+ " room=" + string(ri) + " inst=" + string(max(0, ii - 1))
+		+ " attack=" + aname + " key=" + string(_key)
+		+ " down=" + string(_down));
+};
+qa_cyber_chord = function(_move, _down) {
+	var _fire = global.key_action;
+	if (_move = 1) _fire = global.key_cancel;
+	if (_move = 2) _fire = global.key_start;
+	if (_down) {
+		if (_move = 3) qa_attack_key(global.key_left, 1);
+		if (_move = 4) qa_attack_key(global.key_down, 1);
+		if (_move = 5) qa_attack_key(global.key_right, 1);
+		qa_attack_key(_fire, 1);
+	} else {
+		qa_attack_key(_fire, 0);
+		if (_move = 3) qa_attack_key(global.key_left, 0);
+		if (_move = 4) qa_attack_key(global.key_down, 0);
+		if (_move = 5) qa_attack_key(global.key_right, 0);
+	}
 };
 // Tear down any UI still on screen before moving to the next target. An
 // interaction can leave a shop or menu open -- Hundley's oBonesMenu did exactly

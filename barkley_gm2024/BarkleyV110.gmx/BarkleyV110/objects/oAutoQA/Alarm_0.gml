@@ -12,6 +12,11 @@ sFileData(0);   // new-game init: seeds every global and warps to the start room
 try {
 	for (var c = 0; c <= 4; c += 1) {
 		var want = 1 + irandom(59);
+		// attacks mode wants every level-up skill known and full stat pools, so
+		// the sweep exercises each attack rather than whatever a random level
+		// happens to have taught. Still applied through sBattleLevel so the
+		// stats are ones a real max-level playthrough produces.
+		if (mode = "attacks") want = 60;
 		while (global.char_res1[c] < want) {
 			global.char_res1[c] += 1;
 			var sk = sBattleLevel(c, global.char_res1[c]);
@@ -25,6 +30,37 @@ try {
 } catch (_ex) {
 	show_debug_message("AUTOQA PARTY_FAIL " + string(_ex.message)
 		+ " :: at " + string(_ex.script) + " line " + string(_ex.line));
+}
+
+// attacks mode: grant every battle skill refSkill defines for each character,
+// through sBattleSkill so the game's own dedup and eskill layout apply. Levels
+// cover most of these already; the rest are granted in real play by items and
+// story beats (Snail Zauber from oZauber, Chaff Grenade from oJenkins, the
+// initial sInitChar sets). The names must match refSkill exactly -- a typo here
+// would dispatch event 0 silently, since refSkill leaves c_event untouched for
+// unknown names.
+if (mode = "attacks") {
+	var _grant = [
+		[0, "Doubleteam"], [0, "Showboat Jam"], [0, "Holy Dunk"], [0, "Vampslam"], [0, "Ghost Muscle"],
+		[1, "Ice Zauber"], [1, "Wind Zauber"], [1, "Flame Zauber"], [1, "Water Zauber"],
+		[1, "Snail Zauber"], [1, "Thunder Zauber"], [1, "Muscle Zauber"],
+		[2, "Refractor Beam"],
+		[3, "Dwarven Touch"], [3, "Insulin Shot"], [3, "Dwarf Knowledge"],
+		[3, "Glaucoma Prayer"], [3, "Dwarf Caress"], [3, "Chaff Grenade"],
+		[4, "Gun's Slay"], [4, "TrickGun Assualt"], [4, "Bulletdance"], [4, "Status Shot"]
+	];
+	var _g;
+	for (_g = 0; _g < array_length(_grant); _g += 1) {
+		sBattleSkill(_grant[_g][0], _grant[_g][1]);
+	}
+	// Battle-usable items, by the game's own refItem tBattle flag.
+	var _n = array_length(qa_itemnames);
+	var _i;
+	for (_i = 0; _i < _n; _i += 1) {
+		refItem(qa_itemnames[_i]);
+		if (global.tBattle = 1) array_push(qa_battleitems, qa_itemnames[_i]);
+	}
+	show_debug_message("AUTOQA ATTACKS battleitems=" + string(array_length(qa_battleitems)));
 }
 
 // Built here, not in Create: oController's Game Start creates this object before

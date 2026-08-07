@@ -9,6 +9,7 @@
 #   ./tools/autoqa.sh rooms      # warp through every room, let each settle
 #   ./tools/autoqa.sh interact   # ...and fire User Event 1 on every instance
 #   ./tools/autoqa.sh monkey     # ...and mash the bound keys at random per room
+#   ./tools/autoqa.sh attacks    # execute every battle attack/skill/item per character
 #
 # The party is randomised (level 1-60, stats and skills applied through the
 # game's own level-up path) and kept standing in battle, so combat actually
@@ -87,12 +88,14 @@ if [ "$MODE" = "replay" ]; then
   fi
 
   err=$(grep -E "AUTOQA FATAL|AUTOQA CAUGHT" "$RLOG" | head -6)
+  stall=$(grep -E "AUTOQA ATTACK .*verdict=STALL" "$RLOG" | head -6)
   # A signature match is stronger evidence than room progress: if the original
   # error is gone, that finding is fixed even if the run stopped in the same room.
   if [ -n "$RSIG" ] && ! grep -qF "$RSIG" "$RLOG"; then
     echo "REPLAY: original finding CLEARED -- \"$RSIG\" no longer appears"
-    if [ -n "$err" ]; then
+    if [ -n "$err" ] || [ -n "$stall" ]; then
       echo "$err"
+      echo "$stall"
       echo "        a DIFFERENT error is present -- triage it as a new finding"
       exit 3
     fi
@@ -100,6 +103,7 @@ if [ "$MODE" = "replay" ]; then
   fi
   if [ -n "$RPASS" ] && [ "$cleared" = "0" ]; then
     [ -n "$err" ] && echo "$err"
+    [ -n "$stall" ] && echo "$stall"
     echo "REPLAY: bug still reproduces at room $RPASS"; exit 1
   fi
   if [ -n "$err" ]; then
@@ -110,6 +114,15 @@ if [ "$MODE" = "replay" ]; then
       exit 3
     fi
     echo "REPLAY: bug still reproduces"; exit 1
+  fi
+  if [ -n "$stall" ]; then
+    echo "$stall"
+    if [ "$cleared" = "1" ]; then
+      echo "REPLAY: original finding CLEARED (progressed past room $RPASS)"
+      echo "        but a DIFFERENT STALL appeared further on -- triage it as a new finding"
+      exit 3
+    fi
+    echo "REPLAY: stalled before completing the requested replay"; exit 1
   fi
   if [ "$cleared" = "1" ]; then echo "REPLAY: clean -- progressed past room $RPASS"; exit 0; fi
   echo "REPLAY: no error raised (pass a room index as arg 7 to also prove it got past a hang)"; exit 0
@@ -185,8 +198,19 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
   # errors caught in-engine: the sweep survived these and kept going
   grep "AUTOQA CAUGHT" "$LOG" | sed "s|^[^A]*AUTOQA CAUGHT |CAUGHT [replay: ./tools/autoqa.sh replay $MODE $room $inst $gseed $mseed] |" >> "$OUT"
 
+  # attacks mode: the per-attack verdicts are the deliverable -- keep them all
+  if [ "$MODE" = "attacks" ]; then
+    grep "AUTOQA ATTACK " "$LOG" | sed 's/^[^A]*AUTOQA ATTACK //' >> "$OUT"
+  fi
+
   if [ "$CONTINUE" = "0" ] && grep -q "AUTOQA CAUGHT" "$LOG"; then
     echo "stopping at first finding (AUTOQA_CONTINUE=1 to keep going)" | tee -a "$OUT"
+    break
+  fi
+
+  # a STALL verdict is a wedge, not a pass -- stop and investigate like UNEXPLAINED
+  if [ "$CONTINUE" = "0" ] && grep -q "verdict=STALL" "$LOG"; then
+    echo "stopping at STALL verdict (a wedge, not a crash -- investigate)" | tee -a "$OUT"
     break
   fi
 
@@ -236,7 +260,7 @@ while [ "$launch" -lt "$MAXLAUNCH" ]; do
   r=$(sed -n 's/.*room=\([0-9]*\).*/\1/p' <<<"$step")
   i=$(sed -n 's/.*inst=\([0-9]*\).*/\1/p' <<<"$step")
   [ -n "$r" ] && room="$r"
-  if [ "$MODE" = "interact" ] && [ -n "$i" ]; then
+  if { [ "$MODE" = "interact" ] || [ "$MODE" = "attacks" ]; } && [ -n "$i" ]; then
     inst=$((i+1))
   else
     room=$((room+1)); inst=0
@@ -247,3 +271,9 @@ echo
 echo "report: $OUT"
 echo "caught (survivable): $(grep -c '^CAUGHT' "$OUT")"
 echo "fatal   (killed run): $(grep -c '^FATAL' "$OUT")"
+if [ "$MODE" = "attacks" ]; then
+  echo "attacks: PASS=$(grep -c 'verdict=PASS' "$OUT")" \
+       "ENDED=$(grep -c 'verdict=ENDED' "$OUT")" \
+       "CAUGHT=$(grep -c 'verdict=CAUGHT' "$OUT")" \
+       "STALL=$(grep -c 'verdict=STALL' "$OUT")"
+fi

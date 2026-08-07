@@ -52,7 +52,38 @@ a stitched-together set of partial ones.
 ./tools/autoqa.sh monkey      # rooms + interact + random input (widest coverage)
 ./tools/autoqa.sh rooms       # room entry only, fastest
 ./tools/autoqa.sh interact    # + User Event 1 on every instance
+./tools/autoqa.sh attacks     # every battle attack, skill and battle item, per character
 ```
+
+### attacks mode
+
+Executes every battle action the party can take, one solo-character battle at
+a time: for each of the five characters (cursor `room=` is the character index
+0-4, `inst=` the action index) it arms a sustained oBSlamspectre fight and waits
+for the real oBattleMenu turn. It drives every distinct regular-attack subtype
+with state-aware input (Free Throw's two releases, Stab Dash's prompts, Rapid
+Fire's five edges, and so on). Cyberdwarf gets 20 deterministic monkey cases;
+each proves two recorded Jab/Kick/Punch strikes followed by a recorded Push,
+Toss, or Suplex without exceeding the combo meter budget. It then dispatches
+every skill in `global.char_eskill` (Alarm_0 first grants the full refSkill
+roster through `sBattleSkill`, with everyone levelled to 60 through
+`sBattleLevel`), then -- under Barkley only -- every item `refItem` flags
+`tBattle=1`. That is 70 cases in one complete sweep.
+
+Dispatch mirrors oBattleMenu's own confirm branches per targeting shape
+(`Self`/`Enemy`/`Ally`/`All Foe`/`All Ally`, the `attack=1` minigame, the item
+`alarm[3]` path and the Golden Potato special case), so it exercises the genuine
+execution path.
+
+Per-attack verdicts land in the report as `char=<name> name=<attack>
+verdict=...`: `PASS` (menu came back for the next turn), `ENDED` (executed but
+the battle concluded -- an instant-kill effect; the sweep re-arms and carries
+on), `CAUGHT` (in-engine error -- a real finding), `STALL`/`STALL-NOMENU` (60s/
+30s wedge), or `STALL-CHAIN-*` (a Cyberdwarf chord, meter budget, or planned
+chain failed). Treat every STALL like UNEXPLAINED, never a pass. FATALs resume
+at the next action via the usual cursor. Both sides of the fight are sustained
+(`_vp`, and `_bp` for the party) so neither a wipe nor a kill cuts the list
+short.
 
 `BARKLEY_AUTOQA_FRAMES` sets monkey time per room (600 frames ≈ 20s at 30fps).
 Wall clock is that times ~127 rooms, so 20s ≈ 45min, 90s ≈ 3.2h, 300s ≈ 10.6h.

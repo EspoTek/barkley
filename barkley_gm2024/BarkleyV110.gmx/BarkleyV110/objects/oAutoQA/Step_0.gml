@@ -18,13 +18,24 @@ if ((timer mod 60) = 0) {
 // flow -- could never run. Sustain most fights so they last long enough to
 // exercise turn order, skills and items; let the rest be lost on purpose.
 if (instance_exists(oBCamera)) {
-	if (inbattle = 0) {
-		inbattle  = 1;
-		bsustain  = ((qa_next() mod 5) != 0);   // 4 in 5 survivable, 1 in 5 a wipe
-		show_debug_message("AUTOQA BATTLE start sustain=" + string(bsustain));
-	}
-	if (bsustain && instance_exists(oBattler)) {
-		with (oBattler) { if (enemy = 0) _vp = _rvp; }
+	if (mode = "attacks") {
+		// Attacks mode wants one long battle per character, so sustain BOTH
+		// sides: the party so a counterattack cannot end the run, the enemies
+		// so a strong skill cannot end the fight two attacks into the list.
+		// Instant-kill effects set `kill` rather than draining _vp; those still
+		// end the battle, and phase 7 re-enters and carries on down the list.
+		if (instance_exists(oBattler)) {
+			with (oBattler) { _vp = _rvp; if (enemy = 0) _bp = _rbp; }
+		}
+	} else {
+		if (inbattle = 0) {
+			inbattle  = 1;
+			bsustain  = ((qa_next() mod 5) != 0);   // 4 in 5 survivable, 1 in 5 a wipe
+			show_debug_message("AUTOQA BATTLE start sustain=" + string(bsustain));
+		}
+		if (bsustain && instance_exists(oBattler)) {
+			with (oBattler) { if (enemy = 0) _vp = _rvp; }
+		}
 	}
 } else {
 	inbattle = 0;
@@ -58,7 +69,9 @@ if (instance_exists(oQuicker)) {
 }
 if (qteheld >= 0) { keyboard_key_release(qteheld); qteheld = -1; }
 
-if (ri >= nrooms) {
+if (mode = "attacks" && phase = 1) phase = 6;      // ri is a character, not a room
+
+if (mode != "attacks" && ri >= nrooms) {
 	show_debug_message("AUTOQA DONE caught=" + string(crashes));
 	game_end();
 	exit;
@@ -388,6 +401,489 @@ if (phase = 4) {                                   // monkey: biased walk + taps
 			mstuckcool = timer + 12;
 			mstill     = 0;
 		}
+	}
+	exit;
+}
+
+if (phase = 6) {                                   // attacks: arm a solo-character battle
+	if (ri > 4) {
+		show_debug_message("AUTOQA DONE caught=" + string(crashes));
+		game_end();
+		exit;
+	}
+	if (albuilt != ri) {
+		// Each regular-attack subtype is a separate case. Selecting Attack only
+		// opens a real-time input minigame; Action/Cancel/Start/directions choose
+		// materially different moves, so one generic "Attack" is not coverage.
+		if (ri = 0) {
+			alist = ["attack:Free Throw", "attack:Pass", "attack:Forward Jumper",
+				"attack:Jumper", "attack:Fadeaway Jumper"];
+		} else if (ri = 1) {
+			alist = ["attack:Zauber Slash", "attack:Stab Dash", "attack:Zeta Scan"];
+		} else if (ri = 2) {
+			alist = ["attack:Eye Laser"];
+		} else if (ri = 3) {
+			// Cyberdwarf's regular attack is a combo system, not six isolated
+			// buttons. Twenty deterministic monkey chains exercise ordering,
+			// meter growth, repeated strikes and directional finishers.
+			alist = [
+				"attack:Combo Monkey 01", "attack:Combo Monkey 02",
+				"attack:Combo Monkey 03", "attack:Combo Monkey 04",
+				"attack:Combo Monkey 05", "attack:Combo Monkey 06",
+				"attack:Combo Monkey 07", "attack:Combo Monkey 08",
+				"attack:Combo Monkey 09", "attack:Combo Monkey 10",
+				"attack:Combo Monkey 11", "attack:Combo Monkey 12",
+				"attack:Combo Monkey 13", "attack:Combo Monkey 14",
+				"attack:Combo Monkey 15", "attack:Combo Monkey 16",
+				"attack:Combo Monkey 17", "attack:Combo Monkey 18",
+				"attack:Combo Monkey 19", "attack:Combo Monkey 20"
+			];
+		} else {
+			alist = ["attack:Accurate Shot", "attack:Rapid Fire", "attack:Mega Shot"];
+		}
+		// Skills come straight from the game's own eskill array (Alarm_0 granted
+		// the full refSkill roster through sBattleSkill), followed by battle items
+		// under Barkley so item execution is covered once rather than five times.
+		var _k;
+		for (_k = 0; global.char_eskill[ri, _k] != ""; _k += 1) {
+			array_push(alist, global.char_eskill[ri, _k]);
+		}
+		if (ri = 0) {
+			for (_k = 0; _k < array_length(qa_battleitems); _k += 1) {
+				array_push(alist, "item:" + qa_battleitems[_k]);
+			}
+		}
+		albuilt = ri;
+		show_debug_message("AUTOQA ATTACKS char=" + string(global.char_name[ri])
+			+ " attacks=" + string(array_length(alist)) + " from=" + string(ii));
+	}
+	if (ii >= array_length(alist)) { ri += 1; ii = 0; albuilt = -1; areent = 0; exit; }
+	// The same leftover-transition state phase 1 clears before warping.
+	if (variable_global_exists("cinema")) global.cinema = 0;
+	if (variable_global_exists("freeze")) global.freeze = 0;
+	if (variable_global_exists("posser")) global.posser = -1;
+	if (variable_global_exists("roz"))    global.roz    = -1;
+	if (variable_global_exists("roomer")) global.roomer = -1;
+	qa_state();
+	// qa_state rolled a random roster; pin it to just this character so every
+	// launch fights the same fight and it is always this character's turn next.
+	global.party[0] = -1;
+	sParty("add", ri);
+	global.char_chp[ri] = global.char_hp[ri];
+	global.char_czp[ri] = global.char_zp[ri];
+	show_debug_message("AUTOQA STEP room=" + string(ri) + " name=" + string(global.char_name[ri])
+		+ " inst=" + string(ii) + " phase=arm");
+	try {
+		room_goto(RomInter);
+	} catch (_ex) {
+		crashes += 1;
+		show_debug_message("AUTOQA CAUGHT room=RomInter obj=<room_goto>"
+			+ " :: " + string(_ex.message) + " :: at " + string(_ex.script) + " line " + string(_ex.line));
+	}
+	qa_release();
+	roomtimer = 0;
+	astate = 1; atimer = 0;
+	phase = 7;
+	exit;
+}
+
+if (phase = 7) {                                   // attacks: drive the list
+	if (room != RomInter) {
+		// The battle concluded (an instant-kill sets `kill`, which sustain
+		// leaves alone) or something ejected us. The cursor advanced when the
+		// attack was dispatched, so re-arming continues down the list.
+		if (astate = 2) {
+			show_debug_message("AUTOQA ATTACK char=" + string(global.char_name[ri])
+				+ " name=" + aname + " verdict=ENDED");
+		}
+		qa_release();
+		areent += 1;
+		if (areent > 40) {
+			show_debug_message("AUTOQA ATTACKS giving up on char=" + string(global.char_name[ri])
+				+ " after " + string(areent) + " re-entries");
+			ri += 1; ii = 0; albuilt = -1; areent = 0;
+		}
+		phase = 6;
+		exit;
+	}
+		if (astate = 1) {                              // wait for the menu on our turn
+			atimer += 1;
+			if (ii >= array_length(alist)) {
+				// The final case completed; phase 6 owns advancing to the next
+				// character and rebuilding its differently sized list.
+				phase = 6;
+				exit;
+			}
+			if (atimer > 900) {                        // 30s with no menu = a wedge
+			show_debug_message("AUTOQA ATTACK char=" + string(global.char_name[ri])
+				+ " name=" + string(alist[ii]) + " verdict=STALL-NOMENU");
+			game_end();                            // driver stops on the verdict
+			exit;
+		}
+		if (!instance_exists(oBattleMenu)) exit;
+		if (oBattleMenu.state != "names") exit;
+		if (!instance_exists(global.turn)) exit;
+		if (global.turn.enemy != 0) exit;
+			var _code = alist[ii];
+			var _isregular = (string_copy(_code, 1, 7) = "attack:");
+			var _isitem = (string_copy(_code, 1, 5) = "item:");
+			acode = _code;
+			if (_isregular) aname = string_delete(_code, 1, 7);
+			else if (_isitem) aname = string_delete(_code, 1, 5);
+			else aname = _code;
+				show_debug_message("AUTOQA STEP room=" + string(ri) + " name=" + string(global.char_name[ri])
+					+ " inst=" + string(ii) + " obj=" + aname + " phase=attack");
+			aactor = global.turn;
+			atarget = noone;
+			atargettype = "";
+			askillevent = -1;
+			askillcost = 0;
+			if (_isregular) {
+				atarget = sEnemyTarget("random", 1);
+			} else if (!_isitem) {
+				// Resolve refSkill and any target here, in oAutoQA scope. Assigning
+				// an outer local from inside a nested `with` was the original silent
+				// failure that left Barkley sitting in postattack without executing.
+				refSkill(aname);
+				atargettype = global.c_target;
+				askillevent = global.c_event;
+				askillcost = global.c_mp;
+				if (atargettype = "Enemy") atarget = sEnemyTarget("random", 1);
+				else if (atargettype = "Ally" || atargettype = "Self") atarget = aactor;
+			}
+			var _targetrequired = _isregular || atargettype = "Enemy"
+				|| atargettype = "Ally" || atargettype = "Self";
+			if (!instance_exists(aactor)
+				|| (_targetrequired && !instance_exists(atarget))) {
+				show_debug_message("AUTOQA FATAL room=RomInter obj=" + aname
+					+ " :: dispatch could not resolve actor/target before cursor advance");
+				game_end();
+				exit;
+			}
+			// Advance the cursor at dispatch, not completion: if execution kills the
+		// process, the driver's resume lands on the NEXT attack, mirroring how
+		// the other modes step one past the position that died.
+		ii += 1;
+		adispatched = 0;
+		try {
+			if (_isitem) {
+				var _it = aname;
+				sItem(_it, 1);              // ensure it is in the bag; alarm[3] consumes one
+				if (_it = "Golden Potato") {
+					// The menu's own special case never reaches alarm[3].
+					with (oBattleMenu) {
+						instance_create(0, 0, oBHiratio);
+						state = "pause"; dname = 1; dene = 1; ditem = 0; dskill = 0; ddesc = 0;
+						global.descriptor = "Potato Chaos";
+						oBattler.hilight = 0;
+						other.adispatched = 1;
+					}
+				} else {
+					// Mirrors the menu's item-confirm branch: target the solo ally,
+					// swap to the item pose, and fire the menu's item alarm.
+					with (oBattleMenu) {
+						action = "Item"; ection = other.aname;
+						other.aactor.target = other.aactor;
+						oBattler.hilight = 0; oBattler.selecte = 0;
+						other.aactor.sprite_index = other.aactor.item;
+						alarm[3] = 5;
+						state = "wait";
+						other.adispatched = 1;
+					}
+				}
+			} else if (_isregular) {
+				// Mirrors the menu's Attack confirm with the actor and target already
+				// resolved in oAutoQA scope.
+				with (oBattleMenu) {
+					other.aactor.target = other.atarget;
+					other.aactor.attack = 1;
+					global.b_obj = other.aactor;
+					oBattler.hilight = 0; oBattler.selecte = 0;
+					inf = 0; pos1 = 0;
+					state = "postattack";
+					other.adispatched = 1;
+				}
+			} else {
+				// Mirrors the menu's skill dispatch for each targeting shape.
+				with (oBattleMenu) {
+					action = other.aname;
+					cost = other.askillcost;
+					var _pt = other.atargettype;
+					if (_pt = "Self" || _pt = "All Foe" || _pt = "All Ally") {
+						global.b_obj = other.aactor;
+						if (_pt = "Self") other.aactor.target = other.aactor;
+						other.aactor.exec = other.askillevent;
+						oBattler.hilight = 0;
+						other.aactor._bp -= cost;
+						global.descriptor = action;
+						state = "wait";
+						other.adispatched = 1;
+					} else {
+						other.aactor.target = other.atarget;
+						oBattler.hilight = 0; oBattler.selecte = 0;
+						other.aactor._bp -= cost;
+						other.aactor.exec = other.askillevent;
+						global.b_obj = other.aactor;
+						state = "wait";
+						other.adispatched = 1;
+					}
+				}
+			}
+		} catch (_ex) {
+			crashes += 1;
+			show_debug_message("AUTOQA CAUGHT room=RomInter obj=" + aname
+				+ " :: " + string(_ex.message) + " :: at " + string(_ex.script) + " line " + string(_ex.line));
+			show_debug_message("AUTOQA ATTACK char=" + string(global.char_name[ri])
+				+ " name=" + aname + " verdict=CAUGHT");
+			astate = 1; atimer = 0;
+			exit;
+		}
+		if (!adispatched) {
+			crashes += 1;
+			show_debug_message("AUTOQA CAUGHT room=RomInter obj=" + aname
+				+ " :: dispatch found no live target or menu");
+			show_debug_message("AUTOQA ATTACK char=" + string(global.char_name[ri])
+				+ " name=" + aname + " verdict=CAUGHT");
+			astate = 1; atimer = 0;
+			exit;
+		}
+			qa_release();
+			ainputstate = 0; ainputcount = 0; ainputwait = 0;
+			if (string_copy(aname, 1, 12) = "Combo Monkey") {
+				if (!instance_exists(oBComboMeter)) {
+					show_debug_message("AUTOQA FATAL room=RomInter obj=" + aname
+						+ " :: Cyberdwarf combo meter was not created");
+					game_end();
+					exit;
+				}
+				achaincase = ii - 1;
+				// Two randomized/cycled strikes plus a finisher form a real chain while
+				// staying below the combo meter's strict 55-point budget in every case.
+				achainlength = 3;
+				achainstep = 0; achainmove = -1; achaincur = 0;
+				show_debug_message("AUTOQA CHAIN attack=" + aname
+					+ " length=" + string(achainlength));
+			}
+			astate = 2; atimer = 0;
+		exit;
+		}
+		if (astate = 2) {                              // execution in flight
+			atimer += 1;
+			var _regular = (string_copy(acode, 1, 7) = "attack:");
+			if (_regular && instance_exists(aactor)) {
+				// One state-aware input sequence per subtype. No modulo retries: an
+				// edge is sent only when the battler reports the matching ready state.
+				var _cyberchain = (string_copy(aname, 1, 12) = "Combo Monkey");
+				if (_cyberchain) {
+					if (!instance_exists(oBComboMeter)) {
+						show_debug_message("AUTOQA ATTACK char=" + string(global.char_name[ri])
+							+ " name=" + aname + " verdict=STALL-CHAIN-METER");
+						game_end();
+						exit;
+					}
+					// Each chain has at least two strikes and ends with a directional
+					// finisher. The first strike and finisher cycle across the six moves;
+					// middle strikes come from the independent deterministic QA PRNG.
+					var _chainready = (ainputstate = 0 && aactor.stage = 1.1)
+						|| (ainputstate = 3 && aactor.stage = 2.1);
+					if (_chainready && achainstep < achainlength) {
+						if (achainstep = 0) achainmove = achaincase mod 3;
+						else if (achainstep = achainlength - 1) achainmove = 3 + (achaincase mod 3);
+						else achainmove = qa_next() mod 3;
+						if (instance_exists(oBComboMeter)
+							&& oBComboMeter.fill + achaincosts[achainmove] >= oBComboMeter.length) {
+							show_debug_message("AUTOQA ATTACK char=" + string(global.char_name[ri])
+								+ " name=" + aname + " verdict=STALL-CHAIN-BUDGET step="
+								+ string(achainstep + 1) + " fill=" + string(oBComboMeter.fill)
+								+ " cost=" + string(achaincosts[achainmove]));
+							game_end();
+							exit;
+						}
+						// The meter persists across attacks and is reset by the opener, so
+						// the first move's authoritative pre-chord cursor is always zero.
+						achaincur = (achainstep = 0) ? 0
+							: (instance_exists(oBComboMeter) ? oBComboMeter.cur : 0);
+						ainputcount = 1;
+						show_debug_message("AUTOQA CHAIN attack=" + aname
+							+ " step=" + string(achainstep + 1) + "/" + string(achainlength)
+							+ " move=" + achainnames[achainmove] + " try=1");
+						qa_cyber_chord(achainmove, 1);
+						ainputstate = 1;
+					} else if (ainputstate = 1) {
+						qa_cyber_chord(achainmove, 0);
+						ainputstate = 2; ainputwait = atimer + 1;
+					} else if (ainputstate = 2 && atimer >= ainputwait) {
+						// The meter records an accepted move at the old cursor. Actor `doing`
+						// alone is insufficient: a meter timeout also forces doing=8 and used
+						// to masquerade as a successful Push finisher.
+						var _accepted = instance_exists(oBComboMeter)
+							&& oBComboMeter.cur = achaincur + 1
+							&& oBComboMeter.hit[achaincur, 1] = achainmove;
+						if (_accepted) {
+							achainstep += 1;
+							ainputstate = (achainstep >= achainlength) ? 4 : 3;
+							ainputwait = atimer + 1;
+						} else if (ainputcount < 3 && aactor.stage = 2.1) {
+							// The opener resets a persistent meter's cursor to zero; capture
+							// again before the retry so proof is relative to this chord.
+							achaincur = instance_exists(oBComboMeter) ? oBComboMeter.cur : 0;
+							ainputcount += 1;
+							show_debug_message("AUTOQA CHAIN attack=" + aname
+								+ " step=" + string(achainstep + 1) + "/" + string(achainlength)
+								+ " move=" + achainnames[achainmove]
+								+ " try=" + string(ainputcount));
+							qa_cyber_chord(achainmove, 1);
+							ainputstate = 1;
+						} else if (ainputcount >= 3) {
+							show_debug_message("AUTOQA ATTACK char=" + string(global.char_name[ri])
+								+ " name=" + aname + " verdict=STALL-CHAIN-INPUT step="
+								+ string(achainstep + 1) + " move=" + achainnames[achainmove]
+								+ " cur=" + string(instance_exists(oBComboMeter) ? oBComboMeter.cur : -1)
+								+ " stage=" + string(aactor.stage));
+							game_end();
+							exit;
+						}
+					}
+				} else {
+					switch (aname) {
+					case "Free Throw":
+						if (ainputstate = 0 && atimer > 1 && aactor.fstage = 0) {
+							qa_attack_key(global.key_action, 1); ainputstate = 1;
+						} else if (ainputstate = 1 && aactor.fstage = 1 && aactor.prefin = 2) {
+							qa_attack_key(global.key_action, 0); ainputstate = 2;
+						} else if (ainputstate = 2 && aactor.fstage = 0.5 && aactor.fsh < 2) {
+							qa_attack_key(global.key_action, 1); ainputstate = 3;
+						} else if (ainputstate = 3 && aactor.fstage = 1 && aactor.prefin = 2) {
+							qa_attack_key(global.key_action, 0); ainputstate = 4;
+						}
+						break;
+					case "Pass":
+						if (ainputstate = 0 && atimer > 1 && aactor.pstage = 0) {
+							qa_attack_key(global.key_cancel, 1); ainputstate = 1;
+						} else if (ainputstate = 1 && aactor.pstage = 1 && aactor.pass = 1) {
+							qa_attack_key(global.key_cancel, 0); ainputstate = 2;
+						}
+						break;
+					case "Forward Jumper":
+					case "Jumper":
+					case "Fadeaway Jumper":
+						if (ainputstate = 0 && atimer > 1 && aactor.jstage = 0) {
+							if (aname = "Forward Jumper") qa_attack_key(global.key_left, 1);
+							if (aname = "Fadeaway Jumper") qa_attack_key(global.key_right, 1);
+							qa_attack_key(global.key_up, 1); ainputstate = 1;
+						} else if (ainputstate = 1 && aactor.jstage = 1 && aactor.prefin = 1) {
+							qa_attack_key(global.key_up, 0);
+							if (aname = "Forward Jumper") qa_attack_key(global.key_left, 0);
+							if (aname = "Fadeaway Jumper") qa_attack_key(global.key_right, 0);
+							ainputstate = 2;
+						}
+						break;
+					case "Zauber Slash":
+						if (ainputstate = 0 && atimer > 1) {
+							qa_attack_key(global.key_action, 1); ainputstate = 1;
+						} else if (ainputstate = 1 && aactor.doing = 9) {
+							qa_attack_key(global.key_action, 0); ainputstate = 2;
+						}
+						break;
+					case "Stab Dash":
+						if (ainputstate = 0 && atimer > 1) {
+							qa_attack_key(global.key_cancel, 1); ainputstate = 1;
+						} else if (ainputstate = 1 && aactor.doing = 10) {
+							qa_attack_key(global.key_cancel, 0); ainputstate = 2;
+						} else if (ainputstate = 2 && instance_exists(oBKata) && oBKata.a0 = 1 && oBKata.c0 = 0) {
+							qa_attack_key(global.key_action, 1); ainputstate = 3;
+						} else if (ainputstate = 3) {
+							qa_attack_key(global.key_action, 0); ainputstate = 4;
+						} else if (ainputstate = 4 && instance_exists(oBKata) && oBKata.c0 = 1 && oBKata.a1 = 1 && oBKata.c1 = 0) {
+							qa_attack_key(global.key_action, 1); ainputstate = 5;
+						} else if (ainputstate = 5) {
+							qa_attack_key(global.key_action, 0); ainputstate = 6;
+						} else if (ainputstate = 6 && instance_exists(oBKata) && oBKata.c1 = 1 && oBKata.a2 = 1 && oBKata.c2 = 0) {
+							qa_attack_key(global.key_action, 1); ainputstate = 7;
+						} else if (ainputstate = 7) {
+							qa_attack_key(global.key_action, 0); ainputstate = 8;
+						}
+						break;
+					case "Zeta Scan":
+						if (ainputstate = 0 && atimer > 1) {
+							qa_attack_key(global.key_start, 1); ainputstate = 1;
+						} else if (ainputstate = 1 && aactor.doing = 8) {
+							qa_attack_key(global.key_start, 0); ainputstate = 2;
+						}
+						break;
+					case "Eye Laser":
+						if (ainputstate = 0 && atimer > 1) {
+							qa_attack_key(global.key_action, 1); ainputstate = 1;
+						} else if (ainputstate = 1 && aactor.stage = 1) {
+							qa_attack_key(global.key_action, 0); ainputstate = 2;
+						}
+						break;
+					case "Accurate Shot":
+						if (ainputstate = 0 && atimer > 1) {
+							qa_attack_key(global.key_action, 1); ainputstate = 1;
+						} else if (ainputstate = 1 && (instance_exists(oBReticule) || aactor.doshot > 0)) {
+							qa_attack_key(global.key_action, 0); ainputstate = 2;
+						}
+						break;
+					case "Rapid Fire":
+						if (ainputstate = 0 && ainputcount < 5 && aactor.mash = 0) {
+							qa_attack_key(global.key_cancel, 1); ainputstate = 1;
+						} else if (ainputstate = 1) {
+							qa_attack_key(global.key_cancel, 0); ainputcount += 1; ainputstate = 0;
+						}
+						break;
+					case "Mega Shot":
+						if (ainputstate = 0 && atimer > 1) {
+							qa_attack_key(global.key_start, 1); ainputstate = 1;
+						} else if (ainputstate = 1 && instance_exists(oBCharger) && oBCharger.yy >= 50) {
+							qa_attack_key(global.key_start, 0); ainputstate = 2;
+						}
+							break;
+					}
+				}
+			} else if (!_regular) {
+				// One bounded prompt edge for a skill/item. Add a skill-specific
+				// state machine only when its real execution path requires one.
+				if (atimer = 2) qa_attack_key(global.key_action, 1);
+				if (atimer = 6) qa_attack_key(global.key_action, 0);
+			}
+		if (atimer > 1800) {                       // 60s per attack = a wedge
+			// Dump the state machine so the wedge can be diagnosed from the log.
+			var _diag = "AUTOQA ATTACK char=" + string(global.char_name[ri])
+				+ " name=" + aname + " verdict=STALL";
+			if (instance_exists(global.turn)) {
+				_diag += " doing=" + string(global.turn.doing)
+					+ " exec=" + string(global.turn.exec)
+					+ " attack=" + string(global.turn.attack)
+					+ " prefin=" + string(global.turn.prefin);
+				if (variable_instance_exists(global.turn, "stage"))
+					_diag += " stage=" + string(global.turn.stage);
+				if (variable_instance_exists(global.turn, "wdone"))
+					_diag += " wdone=" + string(global.turn.wdone);
+			}
+			if (instance_exists(oBattleMenu)) _diag += " menustate=" + string(oBattleMenu.state);
+			show_debug_message(_diag);
+			game_end();                            // driver stops on the verdict
+			exit;
+		}
+		// Done when the menu offers our next turn. It went to "wait"/"postattack"
+		// at dispatch, so "names" can only mean the round completed.
+			if (instance_exists(oBattleMenu) && oBattleMenu.state = "names"
+				&& instance_exists(global.turn) && global.turn.enemy = 0 && atimer > 10) {
+				if (string_copy(aname, 1, 12) = "Combo Monkey"
+					&& achainstep < achainlength) {
+					show_debug_message("AUTOQA ATTACK char=" + string(global.char_name[ri])
+						+ " name=" + aname + " verdict=STALL-CHAIN completed="
+						+ string(achainstep) + " planned=" + string(achainlength));
+					game_end();
+					exit;
+				}
+				show_debug_message("AUTOQA ATTACK char=" + string(global.char_name[ri])
+				+ " name=" + aname + " verdict=PASS");
+			qa_release();
+			astate = 1; atimer = 0;
+		}
+		exit;
 	}
 	exit;
 }
