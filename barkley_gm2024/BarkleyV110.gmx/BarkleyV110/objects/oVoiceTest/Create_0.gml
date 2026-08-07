@@ -24,13 +24,16 @@ vnm[11]="WILFORD BRIMLEY"; vfc[11]=27; vk[11]="brimley";
 vnm[12]="JUWANNA MANN";   vfc[12]=17; vk[12]="juwanna";
 vnm[13]="MR 3000";        vfc[13]=26; vk[13]="3000";
 vnm[14]="CHEF BOYARDEE";  vfc[14]=25; vk[14]="boyardee";
-vnm[15]="HUNDLEY";        vfc[15]=16; vk[15]="hundley";
+vnm[15]="THE PUMP";       vfc[15]=-1; vk[15]="pump"; //vfc -1 = draw sPump, not an sFaces frame
 //everyone has 3 variants; vsat maps each portrait to its config slot.
 //Hellbane shares Balthios's slot (he IS Balthios).
 vsat[0]=15; vsat[1]=16; vsat[2]=17; vsat[3]=18;
 vsat[4]=19; vsat[5]=20; vsat[6]=18; vsat[7]=21;
 vsat[8]=22; vsat[9]=23; vsat[10]=24; vsat[11]=25;
-vsat[12]=26; vsat[13]=27; vsat[14]=28; vsat[15]=29;
+vsat[12]=26; vsat[13]=27; vsat[14]=28; vsat[15]=30;
+//variants per entry: 3 for everyone, 5 Urkel candidates for the Pump
+for (vi=0; vi<16; vi+=1) vmax[vi]=3;
+vmax[15]=5;
 //layout: portraits are 48x49, native-size grid
 gx0=28; gy0=14; gcw=66; gch=51;
 vblipf=0;  //spinning basketball cursor frame

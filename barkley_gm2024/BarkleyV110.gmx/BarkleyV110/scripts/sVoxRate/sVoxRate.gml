@@ -25,6 +25,7 @@ function sVoxRate(argument0) {
 	if (string_pos("3000",nl)>0) return(55);
 	if (string_pos("boyardee",nl)>0) return(70);
 	if (string_pos("hundley",nl)>0 || string_pos("hughley",nl)>0) return(80);
+	if (string_pos("pump",nl)>0) return(48); //chatters obnoxiously
 	//hash-voiced NPCs: stable hash-flavoured pace, banded by class --
 	//monsters lumber (95-135ms), robots tick steadily (70), kids chatter
 	//(45-60ms), everyone else 55-95ms

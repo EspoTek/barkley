@@ -53,6 +53,10 @@ function sConfig(argument0) {
 	else if (arg=1) { file_text_write_real(tfl,global.sat[tcl]); file_text_writeln(tfl); }
 	else { if (file_text_eof(tfl)) global.sat[tcl]=tdef[tcl]; else { global.sat[tcl]=min(2,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } }
 	}
+	//sat[30]=The Pump's voice 0-4 (five Urkel-school candidates)
+	if (arg=0) global.sat[30]=0;
+	else if (arg=1) { file_text_write_real(tfl,global.sat[30]); file_text_writeln(tfl); }
+	else { if (file_text_eof(tfl)) global.sat[30]=0; else { global.sat[30]=min(4,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } }
 	//
 	if (arg!=0) file_text_close(tfl);
 	if (arg=1) sConvert("config0.txt","config.txt");

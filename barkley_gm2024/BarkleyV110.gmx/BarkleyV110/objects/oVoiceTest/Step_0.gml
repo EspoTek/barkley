@@ -27,7 +27,7 @@ ppm=sVoxPitch(vk[cur]);
 playing=14; pw=0; pt=0;
 }
 if (keyboard_check_pressed(ord("V"))) {
-global.sat[vsat[cur]]=(global.sat[vsat[cur]]+1) mod 3; sConfig(1);
+global.sat[vsat[cur]]=(global.sat[vsat[cur]]+1) mod vmax[cur]; sConfig(1);
 }
 if (sKey(global.key_cancel,1)) { open=0; playing=0; }
 //sample sentence: bloop stream with word-boundary gaps at this character's cadence

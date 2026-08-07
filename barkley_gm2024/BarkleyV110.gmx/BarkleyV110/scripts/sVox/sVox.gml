@@ -23,6 +23,7 @@ function sVox(argument0) {
 	if (string_pos("3000",nl)>0) return(asset_get_index("mVoxMr3000"+string(global.sat[27])));
 	if (string_pos("boyardee",nl)>0) return(asset_get_index("mVoxChef"+string(global.sat[28])));
 	if (string_pos("hundley",nl)>0 || string_pos("hughley",nl)>0) return(asset_get_index("mVoxHundley"+string(global.sat[29])));
+	if (string_pos("pump",nl)>0) return(asset_get_index("mVoxPump"+string(global.sat[30]))); //the Truck Pump, vidcon specialist
 	//every other NAMED speaker: stable hash-interpolated voice, drawn from the
 	//pool matching their name's class (nameless narration stays silent)
 	var vh, vc;
