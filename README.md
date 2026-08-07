@@ -1,54 +1,29 @@
-# Barkley, Shut Up and Jam: Gaiden — Modern Port
+# Barkley, Shut Up and Jam: Gaiden
 
-The original source code for *Barkley, Shut Up And Jam: Gaiden* (Tales of Game's, 2008),
-ported to modern GameMaker so it runs natively on current machines (including Apple
-Silicon Macs) and, experimentally, in the browser.
+A modern decom and port of Barkley, Shut up and Jam: Gaiden (2008), ported to modern Game Maker 2024.
+Builds provided for Windows, macOS, Linux and the browser (HTML5).
 
-## Branches
+I haven't done any console ports (I am a 32 year old man, I don't have hacked consoles any more), but with the source code here and an Enterprise Licence of Game Maker it should in theory be possible!
 
-- **`master`** — the untouched "museum piece": the original GameMaker 6.1 source
-  (`GM 6.1/BarkleyV110.gm6`, code verified line-for-line as ground truth) plus the
-  legacy GM 8.1 / GMS 1.4 conversions exactly as they were released.
-- **`modern-port`** — the playable modernization. The GMS 1.4 tree was repaired,
-  imported into GameMaker 2024, and fixed forward until the game runs. The original
-  game logic is preserved; only engine-compatibility code was changed.
+## How to play
 
-## Running the game (macOS)
+Download the version for your OS from:  
+https://github.com/EspoTek/barkley/releases
 
-Requirements: [Node.js](https://nodejs.org) (for `npx`). No GameMaker account needed —
-the CLI provisions a guest license and downloads the runtime on first use.
+or visit https://barkley.github.io and play it right here in the browser!
 
-```sh
-cd "Modern port (GameMaker 2024, working)/BarkleyV110.gmx/BarkleyV110"
-npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac
-```
+## Changes from V1.20
 
-The first run compiles everything (a couple of minutes); later runs are much faster.
-`compile` instead of `run` builds without launching; `package` produces a distributable app.
-
-## Display
-
-- The window is freely resizable and supports the native macOS fullscreen button.
-- The game always renders at its native 320×240 and is upscaled with
-  nearest-neighbour filtering (chonky pixels).
-- **Settings → SCALING** chooses between **Fit Window** (fill the window, aspect
-  preserved) and **Integer** (strict whole-number upscaling with black borders).
-- **Settings → SCREEN** toggles windowed/fullscreen; the old 1x/2x/3x window sizes
-  are gone.
+- The window is freely resizable - no more 1x/2x/3x scaling.
+- No more music DLL (the TOGSound intro in the start is a lie!)
+- Nearest neighbor interpolation by default, with an option for integral scaling (see the settings menu)
+- A gatdam *configurable CRT filter* 
 
 ## Controls
 
 Keyboard, rebindable in the settings menu (defaults: arrows + the keys shown there).
 Gamepad support is planned. Saves and config are written next to the game
 (`Save*.sav`, `config.txt`, `controls.txt` — delete the latter two to reset settings).
-
-## Notable fixes over the 2008 release
-
-- The official v1.20 (2014) "Vinceborg laser" sound-spam crash fix — famous for
-  crashing live at AGDQ 2014 — is applied (this source predates the patch).
-- The launch-era music/DLL failure cascade, joypad garbage-input glitch, and
-  320×240 exclusive-fullscreen problems are gone by construction: the port uses
-  the engine's native audio, input, and windowing.
 
 ## License
 
