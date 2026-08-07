@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barkley, Shut Up and Jam: Gaiden — play in your browser</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 2rem 1rem 4rem;
+    background: #0c0c14; color: #e8e4d8;
+    font-family: "Courier New", ui-monospace, monospace;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  main { max-width: 42rem; width: 100%; }
+  h1 { color: #f4b942; text-align: center; line-height: 1.2; margin: 0 0 .25rem; }
+  .tagline { text-align: center; color: #9a94b8; margin: 0 0 2rem; }
+  .play {
+    display: block; width: fit-content; margin: 0 auto 2.5rem;
+    padding: .9rem 2.6rem; background: #1a1a5e; color: #fff;
+    border: 3px solid #8a6d3b; text-decoration: none; font-size: 1.3rem;
+    font-weight: bold; letter-spacing: .05em;
+  }
+  .play:hover { background: #2a2a7e; }
+  h2 { color: #f4b942; border-bottom: 1px solid #333; padding-bottom: .3rem; }
+  table { border-collapse: collapse; }
+  td { padding: .15rem .9rem .15rem 0; }
+  td:first-child { color: #f4b942; white-space: nowrap; }
+  .note { color: #9a94b8; font-size: .9rem; }
+  footer { margin-top: 3rem; color: #666; font-size: .85rem; text-align: center; }
+  footer a { color: #9a94b8; }
+  .quote { margin-top: 1rem; font-style: italic; color: #4a8; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Barkley, Shut Up and Jam: Gaiden</h1>
+  <p class="tagline">Chapter 1 of the Hoopz Barkley SaGa — Tales of Game's (2008),<br>
+  ported to modern GameMaker and playable right here.</p>
+
+  <a class="play" href="play/">&#9654; PLAY IN BROWSER</a>
+
+  <h2>Controls</h2>
+  <table>
+    <tr><td>Arrow keys</td><td>move / navigate menus</td></tr>
+    <tr><td>Z</td><td>action / confirm</td></tr>
+    <tr><td>X</td><td>cancel / back</td></tr>
+    <tr><td>C</td><td>menu / start</td></tr>
+  </table>
+  <p class="note">All keys are rebindable in the in-game settings. Controllers are
+  supported too — freshly wired, so tell us if your pad misbehaves.</p>
+
+  <h2>New in this port</h2>
+  <ul>
+    <li><strong>A tunable CRT filter</strong> — the headline feature. Head to
+      <em>Configuration &rarr; FILTER</em> and open the <em>TUNE CRT FILTER</em>
+      screen: pick Off, Arcade, or Dosbox&nbsp;CRT (a faithful port of Mattias
+      Gustavsson's beloved <a href="https://github.com/mattiasgustavsson/dosbox-crt">dosbox-crt</a>)
+      and dial in warp, scanlines, shadows, grain and ghosting live, with
+      character portraits and colour bars to judge by. Seriously, go try it.</li>
+    <li>Fit-window and strict integer scaling, freely resizable window, native fullscreen.</li>
+    <li>Native builds for macOS (Apple Silicon + Intel), Windows 10+, and Linux
+      (x64/arm64) on the <a href="https://github.com/EspoTek/barkley/releases">releases page</a>.</li>
+    <li>The 2014 "Vinceborg laser" crash fix (of AGDQ fame) and dozens of
+      engine-compatibility repairs, with the original 2008 game logic preserved.</li>
+  </ul>
+
+  <footer>
+    <p>Game by <a href="http://www.talesofgames.com">Tales of Game's</a>, released
+    under CC&nbsp;BY-NC&nbsp;4.0 — free forever, never for sale.<br>
+    Port source on <a href="https://github.com/EspoTek/barkley">GitHub</a>; built on the
+    preservation work of <a href="https://github.com/sanlor/Barkley1_Original">sanlor/Barkley1_Original</a>.</p>
+    <p class="quote">You don't need a reason to help people.</p>
+  </footer>
+</main>
+</body>
+</html>

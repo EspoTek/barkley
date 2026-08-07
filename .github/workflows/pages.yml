@@ -1,0 +1,55 @@
+name: pages
+
+# Builds the browser (operagx/WASM) version and publishes it to GitHub Pages
+# with a landing page. The gm-cli guest license needs no secrets.
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  PROJECT_DIR: Modern port (GameMaker 2024, working)/BarkleyV110.gmx/BarkleyV110
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Package web build
+        shell: bash
+        working-directory: ${{ env.PROJECT_DIR }}
+        run: |
+          npx @gamemaker/gm-cli@latest package BarkleyV110.yyp \
+            --target operagx --errors-only \
+            -o "${{ github.workspace }}/web.zip"
+
+      - name: Assemble site
+        run: |
+          mkdir -p _site/play
+          unzip -q web.zip -d _site/play
+          cp .github/pages/index.html _site/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
