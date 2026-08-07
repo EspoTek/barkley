@@ -35,11 +35,12 @@ draw_set_color(c_white);
 // CRT filter preset table (global.sat[6]; see global.crtname for labels)
 var crt = 0;
 if (variable_global_exists("sat")) crt = global.sat[6];
-var fam = 0; // 0 = raw nearest, 1 = shCRT, 2 = shCRTMask, 3 = shCRTTV
+var fam = 0; // 0 raw, 1 shCRT, 2 shCRTMask, 3 shCRTTV, 4 shCRTDos, 5 shCRTDosbox
 var p_scan = 0, p_pitch = 1, p_vig = 0;
 var p_mask = 0, p_boost = 1;
 var p_curve = 0, p_sdepth = 0, p_sspeed = 0, p_spitch = 6.28318;
 var p_stripe = 0, p_shim = 0, p_bright = 2.1, p_ghost = 1;
+var p_halate = 0;
 if (crt == 1) { fam = 1; }                                          // PIXEL: sharp-bilinear only
 if (crt == 2) { fam = 1; p_scan = 0.10; p_vig = 0.10; }             // SUBTLE
 if (crt == 3) { fam = 1; p_scan = 0.22; p_vig = 0.14; }             // SCANLINES
@@ -51,14 +52,22 @@ if (crt == 8) { fam = 3; p_curve = 1; p_sdepth = 0.55; p_sspeed = 3.5; p_spitch 
 	p_stripe = 0.65; p_shim = 0.0017; p_bright = 2.6; p_ghost = 0.8; }  // NEWPIXIE
 if (crt == 9) { fam = 3; p_curve = 0.25; p_sdepth = 0.25; p_stripe = 0.35;
 	p_shim = 0.0006; p_ghost = 0.55; }                                  // GHOST
+if (crt == 10) { fam = 5; p_ghost = 0.6; }                              // DOSBOX-CRT (faithful port)
+if (crt == 11) { fam = 4; p_scan = 0.20; p_pitch = 2; p_halate = 0.08; p_mask = 0.06; } // STAGING
+if (crt == 12) { fam = 4; p_scan = 0.30; p_halate = 0.12; p_mask = 0.10; }              // PVM
+if (crt == 13) { fam = 4; p_scan = 0.12; p_halate = 0.22; p_mask = 0.04; }              // GLOW
+if (crt == 14) { fam = 3; p_curve = 0.12; p_sdepth = 0.15; p_stripe = 0.15;
+	p_shim = 0.0002; p_bright = 2.0; p_ghost = 0.9; }                   // STUDIO
 if (fam == 1 && !crtok) fam = 0;
 if (fam == 2 && !crtmaskok) fam = 0;
 if (fam == 3 && !crttvok) fam = 0;
+if (fam == 4 && !crtdosok) fam = 0;
+if (fam == 5 && !crtdbok) fam = 0;
 // too few output pixels per beam line -> fade scanlines out instead of moire
-if (fam == 1) p_scan *= min(1, max(0, dh / (sh * p_pitch) - 1));
+if (fam == 1 || fam == 4) p_scan *= min(1, max(0, dh / (sh * p_pitch) - 1));
 if (fam == 2) p_scan *= min(1, max(0, dh / sh - 1));
 
-if (fam == 3) {
+if (fam == 3 || fam == 5) {
 	// phosphor persistence: this frame blended over the tail of the last few
 	if (!surface_exists(crtaccum)) {
 		crtaccum = surface_create(sw, sh);
@@ -71,6 +80,17 @@ if (fam == 3) {
 	draw_surface(application_surface, 0, 0);
 	draw_set_alpha(1);
 	surface_reset_target();
+}
+if (fam == 5) {
+	gpu_set_texfilter(true);
+	shader_set(shCRTDosbox);
+	shader_set_uniform_f(u_db_time, (current_time mod 100000) / 1000);
+	shader_set_uniform_f(u_db_outsize, dw, dh);
+	texture_set_stage(u_db_blurbuf, surface_get_texture(crtaccum));
+	draw_surface_stretched(application_surface, ox, oy, dw, dh);
+	shader_reset();
+	gpu_set_texfilter(false);
+} else if (fam == 3) {
 	gpu_set_texfilter(true);
 	shader_set(shCRTTV);
 	shader_set_uniform_f(u_tv_time, (current_time mod 100000) / 1000);
@@ -87,7 +107,19 @@ if (fam == 3) {
 	gpu_set_texfilter(false);
 } else {
 	if (surface_exists(crtaccum)) { surface_free(crtaccum); crtaccum = -1; }
-	if (fam == 1) {
+	if (fam == 4) {
+		gpu_set_texfilter(true);
+		shader_set(shCRTDos);
+		shader_set_uniform_f(u_dos_native, sw, sh);
+		shader_set_uniform_f(u_dos_sharp, max(1, dh / sh));
+		shader_set_uniform_f(u_dos_scan, p_scan);
+		shader_set_uniform_f(u_dos_pitch, p_pitch);
+		shader_set_uniform_f(u_dos_halate, p_halate);
+		shader_set_uniform_f(u_dos_mask, p_mask);
+		draw_surface_stretched(application_surface, ox, oy, dw, dh);
+		shader_reset();
+		gpu_set_texfilter(false);
+	} else if (fam == 1) {
 		gpu_set_texfilter(true); // sharp-bilinear needs the sampler
 		shader_set(shCRT);
 		shader_set_uniform_f(u_crt_native, sw, sh);

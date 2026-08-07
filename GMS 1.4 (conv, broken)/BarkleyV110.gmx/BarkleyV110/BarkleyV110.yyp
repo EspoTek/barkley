@@ -1753,6 +1753,8 @@
     {"id":{"name":"sFullheal","path":"scripts/sFullheal/sFullheal.yy",},},
     {"id":{"name":"sGroup","path":"scripts/sGroup/sGroup.yy",},},
     {"id":{"name":"shCRT","path":"shaders/shCRT/shCRT.yy",},},
+    {"id":{"name":"shCRTDos","path":"shaders/shCRTDos/shCRTDos.yy",},},
+    {"id":{"name":"shCRTDosbox","path":"shaders/shCRTDosbox/shCRTDosbox.yy",},},
     {"id":{"name":"shCRTMask","path":"shaders/shCRTMask/shCRTMask.yy",},},
     {"id":{"name":"shCRTTV","path":"shaders/shCRTTV/shCRTTV.yy",},},
     {"id":{"name":"sIndev","path":"scripts/sIndev/sIndev.yy",},},
