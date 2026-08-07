@@ -19,18 +19,21 @@ function sConfig(argument0) {
 	if (arg=0) global.sat[5]=0;
 	else if (arg=1) { file_text_write_real(tfl,global.sat[5]); file_text_writeln(tfl); }
 	else { global.sat[5]=file_text_read_real(tfl); file_text_readln(tfl); }
-	if (arg=0) global.sat[6]=0; // 0=off, 1=Arcade, 2=Dosbox CRT (port addition)
+	if (arg=0) global.sat[6]=2; // 0=off, 1=Arcade, 2=Dosbox CRT (port addition; user default)
 	else if (arg=1) { file_text_write_real(tfl,global.sat[6]); file_text_writeln(tfl); }
-	else { if (file_text_eof(tfl)) global.sat[6]=0; else { global.sat[6]=min(2,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } } // configs from before the FILTER row have 5 lines; clamp covers the old 15-preset builds
+	else { if (file_text_eof(tfl)) global.sat[6]=2; else { global.sat[6]=min(2,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } } // configs from before the FILTER row have 5 lines; clamp covers the old 15-preset builds
 	if (arg=0) global.sat[7]=10; // Dosbox CRT corner-warp percent, tuned with +/-
 	else if (arg=1) { file_text_write_real(tfl,global.sat[7]); file_text_writeln(tfl); }
 	else { if (file_text_eof(tfl)) global.sat[7]=10; else { global.sat[7]=min(25,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } }
-	//Dosbox CRT tune-menu strengths, 0..25 where 25 = as dosbox-crt shipped:
-	//sat[8]=corner shadow, 9=vignette, 10=scanlines, 11=mask, 12=grain, 13=ghosting
+	//Dosbox CRT tune-menu strengths, 0..25 where 25 = as dosbox-crt shipped.
+	//Defaults are the user's tuned look (2026-08-07):
+	//sat[8]=corner shadow 10, 9=vignette 10, 10=scanlines 20, 11=mask 15,
+	//12=grain 10, 13=ghosting 10
+	tdef[8]=10; tdef[9]=10; tdef[10]=20; tdef[11]=15; tdef[12]=10; tdef[13]=10;
 	for (tcl=8; tcl<=13; tcl+=1) {
-	if (arg=0) global.sat[tcl]=25;
+	if (arg=0) global.sat[tcl]=tdef[tcl];
 	else if (arg=1) { file_text_write_real(tfl,global.sat[tcl]); file_text_writeln(tfl); }
-	else { if (file_text_eof(tfl)) global.sat[tcl]=25; else { global.sat[tcl]=min(25,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } }
+	else { if (file_text_eof(tfl)) global.sat[tcl]=tdef[tcl]; else { global.sat[tcl]=min(25,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } }
 	}
 	//
 	if (arg!=0) file_text_close(tfl);
