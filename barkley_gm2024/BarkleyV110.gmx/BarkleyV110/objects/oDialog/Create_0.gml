@@ -35,3 +35,8 @@ cmessage[1]="";
 cmessage[2]="";
 cmessage[3]="";
 cmessage[4]="";
+//Realistic Voice Acting (port addition): voice resolves lazily in dialog_step
+//because sDialog may still overwrite name after this Create runs
+vres=0;
+vsnd=-1;
+vlast=0;

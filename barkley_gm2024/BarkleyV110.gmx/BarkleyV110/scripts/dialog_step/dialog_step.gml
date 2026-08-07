@@ -14,6 +14,23 @@ function dialog_step() {
 	cmessage[line]=string_copy(dmessage[count],scount,lcount);
 	cmessage[line]=string_replace_all(cmessage[line],"\\","");
 	cmessage[line]=string_replace_all(cmessage[line],"*","");
+	//Realistic Voice Acting (port addition): bloop per revealed letter,
+	//rate-limited by wall time so instant-reveal fires at most one
+	if (global.sat[14]=1) {
+	if (vres=0) { vres=1; vsnd=sVox(name); }
+	if (vsnd>=0) {
+	vch=string_upper(string_copy(dmessage[count],scount+lcount-1,1));
+	if (vch!="") {
+	vo=ord(vch);
+	if ((vo>=65 && vo<=90) || (vo>=48 && vo<=57)) {
+	if (current_time-vlast>55) {
+	vlast=current_time;
+	audio_play_sound(vsnd,10,false,0.85,0,0.94+random(0.12));
+	}
+	}
+	}
+	}
+	}
 	}
 	}
 	}

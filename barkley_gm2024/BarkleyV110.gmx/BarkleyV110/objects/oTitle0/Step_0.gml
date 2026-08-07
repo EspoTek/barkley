@@ -1,5 +1,7 @@
 event_inherited();
 room_speed=30;
+//port: the voice audition overlay owns input while open (dev tool, env-gated)
+if (instance_exists(oVoiceTest)) { if (oVoiceTest.open=1) exit; }
 //port: release-and-repress gate. A key may only operate the menu after it has
 //been seen UP for 3 consecutive steps while the menu is visible -- so a key
 //held across a quit, a splash skip, or the attract fade-in stays dead until it

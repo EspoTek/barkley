@@ -7,6 +7,8 @@ randomise();
 // QA harness: inert unless BARKLEY_AUTOQA is set in the environment, so the
 // shipped game never creates it. See objects/oAutoQA.
 if (environment_get_variable("BARKLEY_AUTOQA") != "") instance_create(0,0,oAutoQA);
+// Voice audition screen: same pattern, gated on BARKLEY_VOICETEST.
+if (environment_get_variable("BARKLEY_VOICETEST") != "") instance_create(0,0,oVoiceTest);
 // Port: build the original bitmap fonts before anything can draw text.
 sFontInit();
 // Display scaling (port): render at native 320x240; oDisplay's Draw GUI
