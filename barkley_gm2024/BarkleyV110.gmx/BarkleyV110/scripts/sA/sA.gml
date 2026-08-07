@@ -4,6 +4,11 @@ function sA(argument0, argument1) {
 	// mBattle -> _battle.mp3). The music now lives inside the sound resources
 	// themselves, so play them natively. lastmusic keeps the 'check' contract.
 	if (!variable_global_exists("lastmusic")) global.lastmusic = -1;
+	//port: a BARKLEY_VOICETEST session runs silent -- no music competing with
+	//the voice bloops being auditioned. Stop/check still work normally.
+	if (instance_exists(oVoiceTest)) {
+	if (argument0=="play" || argument0=="loop") { global.lastmusic=argument1; exit; }
+	}
 	if (argument0=="play" || argument0=="loop") {
 		if (global.lastmusic!=-1) sound_stop(global.lastmusic);
 		if (argument0=="play") sound_play(argument1);
