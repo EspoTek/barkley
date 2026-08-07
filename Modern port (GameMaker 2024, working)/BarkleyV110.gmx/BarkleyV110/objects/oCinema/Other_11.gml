@@ -90,7 +90,17 @@ with (queue[0,2]) event_user(0);
 event_user(0);
 }
 if (sub="code") {
-if (start=0) { start=1; script_execute(queue[0,2]); }
+// GM6 shim: when a nested event_user(0)/event_user(1) chain unwinds without
+// re-reading the queue (halt via sDodie, or the queue emptying), an outer frame
+// falls back into this block with a stale sub="code" while queue[0] already
+// holds the NEXT row -- e.g. the oIntro3 death drop leaves a "wait" row here,
+// so queue[0,2] is a number, not a script. GM6 fed that to execute_string,
+// errored non-fatally and carried on (the author's "some reason goes under 0"
+// comment in User Defined 0 is this same re-entrancy); GameMaker 2024's
+// script_execute is fatal (dispatched builtin camera_create_view), so only
+// dispatch real scripts. The unconditional event_user(0) row-advance below is
+// original behavior and must stay.
+if (start=0) { start=1; if (!is_string(queue[0,2]) && script_exists(queue[0,2])) script_execute(queue[0,2]); }
 event_user(0);
 }
 if (sub="effect") {
