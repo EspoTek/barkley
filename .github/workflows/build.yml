@@ -42,11 +42,28 @@ jobs:
         with:
           node-version: 26
 
+      # The guest license gm-cli auto-provisions has no Windows.build_module
+      # (mac/linux/operagx only), so the Windows job needs a real account
+      # license: issue a key at https://gamemaker.io/en/account/access-keys and
+      # store it as the GM_ACCESS_KEY secret. Harmless no-op when unset.
+      - name: GameMaker login
+        shell: bash
+        working-directory: ${{ env.PROJECT_DIR }}
+        env:
+          GM_ACCESS_KEY: ${{ secrets.GM_ACCESS_KEY }}
+        run: |
+          if [ -z "$GM_ACCESS_KEY" ]; then
+            echo "GM_ACCESS_KEY secret not set; staying on the guest license"
+            exit 0
+          fi
+          npx @gamemaker/gm-cli@latest login "$GM_ACCESS_KEY"
+
       - name: Package
         timeout-minutes: 25
         shell: bash
         working-directory: ${{ env.PROJECT_DIR }}
         run: |
+          mkdir -p "${{ github.workspace }}/dist"
           npx @gamemaker/gm-cli@latest package BarkleyV110.yyp \
             --target ${{ matrix.target }} --verbose \
             -o "${{ github.workspace }}/dist/barkley-${{ matrix.name }}.zip"
