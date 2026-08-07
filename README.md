@@ -27,7 +27,8 @@ Gamepad support is planned. Saves and config are written next to the game
 - The window is freely resizable - no more 1x/2x/3x scaling.
 - No more music DLL (the TOGSound intro in the start is a lie!)
 - Nearest neighbor interpolation by default, with an option for integral scaling (see the settings menu)
-- A gatdam *configurable CRT filter* 
+- *Ultra-realistic synthesised character voices*
+- A damn *configurable CRT filter* 
 
 ## License
 
@@ -35,8 +36,6 @@ The game and its source were released by Tales of Game's under
 **CC BY-NC 4.0** — do not sell this or host it commercially. This repo builds on the
 source preservation work of [sanlor/Barkley1_Original](https://github.com/sanlor/Barkley1_Original).
 
+Mind you, I'm not going to stop you if you violate the licence.  Fuckers owe me $10 from 2013 and I WILL NOT FORGET!
+
 `You don't need a reason to help people.`
-
-## Did you get permission from the original devs to do this?
-
-No, and I don't care.  Those fuckers still owe me $10 from 2013.  I WILL NOT FORGET THIS TRESPASS, TALES OF GAME'S.
