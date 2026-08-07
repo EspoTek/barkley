@@ -34,6 +34,11 @@ jobs:
         with:
           node-version: 26
 
+      # GMAssetCompiler needs ffmpeg/ffprobe for sound conversion and hangs
+      # without them; ubuntu runner images don't ship them.
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+
       - name: Package web build
         timeout-minutes: 25
         shell: bash

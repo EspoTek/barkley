@@ -42,6 +42,13 @@ jobs:
         with:
           node-version: 26
 
+      # GMAssetCompiler shells out to ffmpeg/ffprobe for sound conversion and
+      # hangs (until the step timeout) when they're missing. GitHub's mac and
+      # windows images ship ffmpeg; the ubuntu images don't.
+      - name: Install ffmpeg (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+
       # The guest license gm-cli auto-provisions has no Windows.build_module
       # (mac/linux/operagx only), so the Windows job needs a real account
       # license: issue a key at https://gamemaker.io/en/account/access-keys and
