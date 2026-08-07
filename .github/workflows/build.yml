@@ -29,12 +29,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { os: macos-15,        target: mac,     name: macos-universal }
-          - { os: windows-2025,    target: windows, name: windows-x64 }
-          - { os: ubuntu-22.04,    target: linux,   name: linux-x64 }
-          - { os: ubuntu-22.04-arm, target: linux,  name: linux-arm64 }
+          - { os: macos-15,        target: mac,     name: macos-universal, timeout: 75 }
+          - { os: windows-2025,    target: windows, name: windows-x64, timeout: 35 }
+          - { os: ubuntu-22.04,    target: linux,   name: linux-x64, timeout: 35 }
+          - { os: ubuntu-22.04-arm, target: linux,  name: linux-arm64, timeout: 35 }
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 35
+    timeout-minutes: ${{ matrix.timeout }}
     steps:
       - uses: actions/checkout@v4
 
