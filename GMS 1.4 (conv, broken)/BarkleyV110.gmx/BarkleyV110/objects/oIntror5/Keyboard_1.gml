@@ -12,5 +12,17 @@ if (dontkill=0) {
 	oIntror4.image_alpha=1;
 	oIntror4a.image_alpha=1;
 	oSideScroll.image_alpha=1;
+	// The original skipped via room_restart(), and the seconds of room reload
+	// meant the key was released long before oTitle0 became interactive. Skipping
+	// in place makes the menu live on this very frame, so the same press that
+	// skipped the attract also fell through sKey and picked New Game instantly.
+	// Eat every key the menu listens to; sKey requires a physical re-press.
+	key_eat(global.key_action);
+	key_eat(vk_space);
+	key_eat(vk_enter);
+	key_eat(global.key_up);
+	key_eat(global.key_down);
+	key_eat(vk_up);
+	key_eat(vk_down);
 	instance_destroy();
 }
