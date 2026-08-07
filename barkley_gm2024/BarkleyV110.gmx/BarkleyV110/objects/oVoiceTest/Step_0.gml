@@ -15,7 +15,8 @@ if (playing>0) {
 pt-=1;
 if (pt<=0) {
 pw+=1;
-if (pw mod 4=0) pt=5; else pt=2;
+vbase=max(1,round(sVoxRate(vch[cur])/33)); //frames per bloop at this character's cadence
+if (pw mod 4=0) pt=vbase+3; else pt=vbase;
 if (plsnd>=0) audio_play_sound(plsnd,10,false,0.85,0,0.94+random(0.12));
 playing-=1;
 }

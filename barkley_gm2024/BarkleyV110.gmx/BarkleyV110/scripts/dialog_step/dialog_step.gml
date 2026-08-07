@@ -4,7 +4,7 @@ function dialog_step() {
 	//instead of one bleep); same wall-time cadence as the live bloops
 	if (vq>0) {
 	if (vsnd>=0 && global.sat[14]=1) {
-	if (current_time-vlast>55) { vlast=current_time; vq-=1; audio_play_sound(vsnd,10,false,0.85,0,0.94+random(0.12)); }
+	if (current_time-vlast>vrate) { vlast=current_time; vq-=1; audio_play_sound(vsnd,10,false,0.85,0,0.94+random(0.12)); }
 	} else vq=0;
 	}
 	mcount+=global.rd*(1+global.sat[3]);
@@ -24,13 +24,21 @@ function dialog_step() {
 	//Realistic Voice Acting (port addition): bloop per revealed letter,
 	//rate-limited by wall time so instant-reveal fires at most one
 	if (global.sat[14]=1) {
-	if (vres=0) { vres=1; vsnd=sVox(name); }
+	if (vres=0) {
+	vres=1; vsnd=sVox(name); vrate=sVoxRate(name);
+	//gravity of the line: dramatic pauses slow the voice, urgency quickens it
+	vg=string_count("...",dmessage[count]);
+	if (vg>0) vrate=vrate*(1+min(0.5,0.18*vg));
+	vg=string_count("!",dmessage[count]);
+	if (vg>0) vrate=vrate*max(0.7,1-0.12*vg);
+	vrate=min(200,max(30,round(vrate)));
+	}
 	if (vsnd>=0) {
 	vch=string_upper(string_copy(dmessage[count],scount+lcount-1,1));
 	if (vch!="") {
 	vo=ord(vch);
 	if ((vo>=65 && vo<=90) || (vo>=48 && vo<=57)) {
-	if (current_time-vlast>55) {
+	if (current_time-vlast>vrate) {
 	vlast=current_time;
 	audio_play_sound(vsnd,10,false,0.85,0,0.94+random(0.12));
 	}

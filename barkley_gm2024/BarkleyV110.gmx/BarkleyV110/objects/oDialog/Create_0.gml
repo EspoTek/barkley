@@ -40,4 +40,5 @@ cmessage[4]="";
 vres=0;
 vsnd=-1;
 vlast=0;
+vrate=55; //ms between bloops; sVoxRate + line gravity set it at first reveal
 vq=0; //queued trailing notes (instant-reveal burst)

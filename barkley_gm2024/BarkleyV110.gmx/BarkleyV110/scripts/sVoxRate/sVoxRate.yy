@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"sVoxRate",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"sVoxRate",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -40,10 +40,12 @@ function sConfig(argument0) {
 	else if (arg=1) { file_text_write_real(tfl,global.sat[14]); file_text_writeln(tfl); }
 	else { if (file_text_eof(tfl)) global.sat[14]=1; else { global.sat[14]=min(1,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } }
 	//sat[15..18]=voice variant 0-2 per character: 15=Barkley 16=Hoopz 17=Jordan 18=Balthios
+	//Defaults are the user's audition picks (2026-08-07)
+	tdef[15]=1; tdef[16]=1; tdef[17]=0; tdef[18]=2;
 	for (tcl=15; tcl<=18; tcl+=1) {
-	if (arg=0) global.sat[tcl]=0;
+	if (arg=0) global.sat[tcl]=tdef[tcl];
 	else if (arg=1) { file_text_write_real(tfl,global.sat[tcl]); file_text_writeln(tfl); }
-	else { if (file_text_eof(tfl)) global.sat[tcl]=0; else { global.sat[tcl]=min(2,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } }
+	else { if (file_text_eof(tfl)) global.sat[tcl]=tdef[tcl]; else { global.sat[tcl]=min(2,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } }
 	}
 	//
 	if (arg!=0) file_text_close(tfl);
