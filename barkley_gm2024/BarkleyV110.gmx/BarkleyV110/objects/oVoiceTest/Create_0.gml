@@ -15,7 +15,7 @@ vnm[2]="MICHAEL JORDAN";  vfc[2]=3;  vk[2]="jordan";
 vnm[3]="BALTHIOS";        vfc[3]=2;  vk[3]="balthios";
 vnm[4]="CYBERDWARF";      vfc[4]=6;  vk[4]="dwarf";
 vnm[5]="VINCEBORG";       vfc[5]=13; vk[5]="vince";
-vnm[6]="HELLBANE";        vfc[6]=10; vk[6]="hellbane";
+vnm[6]="HELLBANE (BALTHIOS)"; vfc[6]=10; vk[6]="hellbane";
 vnm[7]="LEBRON JAMES";    vfc[7]=11; vk[7]="lebron";
 vnm[8]="KEVIN GARNETT";   vfc[8]=20; vk[8]="garnett";
 vnm[9]="IVORY LATTA";     vfc[9]=22; vk[9]="latta";
@@ -25,9 +25,12 @@ vnm[12]="JUWANNA MANN";   vfc[12]=17; vk[12]="juwanna";
 vnm[13]="MR 3000";        vfc[13]=26; vk[13]="3000";
 vnm[14]="CHEF BOYARDEE";  vfc[14]=25; vk[14]="boyardee";
 vnm[15]="HUNDLEY";        vfc[15]=16; vk[15]="hundley";
-//the four leads keep 3 selectable variants in sat[15..18]; the rest are fixed
-for (vi=0; vi<16; vi+=1) vvar[vi]=1;
-vvar[0]=3; vvar[1]=3; vvar[2]=3; vvar[3]=3;
+//everyone has 3 variants; vsat maps each portrait to its config slot.
+//Hellbane shares Balthios's slot (he IS Balthios).
+vsat[0]=15; vsat[1]=16; vsat[2]=17; vsat[3]=18;
+vsat[4]=19; vsat[5]=20; vsat[6]=18; vsat[7]=21;
+vsat[8]=22; vsat[9]=23; vsat[10]=24; vsat[11]=25;
+vsat[12]=26; vsat[13]=27; vsat[14]=28; vsat[15]=29;
 //layout: portraits are 48x49, native-size grid
 gx0=28; gy0=14; gcw=66; gch=51;
 playing=0; //bloops left in the current sample sentence

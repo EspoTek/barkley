@@ -39,10 +39,14 @@ function sConfig(argument0) {
 	if (arg=0) global.sat[14]=1;
 	else if (arg=1) { file_text_write_real(tfl,global.sat[14]); file_text_writeln(tfl); }
 	else { if (file_text_eof(tfl)) global.sat[14]=1; else { global.sat[14]=min(1,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } }
-	//sat[15..18]=voice variant 0-2 per character: 15=Barkley 16=Hoopz 17=Jordan 18=Balthios
-	//Defaults are the user's audition picks (2026-08-07)
+	//sat[15..18]=voice variant 0-2 per lead: 15=Barkley 16=Hoopz 17=Jordan 18=Balthios
+	//(Balthios's pick also voices Ultimate Hellbane.) Lead defaults are the
+	//user's audition picks (2026-08-07). sat[19..29]=extended cast variants:
+	//19=Cyberdwarf 20=Vinceborg 21=Lebron 22=Garnett 23=Latta 24=Vitale
+	//25=Brimley 26=Juwanna 27=Mr3000 28=Chef 29=Hundley
 	tdef[15]=1; tdef[16]=1; tdef[17]=0; tdef[18]=2;
-	for (tcl=15; tcl<=18; tcl+=1) {
+	for (tcl=19; tcl<=29; tcl+=1) tdef[tcl]=0;
+	for (tcl=15; tcl<=29; tcl+=1) {
 	if (arg=0) global.sat[tcl]=tdef[tcl];
 	else if (arg=1) { file_text_write_real(tfl,global.sat[tcl]); file_text_writeln(tfl); }
 	else { if (file_text_eof(tfl)) global.sat[tcl]=tdef[tcl]; else { global.sat[tcl]=min(2,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } }

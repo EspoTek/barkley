@@ -12,7 +12,7 @@ function sVoxRate(argument0) {
 	if (string_pos("balthios",nl)>0) return(95);
 	if (string_pos("dwarf",nl)>0) return(85);
 	if (string_pos("vince",nl)>0) return(65);
-	if (string_pos("hellbane",nl)>0) return(80);
+	if (string_pos("hellbane",nl)>0) return(95); //Hellbane IS Balthios: same pace
 	if (string_pos("lebron",nl)>0) return(60);
 	if (string_pos("garnett",nl)>0) return(48);
 	if (string_pos("latta",nl)>0) return(45);

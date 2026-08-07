@@ -16,8 +16,7 @@ draw_rectangle(vcx-3,vcy-3,vcx+50,vcy+51,true);
 }
 }
 sFont(Courier8,c_yellow,1);
-vtl=vnm[cur];
-if (vvar[cur]>1) vtl+="  VOICE "+string(global.sat[15+cur]+1)+"/3  (V cycles)";
+vtl=vnm[cur]+"  VOICE "+string(global.sat[vsat[cur]]+1)+"/3  (V cycles)";
 draw_text(160,gy0+4*gch+1,string_hash_to_newline(vtl));
 sFont(Courier8,c_ltgray,1);
 draw_text(160,gy0+4*gch+12,string_hash_to_newline("CLICK or Z hear voice   X/F9 close"));
