@@ -16,6 +16,7 @@ varying vec4 v_vColour;
 
 uniform float u_time;    // seconds, wraps every 100s
 uniform vec2  u_outsize; // destination rect size in gui pixels
+uniform float u_warp;    // fraction of the full curve applied (dosbox-crt shipped 0.20)
 uniform sampler2D u_blurbuf;
 
 vec3 tsample(sampler2D samp, vec2 tc)
@@ -49,10 +50,12 @@ float rand(vec2 co)
 void main()
 {
     vec2 uv = v_vTexcoord;
-    // only 20% of the curve -- the dosbox-crt signature restraint
-    vec2 curved_uv = mix(curve(uv), uv, 0.8);
-    float scale = 0.04;
-    vec2 scuv = curved_uv * (1.0 - scale) + scale / 2.0 + vec2(0.003, -0.001);
+    // dosbox-crt applies only 20% of the curve; ours is user-tunable
+    vec2 curved_uv = mix(curve(uv), uv, 1.0 - u_warp);
+    // dosbox-crt insets its sample coords 4% + offset here (scuv) to undo
+    // padding in dosbox's framebuffer; our surface has none, so that inset
+    // just cropped the HUD off every edge -- sample the curved uv directly
+    vec2 scuv = curved_uv;
 
     // main colour + bleed
     vec3 col;

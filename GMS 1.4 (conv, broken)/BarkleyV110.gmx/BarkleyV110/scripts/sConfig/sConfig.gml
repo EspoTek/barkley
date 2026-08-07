@@ -19,9 +19,12 @@ function sConfig(argument0) {
 	if (arg=0) global.sat[5]=0;
 	else if (arg=1) { file_text_write_real(tfl,global.sat[5]); file_text_writeln(tfl); }
 	else { global.sat[5]=file_text_read_real(tfl); file_text_readln(tfl); }
-	if (arg=0) global.sat[6]=0; // 0=off, 1=CRT shader (port addition)
+	if (arg=0) global.sat[6]=0; // 0=off, 1=Arcade, 2=Dosbox CRT (port addition)
 	else if (arg=1) { file_text_write_real(tfl,global.sat[6]); file_text_writeln(tfl); }
-	else { if (file_text_eof(tfl)) global.sat[6]=0; else { global.sat[6]=file_text_read_real(tfl); file_text_readln(tfl); } } // configs from before the FILTER row have 5 lines
+	else { if (file_text_eof(tfl)) global.sat[6]=0; else { global.sat[6]=min(2,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } } // configs from before the FILTER row have 5 lines; clamp covers the old 15-preset builds
+	if (arg=0) global.sat[7]=10; // Dosbox CRT corner-warp percent, tuned with +/-
+	else if (arg=1) { file_text_write_real(tfl,global.sat[7]); file_text_writeln(tfl); }
+	else { if (file_text_eof(tfl)) global.sat[7]=10; else { global.sat[7]=min(25,max(0,file_text_read_real(tfl))); file_text_readln(tfl); } }
 	//
 	if (arg!=0) file_text_close(tfl);
 	if (arg=1) sConvert("config0.txt","config.txt");

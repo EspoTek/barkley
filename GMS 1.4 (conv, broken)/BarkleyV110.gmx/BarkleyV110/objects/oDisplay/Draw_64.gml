@@ -32,42 +32,10 @@ draw_set_color(c_black);
 draw_rectangle(0, 0, ww, wh, false); // borders; also hides the auto-present
 draw_set_color(c_white);
 
-// CRT filter preset table (global.sat[6]; see global.crtname for labels)
+// CRT filter: 0 off, 1 Arcade (shCRTMask), 2 Dosbox CRT (shCRTDosbox)
 var crt = 0;
 if (variable_global_exists("sat")) crt = global.sat[6];
-var fam = 0; // 0 raw, 1 shCRT, 2 shCRTMask, 3 shCRTTV, 4 shCRTDos, 5 shCRTDosbox
-var p_scan = 0, p_pitch = 1, p_vig = 0;
-var p_mask = 0, p_boost = 1;
-var p_curve = 0, p_sdepth = 0, p_sspeed = 0, p_spitch = 6.28318;
-var p_stripe = 0, p_shim = 0, p_bright = 2.1, p_ghost = 1;
-var p_halate = 0;
-if (crt == 1) { fam = 1; }                                          // PIXEL: sharp-bilinear only
-if (crt == 2) { fam = 1; p_scan = 0.10; p_vig = 0.10; }             // SUBTLE
-if (crt == 3) { fam = 1; p_scan = 0.22; p_vig = 0.14; }             // SCANLINES
-if (crt == 4) { fam = 1; p_scan = 0.16; p_pitch = 2; p_vig = 0.06; }// VGA double-scan
-if (crt == 5) { fam = 2; p_scan = 0.25; p_mask = 0.20; p_boost = 1.10; } // TRINITRON
-if (crt == 6) { fam = 2; p_scan = 0.38; p_mask = 0.30; p_boost = 1.18; } // ARCADE
-if (crt == 7) { fam = 3; p_sdepth = 0.20; p_stripe = 0.35; p_shim = 0.0003; p_ghost = 0.8; } // TV SOFT
-if (crt == 8) { fam = 3; p_curve = 1; p_sdepth = 0.55; p_sspeed = 3.5; p_spitch = 1.5;
-	p_stripe = 0.65; p_shim = 0.0017; p_bright = 2.6; p_ghost = 0.8; }  // NEWPIXIE
-if (crt == 9) { fam = 3; p_curve = 0.25; p_sdepth = 0.25; p_stripe = 0.35;
-	p_shim = 0.0006; p_ghost = 0.55; }                                  // GHOST
-if (crt == 10) { fam = 5; p_ghost = 0.6; }                              // DOSBOX-CRT (faithful port)
-if (crt == 11) { fam = 4; p_scan = 0.20; p_pitch = 2; p_halate = 0.08; p_mask = 0.06; } // STAGING
-if (crt == 12) { fam = 4; p_scan = 0.30; p_halate = 0.12; p_mask = 0.10; }              // PVM
-if (crt == 13) { fam = 4; p_scan = 0.12; p_halate = 0.22; p_mask = 0.04; }              // GLOW
-if (crt == 14) { fam = 3; p_curve = 0.12; p_sdepth = 0.15; p_stripe = 0.15;
-	p_shim = 0.0002; p_bright = 2.0; p_ghost = 0.9; }                   // STUDIO
-if (fam == 1 && !crtok) fam = 0;
-if (fam == 2 && !crtmaskok) fam = 0;
-if (fam == 3 && !crttvok) fam = 0;
-if (fam == 4 && !crtdosok) fam = 0;
-if (fam == 5 && !crtdbok) fam = 0;
-// too few output pixels per beam line -> fade scanlines out instead of moire
-if (fam == 1 || fam == 4) p_scan *= min(1, max(0, dh / (sh * p_pitch) - 1));
-if (fam == 2) p_scan *= min(1, max(0, dh / sh - 1));
-
-if (fam == 3 || fam == 5) {
+if (crt == 2 && crtdbok) {
 	// phosphor persistence: this frame blended over the tail of the last few
 	if (!surface_exists(crtaccum)) {
 		crtaccum = surface_create(sw, sh);
@@ -76,68 +44,31 @@ if (fam == 3 || fam == 5) {
 		surface_reset_target();
 	}
 	surface_set_target(crtaccum);
-	draw_set_alpha(p_ghost);
+	draw_set_alpha(0.6);
 	draw_surface(application_surface, 0, 0);
 	draw_set_alpha(1);
 	surface_reset_target();
-}
-if (fam == 5) {
 	gpu_set_texfilter(true);
 	shader_set(shCRTDosbox);
 	shader_set_uniform_f(u_db_time, (current_time mod 100000) / 1000);
 	shader_set_uniform_f(u_db_outsize, dw, dh);
+	shader_set_uniform_f(u_db_warp, global.sat[7] / 100);
 	texture_set_stage(u_db_blurbuf, surface_get_texture(crtaccum));
 	draw_surface_stretched(application_surface, ox, oy, dw, dh);
 	shader_reset();
 	gpu_set_texfilter(false);
-} else if (fam == 3) {
-	gpu_set_texfilter(true);
-	shader_set(shCRTTV);
-	shader_set_uniform_f(u_tv_time, (current_time mod 100000) / 1000);
-	shader_set_uniform_f(u_tv_native, sw, sh);
-	shader_set_uniform_f(u_tv_curve, p_curve);
-	shader_set_uniform_f(u_tv_sdepth, p_sdepth);
-	shader_set_uniform_f(u_tv_sspeed, p_sspeed);
-	shader_set_uniform_f(u_tv_spitch, p_spitch);
-	shader_set_uniform_f(u_tv_stripe, p_stripe);
-	shader_set_uniform_f(u_tv_shim, p_shim);
-	shader_set_uniform_f(u_tv_bright, p_bright);
-	draw_surface_stretched(crtaccum, ox, oy, dw, dh);
-	shader_reset();
-	gpu_set_texfilter(false);
 } else {
 	if (surface_exists(crtaccum)) { surface_free(crtaccum); crtaccum = -1; }
-	if (fam == 4) {
-		gpu_set_texfilter(true);
-		shader_set(shCRTDos);
-		shader_set_uniform_f(u_dos_native, sw, sh);
-		shader_set_uniform_f(u_dos_sharp, max(1, dh / sh));
-		shader_set_uniform_f(u_dos_scan, p_scan);
-		shader_set_uniform_f(u_dos_pitch, p_pitch);
-		shader_set_uniform_f(u_dos_halate, p_halate);
-		shader_set_uniform_f(u_dos_mask, p_mask);
-		draw_surface_stretched(application_surface, ox, oy, dw, dh);
-		shader_reset();
-		gpu_set_texfilter(false);
-	} else if (fam == 1) {
+	if (crt == 1 && crtmaskok) {
 		gpu_set_texfilter(true); // sharp-bilinear needs the sampler
-		shader_set(shCRT);
-		shader_set_uniform_f(u_crt_native, sw, sh);
-		shader_set_uniform_f(u_crt_sharp, max(1, dh / sh));
-		shader_set_uniform_f(u_crt_scan, p_scan);
-		shader_set_uniform_f(u_crt_pitch, p_pitch);
-		shader_set_uniform_f(u_crt_vig, p_vig);
-		draw_surface_stretched(application_surface, ox, oy, dw, dh);
-		shader_reset();
-		gpu_set_texfilter(false);
-	} else if (fam == 2) {
-		gpu_set_texfilter(true);
 		shader_set(shCRTMask);
 		shader_set_uniform_f(u_msk_native, sw, sh);
 		shader_set_uniform_f(u_msk_sharp, max(1, dh / sh));
-		shader_set_uniform_f(u_msk_scan, p_scan);
-		shader_set_uniform_f(u_msk_mask, p_mask);
-		shader_set_uniform_f(u_msk_boost, p_boost);
+		// deep beam + strong grille; scanlines fade out if the window is
+		// too small to render them without moire
+		shader_set_uniform_f(u_msk_scan, 0.38 * min(1, max(0, dh / sh - 1)));
+		shader_set_uniform_f(u_msk_mask, 0.30);
+		shader_set_uniform_f(u_msk_boost, 1.18);
 		draw_surface_stretched(application_surface, ox, oy, dw, dh);
 		shader_reset();
 		gpu_set_texfilter(false);
@@ -147,13 +78,15 @@ if (fam == 5) {
 	}
 }
 
-// filter-name toast after a number-key swap
+// filter-name toast after a hotkey change; shows the warp level for Dosbox
 if (crtnotice > 0) {
 	crtnotice -= 1;
+	var lbl = global.crtname[crt];
+	if (crt == 2) lbl += "  WARP " + string(global.sat[7]);
 	var ts = max(1, (dw / sw) * 0.5);
 	sFont(Courier8, c_yellow, 0, 0);
 	draw_text_transformed(ox + 4 * ts, oy + 4 * ts,
-		string_hash_to_newline(global.crtname[crt]), ts, ts, 0);
+		string_hash_to_newline(lbl), ts, ts, 0);
 }
 draw_set_alpha(pa);
 draw_set_color(pc);
