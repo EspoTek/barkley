@@ -6,8 +6,8 @@ draw_set_alpha(image_alpha);
 draw_set_font(Courier8);
 draw_set_color(c_white);
 draw_set_halign(fa_center);
-//port: was "V 1.09#bleep edition"
-draw_text(290,210,string_hash_to_newline("V 1.30")); //228
+//port: was "V 1.09#bleep edition"; bottom-right, where its 2nd line sat
+draw_text(290,222,string_hash_to_newline("V 1.30"));
 draw_set_alpha(1);
 if (keyboard_string="hiratio") {
 draw_set_halign(fa_left);
