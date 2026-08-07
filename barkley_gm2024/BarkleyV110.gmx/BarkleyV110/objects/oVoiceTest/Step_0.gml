@@ -1,5 +1,6 @@
 if (keyboard_check_pressed(vk_f9)) { open=1-open; playing=0; }
 if (open=0) exit;
+vblipf+=global.rd/2;
 if (sKey(global.key_up,1) || sKey(vk_up,1)) { if (cur>=4) cur-=4; }
 if (sKey(global.key_down,1) || sKey(vk_down,1)) { if (cur<12) cur+=4; }
 if (sKey(global.key_left,1) || sKey(vk_left,1)) { if (cur mod 4>0) cur-=1; }

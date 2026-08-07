@@ -11,7 +11,7 @@ for (i = 0; i < nrows; i += 1) {
 	yy = 22 + i * 15;
 	col = c_white;
 	if (i >= 1 && i <= 7 && global.sat[6] != 2) col = c_gray;
-	if (i = cur) draw_sprite(sDialogBlip, 0, 8, yy + 4);
+	if (i = cur) draw_sprite(sDialogBlip, tick div 4, 8, yy + 4); //spinning basketball cursor
 	sFont(Courier8, col, 0);
 	draw_text(17, yy, string_hash_to_newline(rname[i]));
 	val = "";

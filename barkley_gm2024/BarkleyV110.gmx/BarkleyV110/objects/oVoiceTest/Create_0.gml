@@ -33,6 +33,7 @@ vsat[8]=22; vsat[9]=23; vsat[10]=24; vsat[11]=25;
 vsat[12]=26; vsat[13]=27; vsat[14]=28; vsat[15]=29;
 //layout: portraits are 48x49, native-size grid
 gx0=28; gy0=14; gcw=66; gch=51;
+vblipf=0;  //spinning basketball cursor frame
 playing=0; //bloops left in the current sample sentence
 pt=0;      //frames until next bloop
 pvb=2;     //frames per bloop for the sentence being played

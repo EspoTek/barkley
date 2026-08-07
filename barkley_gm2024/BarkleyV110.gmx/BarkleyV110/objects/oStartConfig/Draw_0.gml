@@ -5,13 +5,12 @@ if (global.edit!=img) image_index=0;
 if (img!=6) draw_sprite(sDialogBlip,image_index,xs+(spc*global.sat[img]),ys-2); //port: box 6 shows values as text
 sFont(Courier8,c_white,1);
 if (img=6) {
-//port: two settings share this box; ">" marks the active line
-vfl=""; vvl="";
-if (global.control=6) vfl="> ";
-if (global.control=7) vvl="> ";
+//port: two settings share this box; the basketball marks the active line
+if (global.control=6) draw_sprite(sDialogBlip,image_index,x+10,y+8);
+if (global.control=7) draw_sprite(sDialogBlip,image_index,x+10,y+29);
 vvo="Off"; if (global.sat[14]=1) vvo="On";
-draw_text(x+75,y+3,string_hash_to_newline(vfl+"FILTER "+global.crtname[global.sat[6]]));
-draw_text(x+75,y+24,string_hash_to_newline(vvl+"VOICES "+vvo));
+draw_text(x+75,y+3,string_hash_to_newline("FILTER "+global.crtname[global.sat[6]]));
+draw_text(x+75,y+24,string_hash_to_newline("VOICES "+vvo));
 } else if (img=5) {
 draw_text(x+75,y+3,string_hash_to_newline(s0));
 draw_text(x+75,y+24,string_hash_to_newline(s1));

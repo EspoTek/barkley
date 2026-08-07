@@ -13,6 +13,7 @@ if (vi=cur) {
 draw_set_color(c_yellow);
 draw_rectangle(vcx-2,vcy-2,vcx+49,vcy+50,true);
 draw_rectangle(vcx-3,vcy-3,vcx+50,vcy+51,true);
+draw_sprite(sDialogBlip,vblipf,vcx-14,vcy+19); //spinning basketball cursor
 }
 }
 sFont(Courier8,c_yellow,1);
