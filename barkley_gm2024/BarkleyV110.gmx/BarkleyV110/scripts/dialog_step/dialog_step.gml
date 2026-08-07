@@ -1,5 +1,12 @@
 function dialog_step() {
 	draw_set_font(Courier8);
+	//port: drain queued voice notes (a skipped reveal plays a short burst
+	//instead of one bleep); same wall-time cadence as the live bloops
+	if (vq>0) {
+	if (vsnd>=0 && global.sat[14]=1) {
+	if (current_time-vlast>55) { vlast=current_time; vq-=1; audio_play_sound(vsnd,10,false,0.85,0,0.94+random(0.12)); }
+	} else vq=0;
+	}
 	mcount+=global.rd*(1+global.sat[3]);
 	while (mcount>=wait) {
 	chat=!chat;
@@ -38,6 +45,8 @@ function dialog_step() {
 	 if (mdone=0) {
 	 while (mdone=0) dialog_step();
 	 mdone=0;
+	 //port: an instant reveal should babble a few notes, not one bleep
+	 if (global.sat[14]=1 && vsnd>=0) vq=2+floor(random(2));
 	 } else {
 	  if (line>linemax) {
 	   mdone=0;

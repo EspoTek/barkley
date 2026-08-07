@@ -40,3 +40,4 @@ cmessage[4]="";
 vres=0;
 vsnd=-1;
 vlast=0;
+vq=0; //queued trailing notes (instant-reveal burst)
