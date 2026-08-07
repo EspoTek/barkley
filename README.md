@@ -5,6 +5,10 @@ Builds provided for Windows, macOS, Linux and the browser (HTML5).
 
 I haven't done any console ports (I am a 32 year old man, I don't have hacked consoles any more), but with the source code here and an Enterprise Licence of Game Maker it should in theory be possible!
 
+## Who is this game for?
+
+This game is not for TREND. Not for CORPORATE ATTITUDE. Not for STONER. Only TRUE DOOM-MURDERHEADS.
+
 ## How to play
 
 Download the version for your OS from:  
@@ -32,3 +36,7 @@ The game and its source were released by Tales of Game's under
 source preservation work of [sanlor/Barkley1_Original](https://github.com/sanlor/Barkley1_Original).
 
 `You don't need a reason to help people.`
+
+## Did you get permission from the original devs to do this?
+
+No, and I don't care.  Those fuckers still owe me $10 from 2013.  I WILL NOT FORGET THIS TRESPASS, TALES OF GAME'S.
