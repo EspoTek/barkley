@@ -14,9 +14,11 @@ function sVoxRate(argument0) {
 	if (string_pos("vince",nl)>0) return(65);
 	if (string_pos("hellbane",nl)>0) return(95); //Hellbane IS Balthios: same pace
 	if (string_pos("lebron",nl)>0) return(60);
-	if (string_pos("garnett",nl)>0) return(48);
-	if (string_pos("latta",nl)>0) return(45);
-	if (string_pos("vitale",nl)>0) return(35);
+	//quick-talkers sit at ~2 frames: any faster overlaps the ~100ms bloops
+	//into a phasey drone (user caught it) since bloops fire at most once/frame
+	if (string_pos("garnett",nl)>0) return(65);
+	if (string_pos("latta",nl)>0) return(62);
+	if (string_pos("vitale",nl)>0) return(60);
 	if (string_pos("brimley",nl)>0) return(115);
 	if (string_pos("juwanna",nl)>0) return(50);
 	if (string_pos("3000",nl)>0) return(55);
