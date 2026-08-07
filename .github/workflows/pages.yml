@@ -25,7 +25,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-22.04
+    # 24.04, not 22.04: GMAssetCompiler needs ffmpeg >= 5.1 (aresample "ochl")
+    runs-on: ubuntu-24.04
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
