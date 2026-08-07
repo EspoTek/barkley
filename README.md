@@ -14,7 +14,7 @@ This game is not for TREND. Not for CORPORATE ATTITUDE. Not for STONER. Only TRU
 Download the version for your OS from:  
 https://github.com/EspoTek/barkley/releases
 
-or visit https://barkley.github.io and play it right here in the browser!
+or visit https://espotek.github.io/barkley and play it right here in the browser!
 
 ## Controls
 
