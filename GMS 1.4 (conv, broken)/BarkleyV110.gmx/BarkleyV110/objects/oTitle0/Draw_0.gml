@@ -6,9 +6,8 @@ draw_set_alpha(image_alpha);
 draw_set_font(Courier8);
 draw_set_color(c_white);
 draw_set_halign(fa_center);
-//port: was "V 1.09#bleep edition" via plain draw_text; drawn at 0.8 scale so
-//the corner text sits a little smaller than the sprite font's native size.
-draw_text_transformed(290,210,string_hash_to_newline("V 1.30#modern edition"),0.8,0.8,0); //228
+//port: was "V 1.09#bleep edition"
+draw_text(290,210,string_hash_to_newline("V 1.30")); //228
 draw_set_alpha(1);
 if (keyboard_string="hiratio") {
 draw_set_halign(fa_left);
