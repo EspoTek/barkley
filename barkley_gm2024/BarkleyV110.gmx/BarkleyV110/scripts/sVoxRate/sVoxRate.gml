@@ -6,7 +6,8 @@ function sVoxRate(argument0) {
 	//Will Smith is quick. Unmapped speakers get the neutral default.
 	var nl;
 	nl=string_lower(string(argument0));
-	if (string_pos("barkley",nl)>0) return(70);
+	if (string_pos("t-rex",nl)>0) return(125); //T-Rex Barkley lumbers (before the barkley match)
+	if (string_pos("barkley",nl)>0 || string_pos("bakley",nl)>0) return(70);
 	if (string_pos("hoopz",nl)>0) return(42);
 	if (string_pos("jordan",nl)>0) return(95);
 	if (string_pos("balthios",nl)>0) return(95);

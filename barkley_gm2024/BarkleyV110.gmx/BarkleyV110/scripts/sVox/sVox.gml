@@ -5,7 +5,7 @@ function sVox(argument0) {
 	//Returns -1 for speakers without a voice (dialog stays silent, as shipped).
 	var nl;
 	nl=string_lower(string(argument0));
-	if (string_pos("barkley",nl)>0) return(asset_get_index("mVoxBarkley"+string(global.sat[15])));
+	if (string_pos("barkley",nl)>0 || string_pos("bakley",nl)>0) return(asset_get_index("mVoxBarkley"+string(global.sat[15]))); //Sir/Shade Bakley: evil clones speak with his voice
 	if (string_pos("hoopz",nl)>0) return(asset_get_index("mVoxHoopz"+string(global.sat[16])));
 	if (string_pos("jordan",nl)>0) return(asset_get_index("mVoxJordan"+string(global.sat[17])));
 	if (string_pos("balthios",nl)>0) return(asset_get_index("mVoxBalthios"+string(global.sat[18])));

@@ -6,6 +6,11 @@ function sVoxPitch(argument0) {
 	var nl;
 	nl=string_lower(string(argument0));
 	if (string_pos("hellbane",nl)>0) return(1.042);
+	if (string_pos("t-rex",nl)>0) return(0.75); //T-Rex Barkley: Barkley's voice, saurian grumble
+	//evil counterparts: the namesake voice downshifted ~12-15Hz
+	if (string_pos("shadow",nl)>0 || string_pos("bakley",nl)>0) return(0.87); //Shadow Barkley, Sir/Shade Bakley
+	if (string_pos("maester",nl)>0) return(0.85); //Maester Jordan
+	if (string_pos("lebronus",nl)>0) return(0.88); //Lebronus James
 	//hash-voiced NPCs: stable per-name pitch flavour (x0.92 - x1.12) so two
 	//NPCs sharing a pool voice still sound like different people
 	if (string_pos("barkley",nl)>0 || string_pos("hoopz",nl)>0 || string_pos("jordan",nl)>0 || string_pos("balthios",nl)>0) return(1);
