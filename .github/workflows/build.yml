@@ -1,10 +1,11 @@
 name: build
 
-# Builds distributable zips for every supported platform on each push to
-# modern-port; a tag push (v*) additionally attaches them to a GitHub Release.
-# gm-cli provisions a guest GameMaker license on the runner -- no account
-# secrets needed. The macOS job signs + notarizes only when the signing
-# secrets exist; otherwise it ships an unsigned zip (right-click > Open).
+# Builds distributables for every supported platform on each push to
+# master/modern-port; a tag push (v*) additionally attaches them to a GitHub
+# Release. gm-cli provisions a guest GameMaker license on the runner -- no
+# account secrets needed. The macOS job produces a drag-to-Applications DMG
+# (Spalding-dimension background) plus a zip, signed + notarized + stapled
+# when the Developer ID secrets are present, unsigned otherwise.
 #
 # Platform notes (GameMaker 2026 runtime):
 # - macOS: the VM runner is a universal binary (arm64 + x86_64), one artifact.
@@ -62,7 +63,14 @@ jobs:
             echo "ok=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Sign and notarize (macOS)
+      - name: Unpack app (macOS)
+        if: matrix.target == 'mac'
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/app"
+          unzip -q dist/barkley-macos-universal.zip -d "$RUNNER_TEMP/app"
+
+      - name: Sign and notarize the app (macOS)
         if: matrix.target == 'mac' && steps.cansign.outputs.ok == 'true'
         shell: bash
         env:
@@ -82,10 +90,7 @@ jobs:
           security set-key-partition-list -S apple-tool:,apple: -s -k ci "$KC" > /dev/null
           security list-keychains -d user -s "$KC" login.keychain-db
 
-          WORK="$RUNNER_TEMP/sign"
-          mkdir -p "$WORK"
-          unzip -q "dist/barkley-macos-universal.zip" -d "$WORK"
-          APP=$(find "$WORK" -maxdepth 2 -name "*.app" | head -1)
+          APP=$(find "$RUNNER_TEMP/app" -maxdepth 2 -name "*.app" | head -1)
           codesign --force --deep --options runtime --timestamp \
             --entitlements .github/entitlements.plist \
             -s "Developer ID Application" "$APP"
@@ -100,10 +105,51 @@ jobs:
           rm dist/barkley-macos-universal.zip
           ditto -c -k --keepParent "$APP" dist/barkley-macos-universal.zip
 
+      - name: Create DMG (macOS)
+        if: matrix.target == 'mac'
+        shell: bash
+        run: |
+          set -euo pipefail
+          brew install create-dmg
+          ok=false
+          for i in 1 2 3; do
+            if create-dmg \
+              --volname "Barkley Gaiden" \
+              --background .github/dmg-background.png \
+              --window-size 640 480 \
+              --icon-size 100 \
+              --icon "BarkleyV110.app" 160 330 \
+              --app-drop-link 480 330 \
+              dist/barkley-macos-universal.dmg "$RUNNER_TEMP/app"; then
+              ok=true; break
+            fi
+            echo "create-dmg attempt $i failed; retrying"
+            rm -f dist/barkley-macos-universal.dmg
+            sleep 5
+          done
+          $ok
+
+      - name: Sign and notarize the DMG (macOS)
+        if: matrix.target == 'mac' && steps.cansign.outputs.ok == 'true'
+        shell: bash
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        run: |
+          set -euo pipefail
+          codesign --force --timestamp -s "Developer ID Application" dist/barkley-macos-universal.dmg
+          xcrun notarytool submit dist/barkley-macos-universal.dmg \
+            --apple-id "$APPLE_ID" --team-id "$APPLE_TEAM_ID" \
+            --password "$APPLE_APP_PASSWORD" --wait
+          xcrun stapler staple dist/barkley-macos-universal.dmg
+
       - uses: actions/upload-artifact@v4
         with:
           name: barkley-${{ matrix.name }}
-          path: dist/*.zip
+          path: |
+            dist/*.zip
+            dist/*.dmg
 
   release:
     if: startsWith(github.ref, 'refs/tags/')
@@ -118,4 +164,6 @@ jobs:
           merge-multiple: true
       - uses: softprops/action-gh-release@v2
         with:
-          files: dist/*.zip
+          files: |
+            dist/*.zip
+            dist/*.dmg
