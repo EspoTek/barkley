@@ -9,7 +9,7 @@ user-invocable: true
 Drives `tools/autoqa.sh` and works each finding through to a committed fix.
 
 Working dir for everything below:
-`GMS 1.4 (conv, broken)/BarkleyV110.gmx/BarkleyV110`
+`Modern port (GameMaker 2024, working)/BarkleyV110.gmx/BarkleyV110`
 
 ## The loop
 

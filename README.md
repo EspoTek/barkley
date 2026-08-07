@@ -19,7 +19,7 @@ Requirements: [Node.js](https://nodejs.org) (for `npx`). No GameMaker account ne
 the CLI provisions a guest license and downloads the runtime on first use.
 
 ```sh
-cd "GMS 1.4 (conv, broken)/BarkleyV110.gmx/BarkleyV110"
+cd "Modern port (GameMaker 2024, working)/BarkleyV110.gmx/BarkleyV110"
 npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac
 ```
 

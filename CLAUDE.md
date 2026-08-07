@@ -6,17 +6,19 @@
 GameMaker (2024.x). Branch `master` = untouched original ("museum piece") — never
 commit to it. Branch `modern-port` = the port; all work happens here. The user has
 granted standing permission to commit on `modern-port`; keep bugfixes, features,
-and port-compat work in **separate commits**. Never push, never monetize
-(CC BY-NC 4.0), remote still uses `main` as default (local renamed to `master`).
+and port-compat work in **separate commits**. Public repo: `origin` →
+github.com/EspoTek/barkley (default branch `master`); push only when the user
+asks in the current conversation. `upstream` → sanlor/Barkley1_Original
+(source preservation, never push there). Never monetize (CC BY-NC 4.0).
 
 ## Layout
 
 - `GM 6.1/BarkleyV110.gm6` — **ground truth**. GM6 file, code stored as plaintext;
   when unsure what original code said, `strings`/search this file (it's v1.09/1.10,
   the final 2008 build; v1.20 from 2014 added only the two sound fixes, already applied).
-- `GMS 1.4 (conv, broken)/BarkleyV110.gmx/` — repaired GMS 1.4 source tree
+- `Modern port (GameMaker 2024, working)/BarkleyV110.gmx/` — repaired GMS 1.4 source tree
   (reference only; no longer the build tree).
-- `GMS 1.4 (conv, broken)/BarkleyV110.gmx/BarkleyV110/` — **the live GameMaker 2024
+- `Modern port (GameMaker 2024, working)/BarkleyV110.gmx/BarkleyV110/` — **the live GameMaker 2024
   project** (`BarkleyV110.yyp`). All fixes go here.
 - `mvc/` inside the .gmx dir — importer staging junk, gitignored-by-exclusion
   (`git add -A ':!*/mvc/*' ':!*/.gmcache/*'`).
@@ -26,7 +28,7 @@ and port-compat work in **separate commits**. Never push, never monetize
 ## Build / run / debug
 
 ```sh
-cd "GMS 1.4 (conv, broken)/BarkleyV110.gmx/BarkleyV110"
+cd "Modern port (GameMaker 2024, working)/BarkleyV110.gmx/BarkleyV110"
 npx @gamemaker/gm-cli@latest compile BarkleyV110.yyp --target mac --errors-only  # build
 npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac                    # launch
 ```
