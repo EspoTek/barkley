@@ -21,11 +21,11 @@ function sVoxRate(argument0) {
 	if (string_pos("latta",nl)>0) return(62);
 	if (string_pos("vitale",nl)>0) return(60);
 	if (string_pos("brimley",nl)>0) return(115);
-	if (string_pos("juwanna",nl)>0) return(50);
+	if (string_pos("juwanna",nl)>0) return(60); //60ms drone floor
 	if (string_pos("3000",nl)>0) return(55);
 	if (string_pos("boyardee",nl)>0) return(70);
 	if (string_pos("hundley",nl)>0 || string_pos("hughley",nl)>0) return(80);
-	if (string_pos("pump",nl)>0) return(48); //chatters obnoxiously
+	if (string_pos("pump",nl)>0) return(62); //chatters obnoxiously (60ms drone floor applies)
 	//hash-voiced NPCs: stable hash-flavoured pace, banded by class --
 	//monsters lumber (95-135ms), robots tick steadily (70), kids chatter
 	//(45-60ms), everyone else 55-95ms
@@ -33,7 +33,7 @@ function sVoxRate(argument0) {
 	vh=sVoxHash(nl);
 	if (vh>=0) {
 	vc=sVoxClass(nl);
-	if (vc=2) return(45+((vh div 12) mod 16));
+	if (vc=2) return(58+((vh div 12) mod 12)); //kids chatter, above the drone floor
 	if (vc=3) return(95+((vh div 12) mod 41));
 	if (vc=4) return(70);
 	return(55+((vh div 12) mod 41));
