@@ -19,7 +19,7 @@ sCinema2(oVince,"move","left");
 sCinema2(oVince,"face","up");
 sCinema(oBarkley,"code",cine_0370);
 repeat (3) sCinema(oBarkley,"move","up");
-sCinema(oBarkley,"dialog","???:\\Barkley, I've been waiting for you.");
+sCinema(oBarkley,"dialog","???|Cyberdwarf:\\Barkley, I've been waiting for you.");
 sCinema(oBarkley,"dialog","C... Cyberdwarf?",1);
 sCinema(oCyberdwarf,"dialog","Cyberdwarf:\\Yes... That is I.");
 sCinema(oBarkley,"wait",1.5);

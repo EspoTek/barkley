@@ -3,9 +3,9 @@ hhh=sOvar(object_index,-1);
 if (room=RomSpaldingRedC) {
 if (hhh=-1) sOvar(object_index,1);
 else sOvar(object_index,11);
-sCinema(oBarkley,"dialog","???:\\Well hello there, you must be the visitors the Master said we'd be expecting!");
+sCinema(oBarkley,"dialog","???|Leonard:\\Well hello there, you must be the visitors the Master said we'd be expecting!");
 sCinema(oBarkley,"dialog","Someone's expecting us?",1);
-sCinema(oBarkley,"dialog","???:\\The Master said he's been expecting you for a while. Must be important business stuff. I don't know what goes on in those fancy meeting rooms, I'm just the janitor. Leonard's the name, pleased to meet you.");
+sCinema(oBarkley,"dialog","???|Leonard:\\The Master said he's been expecting you for a while. Must be important business stuff. I don't know what goes on in those fancy meeting rooms, I'm just the janitor. Leonard's the name, pleased to meet you.");
 sCinema(oBarkley,"dialog","What are you doing here? Nobody's here, man.",1);
 sCinema(oBarkley,"dialog","Leonard:\\Haha, good one! Hey, I've got to get going but if you're going to stick around, make sure you don't make that much noise. I think they're busy on some new prototype b-ball or something. Catch you later!");
 sCinema(oBarkley,"tint",c_black,0.5);

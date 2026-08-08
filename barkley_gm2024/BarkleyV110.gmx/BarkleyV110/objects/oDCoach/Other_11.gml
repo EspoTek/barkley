@@ -1,7 +1,7 @@
 global.dialog=1;
 if (sOvar(object_index,-1)=-1) {
 sOvar(object_index,1);
-sCinema(oBarkley,"dialog","???:\\Well as I live and breathe, if it isn't Charles Barkley!");
+sCinema(oBarkley,"dialog","???|Matt Guokas:\\Well as I live and breathe, if it isn't Charles Barkley!");
 sCinema(oBarkley,"dialog","C...Coach? Coach Guokas! Holy shit! What the hell are you doing out here?",1);
 sCinema(oBarkley,"dialog","Matt Guokas:\\Haha, no kidding, it is you! How've you been, Barkley?");
 sCinema(oBarkley,"dialog","Times have been tough, Coach, but I'll make it.",1);
