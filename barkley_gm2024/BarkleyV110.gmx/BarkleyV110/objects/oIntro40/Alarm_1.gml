@@ -1,9 +1,13 @@
+// Port: oIntro40 is placed in BOTH RomSubway1 and RomNBAJam, and these alarms are
+// gated only on the story counter, never on `room` -- so they fire in RomNBAJam,
+// which places none of oBalthios/oCyberdwarf/oHoopz/oJuwanna (and RomSubway1 does
+// not place object649x). Bare obj.var writes to an absent object are a hard error
+// in GameMaker 2024; GM6 ignored them. Same `with` treatment as Alarm_5.
 sOvar(object_index,2);
 global.nofollow=1;
 with (oFollower) x=-999;
-oBarkley.visible=0;
-oBarkley.t=3;
-object649x.x-=128;
+with (oBarkley) { visible=0; t=3; }
+with (object649x) x-=128;
 global.camera=object4x;
 room_speed=30;
 //do sprt subber for hoopz deal
