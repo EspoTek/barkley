@@ -104,6 +104,19 @@ global.lastname=""; //on room enter fade deal
 global.nofollow=0; //if 1 no follow
 global.roz=-1; //fader
 global.cvx=-1; //for loading
+//port seed: the scripted-hurt ("shenmue") trio. global.die is the number of
+//scripted hits you can still take; every scene that queues a "hurt" row sets all
+//three first, then oQuicker decrements die on a failed prompt and oCinema kills
+//you at <=0. But only the FIRST alarm of each chain sets them, so a save taken
+//mid-scene and reloaded from a cold boot reaches a later alarm with all three
+//unset -- fatal in GameMaker 2024 (oCinema's hurt branch, then oGameover's Draw).
+//Seeded to 2 rather than the 0 GM6 read, deliberately: 2 is the allowance every
+//scene grants, whereas 0 means the next scripted hit kills you on the spot. The
+//real fix is persisting these in the .sav, which the positional save format
+//cannot take without invalidating existing saves.
+global.die=2;
+global.dieroom=RomBarkleyApart; //the game's own first scripted-death room
+global.diemessage="";
 global.plot=0;
 for (w=0; w<100; w+=1) global.scheme[w]=0;
 //DIalog
