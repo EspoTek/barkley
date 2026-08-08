@@ -1,5 +1,5 @@
 //Train
-if (room=RomSubwayCar0) oHoopzdummy.visible=0;
+//oHoopzdummy hidden in Room Start (created later in RomSubwayCar0)
 alarm[10]=1;
 if (sOvar(oLiberty,-1)<0) { //before doing liberty
 if (room=RomSubwayCar0) sOvar(object_index,0);

@@ -6,8 +6,5 @@ hav=0;
 if (sOvar(object_index,-1)!=1) slav=instance_create(x,y,oShiner);
 oDavis.visible=0;
 oCosby.visible=0;
-oLeonard.visible=0;
+//oLeonard hidden in Room Start (created later); self-destroy moved there too
 oBallground.visible=0;
-if (sOvar(object_index,-1)=1) {
-instance_destroy();
-}

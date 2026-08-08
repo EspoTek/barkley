@@ -4,9 +4,7 @@ with (oPunk1) instance_destroy();
 instance_destroy(); 
 exit;
 }
-oPump.visible=0;
-oBum0.movement=0;
-oBarkley.visible=0;
+oBum0.movement=0; //oPump/oBarkley hidden in Room Start (created later)
 global.camera=oDummy;
 alarm[0]=1;
 sTrans("fadeout");
