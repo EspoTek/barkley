@@ -18,9 +18,19 @@ function sFollow(argument0, argument1) {
 	 global.following[ii+jj]=-1;
 	} else if (argument0="step") { /////////////////////////////////step
 	 if (global.following[0]=-1 || global.nofollow=1) exit;
+	 //global.following holds OBJECT indices, and a party member is registered
+	 //here before its follower instance exists (the Hoopz join runs
+	 //sFollow("add",oFollower3) with no matching sFollow("update") -- oBarkley's
+	 //Create rebuilds them on the next room load). GM6 ignored a write to an
+	 //object with no instances; GameMaker 2024 makes it a fatal "unable to find
+	 //instance for object index oFollower3", which crashed on leaving
+	 //Cyberdwarf's home after the rescue. `with` reproduces GM6: no instances,
+	 //no writes, no error.
 	 for (ii=0; global.following[ii]!=-1; ii+=1) {
-	  global.following[ii].allwalk=0;
-	  global.following[ii].walk=1;
+	  with (global.following[ii]) {
+	   allwalk=0;
+	   walk=1;
+	  }
 	 }
 	 if (x!=xprevious || y!=yprevious) {
 	  movf[150,0]=x; 
