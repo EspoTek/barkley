@@ -12,7 +12,7 @@ function sVoxRate(argument0) {
 	if (string_pos("jordan",nl)>0) return(95);
 	if (string_pos("balthios",nl)>0) return(95);
 	if (string_pos("dwarf",nl)>0) return(85);
-	if (string_pos("vince",nl)>0) return(65);
+	if (string_pos("vince",nl)>0) return(70); //cyborg: the robot-pool tick rate
 	if (string_pos("hellbane",nl)>0) return(95); //Hellbane IS Balthios: same pace
 	if (string_pos("lebron",nl)>0) return(60);
 	//quick-talkers sit at ~2 frames: any faster overlaps the ~100ms bloops

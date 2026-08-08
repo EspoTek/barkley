@@ -44,3 +44,4 @@ vrate=55; //ms between bloops; sVoxRate + line gravity set it at first reveal
 vpmul=1; //per-speaker pitch multiplier (sVoxPitch)
 vq=0; //queued trailing notes (instant-reveal burst)
 vmute=0; //set by oCinema when a recorded voice clip already covers this line
+vname=global.dia_name; //who to SOUND like; sDialog splits it off a "plate|voice" prefix

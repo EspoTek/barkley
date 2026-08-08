@@ -22,6 +22,17 @@ function sDialog(argument0, argument1, argument2, argument3, argument4, argument
 	}
 	if (namer="" && face=0) name="";
 
+	//Realistic Voice Acting (port addition): a name plate may carry a hidden
+	//voice identity after a bar -- "???|Vinceborg:\" shows the player "???"
+	//but keeps the speaker sounding like himself, so a character does not
+	//swap voices the moment he is unmasked. No bar = voice follows the plate.
+	vname=name;
+	vbar=string_pos("|",name);
+	if (vbar>0) {
+	vname=string_copy(name,vbar+1,999);
+	name=string_copy(name,1,vbar-1);
+	}
+
 	dmessage[0]=sAlBhed(string_replace_all(edt,"*",""));
 	dmessage[1]="n";
 	rrr=string_length(dmessage[0]);

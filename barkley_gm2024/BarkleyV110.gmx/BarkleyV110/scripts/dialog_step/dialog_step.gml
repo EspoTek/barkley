@@ -25,7 +25,7 @@ function dialog_step() {
 	//rate-limited by wall time so instant-reveal fires at most one
 	if (global.sat[14]=1) {
 	if (vres=0) {
-	vres=1; vsnd=sVox(name); vrate=sVoxRate(name); vpmul=sVoxPitch(name);
+	vres=1; vsnd=sVox(vname); vrate=sVoxRate(vname); vpmul=sVoxPitch(vname);
 	if (vmute=1) vsnd=-1; //a recorded voice clip is already playing this line
 	//gravity of the line: dramatic pauses slow the voice, urgency quickens it
 	vg=string_count("...",dmessage[count]);
