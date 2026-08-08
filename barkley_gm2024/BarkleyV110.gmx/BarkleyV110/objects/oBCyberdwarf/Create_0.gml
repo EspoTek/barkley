@@ -35,7 +35,11 @@ onr=0;
 instance_create(8,8,oBComboMeter);
 //Info
 infoh[0]="Quick Reference:";
-info[0]="Action / Cancel / Start - Normal attacks.#Left / Down / Right + Any Key - Finisher.###Press left or right for attack information.";
+//One # too many after "Finisher." in the original: every other character's
+//Quick Reference is four rows tall (Vinceborg pads one content line with ###,
+//Barkley/Hoopz/Balthios use three lines and no padding). Cyberdwarf has two
+//content lines, so ### left a stray blank row in the middle of the box.
+info[0]="Action / Cancel / Start - Normal attacks.#Left / Down / Right + Any Key - Finisher.##Press left or right for attack information.";
 info[1]="1";
 infoh[1]="Regular Attacks";
 info[2]="1";
