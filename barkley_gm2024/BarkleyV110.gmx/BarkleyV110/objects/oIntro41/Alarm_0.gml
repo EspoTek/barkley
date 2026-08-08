@@ -17,7 +17,7 @@ sCinema(oBarkley,"code",cine_0337);
 sCinema(oBarkley,"wait",1);
 sCinema(oBarkley,"dialog","Huh!? Who did that?",1);
 sCinema(oBarkley,"wait",1);
-sCinema(oBarkley,"dialog","???:\\What a surprise, to find you here in the B.L.O.O.D.M.O.S.E.S. headquarters, Barkley.");
+sCinema(oBarkley,"dialog","???|Jordan:\\What a surprise, to find you here in the B.L.O.O.D.M.O.S.E.S. headquarters, Barkley.");
 sCinema(oBarkley,"dialog","That voice... Jordan! Jordan, you son of a bitch! You sick goddamn son of a bitch!",1);
 repeat (4) sCinema(oJordan,"move","down");
 sCinema(oBarkley,"code",cine_0338);

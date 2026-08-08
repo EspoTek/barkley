@@ -44,7 +44,7 @@ sCinema(oBarkley,"dialog","Damnit Vince... Damnit...",1);
 sCinema(oHoopz,"dialog","Dad!",1);
 sCinema(oBarkley,"dialog","I'm... I'm here son.",1);
 sCinema(oBarkley,"wait",1.5);
-sCinema(oBarkley,"dialog","???:\\B...arkl...ey...");
+sCinema(oBarkley,"dialog","???|Larry Bird:\\B...arkl...ey...");
 sCinema(oBarkley,"dialog","L-Larry?",1);
 sCinema(oBarkley,"move","right");
 repeat (5) sCinema(oBarkley,"move","up",4);

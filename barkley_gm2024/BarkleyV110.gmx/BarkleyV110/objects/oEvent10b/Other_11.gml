@@ -4,7 +4,7 @@ with (oPlayer) solid=0;
 global.dialog=1;
 oBarkley.move="";
 sOvar(oTurkey,2); 
-sCinema(oBarkley,"dialog","???:\\Barkley, wait!");
+sCinema(oBarkley,"dialog","???|Zalatar:\\Barkley, wait!");
 sCinema(oBarkley,"code",cine_0075);
 repeat (8) sCinema(oTurkey,"move","up");
 sCinema(oBarkley,"wait",1);

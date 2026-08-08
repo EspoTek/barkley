@@ -22,7 +22,7 @@ sCinema(oBarkley,"dialog","I don't know what it means, son. I don't know why you
 sCinema(oCyberdwarf,"dialog","Whether your differences are a blessing or a curse have yet to be proven, Hoopz, but I believe that whatever lies ahead of us is waiting for you.",1);
 sCinema(oHoopz,"dialog","You mean like... ~F.A.T.E.~?",1);
 sCinema(oCyberdwarf,"dialog","Perhaps...",1);
-sCinema(oBarkley,"dialog","???:\\Charles!");
+sCinema(oBarkley,"dialog","???|Juwanna Mann:\\Charles!");
 sCinema(oBarkley,"code",cine_0316);
 sCinema(oBarkley,"dialog","Wh-what?",1);
 sCinema(oBarkley,"wait",1);

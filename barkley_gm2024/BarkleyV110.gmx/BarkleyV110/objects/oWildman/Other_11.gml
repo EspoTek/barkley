@@ -5,9 +5,9 @@ sCinema(oWildman,"dialog","Step off, pond scum.",1);
 } else if (hhh=1) {
 sCinema(oWildman,"dialog","...Good luck.",1);
 } else {
-sCinema(oWildman,"dialog","???:\\<cough>... Get away from me.");
+sCinema(oWildman,"dialog","???|Wildman:\\<cough>... Get away from me.");
 sCinema(oBarkley,"dialog","Suit yourself, chump. See -- wait... Do I know you?",1);
-sCinema(oWildman,"dialog","???:\\B... Barkley? ");
+sCinema(oWildman,"dialog","???|Wildman:\\B... Barkley? ");
 sCinema(oBarkley,"dialog","Wildman... You're as pale as a ghost now.",1);
 sCinema(oWildman,"dialog","I'm ashamed to say we used to jam together... <cough>... I wouldn't be surprised if you forgot the meaning of that word.",1);
 sCinema(oBarkley,"dialog","Why you gotta say shit like that man? What changed since we last met that would make you think something like that?",1);

@@ -14,7 +14,7 @@ sCinema(oVince,"move","down",4);
 sCinema(oVince,"move","down",4);
 sCinema(oBarkley,"dialog","Are you guys okay?",1);
 sCinema(oBalthios,"dialog","Y-yeah, I think I'm al-",1);
-sCinema(oBarkley,"dialog","???:\\Dad?");
+sCinema(oBarkley,"dialog","???|Hoopz:\\Dad?");
 sCinema(oCyberdwarf,"face","up");
 sCinema(oBalthios,"face","up");
 sCinema(oBarkley,"face","left");
