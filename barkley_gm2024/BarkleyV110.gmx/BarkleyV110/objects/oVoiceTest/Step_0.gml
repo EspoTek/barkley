@@ -22,9 +22,15 @@ if (mouse_check_button_pressed(mb_left)) vplay=1;
 }
 if (vplay=1) {
 plsnd=sVox(vk[cur]); //leads resolve their sat[15..18] variant inside sVox
-pvb=max(1,round(sVoxRate(vk[cur])/33));
+//Cadence in MILLISECONDS off the wall clock, exactly as dialog_step measures it.
+//This used to convert to frames with round(rate/33), which assumed a 30fps grid
+//-- but oController's Room Start sets room_speed=60, so auditioning from a
+//gameplay room played every voice at roughly half its real interval, and Hoopz
+//collapsed to the 1-frame minimum. The screen used to sign these voices off has
+//to agree with the game or it is worse than no screen at all.
+pvb=sVoxRate(vk[cur]);
 ppm=sVoxPitch(vk[cur]);
-playing=14; pw=0; pt=0;
+playing=14; pw=0; plast=0; pgap=0;
 }
 if (keyboard_check_pressed(ord("V"))) {
 global.sat[vsat[cur]]=(global.sat[vsat[cur]]+1) mod vmax[cur]; sConfig(1);
@@ -32,10 +38,10 @@ global.sat[vsat[cur]]=(global.sat[vsat[cur]]+1) mod vmax[cur]; sConfig(1);
 if (sKey(global.key_cancel,1)) { open=0; playing=0; }
 //sample sentence: bloop stream with word-boundary gaps at this character's cadence
 if (playing>0) {
-pt-=1;
-if (pt<=0) {
+if (current_time-plast>pvb+pgap) {
+plast=current_time;
 pw+=1;
-if (pw mod 4=0) pt=pvb+3; else pt=pvb;
+if (pw mod 4=0) pgap=100; else pgap=0; //word boundary, ~3 frames as before
 if (plsnd>=0) audio_play_sound(plsnd,10,false,0.85,0,ppm*(0.94+random(0.12)));
 playing-=1;
 }

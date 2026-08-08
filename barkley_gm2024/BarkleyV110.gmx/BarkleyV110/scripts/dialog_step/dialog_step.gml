@@ -32,7 +32,12 @@ function dialog_step() {
 	if (vg>0) vrate=vrate*(1+min(0.5,0.18*vg));
 	vg=string_count("!",dmessage[count]);
 	if (vg>0) vrate=vrate*max(0.7,1-0.12*vg);
-	vrate=min(200,max(30,round(vrate)));
+	//Floor is 60, not 30: a bloop can only fire on a frame boundary, and the
+	//samples run 70-140ms, so anything under ~60ms stacks copies of the same
+	//sample into a phasey drone instead of speech. An exclamation-heavy line
+	//used to drive 49 of the 157 speaking parts under that floor -- "DAD, NO!!!"
+	//reached the old floor of 30 and sounded five voices at once.
+	vrate=min(200,max(60,round(vrate)));
 	}
 	if (vsnd>=0) {
 	vch=string_upper(string_copy(dmessage[count],scount+lcount-1,1));
