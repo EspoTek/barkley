@@ -5,7 +5,7 @@ function sVoxRate(argument0) {
 	//Jordan's reference interview is slow and deliberate, Fresh Prince-era
 	//Will Smith is quick. Unmapped speakers get the neutral default.
 	var nl;
-	nl=string_lower(string(argument0));
+	nl=sVoxAlias(argument0); //name plates (the Priest) resolve to the person behind them
 	if (string_pos("t-rex",nl)>0) return(125); //T-Rex Barkley lumbers (before the barkley match)
 	if (string_pos("barkley",nl)>0 || string_pos("bakley",nl)>0) return(70);
 	if (string_pos("hoopz",nl)>0) return(42);

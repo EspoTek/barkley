@@ -4,10 +4,10 @@ function sVoxPitch(argument0) {
 	//top of the shared bloop. Hellbane speaks with Balthios's exact voice and
 	//cadence but ~5Hz higher (5/120 = x1.042), per the user's spec.
 	var nl;
-	nl=string_lower(string(argument0));
+	nl=sVoxAlias(argument0); //name plates (the Priest) resolve to the person behind them
 	if (string_pos("hellbane",nl)>0) return(1.042);
 	if (string_pos("t-rex",nl)>0) return(0.75); //T-Rex Barkley: Barkley's voice, saurian grumble
-	//evil counterparts: the namesake voice downshifted ~12-15Hz
+	//darker counterparts: the namesake voice downshifted ~12-15Hz
 	if (string_pos("shadow",nl)>0 || string_pos("bakley",nl)>0) return(0.87); //Shadow Barkley, Sir/Shade Bakley
 	if (string_pos("maester",nl)>0) return(0.85); //Maester Jordan
 	if (string_pos("lebronus",nl)>0) return(0.88); //Lebronus James

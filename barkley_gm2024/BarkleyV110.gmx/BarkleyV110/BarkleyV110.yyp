@@ -1801,6 +1801,7 @@
     {"id":{"name":"sVerifyStats","path":"scripts/sVerifyStats/sVerifyStats.yy",},},
     {"id":{"name":"sViewFollow","path":"scripts/sViewFollow/sViewFollow.yy",},},
     {"id":{"name":"sVox","path":"scripts/sVox/sVox.yy",},},
+    {"id":{"name":"sVoxAlias","path":"scripts/sVoxAlias/sVoxAlias.yy",},},
     {"id":{"name":"sVoxClass","path":"scripts/sVoxClass/sVoxClass.yy",},},
     {"id":{"name":"sVoxHash","path":"scripts/sVoxHash/sVoxHash.yy",},},
     {"id":{"name":"sVoxPitch","path":"scripts/sVoxPitch/sVoxPitch.yy",},},

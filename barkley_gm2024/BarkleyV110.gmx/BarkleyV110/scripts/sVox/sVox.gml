@@ -4,8 +4,13 @@ function sVox(argument0) {
 	//character's bloop sound, honouring the per-character variant in sat[15..18].
 	//Returns -1 for speakers without a voice (dialog stays silent, as shipped).
 	var nl;
-	nl=string_lower(string(argument0));
-	if (string_pos("barkley",nl)>0 || string_pos("bakley",nl)>0) return(asset_get_index("mVoxBarkley"+string(global.sat[15]))); //Sir/Shade Bakley: evil clones speak with his voice
+	nl=sVoxAlias(argument0); //name plates (the Priest) resolve to the person behind them
+	//Name plates that are captions rather than people: the canon warning, the
+	//puzzle control legend, the arena rule board. Expository text on screen is
+	//nobody speaking, so it stays silent. A "Television" or "Computer" name
+	//plate IS someone talking through a speaker, and keeps its voice.
+	if (nl="warning" || nl="controls" || nl="b-ball dimension rules") return(-1);
+	if (string_pos("barkley",nl)>0 || string_pos("bakley",nl)>0) return(asset_get_index("mVoxBarkley"+string(global.sat[15]))); //Sir/Shade Bakley speak with his voice
 	if (string_pos("hoopz",nl)>0) return(asset_get_index("mVoxHoopz"+string(global.sat[16])));
 	if (string_pos("jordan",nl)>0) return(asset_get_index("mVoxJordan"+string(global.sat[17])));
 	if (string_pos("balthios",nl)>0) return(asset_get_index("mVoxBalthios"+string(global.sat[18])));
