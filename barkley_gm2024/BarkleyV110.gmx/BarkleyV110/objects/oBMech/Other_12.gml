@@ -14,8 +14,10 @@ fff=1;
 sound_play(mWhistle3);
 //
 tob=oBMechP0;
+//Same GM<=8 all-instances dot-assign as oBWhistle: 39 of these 40 kept the
+//default depth. See objects/oBWhistle/Other_12.gml.
 repeat (40) instance_create(x,y,tob);
-tob.depth=target.depth-1;
+with (tob) depth=other.target.depth-1;
 visible=0;
 }
 if (fff>60) { fff=0; doing=-1; with (tob) instance_destroy(); x=slav.x; y=slav.y; walk=-999; alarm[0]=30; ended=0; finish=1; }

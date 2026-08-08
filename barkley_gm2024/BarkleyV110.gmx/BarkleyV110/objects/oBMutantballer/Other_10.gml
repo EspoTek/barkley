@@ -27,8 +27,10 @@ if (img=4) img=1;
 else if (img=1) img=2;
 else if (img=2) img=3;
 else if (img=3) img=4;
+//Same all-instances dot-assign: a particle per frame, so GameMaker 2024 depths
+//the oldest survivor and the new one draws in front of the target.
 instance_create(x-15,y+15,tob);
-tob.depth=target.depth-1;
+with (tob) depth=other.target.depth-1;
 sound_volume(mMutantballer2,vol);
 }
 if (rou<=1) { fff=1; stage=2; wspd=12; }

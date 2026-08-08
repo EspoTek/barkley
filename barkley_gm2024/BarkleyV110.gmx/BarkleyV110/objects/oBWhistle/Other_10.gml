@@ -12,8 +12,10 @@ if (fff=0) {
 fff=1; 
 sS(mWhistle0); 
 tob=oBWhistleP3;
+//Same all-instances dot-assign as Other_12: one particle is created per call,
+//so GameMaker 2024 re-depths the OLDEST survivor rather than the new one.
 instance_create(x+35,y-10,tob);
-tob.depth=target.depth-1;
+with (tob) depth=other.target.depth-1;
 }
 scl=max(1,scl-(scl/6));
 if (fff=5) sDamage(doing);

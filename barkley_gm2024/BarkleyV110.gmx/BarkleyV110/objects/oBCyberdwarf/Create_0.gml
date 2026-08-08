@@ -55,4 +55,10 @@ info[4]="The bar fills over time and when you strike. There are two attacks, reg
 infoh[5]="Combo Tactics";
 info[5]="To get maximum damage, do not perform a finisher and alternate attacks. Use jabs on low guard foes, and punches on high guard foes for best results.";
 info[6]="";
-infomax=4;
+//Was 4, but pages run 0-5 (infoh[5]="Combo Tactics"). oBattleMenu pages right
+//until info[inf]="" and left until inf<0 then jumps to infomax, so the wrap was
+//asymmetric: paging left from page 0 landed on "Combo Bar" and skipped "Combo
+//Tactics". Original 2008 off-by-one -- the author converted three text pages
+//into sprite pages (the commented-out infoh[2]/infoh[3] above) and never
+//re-counted. Barkley, the other six-page character, correctly has 5.
+infomax=5;
