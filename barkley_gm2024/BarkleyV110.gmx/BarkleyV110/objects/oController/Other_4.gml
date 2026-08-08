@@ -24,6 +24,13 @@ room_speed=60; //60 - test on 15 later
 global.rendrate=current_time;
 global.rendt=.01;
 global.rd=global.rendt*3;
+//The cutscene channels are non-persistent, so a room change silently discards
+//whatever was still queued. global.cinema was NOT discarded with it: it is set
+//by sCinema and by every channel's dispatcher, but cleared only by oCinema0's
+//drain, so leaving a room mid-queue stranded it at 1 -- and oController's Step
+//exits on that, locking out all input including Start. Clear it alongside the
+//channels it belongs to; any cutscene starting in the new room re-asserts it.
+global.cinema=0;
 instance_create(0,0,oTinter);
 instance_create(0,0,oCinema0);
 instance_create(0,0,oCinema1);
@@ -55,6 +62,13 @@ global.gameoverfade=0; global.roz=-1; //added very late
 sTrans("fadeout",1);
 }
 if (global.posser!=-1) { //General mover
+// Port: same GM6 semantics as the global.cvx block above. global.posser holds an
+// OBJECT index (oExit*/Other_11.gml sets it to object_index), so both it and
+// oBarkley are bare dereferences here. A destination room that does not place
+// that exit -- or places it and has it destroyed before this runs -- was a
+// non-fatal error in GM6 that skipped the rest of the event, and is a hard error
+// in GameMaker 2024. Bail the same way rather than positioning Barkley halfway.
+if (!instance_exists(oBarkley) || !instance_exists(global.posser)) exit;
 global.memposs=global.posser;
 global.freeze=1;
 oBarkley.x=global.posser.x-4;

@@ -88,11 +88,15 @@ instance_create(0,0,queue[0,2]);
 event_user(0);
 }
 if (sub="destroy") {
-with (queue[0,2]) instance_destroy();
+// Slot 2 is 0 when a row carried no argument, and OBJECT INDEX 0 IS oPlayer --
+// the parent of Barkley, every follower and every collider. A stale re-entry
+// here (see the "code"/"cond" shims) would make this `with (0) instance_destroy()`
+// and wipe the party. A real destroy row always names an object, never 0.
+if (queue[0,2]!=0) with (queue[0,2]) instance_destroy();
 event_user(0);
 }
 if (sub="user") {
-with (queue[0,2]) event_user(0);
+if (queue[0,2]!=0) with (queue[0,2]) event_user(0); //same oPlayer-is-index-0 trap
 event_user(0);
 }
 if (sub="code") {
@@ -161,7 +165,13 @@ event_user(0);
 }
 if (sub="cond") {
 good=0;
-script_execute(queue[0,2]);
+// Same GM6 shim as the "code" branch above, and for the same reason: an
+// unwinding event_user chain can re-enter this branch with a stale sub while
+// queue[0] already holds the next row, so slot 2 may be a string or a number
+// rather than a script. GM6 errored non-fatally and carried on; script_execute
+// is fatal here. "cond" sits later in the if-chain than "code", so it is
+// reachable from MORE outer frames, not fewer.
+if (!is_string(queue[0,2]) && script_exists(queue[0,2])) script_execute(queue[0,2]);
 if (good=1) event_user(0);
 }
 if (sub="hurt") {
