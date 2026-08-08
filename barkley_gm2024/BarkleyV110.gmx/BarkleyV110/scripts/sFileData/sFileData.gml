@@ -233,8 +233,17 @@ function sFileData(argument0, argument1) {
 	temp4=file_text_read_string(tfl); file_text_readln(tfl);
 	temp3=asset_get_index(temp4);
 	if (temp3<0 || !room_exists(temp3)) { //pre-name-format saves stored the numeric room index
-	if (string_digits(temp4)=="") show_error("Save file names unknown room '"+temp4+"'",true);
-	temp3=real(string_replace(temp4,",","."));
+	//The old test was `string_digits(temp4)=""`, which was inverted: string_digits
+	//KEEPS the digits, so it returns "" only for a name with no digit at all --
+	//and 63 of the 131 room names contain one ("RomNeoYork0" among them). A save
+	//naming a renamed or deleted room slipped past the error and fell into
+	//real("RomNeoYork0"). Require the field to be numeric, then require the room
+	//to exist; anything else is a corrupt save and must fail loudly, not teleport.
+	var rnm;
+	rnm=string_replace_all(string_replace_all(temp4," ",""),",",".");
+	if (rnm="" || string_digits(rnm)!=string_replace_all(rnm,".","")) show_error("Save file names unknown room '"+temp4+"'",true);
+	temp3=real(rnm);
+	if (!room_exists(temp3)) show_error("Save file names unknown room index '"+temp4+"'",true);
 	}
 	}
 	if (arg=0) for (i=0; i<100; i+=1) { global.fighter[i]=-999; global.fighters[i]=0; }
