@@ -19,6 +19,9 @@ sal[0]="Buy";
 sal[1]="Quit";
 item[0]="";
 keeper=-1;
+//port: the shopkeeper stock snapshot sShop fills. Seeded empty so the Buy row
+//can never read it unset outside a shop.
+shopitemf[0]="";
 substage=-1; //view status
 sibstage=-1; //weapon
 itmstage=""; //use item

@@ -8,7 +8,17 @@ function sShop(argument0, argument1, argument2, argument3) {
 	global.temp=argument0;
 	with (oStartmenu) {
 	keeper=global.temp;
-	sItemShow("global.temp.itemf",2,0,2,1);
+	//port: snapshot the shopkeeper's stock into the menu's own array, here, at
+	//the one moment it is known to resolve. The original kept only a NAME for the
+	//list -- "("+string(keeper)+").itemf" -- and re-resolved it to an instance on
+	//every return to the Buy row, because in GM6 that string was pasted into
+	//execute_string as code. That re-resolution is what crashed at a vending
+	//machine and what came back empty after a trip through the Sell screen.
+	//Read it once and keep it; nothing downstream has to find the shopkeeper again.
+	var si;
+	for (si=0; global.temp.itemf[si]!=""; si+=1) shopitemf[si]=global.temp.itemf[si];
+	shopitemf[si]="";
+	sItemShow("shopitemf",2,0,2,1);
 	}
 
 

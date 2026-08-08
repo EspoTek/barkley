@@ -53,21 +53,15 @@ function sItemShow(argument0, argument1, argument2, argument3, argument4) {
 	 //arr names the item-array source; was execute_string of a generated copy loop
 	 if (arr="global.item_id") { for(m=0; global.item_id[m]!=""; m+=1) item[m]=global.item_id[m]; }
 	 else if (arr="itemf") { for(m=0; itemf[m]!=""; m+=1) item[m]=itemf[m]; }
-	 else if (arr="global.temp.itemf") { srcinst=global.temp; for(m=0; srcinst.itemf[m]!=""; m+=1) item[m]=srcinst.itemf[m]; }
-	 //port: the shopkeeper's stock. GM6 built this arg as "("+string(keeper)+").itemf"
-	 //and pasted it into execute_string as code, so the id was re-parsed from text.
-	 //Reproducing that with string_digits(arr) round-tripped an instance through a
-	 //string, which is fragile in a way GM6 never was: it dropped the minus sign
-	 //(making the pause menu's Buy row fatal, fixed once already), and on the
-	 //browser runtime string(instance) yields no digits at all, so string_digits
-	 //returned "" and real("") aborted the moment you opened a vending machine.
-	 //keeper already holds the instance -- just read it. A keeper that is not a
-	 //live instance means oStartmenu's own itemf: that is the -1 its Create sets,
-	 //and it is how GM6 resolved a negative id (as `self`).
-	 else if (arr="keeper.itemf") {
-	  if (instance_exists(keeper)) { for(m=0; keeper.itemf[m]!=""; m+=1) item[m]=keeper.itemf[m]; }
-	  else { for(m=0; itemf[m]!=""; m+=1) item[m]=itemf[m]; }
-	 }
+	 //port: the shopkeeper's stock, snapshotted into shopitemf by sShop while it is
+	 //known good. GM6 named the source as a STRING -- "("+string(keeper)+").itemf"
+	 //-- and pasted it into execute_string as code, so the shopkeeper had to be
+	 //re-found from that text on every re-init. Reproducing the re-resolution was
+	 //fragile in a way GM6 never was: it dropped the minus sign (the pause-menu Buy
+	 //crash), then hit string(asset) returning a NAME with no digits (the vending
+	 //machine crash), then resolved to an empty list after a trip through the Sell
+	 //screen. Nothing re-resolves it now; the list is copied once and kept.
+	 else if (arr="shopitemf") { for(m=0; shopitemf[m]!=""; m+=1) item[m]=shopitemf[m]; }
 	 item[m]="";
 	 itemdsc[0]="";
 	 itempts[0]="";
