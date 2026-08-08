@@ -43,3 +43,4 @@ vlast=0;
 vrate=55; //ms between bloops; sVoxRate + line gravity set it at first reveal
 vpmul=1; //per-speaker pitch multiplier (sVoxPitch)
 vq=0; //queued trailing notes (instant-reveal burst)
+vmute=0; //set by oCinema when a recorded voice clip already covers this line

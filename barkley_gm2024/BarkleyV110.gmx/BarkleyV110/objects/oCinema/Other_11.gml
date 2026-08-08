@@ -69,7 +69,13 @@ if (cou>queue[0,2]*30) event_user(0);
 if (sub="dialog") {
 if (start=0) { of=global.dia_face; on=global.dia_name; }
 if (queue[0,3]=1) { global.dia_face=com.face; global.dia_name=com.name; }
-if (start=0) { bbb=sDialog(queue[0,2],queue[0,4],queue[0,5],queue[0,6],queue[0,7],queue[0,8]); start=1; }
+if (start=0) { bbb=sDialog(queue[0,2],queue[0,4],queue[0,5],queue[0,6],queue[0,7],queue[0,8]); start=1;
+ //Realistic Voice Acting (port addition): a pending ls means a "sound" command
+ //queued a recorded line just before this box -- Barkley's narration, the bum's
+ //"get a job". The clip IS the performance (and is stopped when the box closes,
+ //below), so the bloops keep quiet over it.
+ if (ls!=-1) bbb.vmute=1;
+}
 global.dia_face=0;
 if (global.skip=1) { with (bbb) instance_destroy(); }
 if (instance_exists(bbb)=0) {

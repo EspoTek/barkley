@@ -26,6 +26,7 @@ function dialog_step() {
 	if (global.sat[14]=1) {
 	if (vres=0) {
 	vres=1; vsnd=sVox(name); vrate=sVoxRate(name); vpmul=sVoxPitch(name);
+	if (vmute=1) vsnd=-1; //a recorded voice clip is already playing this line
 	//gravity of the line: dramatic pauses slow the voice, urgency quickens it
 	vg=string_count("...",dmessage[count]);
 	if (vg>0) vrate=vrate*(1+min(0.5,0.18*vg));
