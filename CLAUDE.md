@@ -58,7 +58,12 @@ npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac                   
 - **Music**: `sA` (scripts/sA/sA.gml) plays the embedded sound resources natively.
   The original streamed `Music/*.mp3` via bgm.dll (name map `mBattle` → `_battle.mp3`);
   all 29 `bgm_*` scripts are no-op stubs. Real audio was converted into the
-  sound resources (music = streamed OGG). `sa()` is a case-insensitivity alias.
+  sound resources (music = streamed OGG). `sa()` is NOT an alias of `sA()` —
+  GM6 has a separate script named `sa` that schedules the TOG logo beat markers
+  (`sp[mmm]/sl[mmm]`); forwarding it to `sA` silently killed every oBeater.
+- Music/SFX shared one bus after the port (GM6 streamed music through bgm.dll,
+  where `sound_*` could not reach it), so raw `sound_loop`/`sound_stop_all` on a
+  music resource now desyncs `global.lastmusic`. Route music through `sA`.
 - **Cutscenes**: GM6 `execute_string` payloads (1,090 sites) were extracted into
   scripts `cine_0000`–`cine_0490`; `oCinema` dispatches via `script_execute`.
   `sS`/`sBItemComm`/`sItemUseComm` replace other dynamic-code sites.

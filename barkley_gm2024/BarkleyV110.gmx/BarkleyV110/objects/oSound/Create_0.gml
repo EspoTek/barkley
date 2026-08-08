@@ -1,4 +1,7 @@
-/* gm6 port: the V110 source never seeds the beat schedule */
+/* gm6 port: harmless terminator so Step's `for (i=0; sp[i]!=-1; ...)` never
+   reads an unset sp[0] if the sa() calls below are ever removed. The earlier
+   claim here -- that the source never seeds the schedule -- was wrong: sa()
+   IS the seeder, and the first call overwrites this. See scripts/sA/sA.gml. */
 sp[0]=-1;
 sl[0]=0;
 sound_play(mTOGS);
