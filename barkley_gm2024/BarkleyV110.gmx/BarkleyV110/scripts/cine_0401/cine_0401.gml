@@ -1,5 +1,5 @@
 function cine_0401() {
-	sound_stop_all();sound_loop(mRunaway);
+	sA("stopall");sA("loop",mRunaway); //was raw: mRunaway looped while lastmusic still said mProto
 
 
 

@@ -7,7 +7,7 @@ if (sKey(vk_f7,1)) instance_create(0,0,oBHiratio);
 //if (sKey(vk_f8,1)) room_goto(RomCyberMove);
 //if (sKey(vk_f9,1)) room_goto(RomBalMove);
 if (sKey(vk_f2,1)) { global.batset=1; room_restart(); }
-if (sKey(vk_f3,1)) { sound_stop_all(); room_goto(RomTrans); }
+if (sKey(vk_f3,1)) { sA("stopall"); room_goto(RomTrans); }
 if (sKey(vk_f4,1)) {
 ggg=instance_create(oTestTarget.x-25,oTestTarget.y+25,oBReticule);
 ggg.direction=45;

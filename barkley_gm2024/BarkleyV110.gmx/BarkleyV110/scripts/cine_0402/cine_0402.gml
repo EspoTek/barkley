@@ -1,5 +1,5 @@
 function cine_0402() {
-	if (sound_isplaying(mRunaway)=0) sound_loop(mRunaway);
+	if (sA("check",mRunaway)=0) sA("loop",mRunaway);
 
 
 

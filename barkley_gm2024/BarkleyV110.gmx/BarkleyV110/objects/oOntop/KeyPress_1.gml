@@ -1,3 +1,3 @@
 global.titleform=0;
-sound_stop_all();
+sA("stopall");
 room_goto(RomTitle);

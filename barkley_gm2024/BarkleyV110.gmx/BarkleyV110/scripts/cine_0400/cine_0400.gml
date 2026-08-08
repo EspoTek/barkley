@@ -1,5 +1,5 @@
 function cine_0400() {
-	sound_stop_all();sound_play(mGlaugh);
+	sA("stopall");sound_play(mGlaugh); //mGlaugh is an SFX; only the stopall is music state
 
 
 

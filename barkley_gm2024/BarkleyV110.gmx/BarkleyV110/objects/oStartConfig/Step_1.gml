@@ -26,7 +26,7 @@ if (global.sat[4]=1) {
 room_set_view(RomTest,0,1,0,0,320,240,0,0,320,240,0,0,0,0,-1);
 with (key_makestuff) { event_user(1); } sConfig(1); sFileData(0); global.croom=RomTest; global.cvx=144; global.cvy=64; room_goto(RomTest); 
 }
-if (global.sat[4]=2) { with (key_makestuff) { event_user(1); } sConfig(1); sound_stop_all(); game_restart(); }
+if (global.sat[4]=2) { with (key_makestuff) { event_user(1); } sConfig(1); sA("stopall"); game_restart(); }
 } else {
 if (global.control=9) with (key_makestuff) event_user(0);
 else if (global.edit!=-1) global.edit=-1;

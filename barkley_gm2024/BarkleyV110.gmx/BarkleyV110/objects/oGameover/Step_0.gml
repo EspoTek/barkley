@@ -12,6 +12,6 @@ else sFileData(2,abs(global.lastload)); //load last save
 } else room_goto(global.dieroom);
 }
 if (pos=1) room_goto(RomTitle);
-sound_stop_all();
+sA("stopall");
 sP(1);
 }

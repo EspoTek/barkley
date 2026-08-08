@@ -15,4 +15,4 @@ sCinema(oBarkley,"code",cine_0040);
 sCinema(oBarkley,"code",cine_0095);
 sCinema(oBarkley,"code",cine_0344);
 sCinema(oBarkley,"code",cine_0006);
-sound_stop_all();
+sA("stopall");

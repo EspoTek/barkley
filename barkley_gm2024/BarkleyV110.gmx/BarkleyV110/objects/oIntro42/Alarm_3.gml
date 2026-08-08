@@ -14,4 +14,4 @@ sCinema(oShadowBarkley,"dialog","No! Think of what we could do! B-Ball would ush
 sCinema(oBarkley,"dialog","I am the beginning and the end. The alpha and the omega. The first and the last.",1);
 sCinema(oBarkley,"effect","fadein",3);
 global.roz=RomChaos;
-sound_stop_all();
+sA("stopall");
