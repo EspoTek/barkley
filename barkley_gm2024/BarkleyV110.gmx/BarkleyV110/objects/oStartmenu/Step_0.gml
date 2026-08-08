@@ -151,7 +151,7 @@ if (sibstage!=-1) pos1=0;
 if (stage=2) { if (pos0=23) { if (isc!=ceil((rmax-23)/2)*2) { pos0=22; isc+=2; } } else pos0=min(23,pos0+1); }
 if (stage=0) {
 if (sal[pos0]="") pos0-=1;
-if (sal[pos0]="Buy") sItemShow("("+string(keeper)+").itemf",2,0,2,1);
+if (sal[pos0]="Buy") sItemShow("keeper.itemf",2,0,2,1); //was "("+string(keeper)+").itemf"; see sItemShow
 else if (sal[pos0]="Sell") sItemShow("global.item_id",1,0,2,2);
 }
 }
@@ -164,7 +164,7 @@ if (stage=0) pos0=max(0,pos0-1);
 if (stage=1) pos1=max(0,pos1-1);
 if (stage=2) { if (pos0=0) { if (isc!=0) { pos0=1; isc-=2; } } else pos0=max(0,pos0-1); }
 if (stage=0) {
-if (sal[pos0]="Buy") sItemShow("("+string(keeper)+").itemf",2,0,2,1);
+if (sal[pos0]="Buy") sItemShow("keeper.itemf",2,0,2,1); //was "("+string(keeper)+").itemf"; see sItemShow
 else if (sal[pos0]="Sell") sItemShow("global.item_id",1,0,2,2);
 }
 }

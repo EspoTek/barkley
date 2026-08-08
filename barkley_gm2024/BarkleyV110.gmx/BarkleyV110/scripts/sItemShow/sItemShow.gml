@@ -49,24 +49,24 @@ function sItemShow(argument0, argument1, argument2, argument3, argument4) {
 	}
 	if (argument0="update") { ////////////////////////////////////////update
 	 sEquipped();
+	 m=0;
 	 //arr names the item-array source; was execute_string of a generated copy loop
 	 if (arr="global.item_id") { for(m=0; global.item_id[m]!=""; m+=1) item[m]=global.item_id[m]; }
 	 else if (arr="itemf") { for(m=0; itemf[m]!=""; m+=1) item[m]=itemf[m]; }
 	 else if (arr="global.temp.itemf") { srcinst=global.temp; for(m=0; srcinst.itemf[m]!=""; m+=1) item[m]=srcinst.itemf[m]; }
-	 //port: "(<id>).itemf".  This was execute_string of
-	 //  "for(m=0;"+arr+"[m]!='';m+=1)item[m]="+arr+"[m];"
-	 //so arr was pasted straight in as code, and GM6 resolved a negative instance
-	 //id as `self`.  oStartmenu's Create leaves keeper=-1, so "(-1).itemf" read the
-	 //menu's own array -- the same thing the "itemf" branch above does.
-	 //string_digits drops the minus, which turned self into object index 1 and made
-	 //the Buy row of the ordinary pause menu fatal.  Keep the sign, and resolve a
-	 //negative id the way GM6 did.
-	 else {
-	  srcinst=real(string_digits(arr));
-	  if (string_count("(-",arr)>0) srcinst=-srcinst;
-	  m=0;
-	  if (srcinst<0) { for(m=0; itemf[m]!=""; m+=1) item[m]=itemf[m]; }
-	  else if (instance_exists(srcinst)) { for(m=0; srcinst.itemf[m]!=""; m+=1) item[m]=srcinst.itemf[m]; }
+	 //port: the shopkeeper's stock. GM6 built this arg as "("+string(keeper)+").itemf"
+	 //and pasted it into execute_string as code, so the id was re-parsed from text.
+	 //Reproducing that with string_digits(arr) round-tripped an instance through a
+	 //string, which is fragile in a way GM6 never was: it dropped the minus sign
+	 //(making the pause menu's Buy row fatal, fixed once already), and on the
+	 //browser runtime string(instance) yields no digits at all, so string_digits
+	 //returned "" and real("") aborted the moment you opened a vending machine.
+	 //keeper already holds the instance -- just read it. A keeper that is not a
+	 //live instance means oStartmenu's own itemf: that is the -1 its Create sets,
+	 //and it is how GM6 resolved a negative id (as `self`).
+	 else if (arr="keeper.itemf") {
+	  if (instance_exists(keeper)) { for(m=0; keeper.itemf[m]!=""; m+=1) item[m]=keeper.itemf[m]; }
+	  else { for(m=0; itemf[m]!=""; m+=1) item[m]=itemf[m]; }
 	 }
 	 item[m]="";
 	 itemdsc[0]="";
