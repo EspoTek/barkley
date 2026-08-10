@@ -1,8 +1,7 @@
 name: build
 
-# Builds distributables for every supported platform on each push to
-# master/modern-port; a tag push (v*) additionally attaches them to a GitHub
-# Release. gm-cli provisions a guest GameMaker license on the runner -- no
+# Builds distributables for every supported platform on each push to master;
+# a tag push (v*) additionally attaches them to a GitHub Release. gm-cli provisions a guest GameMaker license on the runner -- no
 # account secrets needed. The macOS job produces a drag-to-Applications DMG
 # (Spalding-dimension background) plus a zip, signed + notarized + stapled
 # when the Developer ID secrets are present, unsigned otherwise.

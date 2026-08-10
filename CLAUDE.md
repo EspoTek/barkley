@@ -3,13 +3,17 @@
 ## What this repo is
 
 *Barkley, Shut Up and Jam: Gaiden* (2008, GameMaker 6.1) being ported to modern
-GameMaker (2024.x). Branch `master` = untouched original ("museum piece") — never
-commit to it. Branch `modern-port` = the port; all work happens here. The user has
-granted standing permission to commit on `modern-port`; keep bugfixes, features,
-and port-compat work in **separate commits**. Public repo: `origin` →
-github.com/EspoTek/barkley (default branch `master`); push only when the user
-asks in the current conversation. `upstream` → sanlor/Barkley1_Original
-(source preservation, never push there). Never monetize (CC BY-NC 4.0).
+GameMaker (2024.x). All work happens on `modern-port`. `master` follows it and is
+the branch CI publishes from, so the two normally sit on the same commit and
+`git merge --ff-only modern-port` is the whole merge. (`master` was the untouched
+original — the "museum piece" — early in the port; it is not any more. The
+pristine 2008 source is `barkley_gm6/BarkleyV110.gm6`, and upstream of the whole
+effort is sanlor/Barkley1_Original.) The user has granted standing permission to
+commit on `modern-port`; keep bugfixes, features, and port-compat work in
+**separate commits**. Push only when the user asks in the current conversation —
+and note that a push to `master` publishes, see CI below. Public repo: both
+`origin` and `upstream` → github.com/EspoTek/barkley (default branch `master`),
+which is also what `gh` resolves to. Never monetize (CC BY-NC 4.0).
 
 ## Layout
 
@@ -42,6 +46,25 @@ npx @gamemaker/gm-cli@latest run BarkleyV110.yyp --target mac                   
   local port (GMWebServ process). The runtime's `operagx/` module contains the full
   WASM runner. `--target html5` is not in gm-cli yet ("coming soon"); classic HTML5
   export needs the IDE (installed at /Applications/GameMaker.app, user signed in).
+
+## CI / publishing
+
+Both workflows trigger on every push to `master` (plus `workflow_dispatch`), so
+merging `modern-port` → `master` and pushing is what refreshes everything the
+public sees. There is no separate release step to remember.
+
+- `.github/workflows/build.yml` — packages macOS (universal; signed, notarized
+  and stapled DMG when the Developer ID secrets are present), Windows x64 and
+  Linux x64/arm64, then force-moves the `continuous` tag to the new commit and
+  refreshes the rolling "Latest build" release with all five artifacts. A `v*`
+  tag additionally gets its own versioned release. Windows needs the
+  `GM_ACCESS_KEY` secret — the guest licence has no Windows build module.
+- `.github/workflows/pages.yml` — packages the browser (operagx/WASM) build,
+  drops it under `/play`, and deploys it with the landing page in
+  `.github/pages/` to espotek.github.io/barkley.
+
+Watch a push with `gh run list`; check the artifacts with
+`gh release view continuous`. Both take a few minutes (build ~5, pages ~2).
 
 ## Port architecture (what was changed and why)
 
