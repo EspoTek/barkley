@@ -53,7 +53,7 @@ jobs:
         run: |
           mkdir -p _site/play
           unzip -q web.zip -d _site/play
-          cp .github/pages/index.html _site/index.html
+          cp -R .github/pages/. _site/
 
       - uses: actions/upload-pages-artifact@v3
         with:

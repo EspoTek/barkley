@@ -1,87 +1,229 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+  Barkley, Shut Up and Jam: Gaiden - modern port.
+  Page design is a tribute to yoyogames.com as it looked in January 2008
+  (the month the game shipped), rebuilt from a Wayback Machine capture:
+  https://web.archive.org/web/20080130170702/http://www.yoyogames.com/
+  Not affiliated with YoYo Games.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Barkley, Shut Up and Jam: Gaiden — play in your browser</title>
-<style>
-  :root { color-scheme: dark; }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; padding: 2rem 1rem 4rem;
-    background: #0c0c14; color: #e8e4d8;
-    font-family: "Courier New", ui-monospace, monospace;
-    display: flex; flex-direction: column; align-items: center;
-  }
-  main { max-width: 42rem; width: 100%; }
-  h1 { color: #f4b942; text-align: center; line-height: 1.2; margin: 0 0 .25rem; }
-  .tagline { text-align: center; color: #9a94b8; margin: 0 0 2rem; }
-  .play {
-    display: block; width: fit-content; margin: 0 auto .8rem;
-    padding: .9rem 2.6rem; background: #1a1a5e; color: #fff;
-    border: 3px solid #8a6d3b; text-decoration: none; font-size: 1.3rem;
-    font-weight: bold; letter-spacing: .05em;
-  }
-  .play:hover { background: #2a2a7e; }
-  .download { text-align: center; color: #9a94b8; margin: 0 0 2.5rem; }
-  .download a { color: #f4b942; }
-  h2 { color: #f4b942; border-bottom: 1px solid #333; padding-bottom: .3rem; }
-  table { border-collapse: collapse; }
-  td { padding: .15rem .9rem .15rem 0; }
-  td:first-child { color: #f4b942; white-space: nowrap; }
-  .note { color: #9a94b8; font-size: .9rem; }
-  footer { margin-top: 3rem; color: #666; font-size: .85rem; text-align: center; }
-  footer a { color: #9a94b8; }
-  .quote { margin-top: 1rem; font-style: italic; color: #4a8; }
-</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="keywords" content="Barkley Gaiden Hoopz SaGa Tales of Games YoYoGames GameMaker GM free games play basketball JRPG" />
+<meta name="description" content="Barkley, Shut Up and Jam: Gaiden - play free in your browser, or download for macOS, Windows and Linux." />
+<title>YoYo Games | Barkley, Shut Up and Jam: Gaiden</title>
+<link rel="icon" type="image/png" href="yoyo/images/content/favicon.png" />
+<link href="yoyo/screen.css" media="screen" rel="Stylesheet" type="text/css" />
 </head>
 <body>
-<main>
-  <h1>Barkley, Shut Up and Jam: Gaiden</h1>
-  <p class="tagline">Chapter 1 of the Hoopz Barkley SaGa — Tales of Game's (2008),<br>
-  ported to modern GameMaker and playable right here.</p>
 
-  <a class="play" href="play/">&#9654; PLAY IN BROWSER</a>
-  <p class="download">or <a href="https://github.com/EspoTek/barkley/releases/latest">download
-  it for your OS</a> — macOS, Windows, or Linux, rebuilt from every update.</p>
+<div id="wrapper">
+	<div id="container">
+		<div id="header">
+			<div id="membernav">
+				<ul style="float: left; padding: 0 10px;">
+					<li><a href="./">Home</a></li>
+					<li><a href="#">Forums</a></li>
+				</ul>
+				<ul style="float: right">
+					<li><a href="#">Login</a></li>
+					<li><a href="#">Register</a></li>
+					<li><a href="https://github.com/EspoTek/barkley/issues">Feedback</a></li>
+				</ul>
+			</div>
+			<h2><a href="https://www.yoyogames.com">YOYO Games<span></span></a></h2>
+			<div id="topnav">
+				<ul>
+					<li id="topnav-play"><a href="play/">Play<span></span></a></li>
+					<li id="topnav-make"><a href="#">Make<span></span></a></li>
+					<li id="topnav-share"><a href="#">Share<span></span></a></li>
+					<li id="topnav-help"><a href="#">Help<span></span></a></li>
+				</ul>
+			</div>
+		</div>
 
-  <h2>Controls</h2>
-  <table>
-    <tr><td>Arrow keys</td><td>move / navigate menus</td></tr>
-    <tr><td>Z</td><td>action / confirm</td></tr>
-    <tr><td>X</td><td>cancel / back</td></tr>
-    <tr><td>C</td><td>menu / start</td></tr>
-  </table>
-  <p class="note">All keys are rebindable in the in-game settings. Controllers are
-  supported too — freshly wired, so tell us if your pad misbehaves.</p>
+		<div id="main">
 
-  <h2>New in this port</h2>
-  <ul>
-    <li><strong>A tunable CRT filter</strong> — the headline feature. Head to
-      <em>Configuration &rarr; FILTER</em> and open the <em>TUNE CRT FILTER</em>
-      screen: pick Off, Arcade, or Dosbox&nbsp;CRT (a faithful port of Mattias
-      Gustavsson's beloved <a href="https://github.com/mattiasgustavsson/dosbox-crt">dosbox-crt</a>)
-      and dial in warp, scanlines, shadows, grain and ghosting live, with
-      character portraits and colour bars to judge by. Seriously, go try it.</li>
-    <li><strong>Realistic voice acting</strong> — every line Charles Barkley
-      delivers now carries the gravitas of his real voice, in the sense that
-      the dialogue bloops (think Undertale) are pitched from analysis of
-      actual interview footage. Hoopz speaks in certified 1990
-      Fresh&nbsp;Prince register. Togglable in the settings, obviously.</li>
-    <li>Fit-window and strict integer scaling, freely resizable window, native fullscreen.</li>
-    <li>Native builds for macOS (Apple Silicon + Intel), Windows 10+, and Linux
-      (x64/arm64) on the <a href="https://github.com/EspoTek/barkley/releases">releases page</a>.</li>
-    <li>The 2014 "Vinceborg laser" crash fix (of AGDQ fame) and dozens of
-      engine-compatibility repairs, with the original 2008 game logic preserved.</li>
-  </ul>
+			<div id="notice"><strong>Barkley, Shut Up and Jam: Gaiden</strong> is now <a href="play/">playable in your browser</a> &mdash; no Instant Play Add-on required!</div><br />
 
-  <footer>
-    <p>Game by Tales of Game's, released
-    under CC&nbsp;BY-NC&nbsp;4.0 — free forever, never for sale.<br>
-    Port source on <a href="https://github.com/EspoTek/barkley">GitHub</a>; built on the
-    preservation work of <a href="https://github.com/sanlor/Barkley1_Original">sanlor/Barkley1_Original</a>.</p>
-    <p class="quote">You don't need a reason to help people.</p>
-  </footer>
-</main>
-</body>
-</html>
+			<div id="homepage-news">
+				<div id="news-ticker"><div id="news-ticker_inner">
+					<p><strong>New to the site?</strong> <a href="play/">Barkley, Shut Up and Jam: Gaiden</a> is now at <strong>V 1.30</strong> and you can choose from over <strong>1 games</strong> to play now!</p>
+				</div></div>
+			</div>
+
+			<div class="block">
+
+				<div class="col-box-wide-home">
+					<div class="col-box-wide-top-home">
+						<h1 id="heading-top-created">Top Created Games<span></span></h1>
+					</div>
+
+					<div id="featured">
+						<a href="play/"><img class="shot" src="yoyo/images/content/barkley-title.png" alt="Barkley, Shut Up and Jam: Gaiden title screen" /></a>
+						<a class="play-now" href="play/">&#9654; Play Game!</a>
+					</div>
+					<p class="dl-line">or <a href="https://github.com/EspoTek/barkley/releases/latest">download it</a> for macOS, Windows or Linux</p>
+
+					<div id="top-ten-wrapper">
+						<ol id="top-ten">
+							<li>
+								<div class="game-thumb-large-dark"><span></span><a href="play/" title="Barkley, Shut Up and Jam: Gaiden"><img src="yoyo/images/content/barkley-thumb.jpg" alt="Barkley, Shut Up and Jam: Gaiden" /></a></div><a href="play/" title="Barkley, Shut Up and Jam: Gaiden">1._Barkley, Shut...</a><br /><small>by <a href="#">Tales of Game's</a></small><br /><ul class="star-rating-dark"><li class="current-rating" style="width: 72px; padding: 0;">Rating: 6.0/6 Stars.</li></ul>
+							</li>
+							<li>
+								<div class="game-thumb-large-dark"><span></span><a href="#" title="The Hanrahan Game: Final Mix"><img src="yoyo/images/content/scr1.jpg" alt="The Hanrahan Game: Final Mix" /></a></div><a href="#" title="The Hanrahan Game: Final Mix">2._The Hanrahan ...</a><br /><small>by <a href="#">flying squire</a></small><br /><ul class="star-rating-dark"><li class="current-rating" style="width: 50px; padding: 0;">Rating: 4.1779/6 Stars.</li></ul>
+							</li>
+							<li>
+								<div class="game-thumb-large-dark"><span></span><a href="#" title="Bridging the Gap"><img src="yoyo/images/content/btg_screen1b.png" alt="Bridging The Gap" /></a></div><a href="#" title="Bridging the Gap">3._Bridging The Gap</a><br /><small>by <a href="#">Erik Leppen</a></small><br /><ul class="star-rating-dark"><li class="current-rating" style="width: 49px; padding: 0;">Rating: 4.1466/6 Stars.</li></ul>
+							</li>
+							<li>
+								<div class="game-thumb-large-dark"><span></span><a href="#" title="Dominos 2: Winter edition"><img src="yoyo/images/content/dominos_yoyo_1.jpg" alt="Dominos 2: Winter Edition" /></a></div><a href="#" title="Dominos 2: Winter edition">4._Dominos 2: Wi...</a><br /><small>by <a href="#">marbs</a></small><br /><ul class="star-rating-dark"><li class="current-rating" style="width: 49px; padding: 0;">Rating: 4.1286/6 Stars.</li></ul>
+							</li>
+							<li>
+								<div class="game-thumb-large-dark"><span></span><a href="#" title="SeizureDome"><img src="yoyo/images/content/sd1.jpg" alt="Seizuredome" /></a></div><a href="#" title="SeizureDome">5._Seizuredome</a><br /><small>by <a href="#">cactus</a></small><br /><ul class="star-rating-dark"><li class="current-rating" style="width: 48px; padding: 0;">Rating: 4.0727/6 Stars.</li></ul>
+							</li>
+							<li>
+								<div class="game-thumb-large-dark"><span></span><a href="#" title="Lux"><img src="yoyo/images/content/title2.jpg" alt="Lux" /></a></div><a href="#" title="Lux">6._Lux</a><br /><small>by <a href="#">ryguydavis</a></small><br /><ul class="star-rating-dark"><li class="current-rating" style="width: 48px; padding: 0;">Rating: 4.0719/6 Stars.</li></ul>
+							</li>
+							<li>
+								<div class="game-thumb-large-dark"><span></span><a href="#" title="Super Breakout 2007: Evolution"><img src="yoyo/images/content/1.jpg" alt="Super Breakout 2007: Evolution" /></a></div><a href="#" title="Super Breakout 2007: Evolution">7._Super Breakou...</a><br /><small>by <a href="#">alex-rus07</a></small><br /><ul class="star-rating-dark"><li class="current-rating" style="width: 48px; padding: 0;">Rating: 4.0704/6 Stars.</li></ul>
+							</li>
+							<li>
+								<div class="game-thumb-large-dark"><span></span><a href="#" title="I.C.E."><img src="yoyo/images/content/screen_08.jpg" alt="I.c.e." /></a></div><a href="#" title="I.C.E.">8._I.c.e.</a><br /><small>by <a href="#">rotten_tater</a></small><br /><ul class="star-rating-dark"><li class="current-rating" style="width: 48px; padding: 0;">Rating: 4.0/6 Stars.</li></ul>
+							</li>
+							<li>
+								<div class="game-thumb-large-dark"><span></span><a href="#" title="Psychosomnium"><img src="yoyo/images/content/psychosmnium1.jpg" alt="Psychosomnium" /></a></div><a href="#" title="Psychosomnium">9._Psychosomnium</a><br /><small>by <a href="#">cactus</a></small><br /><ul class="star-rating-dark"><li class="current-rating" style="width: 48px; padding: 0;">Rating: 4.0/6 Stars.</li></ul>
+							</li>
+							<li>
+								<div class="game-thumb-large-dark"><span></span><a href="#" title="Go Up"><img src="yoyo/images/content/screenshot2.jpg" alt="Go Up" /></a></div><a href="#" title="Go Up">10._Go Up</a><br /><small>by <a href="#">Rutger Bevers</a></small><br /><ul class="star-rating-dark"><li class="current-rating" style="width: 47px; padding: 0;">Rating: 3.9862/6 Stars.</li></ul>
+							</li>
+							<li>
+								<div class="game-thumb-large-dark"><span></span><a href="#" title="Penka Mazes"><img src="yoyo/images/content/screen6.gif" alt="Penka Mazes" /></a></div><a href="#" title="Penka Mazes">11._Penka Mazes</a><br /><small>by <a href="#">D-mente</a></small><br /><ul class="star-rating-dark"><li class="current-rating" style="width: 47px; padding: 0;">Rating: 3.9574/6 Stars.</li></ul>
+							</li>
+							<li>
+								<div class="game-thumb-large-dark"><span></span><a href="#" title="Quantum"><img src="yoyo/images/content/quantum_screen1.png" alt="Quantum" /></a></div><a href="#" title="Quantum">12._Quantum</a><br /><small>by <a href="#">StapleGun</a></small><br /><ul class="star-rating-dark"><li class="current-rating" style="width: 47px; padding: 0;">Rating: 3.9524/6 Stars.</li></ul>
+							</li>
+						</ol>
+					</div>
+				</div>
+
+				<div id="homepage-right">
+
+					<div class="col-box-narrow-home">
+						<div class="col-box-narrow-top-home">
+							<h1>Download The Game<span></span></h1>
+						</div>
+						<p>Barkley, Shut Up and Jam: Gaiden is free &mdash; grab a native build for macOS, Windows or Linux from the <a href="https://github.com/EspoTek/barkley/releases/latest">releases page</a>, or just press <a href="play/">Play</a>.</p>
+					</div>
+
+					<div class="col-box-narrow-home-gm">
+						<div class="col-box-narrow-top-home">
+							<h1 id="heading-download-gamemaker-small">Download Gamemaker<span></span></h1>
+						</div>
+						<a href="#"><img class="ad" src="yoyo/images/content/create-your-own.jpg" alt="Download Gamemaker" /></a>
+					</div>
+
+					<div class="col-box-narrow-home">
+						<div class="col-box-narrow-top-home">
+							<h1 id="heading-about-yoyo">About YoYo<span></span></h1>
+						</div>
+						<p>Where the world comes to <a href="#">Play</a>, <a href="#">Make</a> &amp; <a href="#">Share</a> online casual games. We're a web 2.0 online gaming community site for game players &amp; game developers. Using our <a href="#">Game Maker</a> Toolset anyone can become a developer: YoYo has a wealth of resources &amp; the support of the <a href="#">Game Maker Community</a> to help you develop your skills, so download GM7 now &amp; start making professional games today!</p>
+					</div>
+
+					<div class="col-box-narrow-home">
+						<div class="col-box-narrow-top-home">
+							<h1 id="heading-yoyo-blog">
+								YoYo Glog<span></span>
+								<div id="rss-link"><a href="#"><img src="yoyo/images/content/rss.gif" alt="RSS" /></a></div>
+							</h1>
+						</div>
+						<ul id="homepage-rss">
+							<li><a href="#">Winter Competition Results</a></li>
+							<li><a href="#">Happy New Year 2008</a></li>
+							<li><a href="#">Open Web Awards Final!</a></li>
+							<li><a href="#">The Mashable Awards</a></li>
+							<li><a href="#">Techcrunch flavoured webby&#8217;s</a></li>
+						</ul>
+						<div class="item-nav"><a href="#">View The Glog</a></div>
+					</div>
+
+					<div class="col-box-narrow-home" id="tabbed-box">
+						<div class="col-box-narrow-tabs">
+							<h1 class="heading-developers">Reviews<span></span></h1>
+							<a class="heading-tab-reviews" href="#" title="via the Wayback Machine">Members<span></span></a>
+						</div>
+						<ol id="developer-list">
+							<li class="even">
+								<div class="developer-thumb-small"><span></span><a href="play/"><img alt="Barkley, Shut Up and Jam: Gaiden" src="yoyo/images/content/barkley-thumb.jpg" /></a></div>
+								<a href="play/">Review Of Barkley, Shut Up ...</a><br />
+								by <a href="play/">Cyberdwarf</a><br />
+								<p style="padding: 4px 0 0 0">Overall <img src="yoyo/images/content/star-clear.gif" alt="rating" /><img src="yoyo/images/content/star-clear.gif" alt="rating" /><img src="yoyo/images/content/star-clear.gif" alt="rating" /><img src="yoyo/images/content/star-clear.gif" alt="rating" /><img src="yoyo/images/content/star-clear.gif" alt="rating" /><img src="yoyo/images/content/star-clear.gif" alt="rating" /></p>
+							</li>
+							<li class="odd">
+								<div class="developer-thumb-small"><span></span><a href="#"><img alt="Mega Block Man" src="yoyo/images/content/untitled2.jpg" /></a></div>
+								<a href="#">Review Of Mega Block Man</a><br />
+								by <a href="#">huuhtanen</a><br />
+								<p style="padding: 4px 0 0 0">Overall <img src="yoyo/images/content/star-clear.gif" alt="rating" /><img src="yoyo/images/content/star-clear.gif" alt="rating" /><img src="yoyo/images/content/star-clear.gif" alt="rating" /><img src="yoyo/images/content/star-clear.gif" alt="rating" /><img src="yoyo/images/content/star-clear.gif" alt="rating" /><img src="yoyo/images/content/star-empty-clear.gif" alt="rating" /></p>
+							</li>
+							<li class="even">
+								<div class="developer-thumb-small"><span></span><a href="#"><img alt="Bowser Battle (SMB 3)" src="yoyo/images/content/screenshot167.jpg" /></a></div>
+								<a href="#">Review Of Bowser Battle (SM...</a><br />
+								by <a href="#">Kurty kool</a><br />
+								<p style="padding: 4px 0 0 0">Overall <img src="yoyo/images/content/star-clear.gif" alt="rating" /><img src="yoyo/images/content/star-empty-clear.gif" alt="rating" /><img src="yoyo/images/content/star-empty-clear.gif" alt="rating" /><img src="yoyo/images/content/star-empty-clear.gif" alt="rating" /><img src="yoyo/images/content/star-empty-clear.gif" alt="rating" /><img src="yoyo/images/content/star-empty-clear.gif" alt="rating" /></p>
+							</li>
+						</ol>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-box-wide-light">
+				<h1>Game Information</h1>
+				<p>Chapter one of the Hoopz Barkley SaGa (Tales of Game's, 2008), lovingly brought back for a new generation through a combination of Generative AI and weaponised Autism.<br>Arrow keys move, <strong>Z</strong> is action/confirm, <strong>X</strong> is cancel, <strong>C</strong> opens the menu.</p>
+				<ul>
+					<li>GamePad support that doesn't require you using Joy2Key (I really did this shit back in the day so I could play this game with a Wiimote)</li>
+					<li>AspieVision&#8482; Precise Pixel Rendering</li>
+					<li>Hyper-Realistic Voice Acting</li>
+				</ul>
+			</div>
+
+		</div>
+
+		<div id="footer">
+			<span id="pagefooter">
+				Game by Tales of Game's, CC&nbsp;BY-NC&nbsp;4.0 &mdash; free forever, never for sale |
+				<a href="https://github.com/EspoTek/barkley">Port source on GitHub</a>
+			</span>
+		</div>
+		<p class="tribute">This shit is obviously not actually affiliated with YoYo Games.</p>
+	</div>
+
+	<div id="skyscraper">
+		<div class="gads">
+			<div class="ad"><a class="t" href="play/">Chaos Dunk Insurance</a><br /><span class="d">Was your neighbourhood b-balled? You may be entitled to compensation.</span><br /><span class="u">www.post-cyberpocalypse.gov</span></div>
+			<div class="ad"><a class="t" href="play/">Cheap Zaubers</a><br /><span class="d">Wholesale swords &amp; magic. Free delivery throughout Neo New York.</span><br /><span class="u">www.zauber-depot.biz</span></div>
+			<div class="ad"><a class="t" href="#">Play 11,000 Games</a><br /><span class="d">Download the Instant Play Add-on at YoYo Games.</span><br /><span class="u">www.yoyogames.com</span></div>
+			<div class="tag">Ads by Goooooogle</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+(function () {
+	var clip = document.getElementById('news-ticker');
+	var inner = document.getElementById('news-ticker_inner');
+	var x = clip.offsetWidth;
+	setInterval(function () {
+		x -= 1;
+		if (x < -inner.offsetWidth) { x = clip.offsetWidth; }
+		inner.style.left = x + 'px';
+	}, 30);
+
+	var s = document.getElementById('top-ten-search');
+	var def = s.value;
+	s.onfocus = function () { if (s.value === def) { s.value = ''; s.style.color = '#000'; } };
+	s.onblur = function () { if (s.value === '') { s.value = def; s.style.color = '#666'; } };
+})();
+</script>
+
+</body></html>
